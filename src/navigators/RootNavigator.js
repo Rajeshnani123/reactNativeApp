@@ -4,12 +4,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import Login from '../screens/accessuser';
 import Splash from '../screens/splash';
+import SignIn from '../screens/accessuser/Login/SignIn';
+import SignUp from '../screens/accessuser/SignUp/SignUp';
 
 const RootStack = createNativeStackNavigator();
 
 const RootStackFN = () => {
   return (
-    <RootStack.Navigator initialRouteName="Login">
+    <RootStack.Navigator initialRouteName="SignIn">
       <RootStack.Screen
         name="Splash"
         component={Splash}
@@ -18,6 +20,16 @@ const RootStackFN = () => {
       <RootStack.Screen
         name="Login"
         component={Login}
+        options={{header: () => null}}
+      />
+      <RootStack.Screen
+        name="SignIn"
+        component={SignIn}
+        options={{header: () => null}}
+      />
+      <RootStack.Screen
+        name="SignUp"
+        component={SignUp}
         options={{header: () => null}}
       />
     </RootStack.Navigator>
