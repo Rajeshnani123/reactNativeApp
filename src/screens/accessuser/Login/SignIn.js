@@ -49,7 +49,7 @@ export default class SignIn extends Component {
     return (
       <ScrollView style={styles.root}>
         <View style={styles.img}>
-          <Image source={require('../../../assets/Images/image1.png')} />
+          {/* <Image source={require('../../../assets/Images/image1.png')} /> */}
         </View>
         <Text style={styles.login}>LOGIN</Text>
         <View style={styles.container}>
