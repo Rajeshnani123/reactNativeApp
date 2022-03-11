@@ -9,9 +9,9 @@ import {
   ScrollView,
 } from 'react-native';
 import React, {useState, useEffect, Component} from 'react';
-import image from '../../../Assets/Images/image1.png';
+// import image from '../../../Assets/Images/image1.png';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import facebook from '../../../Assets/Icons/facebook.png';
+// import facebook from '../../../Assets/Icons/facebook.png';
 import styles from '../Login/style';
 import SignUp from '../SignUp/SignUp';
 import {Formik, Form, Field} from 'formik';
@@ -42,6 +42,7 @@ export default class SignIn extends Component {
   making_api_call = () => {
     if (this.validate()) {
       alert('Successfully login');
+      this.props.navigation.navigate('SignUp');
     }
   };
 
@@ -49,7 +50,7 @@ export default class SignIn extends Component {
     return (
       <ScrollView style={styles.root}>
         <View style={styles.img}>
-          <Image source={require('../../../Assets/Images/image1.png')} />
+          <Image source={require('../../../assets/Images/image1.png')} />
         </View>
         <Text style={styles.login}>LOGIN</Text>
         <View style={styles.container}>
@@ -79,10 +80,10 @@ export default class SignIn extends Component {
 
         <Text style={styles.loginwith}>or login with</Text>
         <View style={styles.icon}>
-          <Image source={require('../../../Assets/Icons/google.png')} />
-          <Image source={require('../../../Assets/Icons/facebook.png')} />
-          <Image source={require('../../../Assets/Icons/twitter.png')} />
-          <Image source={require('../../../Assets/Icons/instagram.png')} />
+          <Image source={require('../../../assets/Icons/google.png')} />
+          <Image source={require('../../../assets/Icons/facebook.png')} />
+          <Image source={require('../../../assets/Icons/twitter.png')} />
+          <Image source={require('../../../assets/Icons/instagram.png')} />
         </View>
 
         <Text
