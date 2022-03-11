@@ -18,6 +18,7 @@ import {Formik, Form, Field} from 'formik';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
+
 export default class SignIn extends Component {
   constructor(props) {
     super(props);
@@ -93,7 +94,7 @@ export default class SignIn extends Component {
             fontFamily: 'Poppins',
             fontWeight: '900',
           }}
-          onPress={() => this.props.navigation.navigate('Register')}>
+          onPress={() => this.props.navigation.navigate('SignUp')}>
           Don't have an account? SignUp
         </Text>
       </ScrollView>
