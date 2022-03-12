@@ -6,12 +6,14 @@ import Login from '../screens/accessuser';
 import Splash from '../screens/splash';
 import SignIn from '../screens/accessuser/Login/SignIn';
 import SignUp from '../screens/accessuser/SignUp/SignUp';
+import UserDetailForm from '../screens/accessuser/UserDetailForm';
+import UserDetail from '../screens/accessuser/UserDetail';
 
 const RootStack = createNativeStackNavigator();
 
 const RootStackFN = () => {
   return (
-    <RootStack.Navigator initialRouteName="SignIn">
+    <RootStack.Navigator initialRouteName="UserDetail">
       <RootStack.Screen
         name="Splash"
         component={Splash}
@@ -30,6 +32,16 @@ const RootStackFN = () => {
       <RootStack.Screen
         name="SignUp"
         component={SignUp}
+        options={{header: () => null}}
+      />
+      <RootStack.Screen
+        name="UserDetailForm"
+        component={UserDetailForm}
+        options={{header: () => null}}
+      />
+      <RootStack.Screen
+        name="UserDetail"
+        component={UserDetail}
         options={{header: () => null}}
       />
     </RootStack.Navigator>
