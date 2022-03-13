@@ -17,6 +17,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import {COLORS} from './src/constants';
 
 import {
   Colors,
@@ -63,7 +64,7 @@ const App = () => {
 
   return (
     <Fragment>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <StatusBar translucent backgroundColor={COLORS.primary} />
       <SafeAreaView style={{flex: 1}}>
         {/* <View>
           <Text>dfghdshsfghsfg</Text>

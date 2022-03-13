@@ -16,7 +16,7 @@ const SignUp = ({navigation}) => {
     <ScrollView>
       <View style={styles.root}>
         <View style={styles.img}>
-          <Image source={require('./../../../assets/Images/image2.png')} />
+          <Image source={require('./../../../Assets/Images/image2.png')} />
         </View>
         <Text style={styles.signup}>REGISTER</Text>
         <View style={styles.container}>

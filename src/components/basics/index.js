@@ -1,3 +1,3 @@
-import Header from './Header';
-
-export {Header};
+export * from './Header';
+export * from './Title';
+export * from './Button';

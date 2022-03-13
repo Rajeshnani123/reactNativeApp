@@ -11,7 +11,7 @@ const FONTREGULAR = 'Poppins-Regular';
 
 //COLOR COLLECTIONS
 export const COLORS = {
-  primary: '#e73955',
+  primary: '#ffb43a',
   primaryLight: '#fb7185',
   transparentPrimary: 'rgba(227, 120, 75, 0.4)',
   secondary: '#FFA133',
@@ -122,16 +122,16 @@ export const FONTS = {
 export const NBTheme = extendTheme({
   colors: {
     primary: {
-      50: '#e69eaa',
-      100: '#e08997',
-      200: '#e0798a',
-      300: '#e0677b',
-      400: '#e0586e',
-      500: '#fb7185',
-      600: '#de4b63',
-      700: '#db3d57',
-      800: '#db324e',
-      900: '#db2c49',
+      50: '#ffb43a',
+      100: '#ffb43a',
+      200: '#ffb43a',
+      300: '#ffb43a',
+      400: '#ffb43a',
+      500: '#ffb43a',
+      600: '#ffb43a',
+      700: '#ffb43a',
+      800: '#ffb43a',
+      900: '#ffb43a',
     },
   },
   config: {
@@ -145,7 +145,7 @@ export const RNTheme = {
   colors: {
     ...DefaultTheme.colors,
     border: 'transparent',
-    background: '#fcfcfc',
+    background: '#f9f5f5',
   },
 };
 

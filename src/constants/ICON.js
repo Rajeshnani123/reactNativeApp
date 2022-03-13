@@ -38,8 +38,14 @@ const ICON = ({type, name, color, size = 24, style}) => {
 };
 
 export const ICONS = {
-  test: 'isv',
   testType: ICONTYPE.AntDesign,
+  test: 'isv',
+  notificationType: ICONTYPE.Feather,
+  notification: 'bell',
+  cartType: ICONTYPE.Feather,
+  cart: 'shopping-cart',
+  searchType: ICONTYPE.Feather,
+  search: 'search',
 };
 
 export default ICON;
