@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from 'react-native';
 import React from 'react';
-// import image from '../../../Assets/Images/image2.png';
+
 import styles from '../SignUp/style.js';
 
 const SignUp = ({navigation}) => {
@@ -16,8 +16,7 @@ const SignUp = ({navigation}) => {
     <ScrollView>
       <View style={styles.root}>
         <View style={styles.img}>
-          {/* <Image source={require('../../../Assets/Images/image2.png')} /> */}
-          <Image source={require('../../../assets/Images/image2.png')} />
+          <Image source={require('./../../../Assets/Images/image2.png')} />
         </View>
         <Text style={styles.signup}>REGISTER</Text>
         <View style={styles.container}>
@@ -41,7 +40,9 @@ const SignUp = ({navigation}) => {
             style={styles.input}
             placeholder="Confirm password"
             placeholderTextColor={'#C4C4C4'}></TextInput>
-          <TouchableOpacity style={styles.button} onPress={() => alert('d')}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('Home')}>
             <Text style={styles.lgn}> Register</Text>
           </TouchableOpacity>
           <Text
