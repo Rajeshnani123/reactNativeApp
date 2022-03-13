@@ -3,7 +3,7 @@ import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Feather';
 
-const UserDetail = () => {
+const UserDetail = ({navigation}) => {
   return (
     <ScrollView style={styles.root}>
       <View style={styles.head}>
@@ -24,7 +24,7 @@ const UserDetail = () => {
         />
       </View>
       <Image
-        source={require('../../Assets/Images/profileimage.jpeg')}
+        source={require('../../assets/Images/profileimage.jpeg')}
         style={styles.img}
       />
       <View style={{flex: 1, flexDirection: 'row'}}>
@@ -48,7 +48,9 @@ const UserDetail = () => {
         </View>
       </View>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('UserDetailForm')}>
         <Text style={styles.buttonText}>EDIT</Text>
       </TouchableOpacity>
     </ScrollView>
