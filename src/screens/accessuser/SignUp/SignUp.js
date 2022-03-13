@@ -40,7 +40,9 @@ const SignUp = ({navigation}) => {
             style={styles.input}
             placeholder="Confirm password"
             placeholderTextColor={'#C4C4C4'}></TextInput>
-          <TouchableOpacity style={styles.button} onPress={() => alert('d')}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('Home')}>
             <Text style={styles.lgn}> Register</Text>
           </TouchableOpacity>
           <Text

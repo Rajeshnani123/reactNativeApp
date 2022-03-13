@@ -41,7 +41,7 @@ export default class SignIn extends Component {
   making_api_call = () => {
     if (this.validate()) {
       alert('Successfully login');
-      this.props.navigation.navigate('SignUp');
+      this.props.navigation.navigate('Home');
     }
   };
 
