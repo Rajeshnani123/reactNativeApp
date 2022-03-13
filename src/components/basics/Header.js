@@ -34,7 +34,8 @@ export const MenuHeader = ({navigation}) => {
     <>
       <TouchableOpacity
         onPress={() => {
-          navigation.openDrawer();
+          // navigation.openDrawer();
+          alert('side drawer navigation');
         }}>
         <ICON
           type={ICONTYPE.Feather}

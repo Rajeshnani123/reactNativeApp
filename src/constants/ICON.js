@@ -46,6 +46,11 @@ export const ICONS = {
   cart: 'shopping-cart',
   searchType: ICONTYPE.Feather,
   search: 'search',
+  noteType: ICONTYPE.MaterialIcons,
+  note: 'notes',
+  deleteType: ICONTYPE.MaterialIcons,
+  delete: 'delete',
+  deleteO: 'delete-outline',
 };
 
 export default ICON;

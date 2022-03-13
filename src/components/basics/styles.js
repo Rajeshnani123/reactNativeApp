@@ -6,24 +6,12 @@ export default StyleSheet.create({
     flex: 1,
     marginHorizontal: SIZES.padding,
   },
-  // BUTTONS
-
-  buttonContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  button: {
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-    paddingHorizontal: '5%',
-  },
 
   // HEADER COMPONENTS
   headerContainer: {
+    marginTop: HP('3%'),
     backgroundColor: COLORS.primary,
-    height: HP('6%'),
+    height: HP('8%'),
     paddingHorizontal: SIZES.padding,
     alignItems: 'center',
   },
