@@ -16,6 +16,8 @@ import {
   Text,
   useColorScheme,
   View,
+  LogBox,
+  Platform,
 } from 'react-native';
 import {COLORS} from './src/constants';
 
@@ -28,6 +30,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import AppNavigators from './src/navigators';
+
+LogBox.ignoreLogs(['NativeBase:']);
 
 // const Section = ({children, title}): Node => {
 //   const isDarkMode = useColorScheme() === 'dark';
@@ -56,7 +60,7 @@ import AppNavigators from './src/navigators';
 // };
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const isDarkMode = useColorScheme() === 'light';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -65,7 +69,8 @@ const App = () => {
   return (
     <Fragment>
       <StatusBar translucent backgroundColor={COLORS.primary} />
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView
+        style={{flex: 1, marginTop: Platform.OS == 'ios' ? -40 : 0}}>
         {/* <View>
           <Text>dfghdshsfghsfg</Text>
         </View> */}
