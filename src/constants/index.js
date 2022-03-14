@@ -1,6 +1,6 @@
 import ICON, {ICONTYPE, ICONS} from './ICON';
-import THEME, {COLORS, SIZES, FONTS, NBTheme, RNTheme} from './THEME';
-import IMAGES from './IMAGES';
+import THEME, {COLORS, SIZES, FONTS, NBTheme, RNTheme} from './theme';
+import IMAGES from './images';
 
 export * from './RESPONSIVE';
 export {
