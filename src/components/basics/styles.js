@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {COLORS, SIZES, HP} from '../../constants';
+import {normalize} from '../../utils/Platform';
 
 export default StyleSheet.create({
   container: {
@@ -10,13 +11,13 @@ export default StyleSheet.create({
 
   buttonContainer: {
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: normalize(10),
   },
   button: {
-    height: 50,
+    height: normalize(50),
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: normalize(10),
     paddingHorizontal: '5%',
   },
 
@@ -28,8 +29,8 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   leftSideComponent: {
-    width: 40,
-    height: 40,
+    width: normalize(40),
+    height: normalize(40),
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
@@ -65,7 +66,7 @@ export default StyleSheet.create({
 
   initialContainer: {
     paddingHorizontal: SIZES.radius,
-    height: 50,
+    height: normalize(50),
     paddingHorizontal: SIZES.padding,
     marginTop: '10%',
     alignItems: 'center',
@@ -84,8 +85,8 @@ export default StyleSheet.create({
     opacity: 0.6,
   },
   logo: {
-    width: 65,
-    height: 60,
+    width: normalize(65),
+    height: normalize(60),
   },
   spaceBottom: {
     paddingBottom: '30%',
