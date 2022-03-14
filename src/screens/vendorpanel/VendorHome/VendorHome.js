@@ -4,7 +4,7 @@ import {TouchableOpacity} from 'react-native';
 import {ICON, ICONS, FONTS, IMAGES, WP, HP, COLORS} from './../../../constants';
 import {
   Header,
-  BackHeader,
+  MenuHeader,
   NotificationHeader,
   CartHeader,
   SearchBox,
@@ -19,7 +19,7 @@ import {DATA} from '../../../constants/DUMMYJSON';
 const HeaderContent = ({navigation}) => {
   return (
     <Header
-      leftComponent={<BackHeader navigation={navigation} />}
+      leftComponent={<MenuHeader navigation={navigation} />}
       rightComponent={
         <View flexDirection={'row'}>
           <NotificationHeader
@@ -34,12 +34,19 @@ const HeaderContent = ({navigation}) => {
   );
 };
 
-const Home = ({navigation}) => {
+const VendorHome = ({navigation}) => {
   return (
     <View>
       <HeaderContent navigation={navigation} />
+      <Center>
+        <Btn
+          width={WP('70%')}
+          value={'Manage products'}
+          onPress={() => navigation.navigate('ManageProducts')}
+        />
+      </Center>
     </View>
   );
 };
 
-export default Home;
+export default VendorHome;

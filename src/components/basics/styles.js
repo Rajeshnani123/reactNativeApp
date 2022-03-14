@@ -23,8 +23,9 @@ export default StyleSheet.create({
 
   // HEADER COMPONENTS
   headerContainer: {
+    marginTop: HP('3%'),
     backgroundColor: COLORS.primary,
-    height: HP('6%'),
+    height: HP('8%'),
     paddingHorizontal: SIZES.padding,
     alignItems: 'center',
   },
