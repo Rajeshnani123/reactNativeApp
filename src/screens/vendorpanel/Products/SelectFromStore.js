@@ -12,11 +12,9 @@ import {
   Btn,
   HorizontalCard,
   ActionBtn,
-  CustomModal,
 } from '../../../components';
 import style from '../../style';
 import {DATA} from '../../../constants/DUMMYJSON';
-import {AddProduct} from './AddProduct';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -58,51 +56,35 @@ const leftComponent = (title, subTitle, qty) => {
   );
 };
 
-const rightComponent = () => {
+const rightComponent = ({isDelete = false, isAdd = true}) => {
   return (
-    <View mt={-2}>
-      <ActionBtn
-        iconType={ICONS.noteType}
-        iconName={ICONS.note}
-        onPress={() => alert('btn')}
-      />
-      <ActionBtn
-        iconType={ICONS.deleteType}
-        iconName={ICONS.delete}
-        onPress={() => alert('btn')}
-      />
+    <View mt="30%">
+      {isDelete == true && (
+        <ActionBtn
+          iconType={ICONS.minusType}
+          iconName={ICONS.minus}
+          onPress={() => alert('minus')}
+        />
+      )}
+
+      {isAdd == true && (
+        <ActionBtn
+          iconType={ICONS.plusType}
+          iconName={ICONS.plus}
+          onPress={() => alert('plus')}
+        />
+      )}
     </View>
   );
 };
 
-const ManageProducts = ({navigation}) => {
+const SelectFromStore = ({navigation}) => {
   const [search, setSearch] = useState();
-  const [isModelOpen, setIsModelOpen] = useState(false);
 
   const HeaderComponent = () => {
     return (
       <>
-        <Title mb={2} name="Manage store" />
-        <HStack
-          mb={4}
-          space={3}
-          justifyContent="space-between"
-          alignContent={'center'}>
-          <Btn
-            height={50}
-            width={WP('43%')}
-            colorScheme={'primary'}
-            value={'Select from store'}
-            onPress={() => navigation.navigate('SelectFromStore')}
-          />
-          <Btn
-            height={50}
-            width={WP('43%')}
-            colorScheme={'primary'}
-            value={'Add product'}
-            onPress={() => setIsModelOpen(true)}
-          />
-        </HStack>
+        <Title mb={2} name="Add Products" />
       </>
     );
   };
@@ -127,11 +109,11 @@ const ManageProducts = ({navigation}) => {
             <HorizontalCard
               containerStyle={{borderRadius: 10, marginBottom: 10}}
               customWidth={'100%'}
-              leftCardWidth={'75%'}
-              rightCardWidth={'25%'}
+              leftCardWidth={'80%'}
+              rightCardWidth={'20%'}
               cardColor={'white'}
               leftComponent={leftComponent(item.title, item.title, 3)}
-              rightComponent={rightComponent()}
+              rightComponent={rightComponent({isDelete: true, isAdd: false})}
               rightWidth={100}
               leftWidth={100}
             />
@@ -142,12 +124,8 @@ const ManageProducts = ({navigation}) => {
           )}
         />
       </View>
-      <CustomModal
-        isOpen={isModelOpen}
-        renderData={<AddProduct setIsModelOpen={setIsModelOpen} />}
-      />
     </View>
   );
 };
 
-export default ManageProducts;
+export default SelectFromStore;

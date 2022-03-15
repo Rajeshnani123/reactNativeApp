@@ -10,13 +10,13 @@ import UserDetailForm from '../screens/accessuser/UserDetailForm';
 import UserDetail from '../screens/accessuser/UserDetail';
 import ProductDetails from '../screens/accessuser/ProductDetails';
 
-import {VendorHome, ManageProducts} from './../screens';
+import {VendorHome, ManageProducts, SelectFromStore} from './../screens';
 
 const RootStack = createNativeStackNavigator();
 
 const RootStackFN = () => {
   return (
-    <RootStack.Navigator initialRouteName="ProductDetails">
+    <RootStack.Navigator initialRouteName="UserDetailForm">
       <RootStack.Screen
         name="Splash"
         component={Splash}
@@ -45,6 +45,11 @@ const RootStackFN = () => {
       <RootStack.Screen
         name="ManageProducts"
         component={ManageProducts}
+        options={{header: () => null}}
+      />
+      <RootStack.Screen
+        name="SelectFromStore"
+        component={SelectFromStore}
         options={{header: () => null}}
       />
       <RootStack.Screen

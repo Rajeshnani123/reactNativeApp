@@ -1,3 +1,4 @@
 import ManageProducts from './ManageProducts';
+import SelectFromStore from './SelectFromStore';
 
-export {ManageProducts};
+export {ManageProducts, SelectFromStore};
