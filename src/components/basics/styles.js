@@ -21,6 +21,10 @@ export default StyleSheet.create({
     paddingHorizontal: '5%',
   },
 
+  modalContainer: {
+    marginHorizontal: SIZES.padding,
+  },
+
   // HEADER COMPONENTS
   headerContainer: {
     marginTop: HP('3%'),
