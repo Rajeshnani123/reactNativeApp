@@ -51,6 +51,12 @@ export const ICONS = {
   deleteType: ICONTYPE.MaterialIcons,
   delete: 'delete',
   deleteO: 'delete-outline',
+  minusType: ICONTYPE.MaterialCommunityIcons,
+  minus: 'minus',
+  plusType: ICONTYPE.MaterialCommunityIcons,
+  plus: 'plus',
+  arrowLeftType: ICONTYPE.Feather,
+  arrowLeft: 'arrow-left',
 };
 
 export default ICON;

@@ -12,7 +12,7 @@ const FONTREGULAR = 'Poppins-Regular';
 //COLOR COLLECTIONS
 export const COLORS = {
   primary: '#ffb43a',
-  primaryLight: '#fb7185',
+  primaryLight: '#FFD9AD',
   transparentPrimary: 'rgba(227, 120, 75, 0.4)',
   secondary: '#FFA133',
   secondaryLight: '#FDDED4',
