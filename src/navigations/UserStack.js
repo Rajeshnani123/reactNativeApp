@@ -7,7 +7,7 @@ const UserStk = createNativeStackNavigator();
 
 export default function UserStack({ route, navigation }) {
     return (
-        <UserStk.Navigator>
+        <UserStk.Navigator initialRouteName='Home'>
             <UserStk.Screen
                 name="Home"
                 component={Home}
