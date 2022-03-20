@@ -1,7 +1,7 @@
-import {View, HStack, Text, Image, Center, Box, FlatList} from 'native-base';
-import React, {useState} from 'react';
-import {TouchableOpacity} from 'react-native';
-import {ICON, ICONS, FONTS, IMAGES, WP, HP, COLORS} from './../../../constants';
+import { View, HStack, Text, Image, Center, Box, FlatList } from 'native-base';
+import React, { useState } from 'react';
+import { TouchableOpacity } from 'react-native';
+import { ICON, ICONS, FONTS, IMAGES, WP, HP, COLORS } from './../../../constants';
 import {
   Header,
   BackHeader,
@@ -14,9 +14,9 @@ import {
   ActionBtn,
 } from './../../../components';
 import style from './../../style';
-import {DATA} from '../../../constants/DUMMYJSON';
+import { DATA } from '../../../constants/DUMMYJSON';
 
-const HeaderContent = ({navigation}) => {
+const HeaderContent = ({ navigation }) => {
   return (
     <Header
       leftComponent={<BackHeader navigation={navigation} />}
@@ -34,10 +34,11 @@ const HeaderContent = ({navigation}) => {
   );
 };
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
   return (
     <View>
       <HeaderContent navigation={navigation} />
+      <Text>Users Stack screens</Text>
     </View>
   );
 };
