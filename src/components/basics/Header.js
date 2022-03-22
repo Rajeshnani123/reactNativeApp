@@ -1,8 +1,8 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { View, Text, VStack, Badge, Avatar } from 'native-base';
+import {TouchableOpacity} from 'react-native';
+import {View, Text, VStack, Badge, Avatar} from 'native-base';
 import styles from './styles';
-import { FONTS, ICON, COLORS, ICONTYPE, ICONS } from './../../constants';
+import {FONTS, ICON, COLORS, ICONTYPE, ICONS} from './../../constants';
 
 export const Header = ({
   containerStyle,
@@ -20,8 +20,8 @@ export const Header = ({
       {/* Left */}
       {leftComponent}
       {/* Center */}
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text style={{ ...FONTS.h3 }}>{title}</Text>
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Text style={{...FONTS.h3}}>{title}</Text>
       </View>
       {/* Right */}
       {rightComponent}
@@ -29,13 +29,12 @@ export const Header = ({
   );
 };
 
-export const MenuHeader = ({ navigation }) => {
+export const MenuHeader = ({navigation}) => {
   return (
     <>
       <TouchableOpacity
         onPress={() => {
           navigation.openDrawer();
-
         }}>
         <ICON
           type={ICONTYPE.Feather}
@@ -47,8 +46,24 @@ export const MenuHeader = ({ navigation }) => {
     </>
   );
 };
-
-export const NotificationHeader = ({ navigation, active = false, onPress }) => {
+export const StoreHeader = ({navigation, active = false, onPress}) => {
+  return (
+    <View mx={1}>
+      <TouchableOpacity onPress={onPress}>
+        <View flexDirection={'row'}>
+          {/* {active && <Avatar.Badge bg="red.500" mb={5} mr={-1} />} */}
+          <ICON
+            type={ICONS.briefcaseType}
+            name={ICONS.briefcase}
+            size={24}
+            color={COLORS.black}
+          />
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
+};
+export const NotificationHeader = ({navigation, active = false, onPress}) => {
   return (
     <View mx={1}>
       <TouchableOpacity onPress={onPress}>
@@ -66,7 +81,7 @@ export const NotificationHeader = ({ navigation, active = false, onPress }) => {
   );
 };
 
-export const CartHeader = ({ navigation, active = false, onPress }) => {
+export const CartHeader = ({navigation, active = false, onPress}) => {
   return (
     <View mx={1}>
       <TouchableOpacity onPress={onPress}>
@@ -84,7 +99,7 @@ export const CartHeader = ({ navigation, active = false, onPress }) => {
   );
 };
 
-export const BackHeader = ({ navigation }) => {
+export const BackHeader = ({navigation}) => {
   return (
     <>
       <TouchableOpacity
@@ -102,7 +117,7 @@ export const BackHeader = ({ navigation }) => {
   );
 };
 
-export const EditHeader = ({ ...rest }) => {
+export const EditHeader = ({...rest}) => {
   return (
     <>
       <TouchableOpacity {...rest}>

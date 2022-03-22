@@ -5,6 +5,7 @@ import {ICON, ICONS, FONTS, IMAGES, WP, HP, COLORS} from '../../../constants';
 import {
   Header,
   BackHeader,
+  StoreHeader,
   NotificationHeader,
   CartHeader,
   SearchBox,
@@ -17,6 +18,7 @@ import {
 import style from '../../style';
 import {DATA} from '../../../constants/DUMMYJSON';
 import {AddProduct} from './AddProduct';
+import {normalize} from '../../../utils/Platform';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -24,6 +26,11 @@ const HeaderContent = ({navigation}) => {
       leftComponent={<BackHeader navigation={navigation} />}
       rightComponent={
         <View flexDirection={'row'}>
+          <StoreHeader
+            navigation={navigation}
+            active={true}
+            onPress={() => alert('Store module is coming soon..')}
+          />
           <NotificationHeader
             navigation={navigation}
             active={true}
@@ -83,20 +90,24 @@ const ManageProducts = ({navigation}) => {
     return (
       <>
         <Title mb={2} name="Manage store" />
+        <TouchableOpacity onPress={() => navigation.navigate('UserDetail')}>
+          <Title mb={2} name="Profile" />
+        </TouchableOpacity>
+
         <HStack
           mb={4}
           space={3}
           justifyContent="space-between"
           alignContent={'center'}>
           <Btn
-            height={50}
+            height={normalize(50)}
             width={WP('43%')}
             colorScheme={'primary'}
             value={'Select from store'}
             onPress={() => navigation.navigate('SelectFromStore')}
           />
           <Btn
-            height={50}
+            height={normalize(50)}
             width={WP('43%')}
             colorScheme={'primary'}
             value={'Add product'}
@@ -125,7 +136,7 @@ const ManageProducts = ({navigation}) => {
           data={DATA}
           renderItem={({item}) => (
             <HorizontalCard
-              containerStyle={{borderRadius: 10, marginBottom: 10}}
+              containerStyle={{borderRadius: 10, marginBottom: normalize(10)}}
               customWidth={'100%'}
               leftCardWidth={'75%'}
               rightCardWidth={'25%'}

@@ -44,6 +44,8 @@ export const ICONS = {
   notification: 'bell',
   cartType: ICONTYPE.Feather,
   cart: 'shopping-cart',
+  briefcaseType: ICONTYPE.Feather,
+  briefcase: 'briefcase',
   searchType: ICONTYPE.Feather,
   search: 'search',
   noteType: ICONTYPE.MaterialIcons,
