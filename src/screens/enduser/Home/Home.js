@@ -1,10 +1,12 @@
-import {View, HStack, Text, Image, Center, Box, FlatList} from 'native-base';
-import React, {useState} from 'react';
-import {TouchableOpacity} from 'react-native';
-import {ICON, ICONS, FONTS, IMAGES, WP, HP, COLORS} from './../../../constants';
+import { View, HStack, Text, Image, Center, Box, FlatList } from 'native-base';
+import React, { useState } from 'react';
+import { TouchableOpacity } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { logout } from './../../../redux/reducers/authReducer';
+import { ICON, ICONS, FONTS, IMAGES, WP, HP, COLORS } from './../../../constants';
 import {
   Header,
-  BackHeader,
+  MenuHeader,
   NotificationHeader,
   CartHeader,
   SearchBox,
@@ -14,12 +16,12 @@ import {
   ActionBtn,
 } from './../../../components';
 import style from './../../style';
-import {DATA} from '../../../constants/DUMMYJSON';
+import { DATA } from '../../../constants/DUMMYJSON';
 
-const HeaderContent = ({navigation}) => {
+const HeaderContent = ({ navigation }) => {
   return (
     <Header
-      leftComponent={<BackHeader navigation={navigation} />}
+      leftComponent={<MenuHeader navigation={navigation} />}
       rightComponent={
         <View flexDirection={'row'}>
           <NotificationHeader
@@ -34,10 +36,17 @@ const HeaderContent = ({navigation}) => {
   );
 };
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
+  const dispatch = useDispatch();
   return (
     <View>
       <HeaderContent navigation={navigation} />
+      <Text>Users Stack screens</Text>
+      <Center><Btn
+        width={WP('70%')}
+        value={'Logout'}
+        onPress={() => dispatch(logout())}
+      /></Center>
     </View>
   );
 };
