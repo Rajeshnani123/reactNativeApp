@@ -29,8 +29,6 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import AppNavigators from './src/navigators';
-import Navigations from './src/navigations';
 import Main from './src/Main';
 
 LogBox.ignoreLogs(['NativeBase:']);
@@ -67,6 +65,10 @@ const App = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  if (Platform.OS == 'ios') {
+    StatusBar.setBarStyle('light-content', true);	//<<--- add this
+  }
 
   return (
     <Fragment>
