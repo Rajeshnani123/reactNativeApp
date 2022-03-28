@@ -1,7 +1,43 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
-import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  Linking,
+  Button,
+} from 'react-native';
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItem,
+  DrawerItemList,
+} from '@react-navigation/drawer';
 import {FONTS} from '../constants';
+
+const Drawer = createDrawerNavigator();
+
+function MyDrawer() {
+  return (
+    <Drawer.Navigator
+      drawerContent={props => <CustomDrawerContent {...props} />}>
+      <Drawer.Screen name="Feed" component={Feed} />
+      <Drawer.Screen name="Article" component={Article} />
+    </Drawer.Navigator>
+  );
+}
+
+export function CustomDrawerContent({navigation}) {
+  return (
+    <Button
+      title="Go somewhere"
+      onPress={() => {
+        // Navigate using the `navigation` prop that you received
+        navigation.navigate('SignUp');
+      }}
+    />
+  );
+}
 
 export function CustomDrawer(props, {navigation}) {
   return (
@@ -14,6 +50,24 @@ export function CustomDrawer(props, {navigation}) {
           }>
           <Text>Custom Drawer Here</Text>
         </View>
+
+        <TouchableOpacity
+          style={
+            (styles.drawerContent,
+            {flex: 1, alignItems: 'center', justifyContent: 'center'})
+          }
+          onPress={() => navigation.navigate('SignUp')}>
+          <Text>Manage Store</Text>
+        </TouchableOpacity>
+        <DrawerItemList {...props} />
+        <DrawerItem
+          label="Help"
+          onPress={() => Linking.openURL('https://mywebsite.com/help')}
+        />
+        <DrawerItem
+          label="Manage Store"
+          onPress={() => navigation.navigate('VendorHome')}
+        />
       </DrawerContentScrollView>
     </View>
   );
