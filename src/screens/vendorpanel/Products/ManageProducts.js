@@ -14,23 +14,42 @@ import {
   HorizontalCard,
   ActionBtn,
   CustomModal,
+  MenuHeader,
 } from '../../../components';
 import style from '../../style';
 import {DATA} from '../../../constants/DUMMYJSON';
 import {AddProduct} from './AddProduct';
 import {normalize} from '../../../utils/Platform';
 
+// const HeaderContent = ({navigation}) => {
+//   return (
+//     <Header
+//       leftComponent={<BackHeader navigation={navigation} />}
+//       rightComponent={
+//         <View flexDirection={'row'}>
+//           <StoreHeader
+//             navigation={navigation}
+//             active={true}
+//             onPress={() => alert('Store module is coming soon..')}
+//           />
+//           <NotificationHeader
+//             navigation={navigation}
+//             active={true}
+//             onPress={() => alert('Notification')}
+//           />
+//           <CartHeader navigation={navigation} onPress={() => alert('Cart')} />
+//         </View>
+//       }
+//     />
+//   );
+// };
+
 const HeaderContent = ({navigation}) => {
   return (
     <Header
-      leftComponent={<BackHeader navigation={navigation} />}
+      leftComponent={<MenuHeader navigation={navigation} />}
       rightComponent={
         <View flexDirection={'row'}>
-          <StoreHeader
-            navigation={navigation}
-            active={true}
-            onPress={() => alert('Store module is coming soon..')}
-          />
           <NotificationHeader
             navigation={navigation}
             active={true}
