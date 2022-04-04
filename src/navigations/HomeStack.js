@@ -4,6 +4,8 @@ import {CustomDrawer, CustomDrawerContent} from './CustomDrawer';
 import CommonStack from './CommonStack';
 import {Button} from 'react-native';
 import VendorStack from './VendorStack';
+// import UserStack from './UserStack';
+import {UserDetail} from './../screens';
 
 const Drawer = createDrawerNavigator();
 
@@ -37,6 +39,13 @@ export default function HomeStack() {
           headerShown: false,
         }}
         component={VendorStack}
+      />
+      <Drawer.Screen
+        name="Profile"
+        options={{
+          headerShown: false,
+        }}
+        component={UserDetail}
       />
     </Drawer.Navigator>
   );

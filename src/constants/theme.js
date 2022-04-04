@@ -2,6 +2,7 @@ import {DefaultTheme} from '@react-navigation/native';
 import {extendTheme} from 'native-base';
 import {Dimensions} from 'react-native';
 const {width, height} = Dimensions.get('window');
+import {normalize} from '../utils/Platform';
 
 //FONT COLLECTIONS
 const FONTBLACK = 'Poppins-Regular';
@@ -65,17 +66,17 @@ export const SIZES = {
   padding: '5%',
 
   // font sizes
-  largeTitle: 40,
-  h1: 30,
-  h2: 22,
-  h3: 18,
-  h4: 15,
-  h5: 12,
-  body1: 30,
-  body2: 22,
-  body3: 18,
-  body4: 16,
-  body5: 12,
+  largeTitle: normalize(40),
+  h1: normalize(30),
+  h2: normalize(22),
+  h3: normalize(18),
+  h4: normalize(15),
+  h5: normalize(12),
+  body1: normalize(30),
+  body2: normalize(22),
+  body3: normalize(18),
+  body4: normalize(16),
+  body5: normalize(12),
 
   // app dimensions
   width,
@@ -85,35 +86,35 @@ export const SIZES = {
 //FONT STYLES COLLECTIONS
 export const FONTS = {
   largeTitle: {fontFamily: FONTBLACK, fontSize: SIZES.largeTitle},
-  h1: {fontFamily: FONTBOLD, fontSize: SIZES.h1, lineHeight: 36},
-  h2: {fontFamily: FONTBOLD, fontSize: SIZES.h2, lineHeight: 30},
-  h3: {fontFamily: FONTSEMIBOLD, fontSize: SIZES.h3, lineHeight: 22},
-  h4: {fontFamily: FONTSEMIBOLD, fontSize: SIZES.h4, lineHeight: 22},
-  h5: {fontFamily: FONTSEMIBOLD, fontSize: SIZES.h5, lineHeight: 22},
+  h1: {fontFamily: FONTBOLD, fontSize: SIZES.h1, lineHeight: normalize(36)},
+  h2: {fontFamily: FONTBOLD, fontSize: SIZES.h2, lineHeight: normalize(30)},
+  h3: {fontFamily: FONTSEMIBOLD, fontSize: SIZES.h3, lineHeight: normalize(22)},
+  h4: {fontFamily: FONTSEMIBOLD, fontSize: SIZES.h4, lineHeight: normalize(22)},
+  h5: {fontFamily: FONTSEMIBOLD, fontSize: SIZES.h5, lineHeight: normalize(22)},
   body1: {
     fontFamily: FONTREGULAR,
     fontSize: SIZES.body1,
-    lineHeight: 36,
+    lineHeight: normalize(36),
   },
   body2: {
     fontFamily: FONTREGULAR,
     fontSize: SIZES.body2,
-    lineHeight: 30,
+    lineHeight: normalize(30),
   },
   body3: {
     fontFamily: FONTREGULAR,
     fontSize: SIZES.body3,
-    lineHeight: 22,
+    lineHeight: normalize(22),
   },
   body4: {
     fontFamily: FONTREGULAR,
     fontSize: SIZES.body4,
-    lineHeight: 22,
+    lineHeight: normalize(22),
   },
   body5: {
     fontFamily: FONTREGULAR,
     fontSize: SIZES.body5,
-    lineHeight: 22,
+    lineHeight: normalize(22),
   },
 };
 
