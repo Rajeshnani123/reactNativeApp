@@ -4,12 +4,7 @@ import {View, Text, VStack, Badge, Avatar} from 'native-base';
 import styles from './styles';
 import {FONTS, ICON, COLORS, ICONTYPE, ICONS} from './../../constants';
 
-export const Header = ({
-  containerStyle,
-  title,
-  leftComponent,
-  rightComponent,
-}) => {
+export const Header = ({containerStyle,title,leftComponent,rightComponent,}) => {
   return (
     <View
       style={{
