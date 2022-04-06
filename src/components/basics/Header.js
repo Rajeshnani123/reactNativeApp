@@ -29,8 +29,7 @@ export const MenuHeader = ({navigation}) => {
     <>
       <TouchableOpacity
         onPress={() => {
-          // navigation.openDrawer();
-          alert('side drawer navigation');
+          navigation.openDrawer();
         }}>
         <ICON
           type={ICONTYPE.Feather}
@@ -42,7 +41,23 @@ export const MenuHeader = ({navigation}) => {
     </>
   );
 };
-
+export const StoreHeader = ({navigation, active = false, onPress}) => {
+  return (
+    <View mx={1}>
+      <TouchableOpacity onPress={onPress}>
+        <View flexDirection={'row'}>
+          {/* {active && <Avatar.Badge bg="red.500" mb={5} mr={-1} />} */}
+          <ICON
+            type={ICONS.briefcaseType}
+            name={ICONS.briefcase}
+            size={24}
+            color={COLORS.black}
+          />
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
+};
 export const NotificationHeader = ({navigation, active = false, onPress}) => {
   return (
     <View mx={1}>

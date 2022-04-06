@@ -1,13 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import Login from './Login/Login';
+// import SignIn from './Login/SignIn';
+import SignUp from './SignUp/SignUp';
+import UserDetail from './UserDetail';
 
-// const Login = () => {
-//   return (
-//     <View>
-//       <Text>fghjfghf</Text>
-//     </View>
-//   );
-// };
-
-export default Login;
+export {SignUp, UserDetail};

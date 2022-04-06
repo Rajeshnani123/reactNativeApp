@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, {Fragment, useEffect} from 'react';
+import React, { Fragment, useEffect } from 'react';
 // import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -19,7 +19,7 @@ import {
   LogBox,
   Platform,
 } from 'react-native';
-import {COLORS} from './src/constants';
+import { COLORS } from './src/constants';
 
 import {
   Colors,
@@ -29,7 +29,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import AppNavigators from './src/navigators';
+import Main from './src/Main';
 
 LogBox.ignoreLogs(['NativeBase:']);
 
@@ -66,39 +66,17 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  if (Platform.OS == 'ios') {
+    StatusBar.setBarStyle('light-content', true);	//<<--- add this
+  }
+
   return (
     <Fragment>
       <StatusBar translucent backgroundColor={COLORS.primary} />
       <SafeAreaView
-        style={{flex: 1, marginTop: Platform.OS == 'ios' ? -40 : 0}}>
-        {/* <View>
-          <Text>dfghdshsfghsfg</Text>
-        </View> */}
-        <AppNavigators />
-        {/* <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView> */}
+        style={{ flex: 1, marginTop: Platform.OS == 'ios' ? -40 : 0 }}>
+
+        <Main />
       </SafeAreaView>
     </Fragment>
   );

@@ -2,11 +2,46 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Feather';
+import {
+  Header,
+  BackHeader,
+  StoreHeader,
+  NotificationHeader,
+  CartHeader,
+  SearchBox,
+  Title,
+  Btn,
+  HorizontalCard,
+  ActionBtn,
+  CustomModal,
+  MenuHeader,
+} from '../../components';
 
-const UserDetail = () => {
+const HeaderContent = ({navigation}) => {
   return (
-    <ScrollView style={styles.root}>
-      <View style={styles.head}>
+    <Header
+      leftComponent={<MenuHeader navigation={navigation} />}
+      rightComponent={
+        <View flexDirection={'row'}>
+          <NotificationHeader
+            navigation={navigation}
+            active={true}
+            onPress={() => alert('Notification')}
+          />
+          <CartHeader navigation={navigation} onPress={() => alert('Cart')} />
+        </View>
+      }
+    />
+  );
+};
+
+const UserDetail = ({navigation}) => {
+  return (
+    <>
+      <HeaderContent navigation={navigation} />
+
+      <ScrollView style={styles.root}>
+        {/* <View style={styles.head}>
         <Icon
           name="arrow-left"
           size={22}
@@ -22,36 +57,39 @@ const UserDetail = () => {
           size={20}
           style={{marginLeft: 20, marginVertical: 15, color: '#000'}}
         />
-      </View>
-      <Image
-        source={require('../../Assets/Images/profileimage.jpeg')}
-        style={styles.img}
-      />
-      <View style={{flex: 1, flexDirection: 'row'}}>
-        <View style={{flex: 3}}>
-          <Text style={styles.leftDescription}>Name</Text>
-          <Text style={styles.leftDescription}>Email</Text>
-          <Text style={styles.leftDescription}>Mobile No</Text>
-          <Text style={styles.leftDescription}>DOB</Text>
-          <Text style={styles.leftDescription}>Business type</Text>
-          <Text style={styles.leftDescription}>GSTN</Text>
-          <Text style={styles.leftDescription}>Address</Text>
+      </View> */}
+        <Image
+          source={require('../../assets/Images/profileimage.jpeg')}
+          style={styles.img}
+        />
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <View style={{flex: 3}}>
+            <Text style={styles.leftDescription}>Name</Text>
+            <Text style={styles.leftDescription}>Email</Text>
+            <Text style={styles.leftDescription}>Mobile No</Text>
+            <Text style={styles.leftDescription}>DOB</Text>
+            <Text style={styles.leftDescription}>Business type</Text>
+            <Text style={styles.leftDescription}>GSTN</Text>
+            <Text style={styles.leftDescription}>Address</Text>
+          </View>
+          <View style={{flex: 3}}>
+            <Text style={styles.rightDescription}>Name</Text>
+            <Text style={styles.rightDescription}>Email</Text>
+            <Text style={styles.rightDescription}>Mobile No</Text>
+            <Text style={styles.rightDescription}>DOB</Text>
+            <Text style={styles.rightDescription}>Business type</Text>
+            <Text style={styles.rightDescription}>GSTN</Text>
+            <Text style={styles.rightDescription}>Address</Text>
+          </View>
         </View>
-        <View style={{flex: 3}}>
-          <Text style={styles.rightDescription}>Name</Text>
-          <Text style={styles.rightDescription}>Email</Text>
-          <Text style={styles.rightDescription}>Mobile No</Text>
-          <Text style={styles.rightDescription}>DOB</Text>
-          <Text style={styles.rightDescription}>Business type</Text>
-          <Text style={styles.rightDescription}>GSTN</Text>
-          <Text style={styles.rightDescription}>Address</Text>
-        </View>
-      </View>
 
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>EDIT</Text>
-      </TouchableOpacity>
-    </ScrollView>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('UserDetailForm')}>
+          <Text style={styles.buttonText}>EDIT</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </>
   );
 };
 

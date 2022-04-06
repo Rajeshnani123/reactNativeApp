@@ -17,7 +17,7 @@ const RootStack = createNativeStackNavigator();
 
 const RootStackFN = () => {
   return (
-    <RootStack.Navigator initialRouteName="ProductDetails">
+    <RootStack.Navigator initialRouteName="ManageProducts">
       <RootStack.Screen
         name="Splash"
         component={Splash}
