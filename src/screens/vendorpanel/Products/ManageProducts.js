@@ -48,6 +48,7 @@ const HeaderContent = ({navigation}) => {
   return (
     <Header
       leftComponent={<MenuHeader navigation={navigation} />}
+      title="Manage store"
       rightComponent={
         <View flexDirection={'row'}>
           <NotificationHeader
@@ -108,10 +109,10 @@ const ManageProducts = ({navigation}) => {
   const HeaderComponent = () => {
     return (
       <>
-        <Title mb={2} name="Manage store" />
+        {/* <Title mb={2} name="Manage store" />
         <TouchableOpacity onPress={() => navigation.navigate('UserDetail')}>
           <Title mb={2} name="Profile" />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <HStack
           mb={4}
