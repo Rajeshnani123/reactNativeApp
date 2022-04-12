@@ -3,7 +3,6 @@ import {View, Text, Button} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {Loader} from '../components';
 import {authIsLogedIn} from './../redux/reducers/authReducer';
-
 import AuthStack from './AuthStack';
 import HomeStack from './HomeStack';
 

@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import style from '../style';
 import Icon from 'react-native-vector-icons';
 import plateform from '../../../src/utils/Platform';
-import prodetails from '../../../src/constants/prodetails';
 import {Review} from '../enduser/Review';
 import {
   Header,

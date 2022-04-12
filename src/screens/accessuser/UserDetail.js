@@ -2,6 +2,7 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Feather';
+
 import {
   Header,
   BackHeader,
@@ -61,7 +62,7 @@ const UserDetail = ({navigation}) => {
         />
       </View> */}
         <Image
-          source={require('../../assets/Images/profileimage.jpeg')}
+          source={require('../../Assets/Images/profileimage.jpeg')}
           style={styles.img}
         />
         <View style={{flex: 1, flexDirection: 'row'}}>
