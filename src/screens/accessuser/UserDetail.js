@@ -17,12 +17,13 @@ import {
   CustomModal,
   MenuHeader,
 } from '../../components';
-import { normalize } from '../../utils/Platform';
+import {normalize} from '../../utils/Platform';
 
 const HeaderContent = ({navigation}) => {
   return (
     <Header
       leftComponent={<MenuHeader navigation={navigation} />}
+      title="Profile"
       rightComponent={
         <View flexDirection={'row'}>
           <NotificationHeader
@@ -61,7 +62,7 @@ const UserDetail = ({navigation}) => {
         />
       </View> */}
         <Image
-          source={require('../../Assets/Images/profileimage.jpeg')}
+          source={require('../../assets/Images/profileimage.jpeg')}
           style={styles.img}
         />
         <View style={{flex: 1, flexDirection: 'row'}}>
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF7EA',
   },
   head: {
-    height:normalize(50),
+    height: normalize(50),
     backgroundColor: '#FFB43A',
     flexDirection: 'row',
   },
@@ -110,8 +111,8 @@ const styles = StyleSheet.create({
     height: normalize(160),
     width: normalize(160),
     borderRadius: 160 / 2,
-    marginHorizontal:normalize( 95),
-    marginVertical:normalize( 25),
+    marginHorizontal: normalize(95),
+    marginVertical: normalize(25),
   },
   leftDescription: {
     marginVertical: normalize(10),
@@ -128,12 +129,12 @@ const styles = StyleSheet.create({
     marginHorizontal: normalize(60),
     alignItems: 'center',
     marginVertical: normalize(30),
-    borderRadius: normalize(5)
+    borderRadius: normalize(5),
   },
   buttonText: {
     fontFamily: 'Poppins',
     fontWeight: 'bold',
     color: '#000',
-    marginVertical: normalize(10),
+    marginVertical: normalize(15),
   },
 });

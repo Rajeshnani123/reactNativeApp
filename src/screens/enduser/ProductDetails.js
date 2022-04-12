@@ -155,7 +155,7 @@ const ProductDetails = ({navigation}) => {
         </Text>
         <View>
           <Image
-            source={require('../../Assets/Images/prodec.png')}
+            source={require('../../assets/Images/prodec.png')}
             style={{
               height: 230,
               width: 300,
@@ -171,23 +171,29 @@ const ProductDetails = ({navigation}) => {
           <Text style={{marginVertical: 10}}>{Data.item}</Text>
           <Text style={{marginVertical: 10}}>{Data.price}</Text>
         </View>
-        
+
         <View style={{marginLeft: 20, marginVertical: 20}}>
-        <Text style={FONTS.h2}>Reviews</Text>
+          <Text style={FONTS.h2}>Reviews</Text>
           {Review.map(item => (
             <View
               style={{
-                marginTop:20,
+                marginTop: 20,
                 flexDirection: 'row',
                 marginVertical: 10,
-                marginRight:20
+                marginRight: 20,
               }}>
               <Image source={item.image} />
               <View style={{marginRight: 60}}>
-                <Text style={{marginLeft: 20,fontWeight:'bold'}} >{item.name}</Text>
-                <Text style={{marginLeft: 20,fontSize:14,marginTop:5}}>{item.desc}</Text>
-                <Text style={{marginLeft: 20,marginTop:5}}>{item.rating}</Text>
-                <Text style={{marginLeft:180,fontSize:12}}>{item.time}</Text>
+                <Text style={{marginLeft: 20, fontWeight: 'bold'}}>
+                  {item.name}
+                </Text>
+                <Text style={{marginLeft: 20, fontSize: 14, marginTop: 5}}>
+                  {item.desc}
+                </Text>
+                <Text style={{marginLeft: 20, marginTop: 5}}>
+                  {item.rating}
+                </Text>
+                <Text style={{marginLeft: 180, fontSize: 12}}>{item.time}</Text>
               </View>
             </View>
           ))}
