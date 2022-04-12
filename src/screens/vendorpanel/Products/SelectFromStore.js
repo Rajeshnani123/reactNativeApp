@@ -20,6 +20,7 @@ const HeaderContent = ({navigation}) => {
   return (
     <Header
       leftComponent={<BackHeader navigation={navigation} />}
+      title="Add Products"
       rightComponent={
         <View flexDirection={'row'}>
           <NotificationHeader
@@ -118,7 +119,7 @@ const SelectFromStore = ({navigation}) => {
               leftWidth={100}
             />
           )}
-          ListHeaderComponent={HeaderComponent()}
+          // ListHeaderComponent={HeaderComponent()}
           ListFooterComponent={() => (
             <View style={{marginBottom: HP('50%')}}></View>
           )}

@@ -29,7 +29,7 @@ export const Btn = ({
           textAlign: 'center',
           alignContent: 'center',
           color: 'black',
-          ...FONTS.h3,
+          ...FONTS.h6,
         }}>
         {isLoading ? <ActivityIndicator size="large" color="#ffff" /> : value}
       </Button>

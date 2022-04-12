@@ -91,6 +91,12 @@ export const FONTS = {
   h3: {fontFamily: FONTSEMIBOLD, fontSize: SIZES.h3, lineHeight: normalize(22)},
   h4: {fontFamily: FONTSEMIBOLD, fontSize: SIZES.h4, lineHeight: normalize(22)},
   h5: {fontFamily: FONTSEMIBOLD, fontSize: SIZES.h5, lineHeight: normalize(22)},
+  h6: {
+    fontFamily: FONTSEMIBOLD,
+    fontSize: normalize(15),
+    lineHeight: normalize(22),
+  },
+
   body1: {
     fontFamily: FONTREGULAR,
     fontSize: SIZES.body1,
