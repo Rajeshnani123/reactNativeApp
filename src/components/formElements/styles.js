@@ -29,4 +29,21 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  brBtnContainer:{
+    height:30,
+    width:40,
+    shadowColor: 'rgba(0, 0, 0, 0.25)',
+    shadowOffset: {
+      width: 10,
+      height: 10,
+    },
+    shadowRadius: 20,
+    shadowOpacity: 0.6,
+    
+    backgroundColor: COLORS.primary,
+   
+    elevation: 8,
+    position: 'relative',
+    
+  }
 });

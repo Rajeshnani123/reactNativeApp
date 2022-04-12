@@ -34,7 +34,7 @@ export const TextInput = ({
   );
 };
 
-export const SearchBox = ({onSearch, value, onChangeText, ...rest}) => {
+export const SearchBox = ({onSearch, value, onChangeText,width='100%', ...rest}) => {
   return (
     <TextInput
       {...rest}
@@ -47,7 +47,7 @@ export const SearchBox = ({onSearch, value, onChangeText, ...rest}) => {
       borderRadius="lg"
       size="lg"
       placeHolder="Search products"
-      width="100%"
+      width={width}
       height="50"
       leftElement={
         <TouchableOpacity>

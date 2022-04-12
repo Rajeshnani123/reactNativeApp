@@ -6,6 +6,7 @@ import {Button} from 'react-native';
 import VendorStack from './VendorStack';
 // import UserStack from './UserStack';
 import {UserDetail} from './../screens';
+import ProductList from './../screens/accessuser/ProductList'
 
 const Drawer = createDrawerNavigator();
 
@@ -46,6 +47,13 @@ export default function HomeStack() {
           headerShown: false,
         }}
         component={UserDetail}
+      />
+      <Drawer.Screen
+        name="Product List "
+        options={{
+          headerShown: false,
+        }}
+        component={ProductList}
       />
     </Drawer.Navigator>
   );
