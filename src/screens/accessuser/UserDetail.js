@@ -62,7 +62,7 @@ const UserDetail = ({navigation}) => {
         />
       </View> */}
         <Image
-          source={require('../../Assets/Images/profileimage.jpeg')}
+          source={require('../../assets/Images/profileimage.jpeg')}
           style={styles.img}
         />
         <View style={{flex: 1, flexDirection: 'row'}}>
