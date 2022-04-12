@@ -26,7 +26,7 @@ export const HorizontalCard = ({
         rounded="lg"
         alignSelf="center"
         width={customWidth ? customWidth : SIZES.width - SIZES.width * 0.58}
-        height={customHeight ? customHeight : 150}
+        height={customHeight ? customHeight : 180}
         maxWidth={customWidth ? customWidth : SIZES.width - SIZES.width * 0.58}
         maxHeight={250}>
         <VStack justifyContent="space-between" flexDirection="row">

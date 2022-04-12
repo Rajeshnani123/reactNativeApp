@@ -38,7 +38,7 @@ const Login = ({navigation}) => {
   return (
     <ScrollView style={styles.root}>
       <View style={styles.img}>
-        <Image source={require('./../../assets/Images/image2.png')} />
+        <Image source={require('../../Assets/Images/image2.png')} />
       </View>
       <Text style={styles.login}>LOGIN</Text>
       <View style={styles.container}>
@@ -62,10 +62,10 @@ const Login = ({navigation}) => {
 
       <Text style={styles.loginwith}>or login with</Text>
       <View style={styles.icon}>
-        <Image source={require('./../../assets/Icons/google.png')} />
-        <Image source={require('./../../assets/Icons/facebook.png')} />
-        <Image source={require('./../../assets/Icons/twitter.png')} />
-        <Image source={require('./../../assets/Icons/instagram.png')} />
+        <Image source={require('../../Assets/Icons/google.png')} />
+        <Image source={require('../../Assets/Icons/facebook.png')} />
+        <Image source={require('../../Assets/Icons/twitter.png')} />
+        <Image source={require('../../Assets/Icons/instagram.png')} />
       </View>
 
       <Text

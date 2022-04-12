@@ -45,7 +45,15 @@ export const ActionBtn = ({iconType, iconName, size = 27, ...rest}) => {
       colorScheme="primary"
       style={styles.buttonContainer}
       {...rest}>
-      <ICON size={size} type={iconType} name={iconName} color={COLORS.white} />
+      <ICON size={size} type={iconType} name={iconName} color={COLORS.black} />
+    </Button>
+  );
+};
+
+export const BrBtn = ({iconType, iconName, size = 15, ...rest}) => {
+  return (
+    <Button colorScheme="primary" style={styles.brBtnContainer} {...rest}>
+      <ICON size={size} type={iconType} name={iconName} color={COLORS.black} />
     </Button>
   );
 };
