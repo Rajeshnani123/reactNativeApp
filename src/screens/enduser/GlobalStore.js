@@ -58,7 +58,7 @@ const leftComponent = (title, address, noOfOrders, noOfPeople) => {
           source={{uri: IMAGES.dummy2}}
         />
 
-        <Box mx={7} marginVertical={5}>
+        <Box mx={5} marginVertical={5}>
           <Text style={{color: COLORS.black, ...FONTS.h3}}>{title}</Text>
           <Text style={{color: COLORS.gray, ...FONTS.h4}}>{address}</Text>
           <Text style={{color: COLORS.black, ...FONTS.h4}}>{noOfOrders}</Text>
@@ -89,6 +89,7 @@ const GlobalStore = ({navigation}) => {
      </View>
 
       <FlatList
+      style={style.container}
         overScrollMode="never"
         showsVerticalScrollIndicator={false}
         numColumns={1}
