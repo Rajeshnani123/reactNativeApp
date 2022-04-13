@@ -40,6 +40,8 @@ const ICON = ({type, name, color, size = 24, style}) => {
 export const ICONS = {
   testType: ICONTYPE.AntDesign,
   test: 'isv',
+  rightType: ICONTYPE.AntDesign,
+  right:'right',
   filterType: ICONTYPE.Feather,
   filter:'filter',
   exclamationType: ICONTYPE.FontAwesome,
