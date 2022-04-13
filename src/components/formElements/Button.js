@@ -57,3 +57,10 @@ export const BrBtn = ({iconType, iconName, size = 15, ...rest}) => {
     </Button>
   );
 };
+export const RightArrowBtn = ({iconType, iconName, size = 15, ...rest}) => {
+  return (
+    <Button colorScheme="white" style={styles.RightArrowBtnContainer}{...rest}>
+      <ICON size={size} type={iconType} name={iconName} color={COLORS.black} />
+    </Button>
+  );
+};

@@ -29,6 +29,7 @@ const HeaderContent = ({navigation}) => {
   return (
     <Header
       leftComponent={<MenuHeader navigation={navigation} />}
+      title="Product List"
       rightComponent={
         <View flexDirection={'row'}>
           <NotificationHeader

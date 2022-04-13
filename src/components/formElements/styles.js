@@ -30,9 +30,9 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  brBtnContainer:{
-    height:30,
-    width:40,
+  brBtnContainer: {
+    height: 30,
+    width: 40,
     shadowColor: 'rgba(0, 0, 0, 0.25)',
     shadowOffset: {
       width: 10,
@@ -40,11 +40,18 @@ export default StyleSheet.create({
     },
     shadowRadius: 20,
     shadowOpacity: 0.6,
-    
+
     backgroundColor: COLORS.primary,
-   
+
     elevation: 8,
     position: 'relative',
-    
-  }
+  },
+  RightArrowBtnContainer: {
+    height: 30,
+    width: 40,
+
+    backgroundColor: COLORS.white,
+
+    position: 'relative',
+  },
 });

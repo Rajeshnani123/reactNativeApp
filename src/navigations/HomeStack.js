@@ -7,6 +7,7 @@ import VendorStack from './VendorStack';
 // import UserStack from './UserStack';
 import {UserDetail} from './../screens';
 import ProductList from '../screens/enduser/ProductList'
+import GlobalStore from '../screens/enduser/GlobalStore';
 
 const Drawer = createDrawerNavigator();
 
@@ -54,6 +55,13 @@ export default function HomeStack() {
           headerShown: false,
         }}
         component={ProductList}
+      />
+      <Drawer.Screen
+        name="Global store "
+        options={{
+          headerShown: false,
+        }}
+        component={GlobalStore}
       />
       
     </Drawer.Navigator>
