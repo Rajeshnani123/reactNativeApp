@@ -14,9 +14,10 @@ export const loginUser = (username,password) => {
                 username
             }
             const response = await post(ApiConnections.Login,Body);
-            if(response){
+            if(response && response.token){
                 dispatch({ type: USER_LOGIN_SUCCESS, token: response.token })
             }else{
+                Alert.alert("Please try after some time");
                 dispatch({ type: USER_LOGIN_FAILURE, error: response });
             }
         }catch(error){
