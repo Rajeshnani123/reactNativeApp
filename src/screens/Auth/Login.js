@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Alert} from "react-native";
 import {
   View,
   Text,
@@ -11,6 +12,7 @@ import {useDispatch} from 'react-redux';
 import styles from './style';
 
 import {login} from './../../redux/reducers/authReducer';
+import { loginUser } from '../../redux/UserProfile/ActionCreators/postUserAction';
 
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
@@ -21,10 +23,10 @@ const Login = ({navigation}) => {
 
   const validate = () => {
     if (username == '') {
-      alert('Please fill the user name');
+      Alert.alert('Please fill the user name');
       return false;
     } else if (password == '') {
-      alert('please fill passord');
+      Alert.alert('please fill password');
       return false;
     }
     return true;
@@ -33,7 +35,10 @@ const Login = ({navigation}) => {
     // if (validate()) {
 
     // }
-    dispatch(login({accessToken: 'ss', roleType: '1'}));
+    if(validate()){
+      dispatch(loginUser(username,password));
+    }
+    //dispatch(login({accessToken: 'ss', roleType: '1'}));
   };
   return (
     <ScrollView style={styles.root}>
@@ -46,17 +51,17 @@ const Login = ({navigation}) => {
           style={styles.input}
           placeholder="Email"
           placeholderTextColor={'#c4c4c4'}
-          onChangeText={value => setUsername(value)}></TextInput>
+          onChangeText={value => setUsername(value)} />
 
         <TextInput
           style={styles.input}
           secureTextEntry={true}
           placeholder="password"
           placeholderTextColor={'#c4c4c4'}
-          onChangeText={value => setPassword(value)}></TextInput>
+          onChangeText={value => setPassword(value)} />
       </View>
       <Text style={styles.fp}>Forgot Password?</Text>
-      <TouchableOpacity style={styles.button} onPress={() => making_api_call()}>
+      <TouchableOpacity style={styles.button} onPress={making_api_call}>
         <Text style={styles.lgn}> LOGIN</Text>
       </TouchableOpacity>
 
@@ -77,7 +82,7 @@ const Login = ({navigation}) => {
           fontFamily: 'Poppins',
           fontWeight: '900',
         }}
-        onPress={() => navigation.navigate('SignUp')}>
+        onPress={() => navigation.navigate('Register')}>
         Don't have an account? SignUp
       </Text>
     </ScrollView>
