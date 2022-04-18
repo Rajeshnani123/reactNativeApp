@@ -4,7 +4,12 @@ import {View, Text, VStack, Badge, Avatar} from 'native-base';
 import styles from './styles';
 import {FONTS, ICON, COLORS, ICONTYPE, ICONS} from './../../constants';
 
-export const Header = ({containerStyle,title,leftComponent,rightComponent,}) => {
+export const Header = ({
+  containerStyle,
+  title,
+  leftComponent,
+  rightComponent,
+}) => {
   return (
     <View
       style={{
@@ -16,7 +21,7 @@ export const Header = ({containerStyle,title,leftComponent,rightComponent,}) => 
       {leftComponent}
       {/* Center */}
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text style={{...FONTS.h3}} mr={20} >{title}</Text>
+        <Text style={{...FONTS.h3}}>{title}</Text>
       </View>
       {/* Right */}
       {rightComponent}

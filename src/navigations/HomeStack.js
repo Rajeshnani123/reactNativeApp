@@ -6,8 +6,8 @@ import {Button} from 'react-native';
 import VendorStack from './VendorStack';
 // import UserStack from './UserStack';
 import {UserDetail} from './../screens';
-import ProductList from '../screens/enduser/ProductList/ProductList'
-import GlobalStore from '../screens/enduser/GlobalStore';
+import ProductList from '../screens/enduser/ProductList/ProductList';
+import GlobalStore from '../screens/enduser/GlobalStore/GlobalStore';
 
 const Drawer = createDrawerNavigator();
 
@@ -63,7 +63,6 @@ export default function HomeStack() {
         }}
         component={GlobalStore}
       />
-      
     </Drawer.Navigator>
   );
 }
