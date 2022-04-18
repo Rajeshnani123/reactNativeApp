@@ -1,11 +1,11 @@
-import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import React, {useState} from 'react';
+import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Feather';
-import {PLDATA} from '../../constants/PLJASON';
-import {IMAGES, FONTS, COLORS, ICONS, HP, SIZES} from '../../constants';
+import {PLDATA} from '../../../constants/PLJASON';
+import {IMAGES, FONTS, COLORS, ICONS, HP, SIZES} from '../../../constants';
 import {Box, Button, Image} from 'native-base';
-import ProductDetails from './ProductDetails';
+// import ProductDetails from '../ProductDetails';
 import {
   Header,
   BackHeader,
@@ -20,8 +20,8 @@ import {
   BrBtn,
   CustomModal,
   MenuHeader,
-} from '../../components';
-import {normalize} from '../../utils/Platform';
+} from '../../../components';
+import {normalize} from '../../../utils/Platform';
 import {background} from 'native-base/lib/typescript/theme/styled-system';
 import {Circle} from 'react-native-svg';
 
