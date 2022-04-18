@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import styles from './style';
-
+import {normalize,font} from '../../utils/Platform';
 import {login} from './../../redux/reducers/authReducer';
 
 const Login = ({navigation}) => {
@@ -38,26 +38,26 @@ const Login = ({navigation}) => {
   return (
     <ScrollView style={styles.root}>
       <View style={styles.img}>
-        <Image source={require('../../assets/Images/image2.png')} />
+        <Image source={require('../../assets/Images/welcome.png')} />
       </View>
-      <Text style={styles.login}>LOGIN</Text>
-      <View style={styles.container}>
+      
+      
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="Email/Mobile No"
           placeholderTextColor={'#c4c4c4'}
           onChangeText={value => setUsername(value)}></TextInput>
 
         <TextInput
-          style={styles.input}
+          style={styles.password}
           secureTextEntry={true}
           placeholder="password"
           placeholderTextColor={'#c4c4c4'}
           onChangeText={value => setPassword(value)}></TextInput>
-      </View>
+      
       <Text style={styles.fp}>Forgot Password?</Text>
       <TouchableOpacity style={styles.button} onPress={() => making_api_call()}>
-        <Text style={styles.lgn}> LOGIN</Text>
+        <Text style={styles.lgn}>LOGIN</Text>
       </TouchableOpacity>
 
       <Text style={styles.loginwith}>or login with</Text>

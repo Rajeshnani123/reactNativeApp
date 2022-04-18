@@ -19,7 +19,7 @@ import {
 import style from '../../style';
 import {DATA} from '../../../constants/DUMMYJSON';
 import {AddProduct} from './AddProduct';
-import {normalize} from '../../../utils/Platform';
+import {normalize,font} from '../../../utils/Platform';
 
 // const HeaderContent = ({navigation}) => {
 //   return (
