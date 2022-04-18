@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {StyleSheet} from 'react-native';
+import {normalize, FONTS} from '../../utils/Platform';
 
 const styles = StyleSheet.create({
   root: {
@@ -15,30 +16,53 @@ const styles = StyleSheet.create({
   },
 
   img: {
-    marginTop: 40,
-    alignSelf: 'center',
+    marginTop: 50,
+    marginLeft: 30,
+    height: 100,
+    width: 100,
   },
 
   input: {
+    width: normalize(361),
+    height: normalize(56),
+    borderRadius: 5,
     backgroundColor: '#ffffff',
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    color: '#c4c4c4c4',
-    marginVertical: 6,
+
+    textAlign: 'center',
+    marginTop: 150,
   },
-  button: {
-    backgroundColor: '#FFB43A',
-    padding: 16,
-    width: '85%',
-    alignSelf: 'center',
-    marginTop: 20,
+  password: {
+    width: normalize(361),
+    height: normalize(56),
     borderRadius: 5,
+    backgroundColor: '#ffffff',
+    marginTop: normalize(26),
+     },
+  button: {
+    width: 361,
+    height: 60,
+    backgroundColor: "#ffb43a",
+    shadowColor: "rgba(0, 0, 0, 0.25)",
+    shadowOffset: {
+      width: 10,
+      height: 10
+    },
+    shadowRadius: 20,
+    shadowOpacity: 1,
+    marginHorizontal:20
+    
+    
   },
   lgn: {
-    marginHorizontal: 110,
-    fontFamily: 'Poppins',
-    fontWeight: 'bold',
-    fontSize: 16,
+    width: 60,
+  height: 33,
+  fontFamily: "Poppins",
+  fontSize: 22,
+  fontWeight: "normal",
+  fontStyle: "normal",
+  letterSpacing: 0,
+  textAlign: "left",
+  color: "#ffffff"
   },
   login: {
     marginHorizontal: 110,
@@ -51,11 +75,16 @@ const styles = StyleSheet.create({
   },
 
   fp: {
+    width: 143,
+    height: 24,
     fontFamily: 'Poppins',
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: 'normal',
+    fontStyle: 'normal',
+    letterSpacing: 0,
     marginLeft: 230,
-    color: '#332F32',
+    color: '#000000',
+    marginTop:normalize(17)
   },
   loginwith: {
     fontFamily: 'Poppins',

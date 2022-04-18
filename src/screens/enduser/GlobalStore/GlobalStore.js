@@ -1,11 +1,11 @@
-import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import React, {useState} from 'react';
+import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Feather';
-import {GLOBALDATA} from '../../constants/GLOBALJSON';
-import {IMAGES, FONTS, COLORS, ICONS, HP} from '../../constants';
+import {GLOBALDATA} from '../../../constants/GLOBALJSON';
+import {IMAGES, FONTS, COLORS, ICONS, HP} from '../../../constants';
 import {Box, Button, Image} from 'native-base';
-import style from '../style';
+import style from './Style';
 
 import {
   Header,
@@ -21,8 +21,8 @@ import {
   RightArrowBtn,
   CustomModal,
   MenuHeader,
-} from '../../components';
-import {normalize} from '../../utils/Platform';
+} from '../../../components';
+import {normalize} from '../../../utils/Platform';
 import {background} from 'native-base/lib/typescript/theme/styled-system';
 import {Circle} from 'react-native-svg';
 
@@ -86,10 +86,10 @@ const GlobalStore = ({navigation}) => {
           onChangeText={val => setSearch(val)}
           onSearch={() => alert('Searchnow')}
         />
-     </View>
+      </View>
 
       <FlatList
-      style={style.container}
+        style={style.container}
         overScrollMode="never"
         showsVerticalScrollIndicator={false}
         numColumns={1}
@@ -116,13 +116,9 @@ const GlobalStore = ({navigation}) => {
         )}
         ListFooterComponent={() => (
           <View style={{marginBottom: HP('50%')}}></View>
-       
         )}
-        
       />
-      
     </>
-    
   );
 };
 
