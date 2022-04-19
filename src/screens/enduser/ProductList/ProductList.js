@@ -6,6 +6,7 @@ import {PLDATA} from '../../../constants/PLJASON';
 import {IMAGES, FONTS, COLORS, ICONS, HP} from '../../../constants';
 import {Box, Button, Image} from 'native-base';
 import ProductDetails from '../ProductDetails';
+import styles from './Style'
 import {
   Header,
   BackHeader,
@@ -105,7 +106,7 @@ const leftComponent = (title, subtitle, price, discount, barganing) => {
   );
 };
 
-const ProductList = ({navigation}) => {
+const ForgotPassword = ({navigation}) => {
   const [search, setSearch] = useState();
 
   return (
@@ -179,4 +180,4 @@ const ProductList = ({navigation}) => {
   );
 };
 
-export default ProductList;
+export default ForgotPassword;

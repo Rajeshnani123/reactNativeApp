@@ -7,7 +7,8 @@ import VendorStack from './VendorStack';
 // import UserStack from './UserStack';
 import {UserDetail} from './../screens';
 import ProductList from '../screens/enduser/ProductList/ProductList'
-import GlobalStore from '../screens/enduser/GlobalStore';
+import GlobalStore from '../screens/enduser/GlobalStore/GlobalStore';
+
 
 const Drawer = createDrawerNavigator();
 
