@@ -80,7 +80,7 @@ const Login = ({navigation}) => {
           fontWeight: '900',
           marginLeft:normalize(71)
         }}
-        onPress={() => navigation.navigate('Register')}>
+        onPress={() => navigation.navigate('SignUp')}>
         Don't have an account? SignUp
       </Text>
     </ScrollView>

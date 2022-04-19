@@ -47,7 +47,7 @@ const SignUp = ({navigation}) => {
           </TouchableOpacity>
           <Text
             style={styles.acc}
-            onPress={() => navigation.navigate('SignIn')}>
+            onPress={() => navigation.navigate('Login')}>
             Have an account ? SignIn
           </Text>
         </View>

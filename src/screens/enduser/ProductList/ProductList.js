@@ -103,7 +103,7 @@ const leftComponent = (title, subtitle, price, discount, barganing) => {
   );
 };
 
-const ForgotPassword = ({navigation}) => {
+const ProductList = ({navigation}) => {
   const [search, setSearch] = useState();
 
   return (
@@ -186,9 +186,6 @@ const ForgotPassword = ({navigation}) => {
   );
 };
 
-<<<<<<< HEAD
-export default ForgotPassword;
-=======
 export default ProductList;
 
 const styles = StyleSheet.create({
@@ -234,4 +231,3 @@ const styles = StyleSheet.create({
     marginVertical: normalize(10),
   },
 });
->>>>>>> 322613cab99093b6ed0b6571abee24a4487ca8be
