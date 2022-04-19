@@ -12,6 +12,7 @@ import styles from './style';
 import {normalize,font} from '../../utils/Platform';
 import {login} from './../../redux/reducers/authReducer';
 
+
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
 
@@ -41,21 +42,22 @@ const Login = ({navigation}) => {
         <Image source={require('../../assets/Images/welcome.png')} />
       </View>
       
-      
+       
         <TextInput
           style={styles.input}
           placeholder="Email/Mobile No"
           placeholderTextColor={'#c4c4c4'}
           onChangeText={value => setUsername(value)}></TextInput>
-
+          
         <TextInput
           style={styles.password}
           secureTextEntry={true}
-          placeholder="password"
+          placeholder="Password"
           placeholderTextColor={'#c4c4c4'}
           onChangeText={value => setPassword(value)}></TextInput>
-      
-      <Text style={styles.fp}>Forgot Password?</Text>
+      <TouchableOpacity onPress={()=>navigation.navigate('ForgotPassword')}>
+      <Text style={styles.fp} >Forgot Password?</Text>
+      </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={() => making_api_call()}>
         <Text style={styles.lgn}>LOGIN</Text>
       </TouchableOpacity>
@@ -71,11 +73,12 @@ const Login = ({navigation}) => {
       <Text
         style={{
           fontSize: 14,
-          marginHorizontal: 90,
-          marginTop: 40,
+         width:normalize(270),
+          marginTop:normalize(93),
           color: '#000',
           fontFamily: 'Poppins',
           fontWeight: '900',
+          marginLeft:normalize(71)
         }}
         onPress={() => navigation.navigate('SignUp')}>
         Don't have an account? SignUp

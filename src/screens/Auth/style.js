@@ -11,58 +11,68 @@ const styles = StyleSheet.create({
 
   container: {
     flexDirection: 'column',
-    padding: 20,
+    padding: 10,
     marginTop: 10,
   },
 
   img: {
-    marginTop: 50,
-    marginLeft: 30,
-    height: 100,
-    width: 100,
+    marginTop: normalize(50),
+    marginLeft: normalize(36),
+    height: normalize(100),
+    width: normalize(100),
   },
 
   input: {
-    width: normalize(361),
+    
     height: normalize(56),
     borderRadius: 5,
     backgroundColor: '#ffffff',
-
-    textAlign: 'center',
+    marginLeft: normalize(36),
+    marginRight: normalize(31),
+    padding: normalize(20),
     marginTop: 150,
   },
+
   password: {
-    width: normalize(361),
+   
     height: normalize(56),
     borderRadius: 5,
     backgroundColor: '#ffffff',
-    marginTop: normalize(26),
-     },
+    marginTop: normalize(24),
+    padding: normalize(20),
+    marginLeft: normalize(36),
+    marginRight: normalize(31),
+  },
   button: {
-    width: 361,
-    height: 60,
-    backgroundColor: "#ffb43a",
-    shadowColor: "rgba(0, 0, 0, 0.25)",
+    
+    height: normalize(60),
+    backgroundColor: '#ffb43a',
+    shadowColor: 'rgba(0, 0, 0, 0.25)',
     shadowOffset: {
       width: 10,
-      height: 10
+      height: 10,
     },
     shadowRadius: 20,
     shadowOpacity: 1,
-    marginHorizontal:20
-    
-    
+    marginHorizontal: 20,
+    alignItems: 'center',
+    marginTop: normalize(28),
+    marginLeft: normalize(36),
+    marginRight: normalize(31),
   },
   lgn: {
-    width: 60,
-  height: 33,
-  fontFamily: "Poppins",
-  fontSize: 22,
-  fontWeight: "normal",
-  fontStyle: "normal",
-  letterSpacing: 0,
-  textAlign: "left",
-  color: "#ffffff"
+    width: normalize(90),
+    height: normalize(33),
+    fontFamily: 'Poppins',
+    marginTop: normalize(13),
+    fontSize: 22,
+    fontWeight: 'normal',
+    marginLeft: normalize(149),
+    marginRight: normalize(154),
+    fontStyle: 'normal',
+    letterSpacing: 0,
+    textAlign: 'left',
+    color: '#ffffff',
   },
   login: {
     marginHorizontal: 110,
@@ -75,30 +85,37 @@ const styles = StyleSheet.create({
   },
 
   fp: {
-    width: 143,
-    height: 24,
+    
+    width:normalize(143),
     fontFamily: 'Poppins',
-    fontSize: 16,
+    fontSize: normalize(16),
     fontWeight: 'normal',
     fontStyle: 'normal',
     letterSpacing: 0,
-    marginLeft: 230,
+    marginLeft:normalize(200),
+    marginRight:normalize(34),
+    
+
     color: '#000000',
-    marginTop:normalize(17)
+    marginTop: normalize(17),
   },
   loginwith: {
     fontFamily: 'Poppins',
-    fontSize: 16,
+    fontSize: normalize(16),
     color: '#332F32',
-    marginLeft: 130,
-    padding: 20,
+    marginLeft: normalize(159),
+    marginTop: normalize(30),
+    marginRight:normalize(159),
+    width:normalize(110)
   },
   icon: {
-    alignSelf: 'center',
+    
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '70%',
-    marginTop: 20,
+    
+    marginTop: normalize(36),
+    marginLeft: normalize(87),
+    marginRight:normalize(100)
   },
   dnt: {
     fontFamily: 'Poppins',
