@@ -64,3 +64,5 @@ export const RightArrowBtn = ({iconType, iconName, size = 15, ...rest}) => {
     </Button>
   );
 };
+
+
