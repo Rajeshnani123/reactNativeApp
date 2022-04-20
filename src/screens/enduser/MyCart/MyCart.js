@@ -150,8 +150,12 @@ const MyCart = ({navigation}) => {
           </Box>
         </Box>
         <Box flexDirection={'row'} mx={10} my={3}>
-          <TouchableOpacity style={styles.minus} >
-          <Image source={require('../../../assets/Images/minus.png')} mx={4} my={3}/>
+          <TouchableOpacity style={styles.minus}>
+            <Image
+              source={require('../../../assets/Images/minus.png')}
+              mx={4}
+              my={3}
+            />
           </TouchableOpacity>
           <Text
             style={{
@@ -161,20 +165,28 @@ const MyCart = ({navigation}) => {
             }}>
             2
           </Text>
-          <TouchableOpacity mx={3} style={styles.plus} >
-            <Image source={require('../../../assets/Images/plus.png')} mx={4} my={3}/>
+          <TouchableOpacity mx={3} style={styles.plus}>
+            <Image
+              source={require('../../../assets/Images/plus.png')}
+              mx={4}
+              my={3}
+            />
           </TouchableOpacity>
           <TouchableOpacity mx={3} style={styles.remove}>
             <Text style={styles.rmtext}>Remove</Text>
           </TouchableOpacity>
         </Box>
         <View flexDirection={'row'}>
-        <TouchableOpacity style={styles.Btn}>
-          <Text style={styles.DO}>Discount & Offers</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.layer}>
-        <Image source={require('../../../assets/Images/layer.png')} mx={4} my={2}/>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.Btn}>
+            <Text style={styles.DO}>Discount & Offers</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.layer}>
+            <Image
+              source={require('../../../assets/Images/layer.png')}
+              mx={4}
+              my={2}
+            />
+          </TouchableOpacity>
         </View>
       </>
     );
@@ -230,7 +242,7 @@ const MyCart = ({navigation}) => {
               <HorizontalCard
                 containerStyle={{
                   borderRadius: 10,
-                  marginTop:10,
+                  marginTop: 10,
                   height: normalize(277),
                   // marginHorizontal: normalize(1),
                 }}
@@ -248,8 +260,9 @@ const MyCart = ({navigation}) => {
                   item.currentprice,
                   item.discount,
                 )}
-                onPress={() =>
-                  navigation.navigate('ProductDetails')
+                onPress={
+                  () => console.log('check')
+                  // navigation.navigate('ProductDetails')
                 }></HorizontalCard>
             )}
             ListFooterComponent={() => (
