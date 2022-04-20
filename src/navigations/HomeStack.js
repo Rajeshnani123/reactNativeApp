@@ -9,8 +9,11 @@ import {UserDetail} from './../screens';
 import ProductList from '../screens/enduser/ProductList/ProductList';
 import GlobalStore from '../screens/enduser/GlobalStore/GlobalStore';
 import ProfileStk from './authStack/ProfileStk';
-// import ProductStk from './endUserStack/ProductStk';
+import ProductStk from './endUserStack/ProductStk';
 import MyCart from '../screens/enduser/MyCart/MyCart';
+import {useDispatch} from 'react-redux';
+// import { logout } from './../../../redux/reducers/authReducer';
+import {logout} from '../redux/reducers/authReducer';
 
 const Drawer = createDrawerNavigator();
 
@@ -27,17 +30,19 @@ const Drawer = createDrawerNavigator();
 // }
 
 export default function HomeStack() {
+  const dispatch = useDispatch();
+
   return (
     <Drawer.Navigator
-      drawerContent={props => <CustomDrawer {...props} />}
-      initialRouteName="Common">
-      <Drawer.Screen
+      // drawerContent={props => <CustomDrawer {...props} />}
+      initialRouteName="Product List">
+      {/* <Drawer.Screen
         name="Common"
         options={{
           headerShown: false,
         }}
         component={CommonStack}
-      />
+      /> */}
       <Drawer.Screen
         name="Manage Store"
         options={{
@@ -60,11 +65,11 @@ export default function HomeStack() {
         component={ProfileStk}
       />
       <Drawer.Screen
-        name="Product List "
+        name="Product List"
         options={{
           headerShown: false,
         }}
-        component={ProductList}
+        component={ProductStk}
       />
       {/* ProductStk */}
       <Drawer.Screen
@@ -80,6 +85,20 @@ export default function HomeStack() {
           headerShown: false,
         }}
         component={MyCart}
+      />
+      <Drawer.Screen
+        name="Logout"
+        component={MyCart}
+        listeners={({navigation}) => ({
+          state: e => {
+            // if (e.data.state.index === 3) {
+            // 3 is index of logout item in drawer
+
+            // navigation.replace('Login');
+            dispatch(logout());
+            // }
+          },
+        })}
       />
     </Drawer.Navigator>
   );
