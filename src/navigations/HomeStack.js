@@ -8,6 +8,8 @@ import VendorStack from './VendorStack';
 import {UserDetail} from './../screens';
 import ProductList from '../screens/enduser/ProductList/ProductList';
 import GlobalStore from '../screens/enduser/GlobalStore/GlobalStore';
+import ProfileStk from './authStack/ProfileStk';
+// import ProductStk from './endUserStack/ProductStk';
 
 const Drawer = createDrawerNavigator();
 
@@ -42,12 +44,19 @@ export default function HomeStack() {
         }}
         component={VendorStack}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Profile"
         options={{
           headerShown: false,
         }}
         component={UserDetail}
+      /> */}
+      <Drawer.Screen
+        name="Profile"
+        options={{
+          headerShown: false,
+        }}
+        component={ProfileStk}
       />
       <Drawer.Screen
         name="Product List "
@@ -56,6 +65,7 @@ export default function HomeStack() {
         }}
         component={ProductList}
       />
+      {/* ProductStk */}
       <Drawer.Screen
         name="Global store "
         options={{

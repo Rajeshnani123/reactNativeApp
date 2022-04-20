@@ -88,7 +88,12 @@ const UserDetail = ({navigation}) => {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('UserDetailForm')}>
+          onPress={
+            () => navigation.navigate('userDetailForm')
+            // navigation.navigate('ProfileStack', {
+            //   screen: 'userDetailForm',
+            // })
+          }>
           <Text style={styles.buttonText}>EDIT</Text>
         </TouchableOpacity>
       </ScrollView>
