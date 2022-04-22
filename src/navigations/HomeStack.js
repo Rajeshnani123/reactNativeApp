@@ -9,6 +9,7 @@ import {UserDetail} from './../screens';
 import ProductList from '../screens/enduser/ProductList/ProductList';
 import GlobalStore from '../screens/enduser/GlobalStore/GlobalStore';
 import MyCart from '../screens/enduser/MyCart/MyCart';
+import Checkout from '../screens/enduser/Checkout/Checkout'
 
 const Drawer = createDrawerNavigator();
 
@@ -70,6 +71,13 @@ export default function HomeStack() {
           headerShown: false,
         }}
         component={MyCart}
+      />
+      <Drawer.Screen
+        name="Checkout"
+        options={{
+          headerShown: false,
+        }}
+        component={Checkout}
       />
     </Drawer.Navigator>
   );
