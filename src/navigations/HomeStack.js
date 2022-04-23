@@ -14,6 +14,7 @@ import MyCart from '../screens/enduser/MyCart/MyCart';
 import {useDispatch} from 'react-redux';
 // import { logout } from './../../../redux/reducers/authReducer';
 import {logout} from '../redux/reducers/authReducer';
+import Checkout from '../screens/enduser/Checkout/Checkout';
 
 const Drawer = createDrawerNavigator();
 
@@ -85,6 +86,13 @@ export default function HomeStack() {
           headerShown: false,
         }}
         component={MyCart}
+      />
+      <Drawer.Screen
+        name="Checkout "
+        options={{
+          headerShown: false,
+        }}
+        component={Checkout}
       />
       <Drawer.Screen
         name="Logout"
