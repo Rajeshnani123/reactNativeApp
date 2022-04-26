@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
   Btnview: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 15,
   },
   login: {
     backgroundColor: '#FFB43A',
@@ -59,8 +58,8 @@ const styles = StyleSheet.create({
   },
   emailtext: {
     height: 24,
-    marginLeft: normalize(20),
-    marginTop: normalize(10),
+    marginLeft: normalize(26),
+    marginTop: normalize(11),
     fontFamily: 'Poppins',
     fontSize: 16,
     fontWeight: 'normal',

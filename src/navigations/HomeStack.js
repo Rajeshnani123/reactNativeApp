@@ -15,7 +15,9 @@ import {useDispatch} from 'react-redux';
 // import { logout } from './../../../redux/reducers/authReducer';
 import {logout} from '../redux/reducers/authReducer';
 import Checkout from '../screens/enduser/Checkout/Checkout';
-
+import CartStk from './endUserStack/CartStk';
+import Success from '../screens/enduser/Success/Success';
+import Error from '../screens/enduser/Error/Error'
 const Drawer = createDrawerNavigator();
 
 // export function CustomDrawerContent({navigation}) {
@@ -93,6 +95,13 @@ export default function HomeStack() {
           headerShown: false,
         }}
         component={Checkout}
+      />
+      <Drawer.Screen
+        name="CartStk "
+        options={{
+          headerShown: false,
+        }}
+        component={CartStk}
       />
       <Drawer.Screen
         name="Logout"
