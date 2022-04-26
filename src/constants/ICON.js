@@ -65,6 +65,14 @@ export const ICONS = {
   plus: 'plus',
   arrowLeftType: ICONTYPE.Feather,
   arrowLeft: 'arrow-left',
+  arrowRightType: ICONTYPE.Feather,
+  arrowRight: 'arrow-right',
+  starType:ICONTYPE.Feather,
+  star:'star',
+  downType:ICONTYPE.Feather,
+  down:'arrow-down-circle',
+  chevronType:ICONTYPE.Feather,
+  chevronright:'chevron-right'
 };
 
 export default ICON;

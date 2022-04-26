@@ -8,7 +8,6 @@ import {
 import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 
-
 const UserDetailForm = () => {
   return (
     <ScrollView style={Styles.root}>
