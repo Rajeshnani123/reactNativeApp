@@ -39,16 +39,8 @@ const styles = StyleSheet.create({
     marginLeft: normalize(7),
   },
   pincode: {
-    marginTop: normalize(12),
-    marginLeft: normalize(15),
-  },
-  change: {
-    width: normalize(79),
-    height: normalize(45),
-    borderRadius: 5,
-    backgroundColor: '#ffb43a',
-    marginLeft: normalize(10),
-  
+    marginTop: normalize(7),
+    marginLeft: normalize(85),
   },
 
   changetext: {

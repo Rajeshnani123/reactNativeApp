@@ -2,16 +2,17 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import ICON from 'react-native-vector-icons/Feather';
-import {IMAGES, FONTS, COLORS, ICONS, HP, SIZES} from '../../../constants';
+import {IMAGES, FONTS, COLORS, ICONS, WP,HP, SIZES} from '../../../constants';
 import {Box, Button, Image} from 'native-base';
 import styles from './styles';
 import CheckBox from '@react-native-community/checkbox';
+import DropDown from '../../../components/DropDown';
 import {
   Header,
   NotificationHeader,
   CartHeader,
   SearchBox,
-  MenuHeader,
+  MenuHeader,Btn
 } from '../../../components';
 import {normalize} from '../../../utils/Platform';
 const HeaderContent = ({navigation}) => {
@@ -145,12 +146,13 @@ const Checkout = ({navigation}) => {
             />
           </View>
           <View style={styles.Btnview}>
-            <TouchableOpacity style={styles.login}>
-              <Text style={styles.logintext}>LOGIN</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.Email}>
-              <Text style={styles.emailtext}>Email Address</Text>
-            </TouchableOpacity>
+          <Btn
+            height={normalize(50)}
+            width={WP('93%')}
+            colorScheme={'primary'}
+            value={'Edit Address'}
+            onPress={() => navigation.navigate('EditAddress')}
+          />
           </View>
 
           <View style={styles.card1}>
@@ -336,7 +338,7 @@ const Checkout = ({navigation}) => {
           <Text style={{color:'#000',fontSize:12}}>View all products</Text>
           </View>
           <TouchableOpacity style={styles.btn}>
-          <Text style={{color:'#000',fontSize:18,marginLeft:normalize(23),marginTop:normalize(12)}}>Continue</Text>
+          <Text style={{color:'#000',fontSize:18,marginLeft:normalize(23),marginTop:normalize(12)}} onPress={()=>navigation.navigate('Success')}>Continue</Text>
           </TouchableOpacity>
           </Box>
         </View>

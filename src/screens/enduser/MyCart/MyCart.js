@@ -227,9 +227,7 @@ const MyCart = ({navigation}) => {
           <View style={styles.cartitemview}>
             <Text style={styles.cartitems}>Cart items</Text>
             <Text style={styles.pincode}>Pincode - 560010</Text>
-            <TouchableOpacity style={styles.change}>
-              <Text style={styles.changetext}>Change</Text>
-            </TouchableOpacity>
+           
           </View>
 
           <FlatList
