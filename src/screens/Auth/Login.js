@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Alert} from "react-native";
 import {
   View,
   Text,
@@ -11,6 +12,7 @@ import {useDispatch} from 'react-redux';
 import styles from './style';
 import {normalize,font} from '../../utils/Platform';
 import {login} from './../../redux/reducers/authReducer';
+import { loginUser } from '../../redux/UserProfile/ActionCreators/postUserAction';
 
 
 const Login = ({navigation}) => {
@@ -22,10 +24,10 @@ const Login = ({navigation}) => {
 
   const validate = () => {
     if (username == '') {
-      alert('Please fill the user name');
+      Alert.alert('Please fill the user name');
       return false;
     } else if (password == '') {
-      alert('please fill passord');
+      Alert.alert('please fill password');
       return false;
     }
     return true;
@@ -34,7 +36,10 @@ const Login = ({navigation}) => {
     // if (validate()) {
 
     // }
-    dispatch(login({accessToken: 'ss', roleType: '1'}));
+    if(validate()){
+      dispatch(loginUser(username,password));
+    }
+    //dispatch(login({accessToken: 'ss', roleType: '1'}));
   };
   return (
     <ScrollView style={styles.root}>

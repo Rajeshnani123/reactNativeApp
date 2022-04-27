@@ -7,8 +7,29 @@ import {
 } from 'react-native';
 import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
+import { useDispatch } from 'react-redux';
 
 const UserDetailForm = () => {
+  const dispatch = useDispatch();
+  const [name,setName] = React.useState("");
+  const [email,setEmail] = React.useState("");
+  const [mobile,setMobile] = React.useState("");
+  const [dob,setDob] = React.useState("");
+  const [type,setType] = React.useState("");
+  const [gstin,setGstin] = React.useState("");
+  const [address,setAddress] = React.useState("");
+
+  const updateAccount = () => {
+    const Body={
+      address: address,
+      email: email,
+      gstin: gstin,
+      phoneNumber: mobile,
+      userName: name,
+      userType: type,
+    }
+  }
+
   return (
     <ScrollView style={Styles.root}>
       <View style={Styles.view}>

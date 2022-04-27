@@ -56,7 +56,7 @@ export function CustomDrawer(props, {navigation}) {
             (styles.drawerContent,
             {flex: 1, alignItems: 'center', justifyContent: 'center'})
           }
-          onPress={() => navigation.navigate('SignUp')}>
+          onPress={() => navigation.navigate('Register')}>
           <Text>Manage Store</Text>
         </TouchableOpacity>
         <DrawerItemList {...props} />
