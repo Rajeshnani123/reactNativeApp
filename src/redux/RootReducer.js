@@ -7,7 +7,7 @@ import { persistReducer } from "redux-persist";
 const initialConfig = {
     key: "auth",
     storage: AsyncStorage,
-    whitelist: ["token"]
+    whitelist: ["token","roleType"]
 };
 
 

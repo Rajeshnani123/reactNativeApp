@@ -9,17 +9,19 @@ import HomeStack from './HomeStack';
 export default function Navigations() {
   const {loading, token} = useSelector(state => state.userProfileReducers);
 
-  return (
-    <>
-      {loading ? (
-        <View style={{marginTop: '50%'}}>
-          <Loader />
-        </View>
-      ) : token ? (
-        <HomeStack />
-      ) : (
-        <AuthStack />
-      )}
-    </>
+  const validate = (condition) => {
+    if(condition){
+      return true;
+    }else{
+      return false;
+    }
+  }
+ 
+  return(
+    token ? (
+      <HomeStack /> 
+    ): (
+      <AuthStack />
+    )
   );
 }

@@ -2,7 +2,7 @@ import {Alert} from "react-native";
 import { useDispatch } from "react-redux";
 import { ApiConnections } from "../../../Api/ApiConnections";
 import { post, put } from "../../../Api/BaseApi";
-import { USER_ACCOUNT_CREATION, USER_ACCOUNT_CREATION_FAILURE, USER_ACCOUNT_DELETE, USER_ACCOUNT_DELETE_FAILURE, USER_ACCOUNT_UPDATE, USER_ACCOUNT_UPDATE_FAILURE, USER_ACCOUNT_UPDATE_PASSWORD, USER_ACCOUNT_UPDATE_PASSWORD_FAILURE, USER_LOGIN_FAILURE, USER_LOGIN_LOADING, USER_LOGIN_SUCCESS } from "../Action/ActionType"
+import { USER_ACCOUNT_CREATION, USER_ACCOUNT_CREATION_FAILURE, USER_ACCOUNT_DELETE, USER_ACCOUNT_DELETE_FAILURE, USER_ACCOUNT_LOADING, USER_ACCOUNT_UPDATE, USER_ACCOUNT_UPDATE_FAILURE, USER_ACCOUNT_UPDATE_LOADING, USER_ACCOUNT_UPDATE_PASSWORD, USER_ACCOUNT_UPDATE_PASSWORD_FAILURE, USER_ACCOUNT_UPDATE_PASSWORD_LOADING, USER_DELETE_LOADING, USER_LOGIN_FAILURE, USER_LOGIN_LOADING, USER_LOGIN_SUCCESS } from "../Action/ActionType"
 
 
 export const loginUser = (username,password) => {
@@ -14,11 +14,11 @@ export const loginUser = (username,password) => {
                 username
             }
             const response = await post(ApiConnections.Login,Body);
-            if(response && response.token){
-                dispatch({ type: USER_LOGIN_SUCCESS, token: response.token })
+            if(response.data && response.data.token){
+                dispatch({ type: USER_LOGIN_SUCCESS, token: response.data.token })
             }else{
                 Alert.alert("Please try after some time");
-                dispatch({ type: USER_LOGIN_FAILURE, error: response });
+                dispatch({ type: USER_LOGIN_FAILURE, error: response.data });
             }
         }catch(error){
             Alert.alert("Please try after some time");
@@ -30,15 +30,15 @@ export const loginUser = (username,password) => {
 export const createUser = (Body) => {
     return async(dispatch) => {
         try{
-            dispatch({type: USER_LOGIN_LOADING});
+            dispatch({type: USER_ACCOUNT_LOADING});
             const response = await post(ApiConnections.Account,Body);
-            if(response){
-                dispatch({type: USER_ACCOUNT_CREATION})
+            if(response.data){
+                dispatch({type: USER_ACCOUNT_CREATION,statusCode: response.status})
             }else{
-                dispatch({type: USER_ACCOUNT_CREATION_FAILURE});
+                dispatch({type: USER_ACCOUNT_CREATION_FAILURE,statusCode: 400});
             }
         }catch(error){
-            dispatch({type: USER_ACCOUNT_CREATION_FAILURE});
+            dispatch({type: USER_ACCOUNT_CREATION_FAILURE,statusCode: 400});
         }
     }
 }
@@ -46,7 +46,7 @@ export const createUser = (Body) => {
 export const updateAccount = (Body) => {
     return async(dispatch) => {
         try{
-            dispatch({type: USER_LOGIN_LOADING});
+            dispatch({type: USER_ACCOUNT_UPDATE_LOADING});
             const response = await put(ApiConnections.Account,Body);
             if(response){
                 dispatch({type: USER_ACCOUNT_UPDATE})
@@ -62,7 +62,7 @@ export const updateAccount = (Body) => {
 export const deactivateAccount = (Body) => {
     return async(dispatch) => {
         try{
-            dispatch({type: USER_LOGIN_LOADING});
+            dispatch({type: USER_DELETE_LOADING});
             const response = await put(ApiConnections.Deactivate,Body);
             if(response){
                 dispatch({type: USER_ACCOUNT_DELETE})
@@ -78,7 +78,7 @@ export const deactivateAccount = (Body) => {
 export const updatePassword = (Body) => {
     return async(dispatch) => {
         try{
-            dispatch({type: USER_LOGIN_LOADING});
+            dispatch({type: USER_ACCOUNT_UPDATE_PASSWORD_LOADING});
             const response = await put(ApiConnections.ForgotPassword,Body);
             if(response){
                 dispatch({type: USER_ACCOUNT_UPDATE_PASSWORD})

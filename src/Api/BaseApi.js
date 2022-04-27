@@ -5,7 +5,7 @@ const post = async (url,Body,header) => {
     try{
         const response = await axios.post(url,Body);
         if(response ){
-            return response.data
+            return response
         }
     }catch(error){
         return error;
