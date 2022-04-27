@@ -28,6 +28,7 @@ export default function VendorStack({route, navigation}) {
           headerShown: false,
         }}
       />
+  
     </VendorStk.Navigator>
   );
 }

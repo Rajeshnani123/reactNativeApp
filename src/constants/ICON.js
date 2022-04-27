@@ -72,7 +72,13 @@ export const ICONS = {
   downType:ICONTYPE.Feather,
   down:'arrow-down-circle',
   chevronType:ICONTYPE.Feather,
-  chevronright:'chevron-right'
+  chevronright:'chevron-right',
+  chevronType:ICONTYPE.Feather,
+  chevrondown:'chevron-down',
+  closeType:ICONTYPE.Feather,
+  close:'x',
+  checkCircleType:ICONTYPE.Feather,
+  checkcircle:'check-circle'
 };
 
 export default ICON;
