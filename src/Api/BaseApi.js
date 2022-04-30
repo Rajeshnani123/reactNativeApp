@@ -39,14 +39,14 @@ const get = async (url,header) => {
     try{
         const response = await axios.get(url);
         if(response){
-            return response.data
+            return response
         }
     }catch(error){
         return error;
     }
 }
 
-const deleteAxios = async (uel,header) => {
+const deleteAxios = async (url,header) => {
     try{
         const response = await axios.delete(url);
         if(response){

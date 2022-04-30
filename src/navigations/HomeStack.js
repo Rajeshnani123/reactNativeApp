@@ -17,7 +17,10 @@ import {logout} from '../redux/reducers/authReducer';
 import Checkout from '../screens/enduser/Checkout/Checkout';
 import CartStk from './endUserStack/CartStk';
 import Success from '../screens/enduser/Success/Success';
-import Error from '../screens/enduser/Error/Error'
+import Error from '../screens/enduser/Error/Error';
+import AsyncStrorage from "@react-native-async-storage/async-storage";
+import { USER_ACCOUNT_LOGOUT } from '../redux/UserProfile/Action/ActionType';
+
 const Drawer = createDrawerNavigator();
 
 // export function CustomDrawerContent({navigation}) {
@@ -34,7 +37,7 @@ const Drawer = createDrawerNavigator();
 
 export default function HomeStack() {
   const dispatch = useDispatch();
-
+  
   return (
     <Drawer.Navigator
       // drawerContent={props => <CustomDrawer {...props} />}
@@ -112,7 +115,8 @@ export default function HomeStack() {
             // 3 is index of logout item in drawer
 
             // navigation.replace('Login');
-            dispatch(logout());
+            dispatch({type: USER_ACCOUNT_LOGOUT});
+          
             // }
           },
         })}

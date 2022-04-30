@@ -69,14 +69,14 @@ const SignUp = ({navigation}) => {
             placeholder="User name"
             value={name}
             onChangeText={(text) => setName(text)}
-            placeholderTextColor={'#C4C4C4'}></TextInput>
+            placeholderTextColor={'#C4C4C4'} />
           <TextInput
             style={styles.input}
             value={email}
             onChangeText={(text) => setEmail(text)}
             placeholder="Email"
             type="email"
-            placeholderTextColor={'#C4C4C4'}></TextInput>
+            placeholderTextColor={'#C4C4C4'} />
           <TextInput
             style={styles.input}
             value={mobile}
@@ -84,21 +84,21 @@ const SignUp = ({navigation}) => {
             keyboardType="number-pad"
             onChangeText={(text) => setMobile(text)}
             placeholder="Mobile no"
-            placeholderTextColor={'#C4C4C4'}></TextInput>
+            placeholderTextColor={'#C4C4C4'} />
           <TextInput
             style={styles.input}
             value={password}
             secureTextEntry={true}
             onChangeText={(text) => setPassword(text)}
             placeholder="Password"
-            placeholderTextColor={'#C4C4C4'}></TextInput>
+            placeholderTextColor={'#C4C4C4'} />
           <TextInput
             style={styles.input}
             value={confirmPassword}
             secureTextEntry={true}
             onChangeText={(text) => setConfirmPassword(text)}
             placeholder="Confirm password"
-            placeholderTextColor={'#C4C4C4'}></TextInput>
+            placeholderTextColor={'#C4C4C4'} />
           <TouchableOpacity
             style={styles.button}
             onPress={createUserFunc}>
