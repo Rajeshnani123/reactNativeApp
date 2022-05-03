@@ -2,43 +2,49 @@ import {StyleSheet} from 'react-native';
 // import {COLORS, SIZES, HP} from './../constants';
 import {normalize} from '../../../utils/Platform';
 
-export default StyleSheet.create({
+const styles= StyleSheet.create({
   root: {
     backgroundColor: '#FFF7EA',
   },
-  head: {
-    height: normalize(50),
-    backgroundColor: '#FFB43A',
-    flexDirection: 'row',
+  container: {
+    marginHorizontal: normalize(15),
+    marginVertical: normalize(5),
   },
-  img: {
-    height: normalize(160),
-    width: normalize(160),
-    borderRadius: 160 / 2,
-    marginHorizontal: normalize(95),
-    marginVertical: normalize(25),
+  title:{
+    fontFamily: "Poppins",
+  fontSize: normalize(18),
+  fontWeight: "500",
+  fontStyle: "normal",
+  color:'#000'
   },
-  leftDescription: {
-    marginVertical: normalize(10),
-    marginLeft: normalize(70),
+  subtitle:{
+    fontFamily: "Poppins",
+    fontSize: normalize(14),
+    fontWeight: "normal",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "left",
+    color: "#878787",
+    marginTop:normalize(9)
   },
-  rightDescription: {
-    marginLeft: normalize(30),
-    marginVertical: normalize(10),
-  },
-  button: {
-    height: normalize(45),
-    backgroundColor: '#FFB43A',
-    width: 220,
-    marginHorizontal: normalize(60),
-    alignItems: 'center',
-    marginVertical: normalize(30),
-    borderRadius: 5,
-  },
-  buttonText: {
-    fontFamily: 'Poppins',
-    fontWeight: 'bold',
-    color: '#000',
-    marginVertical: normalize(10),
-  },
+  orders:{
+    fontFamily: "Poppins",
+  fontSize: normalize(14),
+  fontWeight: "normal",
+  fontStyle: "normal",
+  letterSpacing: 0,
+  textAlign: "left",
+  color: "#000000",
+  marginTop:normalize(9)
+  },icon:{
+    marginTop:normalize(12),flexDirection:'row'
+  }
+
+  
+  
+  
+  
+  
+  
 });
+export default styles
