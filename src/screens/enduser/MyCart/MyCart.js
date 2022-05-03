@@ -215,7 +215,7 @@ const MyCart = ({navigation}) => {
         />
       </View> */}
         <View style={styles.container}>
-          <View flexDirection={'row'}>
+          
             <SearchBox
               value={search}
               onChangeText={val => setSearch(val)}
@@ -223,7 +223,7 @@ const MyCart = ({navigation}) => {
               marginTop={normalize(6)}
               ml={0}
             />
-          </View>
+        
           <View style={styles.cartitemview}>
             <Text style={styles.cartitems}>Cart items</Text>
             <Text style={styles.pincode}>Pincode - 560010</Text>
@@ -239,8 +239,8 @@ const MyCart = ({navigation}) => {
             renderItem={({item}) => (
               <HorizontalCard
                 containerStyle={{
-                  borderRadius: 10,
-                  marginTop: 10,
+                  borderRadius: normalize(10),
+                  marginTop: normalize(10),
                   height: normalize(277),
                   // marginHorizontal: normalize(1),
                 }}

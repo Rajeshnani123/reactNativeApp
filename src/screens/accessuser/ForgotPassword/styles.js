@@ -11,9 +11,13 @@ const styles = StyleSheet.create({
     marginRight: normalize(36),
     padding: normalize(20),
     marginTop: normalize(40),
+    borderWidth:normalize(3),
+    borderColor:'#ffb43a',
+    borderRadius:normalize(5),
+  
   },
   button: {
-    height: normalize(60),
+    height: normalize(55),
     borderRadius: 5,
     backgroundColor: '#ffb43a',
     borderStyle: 'solid',
@@ -26,7 +30,7 @@ const styles = StyleSheet.create({
   reset:{
     marginLeft:normalize(85),
     fontFamily: "Poppins",
-    fontSize: normalize(18),
+    fontSize: normalize(16),
     fontWeight: "normal",
     fontStyle: "normal",
     marginTop:normalize(16),

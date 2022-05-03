@@ -194,7 +194,7 @@ const Checkout = ({navigation}) => {
           <View style={styles.card2}>
             <Box mx={7} my={3}>
               <Text style={styles.pricedetails}>Price Details</Text>
-              <Text>___________________________________________</Text>
+              <Text>_______________________________________________</Text>
               <View style={styles.names}>
                 <Box>
                   <Text style={styles.txtcolor}>Price (1 item)</Text>
@@ -207,7 +207,7 @@ const Checkout = ({navigation}) => {
                   <Text style={styles.txtcolor}>Rs. 40</Text>
                 </Box>
               </View>
-              <Text>___________________________________________</Text>
+              <Text>_______________________________________________</Text>
               <Box flexDirection={'row'} mx={3}>
                 <Text style={{fontSize: 16, color: '#000', marginTop: 5}}>
                   Total Amount
@@ -217,12 +217,12 @@ const Checkout = ({navigation}) => {
                     fontSize: 16,
                     color: '#000',
                     marginTop: 5,
-                    marginLeft: 90,
+                    marginLeft: normalize(90),
                   }}>
                   Rs.499
                 </Text>
               </Box>
-              <Text>___________________________________________</Text>
+              <Text>_______________________________________________</Text>
             </Box>
           </View>
 

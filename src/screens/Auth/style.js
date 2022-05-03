@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     marginRight: normalize(31),
   },
   button: {
-    
+    borderRadius: 5,
     height: normalize(60),
     backgroundColor: '#ffb43a',
     shadowColor: 'rgba(0, 0, 0, 0.25)',
@@ -54,21 +54,20 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 20,
     shadowOpacity: 1,
-    marginHorizontal: 20,
+    
     alignItems: 'center',
     marginTop: normalize(28),
-    marginLeft: normalize(36),
+    marginLeft:normalize(36),
     marginRight: normalize(31),
   },
   lgn: {
-    width: normalize(90),
+   
     height: normalize(33),
     fontFamily: 'Poppins',
     marginTop: normalize(13),
     fontSize: 22,
     fontWeight: 'normal',
-    marginLeft: normalize(149),
-    marginRight: normalize(154),
+   
     fontStyle: 'normal',
     letterSpacing: 0,
     textAlign: 'left',
@@ -103,19 +102,17 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins',
     fontSize: normalize(16),
     color: '#332F32',
-    marginLeft: normalize(159),
-    marginTop: normalize(30),
-    marginRight:normalize(159),
-    width:normalize(110)
+    fontWeight:'normal'
+     
   },
   icon: {
     
     flexDirection: 'row',
     justifyContent: 'space-between',
-    
+    width:normalize(200),
     marginTop: normalize(36),
-    marginLeft: normalize(87),
-    marginRight:normalize(100)
+    marginLeft: normalize(75),
+    
   },
   dnt: {
     fontFamily: 'Poppins',
@@ -127,5 +124,9 @@ const styles = StyleSheet.create({
     width: '70%',
     marginTop: 40,
   },
+  lgnbtn:{
+alignItems:'center',
+marginTop:normalize(30)
+  }
 });
 export default styles;

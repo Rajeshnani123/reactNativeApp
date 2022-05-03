@@ -3,9 +3,9 @@ import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Feather';
 import {GLOBALDATA} from '../../../constants/GLOBALJSON';
-import {IMAGES, FONTS, COLORS, ICONS, HP} from '../../../constants';
+import {IMAGES, FONTS, COLORS, ICONS, HP,ICON} from '../../../constants';
 import {Box, Button, Image} from 'native-base';
-import style from './Style';
+import styles from './Style';
 
 import {
   Header,
@@ -58,11 +58,21 @@ const leftComponent = (title, address, noOfOrders, noOfPeople) => {
           source={{uri: IMAGES.dummy2}}
         />
 
-        <Box mx={5} marginVertical={5}>
-          <Text style={{color: COLORS.black, ...FONTS.h3}}>{title}</Text>
-          <Text style={{color: COLORS.gray, ...FONTS.h4}}>{address}</Text>
-          <Text style={{color: COLORS.black, ...FONTS.h4}}>{noOfOrders}</Text>
-          <Text style={{color: COLORS.black, ...FONTS.h4}}>{noOfPeople}</Text>
+        <Box mx={8} marginVertical={5}>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.subtitle}>{address}</Text>
+          <Text style={styles.orders}>{noOfOrders}</Text>
+          <View style={styles.icon}>
+          <ICON
+                type={ICONS.usersType}
+                name={ICONS.users}
+                size={18}
+                color={COLORS.black}
+              
+                
+              />
+              <Text>{noOfPeople}</Text>
+              </View>
         </Box>
         <RightArrowBtn
           my={12}
@@ -78,18 +88,19 @@ const GlobalStore = ({navigation}) => {
   const [search, setSearch] = useState();
 
   return (
-    <>
+    <ScrollView style={styles.root}>
       <HeaderContent navigation={navigation} />
-      <View flexDirection={'row'} style={style.container}>
+      <View style={{alignItems:'center'}}>
         <SearchBox
           value={search}
           onChangeText={val => setSearch(val)}
           onSearch={() => alert('Searchnow')}
+          width={'361'}
         />
       </View>
 
       <FlatList
-        style={style.container}
+        style={styles.container}
         overScrollMode="never"
         showsVerticalScrollIndicator={false}
         numColumns={1}
@@ -97,13 +108,14 @@ const GlobalStore = ({navigation}) => {
         keyExtractor={item => `${item.id}`}
         renderItem={({item}) => (
           <HorizontalCard
-            containerStyle={{borderRadius: 10, marginBottom: normalize(10)}}
+            containerStyle={{borderRadius: 10, marginBottom: normalize(10),height:normalize(140)}}
             customWidth={'100%'}
             leftCardWidth={'75%'}
             rightCardWidth={'25%'}
             cardColor={'white'}
             rightWidth={100}
             leftWidth={100}
+          
             leftComponent={leftComponent(
               item.title,
               item.address,
@@ -118,7 +130,7 @@ const GlobalStore = ({navigation}) => {
           <View style={{marginBottom: HP('50%')}}></View>
         )}
       />
-    </>
+    </ScrollView>
   );
 };
 

@@ -5,7 +5,7 @@ export const GLOBALDATA = [
         title : 'Store 1',
         address:'Rajaji nagar - 560010',
         noOfOrders:'No of Orders 500',
-        noOfPeople:'No of People 10',
+        noOfPeople:' 10',
         
     },
     {   
@@ -14,7 +14,7 @@ export const GLOBALDATA = [
         title : 'Store 2',
         address:'Rajaji nagar - 560010',
         noOfOrders:'No of Orders 500',
-        noOfPeople:'No of People 10',
+        noOfPeople:' 10',
         
     },
     {
@@ -23,7 +23,7 @@ export const GLOBALDATA = [
         title : 'Store 3',
         address:'Rajaji nagar - 560010',
         noOfOrders:'No of Orders 500',
-        noOfPeople:'No of People 10',
+        noOfPeople:' 10',
         
     },
     {
@@ -32,7 +32,7 @@ export const GLOBALDATA = [
         title : 'Store 4',
         address:'Rajaji nagar - 560010',
         noOfOrders:'No of Orders 500',
-        noOfPeople:'No of People 10',
+        noOfPeople:' 10',
         
     },
     {
@@ -41,7 +41,7 @@ export const GLOBALDATA = [
         title : 'Store 5',
         address:'Rajaji nagar - 560010',
         noOfOrders:'No of Orders 500',
-        noOfPeople:'No of People 10',
+        noOfPeople:' 10',
         
     },{
         id:6,
@@ -49,7 +49,7 @@ export const GLOBALDATA = [
         title : 'Store 6',
         address:'Rajaji nagar - 560010',
         noOfOrders:'No of Orders 500',
-        noOfPeople:'No of People 10',
+        noOfPeople: ' 10',
         
     }
 ];

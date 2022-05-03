@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   productname: {
     fontFamily: 'Poppins',
-    fontSize: 16,
+    fontSize: normalize(20),
     fontWeight: 'normal',
     fontStyle: 'normal',
     letterSpacing: 0,
@@ -96,18 +96,19 @@ const styles = StyleSheet.create({
   },
   rating: {
     backgroundColor: '#ffb43a',
-    width: normalize(50),
+    width: normalize(40),
     height: normalize(30),
     alignItems: 'center',
+    justifyContent:'space-around'
   },
   num: {
     color: '#000',
     marginLeft: normalize(10),
-    fontSize: 14,
+    fontSize: normalize(16),
   },
   prevprice: {
     fontFamily: 'Poppins',
-    fontSize: 14,
+    fontSize: normalize(16),
     fontWeight: 'normal',
     fontStyle: 'normal',
     letterSpacing: 0,
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
   },
   currentprice: {
     fontFamily: 'Poppins',
-    fontSize: 16,
+    fontSize: normalize(18),
     fontWeight: 'normal',
     fontStyle: 'normal',
     letterSpacing: 0,
@@ -142,15 +143,16 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   arrowdown: {
-    marginLeft: normalize(20),
+    marginLeft: normalize(24),
     backgroundColor: '#ffb43a',
-    height: normalize(30),
-    width: normalize(30),
+    height: normalize(32),
+    width: normalize(32),
     marginTop: normalize(3),
     borderRadius: 5,
+    alignItems:'center'
   },
   delivery: {
-    fontSize: 10,
+    fontSize: normalize(12),
     marginTop: normalize(50),
     marginLeft: normalize(15),
     color: '#000',
@@ -163,15 +165,15 @@ const styles = StyleSheet.create({
   },
   pricedetails: {
     fontFamily: 'Poppins',
-    fontSize: 16,
+    fontSize: normalize(18),
     fontWeight: 'normal',
     fontStyle: 'normal',
     letterSpacing: 0,
     textAlign: 'left',
-    color: '#000000',marginLeft:normalize(15)
+    color: '#000000',marginLeft:normalize(10)
   },
   names: {
-    marginVertical: 5,
+    marginVertical: normalize(5),
 flexDirection:'row',
     
     marginHorizontal:normalize(15)
@@ -180,8 +182,8 @@ flexDirection:'row',
     color:'#000'
   },
   ftr:{
-    width: 335,
-  height: 74,
+    width: normalize(330),
+  height: normalize(74),
   backgroundColor: "rgba(255, 180, 58, 0.26)",
   flexDirection:'row',
   marginTop:normalize(10)
@@ -196,7 +198,7 @@ marginTop:normalize(20)
     width:normalize(120),
     backgroundColor:'#ffb43a',
     marginLeft:normalize(70),
-    marginTop:normalize(20)
+    marginTop:normalize(16),borderRadius:normalize(5)
   }
 });
 export default styles;
