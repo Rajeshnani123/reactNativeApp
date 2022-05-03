@@ -18,6 +18,8 @@ const styles = StyleSheet.create({
     borderRadius: normalize(5),
     color: '#c4c4c4c4',
     marginVertical: normalize(6),
+    marginTop:normalize(20),
+    height:normalize(45)
   },
   button: {
     backgroundColor: '#FFB43A',
@@ -32,25 +34,31 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins',
     fontWeight: 'bold',
     fontSize: normalize(16),
+    color:'#FFF'
   },
   img: {
-    marginTop: normalize(25),
-    alignSelf: 'center',
+    marginTop: normalize(50),
+    marginLeft:normalize(15),
+    width:normalize(150),
+    height:normalize(135),
+    marginRight:normalize(47)
   },
   signup: {
     fontFamily: 'Poppins',
     fontSize: normalize(25),
     color: '#000',
     fontWeight: 'bold',
-    alignSelf: 'center',
-    marginTop: normalize(40),
+    marginLeft:normalize(40),
+    marginTop:normalize(130)
+    
   },
   acc: {
     fontFamily: 'Poppins',
     fontWeight: '900',
     color: '#000',
-    marginHorizontal: normalize(70),
+   fontSize:normalize(18),
     marginVertical: normalize(30),
+    marginLeft:normalize(10)
   },
 });
 

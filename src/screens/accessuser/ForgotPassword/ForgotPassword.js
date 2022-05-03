@@ -8,27 +8,28 @@ import {Header} from '../../../components';
 import {normalize} from '../../../utils/Platform';
 import styles from './styles'
 
-const HeaderContent = ({navigation}) => {
-  return <Header />;
-};
+
 
 const ForgotPassword = ({navigation}) => {
   return (
     <>
-      <HeaderContent navigation={navigation} />
+      
 
       <View>
+      <View style={{alignItems:'center'}}>
       <Image
-            source={require('../../../assets/Images/Forgotpassword.png')}
+            source={require('../../../assets/Images/fpp.png')}
             style={{
-              height: normalize(230),
-              marginTop:normalize(70),
-             marginLeft:normalize(40)
+              height: normalize(200),
+              width: normalize(240),
+              marginTop:normalize(127),
+              
+             
             }}
-          />
+          /></View>
           <TextInput
           style={styles.input}
-          placeholder="Email/Mobile No"
+          placeholder="Email/ Mobile No"
           ></TextInput>
           <TouchableOpacity style={styles.button} onPress={() => making_api_call()}>
         <Text style={styles.reset}>Reset Password</Text>

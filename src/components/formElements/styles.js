@@ -10,7 +10,7 @@ export default StyleSheet.create({
   // BUTTONS
 
   buttonContainer: {
-    borderRadius: normalize(10),
+    borderRadius: normalize(5),
     paddingHorizontal: '5%',
     shadowColor: 'rgba(0, 0, 0, 0.25)',
     shadowOffset: {

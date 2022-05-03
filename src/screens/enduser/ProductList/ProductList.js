@@ -3,7 +3,15 @@ import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Feather';
 import {PLDATA} from '../../../constants/PLJASON';
-import {IMAGES, FONTS, COLORS, ICONS, HP, SIZES} from '../../../constants';
+import {
+  IMAGES,
+  FONTS,
+  COLORS,
+  ICONS,
+  HP,
+  SIZES,
+  ICON,
+} from '../../../constants';
 import {Box, Button, Image} from 'native-base';
 // import ProductDetails from '../ProductDetails';
 import {
@@ -44,58 +52,73 @@ const HeaderContent = ({navigation}) => {
   );
 };
 
-const leftComponent = (title, subtitle, price, discount, barganing) => {
+const leftComponent = (
+  title,
+  subtitle,
+  price,
+  prevprice,
+  discount,
+  barganing,
+) => {
   return (
     <>
       <Box alignItems="flex-start" flexDirection={'row'}>
         <Image
           alt="productImg"
           resizeMode={'stretch'}
-          borderRadius={10}
-          width={100}
-          height={120}
+          my={2}
+          width={120}
+          height={140}
           source={{uri: IMAGES.dummy1}}
         />
 
-        <Box mx={5}>
-          <Text style={{color: COLORS.black, ...FONTS.h3}}>{title}</Text>
-          <Text style={{color: COLORS.gray, ...FONTS.h4}}>{subtitle}</Text>
+        <Box mx={3} my={2}>
+          <Text style={styles.productName}>{title}</Text>
+          <Text style={styles.subName}>{subtitle}</Text>
           <Box
             width={110}
             flexDirection={'row'}
-            justifyContent={'space-between'}>
-            <Text style={{color: COLORS.gray, ...FONTS.h4}}>{price}</Text>
-            <Text style={{color: COLORS.primary, ...FONTS.h4}}>{discount}</Text>
+            justifyContent={'space-between'}
+            my={2}>
+            <Text style={styles.price}>{price}</Text>
+            <Text style={styles.prevprice}>{prevprice}</Text>
+            <Text style={styles.discount}>{discount}</Text>
           </Box>
-          <View flexDirection={'row'}>
-            <BrBtn
-              iconType={ICONS.exclamationType}
-              iconName={ICONS.exclamation}
-              onPress={() => alert('btn')}
-            />
-            <Text style={{color: COLORS.green, ...FONTS.h4}}>{barganing}</Text>
-          </View>
-          <View flexDirection={'row'}>
+
+          <View style={{flexDirection: 'row', marginTop: 10}}>
             <TouchableOpacity
               style={{
                 backgroundColor: COLORS.primary,
-                width: 80,
-                borderRadius: 10,
+                width: normalize(85),
+                height: normalize(50),
+                borderRadius: normalize(5),
                 alignItems: 'center',
-                marginTop: 12,
               }}
               onPress={() => alert('btn')}>
-              <Text style={{color: COLORS.black, ...FONTS.h3, marginTop: 12}}>
+              <Text style={{fontSize:normalize(18),color:'#000', marginTop: 12}}>
                 Buy
               </Text>
             </TouchableOpacity>
-            <ActionBtn
-              ml={5}
-              iconType={ICONS.cartType}
-              iconName={ICONS.cart}
-              onPress={() => alert('btn')}
-              height={'50%'}
-            />
+            <TouchableOpacity
+              style={{
+                backgroundColor: COLORS.primary,
+                width: normalize(85),
+                height: normalize(50),
+                borderRadius: normalize(5),
+                alignItems: 'center',
+                marginLeft:normalize(15)
+              }}
+              onPress={() => alert('btn')}>
+              <View style={{marginTop:normalize(13)}}>
+              <ICON
+                type={ICONS.cartType}
+                name={ICONS.cart}
+                size={24}
+                color={COLORS.black}
+                
+              />
+              </View>
+            </TouchableOpacity>
           </View>
         </Box>
       </Box>
@@ -134,12 +157,11 @@ const ProductList = ({navigation}) => {
               value={search}
               onChangeText={val => setSearch(val)}
               onSearch={() => alert('Searchnow')}
-              width={'70%'}
-              ml={0}
+              width={'80%'}
             />
 
             <ActionBtn
-              ml={12}
+              ml={5}
               iconType={ICONS.filterType}
               iconName={ICONS.filter}
               onPress={() => alert('Filter')}
@@ -157,9 +179,11 @@ const ProductList = ({navigation}) => {
                 containerStyle={{
                   borderRadius: 10,
                   marginBottom: normalize(21),
+
                   // marginHorizontal: normalize(1),
                 }}
                 customWidth={'100%'}
+                customHeight={214}
                 leftCardWidth={'75%'}
                 rightCardWidth={'25%'}
                 cardColor={'white'}
@@ -169,8 +193,8 @@ const ProductList = ({navigation}) => {
                   item.title,
                   item.subtitle,
                   item.price,
+                  item.prevprice,
                   item.discount,
-                  item.barganing,
                 )}
                 onPress={() =>
                   navigation.navigate('ProductDetails')
@@ -191,6 +215,7 @@ export default ProductList;
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: normalize(15),
+    marginVertical: normalize(5),
   },
   root: {
     backgroundColor: '#FFF7EA',
@@ -230,4 +255,31 @@ const styles = StyleSheet.create({
     color: '#000',
     marginVertical: normalize(10),
   },
+  productName: {
+    fontFamily: 'Poppins',
+    fontSize: 18,
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+    letterSpacing: 0,
+
+    color: '#000000',
+  },
+  price: {
+    fontSize: normalize(18),
+    color: '#000',
+  },
+  prevprice: {
+    fontSize: normalize(14),
+    marginTop: normalize(5),
+    marginLeft: normalize(15),
+  },
+  discount: {
+    marginTop: normalize(5),
+    color: '#ffb43a',
+    marginLeft: normalize(15),
+    fontSize: normalize(14),
+  },
+  subName:{
+    marginTop:normalize(5)
+  }
 });

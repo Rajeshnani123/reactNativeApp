@@ -78,7 +78,17 @@ export const ICONS = {
   closeType:ICONTYPE.Feather,
   close:'x',
   checkCircleType:ICONTYPE.Feather,
-  checkcircle:'check-circle'
+  checkcircle:'check-circle',
+  googleType:ICONTYPE.AntDesign,
+  google:'google',
+  facbookType:ICONTYPE.AntDesign,
+  facbook:'facebook-square',
+  twitterType:ICONTYPE.AntDesign,
+  twitter:'twitter',
+  instagramType:ICONTYPE.AntDesign,
+  instagram:'instagram',
+  usersType:ICONTYPE.Feather,
+  users:'users',
 };
 
 export default ICON;
