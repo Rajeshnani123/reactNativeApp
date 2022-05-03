@@ -9,6 +9,7 @@ export const FormSelect = ({
   mt = 0,
   mb = 0,
   options = [],
+  setValue,
   selectedValue,
   containerStyle,
   placeHolder,
@@ -29,6 +30,7 @@ export const FormSelect = ({
       }}
       mt={mt}
       mb={mb}
+      onValueChange={itemValue => setValue(itemValue)}
       {...rest}>
       {options.length > 0 ? (
         options.map((item, index) => (

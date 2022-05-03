@@ -1,12 +1,28 @@
-import {configureStore} from '@reduxjs/toolkit';
-import {setupListeners} from '@reduxjs/toolkit/query';
 
-import authReducer from './reducers/authReducer';
+import { createStore,applyMiddleware,compose } from 'redux';
+import thunk from "redux-thunk"
+import { createLogger } from 'redux-logger';
+import {rootReducer} from "./RootReducer";
+import { persistStore} from "redux-persist";
 
-export const store = configureStore({
-  reducer: {
-    auth: authReducer,
-  },
-});
+// import authReducer from './reducers/authReducer';
+const reducer = (state,action) => rootReducer(state,action);
 
-setupListeners(store.dispatch);
+const logger = createLogger();
+
+let middleware = [];
+middleware = [...middleware,thunk];
+
+// export const store = configureStore({
+//   reducer: {
+//     auth: authReducer,
+//   },
+// });
+
+export const store = createStore(
+  reducer,
+  compose(applyMiddleware(...middleware,logger))
+);
+
+export const persistor = persistStore(store);
+// setupListeners(store.dispatch);

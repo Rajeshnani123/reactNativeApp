@@ -1,4 +1,4 @@
-import {View, HStack, Text, Image, Center, Box, FlatList} from 'native-base';
+import {View, HStack, Text, Image, Center, Box, FlatList, Alert} from 'native-base';
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {ICON, ICONS, FONTS, IMAGES, WP, HP, COLORS} from '../../../constants';
@@ -20,6 +20,9 @@ import style from '../../style';
 import {DATA} from '../../../constants/DUMMYJSON';
 import {AddProduct} from './AddProduct';
 import {normalize,font} from '../../../utils/Platform';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteProductById, getProductbyId, getProducts } from '../../../redux/ProductResource/ActionCreators/getProductAction';
+import { useIsFocused } from '@react-navigation/native';
 
 // const HeaderContent = ({navigation}) => {
 //   return (
@@ -45,6 +48,8 @@ import {normalize,font} from '../../../utils/Platform';
 // };
 
 const HeaderContent = ({navigation}) => {
+  
+
   return (
     <Header
       leftComponent={<MenuHeader navigation={navigation} />}
@@ -85,18 +90,20 @@ const leftComponent = (title, subTitle, qty) => {
   );
 };
 
-const rightComponent = () => {
+const rightComponent = (id,dispatch) => {
+  
   return (
     <View mt={-2}>
       <ActionBtn
         iconType={ICONS.noteType}
         iconName={ICONS.note}
-        onPress={() => alert('btn')}
+        onPress={() => dispatch(getProductbyId(id))}
       />
       <ActionBtn
         iconType={ICONS.deleteType}
         iconName={ICONS.delete}
-        onPress={() => alert('btn')}
+        onPress={() => dispatch(deleteProductById(id))}
+        //onPress={() => console.log(id)}
       />
     </View>
   );
@@ -105,6 +112,13 @@ const rightComponent = () => {
 const ManageProducts = ({navigation}) => {
   const [search, setSearch] = useState();
   const [isModelOpen, setIsModelOpen] = useState(false);
+  const dispatch = useDispatch();
+  const {allProducts} = useSelector((state) => state.getProductReducers);
+  const isFocused = useIsFocused();
+  
+  React.useLayoutEffect(()=>{
+    dispatch(getProducts())
+  },[isFocused])
 
   const HeaderComponent = () => {
     return (
@@ -153,7 +167,7 @@ const ManageProducts = ({navigation}) => {
           showsVerticalScrollIndicator={false}
           numColumns={1}
           keyExtractor={item => `${item.id}`}
-          data={DATA}
+          data={allProducts}
           renderItem={({item}) => (
             <HorizontalCard
               containerStyle={{borderRadius: 10, marginBottom: normalize(10)}}
@@ -161,8 +175,8 @@ const ManageProducts = ({navigation}) => {
               leftCardWidth={'75%'}
               rightCardWidth={'25%'}
               cardColor={'white'}
-              leftComponent={leftComponent(item.title, item.title, 3)}
-              rightComponent={rightComponent()}
+              leftComponent={leftComponent(item.product.productName, item.product.productName, 3)}
+              rightComponent={rightComponent(item.product.id,dispatch)}
               rightWidth={100}
               leftWidth={100}
             />

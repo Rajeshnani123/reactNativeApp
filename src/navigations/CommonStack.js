@@ -9,8 +9,7 @@ const HomeStack = createNativeStackNavigator();
 
 export default function CommonStack({ route, navigation }) {
 
-  const roleType = useSelector(state => state.auth.roleType);
-
+  const {roleType} = useSelector(state => state.userProfileReducers);
   return (
     <HomeStack.Navigator>
       {roleType == 1 ? <HomeStack.Screen
