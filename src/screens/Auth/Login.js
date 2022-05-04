@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Alert} from "react-native";
+import {Alert} from 'react-native';
 import {
   View,
   Text,
@@ -12,13 +12,9 @@ import {useDispatch} from 'react-redux';
 import styles from './style';
 import {normalize, font} from '../../utils/Platform';
 import {login} from './../../redux/reducers/authReducer';
-<<<<<<< HEAD
 import ICON from 'react-native-vector-icons/AntDesign';
 import {IMAGES, FONTS, COLORS, ICONS, WP, HP, SIZES} from '../../constants';
-=======
-import { loginUser } from '../../redux/UserProfile/ActionCreators/postUserAction';
-
->>>>>>> d739cb2bc0d64f87b765785582455f7498e68ec3
+import {loginUser} from '../../redux/UserProfile/ActionCreators/postUserAction';
 
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
@@ -41,8 +37,8 @@ const Login = ({navigation}) => {
     // if (validate()) {
 
     // }
-    if(validate()){
-      dispatch(loginUser(username,password));
+    if (validate()) {
+      dispatch(loginUser(username, password));
     }
     //dispatch(login({accessToken: 'ss', roleType: '1'}));
   };
@@ -102,7 +98,7 @@ const Login = ({navigation}) => {
       <View
         style={{
           flexDirection: 'row',
-          marginLeft:normalize(71),
+          marginLeft: normalize(71),
           marginBottom: normalize(50),
           marginTop: normalize(70),
         }}>
@@ -110,23 +106,22 @@ const Login = ({navigation}) => {
           style={{
             fontSize: 16,
 
-            
             color: '#000',
             fontFamily: 'Poppins',
             fontWeight: 'normal',
-          }}
-          >
+          }}>
           Don't have an account?
         </Text>
         <Text
           style={{
             fontSize: 18,
-marginLeft:normalize(10),
-            
+            marginLeft: normalize(10),
+
             color: '#000',
             fontFamily: 'Poppins',
             fontWeight: '900',
-          }} onPress={() => navigation.navigate('SignUp')}>
+          }}
+          onPress={() => navigation.navigate('SignUp')}>
           SignUp
         </Text>
       </View>
