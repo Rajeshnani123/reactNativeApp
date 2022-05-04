@@ -10,55 +10,57 @@ import {
 } from 'react-native';
 import React from 'react';
 import styles from '../SignUp/style.js';
-<<<<<<< HEAD
 import {normalize} from '../../../utils/Platform.js';
-=======
-import { createUser } from '../../../redux/UserProfile/ActionCreators/postUserAction.js';
-import { useDispatch, useSelector } from 'react-redux';
-import { USER_ACCOUNT_RESET } from '../../../redux/UserProfile/Action/ActionType.js';
-
->>>>>>> d739cb2bc0d64f87b765785582455f7498e68ec3
+import {createUser} from '../../../redux/UserProfile/ActionCreators/postUserAction.js';
+import {useDispatch, useSelector} from 'react-redux';
+import {USER_ACCOUNT_RESET} from '../../../redux/UserProfile/Action/ActionType.js';
 
 const SignUp = ({navigation}) => {
   const dispatch = useDispatch();
-  const [name,setName] = React.useState("");
-  const [email,setEmail] = React.useState("");
-  const [mobile,setMobile] = React.useState("");
-  const [password,setPassword] = React.useState("");
-  const [confirmPassword,setConfirmPassword] = React.useState("");
-  const {statusCode,createLoading} = useSelector((state) => state.userProfileReducers);
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [mobile, setMobile] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [confirmPassword, setConfirmPassword] = React.useState('');
+  const {statusCode, createLoading} = useSelector(
+    state => state.userProfileReducers,
+  );
   const createUserFunc = () => {
-    if(password === "" || confirmPassword === "" || email === "" || name === "" || mobile === ""){
-      Alert.alert("Fields cannot be empty")
-    }else if(!email.includes("@",".com")){
-      Alert.alert("Enter proper format of email")
-    }
-    else if(password === confirmPassword){
-      const Body={
+    if (
+      password === '' ||
+      confirmPassword === '' ||
+      email === '' ||
+      name === '' ||
+      mobile === ''
+    ) {
+      Alert.alert('Fields cannot be empty');
+    } else if (!email.includes('@', '.com')) {
+      Alert.alert('Enter proper format of email');
+    } else if (password === confirmPassword) {
+      const Body = {
         email: email,
         password: password,
         phoneNumber: mobile,
-        userName: name
-      }
+        userName: name,
+      };
       dispatch(createUser(Body));
-    }else{
-      Alert.alert("Password doesn't match")
+    } else {
+      Alert.alert("Password doesn't match");
     }
-  }
+  };
 
   React.useLayoutEffect(() => {
     dispatch({type: USER_ACCOUNT_RESET});
-  },[]);
+  }, []);
 
   React.useEffect(() => {
-    if(!createLoading && statusCode === 200){
-      Alert.alert("Please login with your registered Details")
+    if (!createLoading && statusCode === 200) {
+      Alert.alert('Please login with your registered Details');
       navigation.navigate('Login');
-    }else if(!createLoading && statusCode === 400){
-      Alert.alert("User Already Exists");
+    } else if (!createLoading && statusCode === 400) {
+      Alert.alert('User Already Exists');
     }
-  },[createLoading]);
-
+  }, [createLoading]);
 
   return (
     <ScrollView>
@@ -74,76 +76,53 @@ const SignUp = ({navigation}) => {
         <View style={styles.container}>
           <TextInput
             style={styles.input}
-<<<<<<< HEAD
-            placeholder="user name"
-            placeholderTextColor={'#C4C4C4'}></TextInput>
-          <TextInput
-            style={styles.input}
-            placeholder="email"
-            placeholderTextColor={'#C4C4C4'}></TextInput>
-          <TextInput
-            style={styles.input}
-            placeholder="mobile no"
-            placeholderTextColor={'#C4C4C4'}></TextInput>
-          <TextInput
-            style={styles.input}
-            placeholder="password"
-            placeholderTextColor={'#C4C4C4'}></TextInput>
-          <TextInput
-            style={styles.input}
-            placeholder="confirm password"
-            placeholderTextColor={'#C4C4C4'}></TextInput>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('Home')}>
-            <Text style={styles.lgn}> SUBMIT</Text>
-=======
             placeholder="User name"
             value={name}
-            onChangeText={(text) => setName(text)}
-            placeholderTextColor={'#C4C4C4'} />
+            onChangeText={text => setName(text)}
+            placeholderTextColor={'#C4C4C4'}
+          />
           <TextInput
             style={styles.input}
             value={email}
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={text => setEmail(text)}
             placeholder="Email"
             type="email"
-            placeholderTextColor={'#C4C4C4'} />
+            placeholderTextColor={'#C4C4C4'}
+          />
           <TextInput
             style={styles.input}
             value={mobile}
             maxLength={10}
             keyboardType="number-pad"
-            onChangeText={(text) => setMobile(text)}
+            onChangeText={text => setMobile(text)}
             placeholder="Mobile no"
-            placeholderTextColor={'#C4C4C4'} />
+            placeholderTextColor={'#C4C4C4'}
+          />
           <TextInput
             style={styles.input}
             value={password}
             secureTextEntry={true}
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={text => setPassword(text)}
             placeholder="Password"
-            placeholderTextColor={'#C4C4C4'} />
+            placeholderTextColor={'#C4C4C4'}
+          />
           <TextInput
             style={styles.input}
             value={confirmPassword}
             secureTextEntry={true}
-            onChangeText={(text) => setConfirmPassword(text)}
+            onChangeText={text => setConfirmPassword(text)}
             placeholder="Confirm password"
-            placeholderTextColor={'#C4C4C4'} />
-          <TouchableOpacity
-            style={styles.button}
-            onPress={createUserFunc}>
+            placeholderTextColor={'#C4C4C4'}
+          />
+          <TouchableOpacity style={styles.button} onPress={createUserFunc}>
             <Text style={styles.lgn}> Register</Text>
->>>>>>> d739cb2bc0d64f87b765785582455f7498e68ec3
           </TouchableOpacity>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
               marginHorizontal: normalize(70),
-              marginTop:normalize(20),
-              
+              marginTop: normalize(20),
             }}>
             <Text onPress={() => navigation.navigate('SignIn')}>
               Have an account ?
