@@ -89,6 +89,8 @@ export const ICONS = {
   instagram:'instagram',
   usersType:ICONTYPE.Feather,
   users:'users',
+  eidtType:ICONTYPE.Feather,
+  edit:'edit',
 };
 
 export default ICON;

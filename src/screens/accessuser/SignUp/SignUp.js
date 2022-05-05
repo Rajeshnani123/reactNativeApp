@@ -10,14 +10,10 @@ import {
 } from 'react-native';
 import React from 'react';
 import styles from '../SignUp/style.js';
-<<<<<<< HEAD
-import {normalize} from '../../../utils/Platform.js';
-=======
 import { createUser } from '../../../redux/UserProfile/ActionCreators/postUserAction.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { USER_ACCOUNT_RESET } from '../../../redux/UserProfile/Action/ActionType.js';
-
->>>>>>> d739cb2bc0d64f87b765785582455f7498e68ec3
+import { normalize } from '../../../utils/Platform.js';
 
 const SignUp = ({navigation}) => {
   const dispatch = useDispatch();
@@ -74,30 +70,6 @@ const SignUp = ({navigation}) => {
         <View style={styles.container}>
           <TextInput
             style={styles.input}
-<<<<<<< HEAD
-            placeholder="user name"
-            placeholderTextColor={'#C4C4C4'}></TextInput>
-          <TextInput
-            style={styles.input}
-            placeholder="email"
-            placeholderTextColor={'#C4C4C4'}></TextInput>
-          <TextInput
-            style={styles.input}
-            placeholder="mobile no"
-            placeholderTextColor={'#C4C4C4'}></TextInput>
-          <TextInput
-            style={styles.input}
-            placeholder="password"
-            placeholderTextColor={'#C4C4C4'}></TextInput>
-          <TextInput
-            style={styles.input}
-            placeholder="confirm password"
-            placeholderTextColor={'#C4C4C4'}></TextInput>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('Home')}>
-            <Text style={styles.lgn}> SUBMIT</Text>
-=======
             placeholder="User name"
             value={name}
             onChangeText={(text) => setName(text)}
@@ -135,7 +107,6 @@ const SignUp = ({navigation}) => {
             style={styles.button}
             onPress={createUserFunc}>
             <Text style={styles.lgn}> Register</Text>
->>>>>>> d739cb2bc0d64f87b765785582455f7498e68ec3
           </TouchableOpacity>
           <View
             style={{

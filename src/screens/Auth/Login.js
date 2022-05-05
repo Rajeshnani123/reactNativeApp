@@ -12,13 +12,10 @@ import {useDispatch} from 'react-redux';
 import styles from './style';
 import {normalize, font} from '../../utils/Platform';
 import {login} from './../../redux/reducers/authReducer';
-<<<<<<< HEAD
 import ICON from 'react-native-vector-icons/AntDesign';
 import {IMAGES, FONTS, COLORS, ICONS, WP, HP, SIZES} from '../../constants';
-=======
 import { loginUser } from '../../redux/UserProfile/ActionCreators/postUserAction';
 
->>>>>>> d739cb2bc0d64f87b765785582455f7498e68ec3
 
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
