@@ -20,7 +20,7 @@ import Success from '../screens/enduser/Success/Success';
 import Error from '../screens/enduser/Error/Error';
 import AsyncStrorage from "@react-native-async-storage/async-storage";
 import { USER_ACCOUNT_LOGOUT } from '../redux/UserProfile/Action/ActionType';
-
+import PDetails from '../screens/accessuser/PDetails/Pdetails';
 const Drawer = createDrawerNavigator();
 
 // export function CustomDrawerContent({navigation}) {
@@ -105,6 +105,13 @@ export default function HomeStack() {
           headerShown: false,
         }}
         component={CartStk}
+      />
+      <Drawer.Screen
+        name="PDetails "
+        options={{
+          headerShown: false,
+        }}
+        component={PDetails}
       />
       <Drawer.Screen
         name="Logout"
