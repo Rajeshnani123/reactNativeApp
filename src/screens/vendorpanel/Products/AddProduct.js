@@ -40,7 +40,7 @@ export const AddProduct = ({setIsModelOpen}) => {
         sku: description,
         variant: subCat,
       }],
-      seller: "string"
+      seller: 1
     }
     console.log(Body);
     dispatch(addProduct(Body));
