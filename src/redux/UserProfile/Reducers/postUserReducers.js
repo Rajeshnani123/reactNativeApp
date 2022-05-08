@@ -1,4 +1,4 @@
-import { USER_ACCOUNT_CREATION, USER_ACCOUNT_CREATION_FAILURE, USER_ACCOUNT_DELETE_FAILURE, USER_ACCOUNT_LOADING, USER_ACCOUNT_LOGOUT, USER_ACCOUNT_RESET, USER_ACCOUNT_UPDATE, USER_ACCOUNT_UPDATE_FAILURE, USER_ACCOUNT_UPDATE_PASSWORD, USER_ACCOUNT_UPDATE_PASSWORD_FAILURE, USER_ACCOUNT_UPDATE_PASSWORD_LOADING, USER_DELETE_LOADING, USER_LOGIN_FAILURE, USER_LOGIN_LOADING, USER_LOGIN_SUCCESS } from "../Action/ActionType";
+import { USER_ACCOUNT_CREATION, USER_ACCOUNT_CREATION_FAILURE, USER_ACCOUNT_DELETE_FAILURE, USER_ACCOUNT_LOADING, USER_ACCOUNT_LOGOUT, USER_ACCOUNT_RESET, USER_ACCOUNT_UPDATE, USER_ACCOUNT_UPDATE_FAILURE, USER_ACCOUNT_UPDATE_PASSWORD, USER_ACCOUNT_UPDATE_PASSWORD_FAILURE, USER_ACCOUNT_UPDATE_PASSWORD_LOADING, USER_DELETE_LOADING, USER_LOGIN_FAILURE, USER_LOGIN_LOADING, USER_LOGIN_SUCCESS,USER_ACCOUNT_UPDATE_LOADING } from "../Action/ActionType";
 
 
 const initialState = {
@@ -77,23 +77,29 @@ export const userProfileReducers = (state= initialState, action) => {
             }
         }
 
-        // case USER_ACCOUNT_UPDATE_LOADING : {
-        //     return{
+        case USER_ACCOUNT_UPDATE_LOADING : {
+            return{
+                ...state,
+                loading: true,
+                statusCode: 0
+            }
+        }
 
-        //     }
-        // }
+        case USER_ACCOUNT_UPDATE : {
+            return{
+                ...state,
+                loading: false,
+                statusCode: 200,
+            }
+        }
 
-        // case USER_ACCOUNT_UPDATE : {
-        //     return{
-
-        //     }
-        // }
-
-        // case USER_ACCOUNT_UPDATE_FAILURE : {
-        //     return{
-
-        //     }
-        // }
+        case USER_ACCOUNT_UPDATE_FAILURE : {
+            return{
+                ...state,
+                loading: false,
+                statusCode: 400
+            }
+        }
 
         // case USER_DELETE_LOADING : {
         //     return{
