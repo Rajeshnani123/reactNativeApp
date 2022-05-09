@@ -49,23 +49,20 @@ export const AddProduct = ({setIsModelOpen}) => {
       productCategories: cat,
       productName: productName,
       productSlug: productImg,
-      productVariants: [
-        {
-          availableQty: 27,
-          isBestSale: true,
-          isFeatured: true,
-          isUnlimited: true,
-          maxQty: 0,
-          minQty: 0,
-          price: Number(price),
-          productImage: productImg,
-          sku: description,
-          variant: subCat,
-        },
-      ],
-      seller: 'string',
-    };
-    console.log(Body);
+      productVariants:[{ 
+        availableQty: 27,
+        isBestSale: true,
+        isFeatured: true,
+        isUnlimited: true,
+        maxQty: 0,
+        minQty: 0,
+        price: Number(price),
+        productImage: productImg,
+        sku: description,
+        variant: subCat,
+      }],
+      seller: 1
+    }
     dispatch(addProduct(Body));
     setIsModelOpen(false);
   };
