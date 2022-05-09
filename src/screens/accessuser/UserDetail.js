@@ -18,6 +18,10 @@ import {
   MenuHeader,
 } from '../../components';
 import {normalize} from '../../utils/Platform';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserDetails } from '../../redux/UserProfile/ActionCreators/getUserAction';
+import jwt_decode from "jwt-decode";
+import { useIsFocused } from '@react-navigation/native';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -39,28 +43,20 @@ const HeaderContent = ({navigation}) => {
 };
 
 const UserDetail = ({navigation}) => {
+  const dispatch = useDispatch();
+  const isFocused = useIsFocused();
+  const {token} = useSelector(state => state.userProfileReducers);
+  const {loading,data} = useSelector(state => state.getUserReducers)
+  var decoded = jwt_decode(token);
+ var user_id = decoded.User.id;
+  React.useLayoutEffect(() => {
+    dispatch(getUserDetails(user_id))
+  },[isFocused])
+
   return (
     <>
       <HeaderContent navigation={navigation} />
-
       <ScrollView style={styles.root}>
-        {/* <View style={styles.head}>
-        <Icon
-          name="arrow-left"
-          size={22}
-          style={{marginHorizontal: 15, marginVertical: 12, color: '#000'}}
-        />
-        <Icon
-          name="bell"
-          size={20}
-          style={{marginLeft: 230, marginVertical: 15, color: '#000'}}
-        />
-        <Icon
-          name="shopping-cart"
-          size={20}
-          style={{marginLeft: 20, marginVertical: 15, color: '#000'}}
-        />
-      </View> */}
         <Image
           source={require('../../assets/Images/profileimage.jpeg')}
           style={styles.img}
@@ -76,13 +72,13 @@ const UserDetail = ({navigation}) => {
             <Text style={styles.leftDescription}>Address</Text>
           </View>
           <View style={{flex: 3}}>
-            <Text style={styles.rightDescription}>Name</Text>
-            <Text style={styles.rightDescription}>Email</Text>
-            <Text style={styles.rightDescription}>Mobile No</Text>
-            <Text style={styles.rightDescription}>DOB</Text>
-            <Text style={styles.rightDescription}>Business type</Text>
-            <Text style={styles.rightDescription}>GSTN</Text>
-            <Text style={styles.rightDescription}>Address</Text>
+            <Text style={styles.rightDescription}>{loading ? "Name": data.userName}</Text>
+            <Text style={styles.rightDescription}>{loading ? "Email": data.email}</Text>
+            <Text style={styles.rightDescription}>{loading ? "Mobile No": data.phoneNumber}</Text>
+            <Text style={styles.rightDescription}>{loading ? "DOB": data.userId}</Text>
+            <Text style={styles.rightDescription}>{loading ? "Business type": data.userType}</Text>
+            <Text style={styles.rightDescription}>{loading ? "GSTN": data.gstin}</Text>
+            <Text style={styles.rightDescription}>{loading ? "Address": data.address}</Text>
           </View>
         </View>
 
