@@ -2,33 +2,45 @@ import {
   StyleSheet,
   Text,
   View,
+  Alert,
   TextInput,
   TouchableOpacity,
 } from 'react-native';
 import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
+import { updateAccount } from '../../redux/UserProfile/ActionCreators/postUserAction';
 
 const UserDetailForm = () => {
   const dispatch = useDispatch();
-  const [name,setName] = React.useState("");
-  const [email,setEmail] = React.useState("");
-  const [mobile,setMobile] = React.useState("");
-  const [dob,setDob] = React.useState("");
-  const [type,setType] = React.useState("");
-  const [gstin,setGstin] = React.useState("");
-  const [address,setAddress] = React.useState("");
-
-  const updateAccount = () => {
+  const {data} = useSelector(state => state.getUserReducers)
+  const [name,setName] = React.useState(data.userName ? data.userName : "");
+  const [email,setEmail] = React.useState(data.email ? data.email :  "");
+  const [mobile,setMobile] = React.useState(data.phoneNumber ? data.phoneNumber: "");
+  const [dob,setDob] = React.useState(data.userId ? data.userId : "");
+  const [type,setType] = React.useState(data.userType ?  data.userType : "");
+  const [gstin,setGstin] = React.useState(data.gstin ? data.gstin : "");
+  const [address,setAddress] = React.useState(data.address ? data.address : "");
+  const {loading,statusCode} = useSelector((state) => state.userProfileReducers)
+  const updateData = () => {
     const Body={
       address: address,
-      email: email,
+      email: data.email,
       gstin: gstin,
-      phoneNumber: mobile,
+      newEmail: email,
+      newPhoneNumber: mobile,
+      password: "string",
+      phoneNumber: data.phoneNumber,
       userName: name,
-      userType: type,
     }
+    dispatch(updateAccount(Body))
   }
+
+  React.useEffect(() => {
+    if(!loading && statusCode === 200){
+      Alert.alert("data saved");
+    }
+  },[loading])
 
   return (
     <ScrollView style={Styles.root}>
@@ -37,19 +49,25 @@ const UserDetailForm = () => {
 
         <TextInput
           style={Styles.input}
+          value={name}
           placeholder="Name"
           placeholderTextColor={'#c4c4c4'}></TextInput>
         <TextInput
           style={Styles.input}
           placeholder="Email"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
           placeholderTextColor={'#c4c4c4'}></TextInput>
         <TextInput
           style={Styles.input}
+          value={mobile}
+          onChangeText={(text) => setMobile(text)}
           placeholder="Mobile No"
           placeholderTextColor={'#c4c4c4'}></TextInput>
         <TextInput
           style={Styles.input}
           placeholder="DOB"
+          value={dob}
           placeholderTextColor={'#c4c4c4'}></TextInput>
         <TextInput
           style={Styles.input}
@@ -61,10 +79,12 @@ const UserDetailForm = () => {
           placeholderTextColor={'#c4c4c4'}></TextInput>
         <TextInput
           style={Styles.input}
+          value={type}
           placeholder="Business type"
           placeholderTextColor={'#c4c4c4'}></TextInput>
         <TextInput
           style={Styles.input}
+          value={gstin}
           placeholder="Add GSTN"
           placeholderTextColor={'#c4c4c4'}></TextInput>
 
@@ -77,10 +97,11 @@ const UserDetailForm = () => {
             paddingHorizontal: 20,
             width: 290,
           }}
+          value={address}
           placeholder="Address"
           placeholderTextColor={'#c4c4c4'}></TextInput>
 
-        <TouchableOpacity style={Styles.button}>
+        <TouchableOpacity style={Styles.button} onPress={updateData}>
           <Text style={Styles.buttonText}>SAVE</Text>
         </TouchableOpacity>
       </View>

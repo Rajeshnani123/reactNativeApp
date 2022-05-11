@@ -10,7 +10,7 @@ export const getProducts = () => {
         dispatch({type: GET_ALL_PRODUCTS_LOADING});
         const response = await get(ApiConnections.Products);
         if(response){
-            dispatch({type: GET_ALL_PRODUCTS_SUCCESS,data: response.data});
+            dispatch({type: GET_ALL_PRODUCTS_SUCCESS,data: response.data.content});
         }else{
             Alert.alert("Please try after some time");
             dispatch({type: GET_ALL_PRODUCTS_FAILURE,error: "data not found"});
