@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     paddingHorizontal: normalize(25),
     borderRadius: normalize(5),
-    color: '#c4c4c4c4',
     marginVertical: normalize(6),
     marginTop:normalize(20),
     height:normalize(45)

@@ -12,7 +12,6 @@ const logger = createLogger();
 
 let middleware = [];
 middleware = [...middleware,thunk];
-c
 // export const store = configureStore({
 //   reducer: {
 //     auth: authReducer,

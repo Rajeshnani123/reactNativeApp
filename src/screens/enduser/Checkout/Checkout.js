@@ -192,9 +192,9 @@ const Checkout = ({navigation}) => {
             </View>
           </View>
           <View style={styles.card2}>
-            <Box mx={7} my={3}>
+            <Box mx={7} my={6}>
               <Text style={styles.pricedetails}>Price Details</Text>
-              <Text>_______________________________________________</Text>
+              
               <View style={styles.names}>
                 <Box>
                   <Text style={styles.txtcolor}>Price (1 item)</Text>
@@ -207,7 +207,7 @@ const Checkout = ({navigation}) => {
                   <Text style={styles.txtcolor}>Rs. 40</Text>
                 </Box>
               </View>
-              <Text>_______________________________________________</Text>
+             
               <Box flexDirection={'row'} mx={3}>
                 <Text style={{fontSize: 16, color: '#000', marginTop: 5}}>
                   Total Amount
@@ -222,7 +222,7 @@ const Checkout = ({navigation}) => {
                   Rs.499
                 </Text>
               </Box>
-              <Text>_______________________________________________</Text>
+              
             </Box>
           </View>
 
