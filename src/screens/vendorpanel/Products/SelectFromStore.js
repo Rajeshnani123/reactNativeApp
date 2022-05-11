@@ -15,6 +15,8 @@ import {
 } from '../../../components';
 import style from '../../style';
 import {DATA} from '../../../constants/DUMMYJSON';
+import CheckBox from '@react-native-community/checkbox';
+import {normalize} from '../../../utils/Platform'
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -36,9 +38,11 @@ const HeaderContent = ({navigation}) => {
 };
 
 const leftComponent = (title, subTitle, qty) => {
+  
   return (
     <>
       <Box alignItems="flex-start" flexDirection={'row'}>
+     <CheckBox style={{marginTop:normalize(40)}}/>
         <Image
           alt="productImg"
           resizeMode={'stretch'}
@@ -81,7 +85,7 @@ const rightComponent = ({isDelete = false, isAdd = true}) => {
 
 const SelectFromStore = ({navigation}) => {
   const [search, setSearch] = useState();
-
+  const [isSelected, setSelection] = useState(false);
   const HeaderComponent = () => {
     return (
       <>
