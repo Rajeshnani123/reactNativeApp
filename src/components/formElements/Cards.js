@@ -15,6 +15,7 @@ export const HorizontalCard = ({
   rightCardWidth = '50%',
   noOnPress,
   key = 1,
+  CheckBox
 }) => {
   const HCard = () => (
     <View key={key}>
