@@ -123,7 +123,8 @@ const MyCart = ({navigation}) => {
     return (
       <>
         <Box alignItems="flex-start" flexDirection={'row'}>
-          <CheckBox value={isSelected} onValueChange={setSelection} />
+        <CheckBox  value={isSelected}
+          onValueChange={(v)=>setSelection(v=>!v)}/>
 
           <Image
             alt="productImg"
@@ -149,12 +150,13 @@ const MyCart = ({navigation}) => {
             </Box>
           </Box>
         </Box>
-        <Box flexDirection={'row'} mx={10} my={3}>
+        <Box flexDirection={'row'} mx={10} my={5}>
           <TouchableOpacity style={styles.minus}>
             <Image
               source={require('../../../assets/Images/minus.png')}
               mx={4}
               my={3}
+              
             />
           </TouchableOpacity>
           <Text
@@ -220,8 +222,9 @@ const MyCart = ({navigation}) => {
               value={search}
               onChangeText={val => setSearch(val)}
               onSearch={() => alert('Searchnow')}
-              marginTop={normalize(6)}
+              marginTop={normalize(8)}
               ml={0}
+              
             />
         
           <View style={styles.cartitemview}>
@@ -240,8 +243,8 @@ const MyCart = ({navigation}) => {
               <HorizontalCard
                 containerStyle={{
                   borderRadius: normalize(10),
-                  marginTop: normalize(10),
-                  height: normalize(277),
+                  marginTop: normalize(15),
+                  height: normalize(230),
                   // marginHorizontal: normalize(1),
                 }}
                 customWidth={'100%'}
