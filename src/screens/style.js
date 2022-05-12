@@ -4,6 +4,7 @@ import {COLORS, SIZES, HP} from './../constants';
 export default StyleSheet.create({
   container: {
     marginHorizontal: SIZES.padding,
+    
   },
   // CARDS
 
