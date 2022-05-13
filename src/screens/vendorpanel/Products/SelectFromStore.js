@@ -15,6 +15,7 @@ import {
 } from '../../../components';
 import style from '../../style';
 import {DATA} from '../../../constants/DUMMYJSON';
+import { useSelector } from 'react-redux';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -60,7 +61,7 @@ const leftComponent = (title, subTitle, qty) => {
 const rightComponent = ({isDelete = false, isAdd = true}) => {
   return (
     <View mt="30%">
-      {isDelete == true && (
+      {isDelete === true && (
         <ActionBtn
           iconType={ICONS.minusType}
           iconName={ICONS.minus}
@@ -68,7 +69,7 @@ const rightComponent = ({isDelete = false, isAdd = true}) => {
         />
       )}
 
-      {isAdd == true && (
+      {isAdd === true && (
         <ActionBtn
           iconType={ICONS.plusType}
           iconName={ICONS.plus}
@@ -81,6 +82,7 @@ const rightComponent = ({isDelete = false, isAdd = true}) => {
 
 const SelectFromStore = ({navigation}) => {
   const [search, setSearch] = useState();
+  const {storeData} = useSelector((state) => state.getMdmReducers);
 
   const HeaderComponent = () => {
     return (
@@ -105,7 +107,7 @@ const SelectFromStore = ({navigation}) => {
           showsVerticalScrollIndicator={false}
           numColumns={1}
           keyExtractor={item => `${item.id}`}
-          data={DATA}
+          data={storeData.content}
           renderItem={({item}) => (
             <HorizontalCard
               containerStyle={{borderRadius: 10, marginBottom: 10}}
@@ -114,7 +116,7 @@ const SelectFromStore = ({navigation}) => {
               rightCardWidth={'20%'}
               cardColor={'white'}
               leftComponent={leftComponent(item.title, item.title, 3)}
-              rightComponent={rightComponent({isDelete: true, isAdd: false})}
+              rightComponent={rightComponent({isDelete: false, isAdd: true})}
               rightWidth={100}
               leftWidth={100}
             />

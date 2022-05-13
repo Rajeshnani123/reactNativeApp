@@ -23,6 +23,7 @@ import {normalize,font} from '../../../utils/Platform';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteProductById, getProductbyId, getProducts } from '../../../redux/ProductResource/ActionCreators/getProductAction';
 import { useIsFocused } from '@react-navigation/native';
+import { getStoreProducts } from '../../../redux/mdmProduct/ActionCreators/getMdmAction';
 
 // const HeaderContent = ({navigation}) => {
 //   return (
@@ -120,6 +121,11 @@ const ManageProducts = ({navigation}) => {
     dispatch(getProducts())
   },[isFocused])
 
+  const StoreSelect = () => {
+    dispatch(getStoreProducts());
+    navigation.navigate('SelectFromStore')
+  }
+
   const HeaderComponent = () => {
     return (
       <>
@@ -138,7 +144,7 @@ const ManageProducts = ({navigation}) => {
             width={WP('43%')}
             colorScheme={'primary'}
             value={'Select from store'}
-            onPress={() => navigation.navigate('SelectFromStore')}
+            onPress={StoreSelect}
           />
           <Btn
             height={normalize(50)}

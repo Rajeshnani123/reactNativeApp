@@ -45,7 +45,6 @@ export const deleteProductById = (id) => {
         try{
             dispatch({type: DELETE_PRODUCT_LOADING});
             const response = await deleteAxios(ApiConnections.Products+`/${id}`);
-            console.log(response);
             if(response){
                 dispatch({type: DELETE_PRODUCT_SUCCESS});
             }else{
