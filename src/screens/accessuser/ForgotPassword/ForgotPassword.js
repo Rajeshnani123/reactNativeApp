@@ -7,6 +7,7 @@ import {Box, Button} from 'native-base';
 import {Header} from '../../../components';
 import {normalize} from '../../../utils/Platform';
 import styles from './styles'
+import ResetPassword from '../Resetpassword/ResetPassword';
 
 
 
@@ -31,7 +32,7 @@ const ForgotPassword = ({navigation}) => {
           style={styles.input}
           placeholder="Email/ Mobile No"
           ></TextInput>
-          <TouchableOpacity style={styles.button} onPress={() => making_api_call()}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ResetPassword')}>
         <Text style={styles.reset}>Reset Password</Text>
       </TouchableOpacity>
       </View>

@@ -137,9 +137,9 @@ marginTop:normalize(4),
   color: "#ffffff"
   },
   Btn:{
-    width:normalize(145),
+    width:normalize(125),
     backgroundColor:'#ffb43a',
-    height: normalize(40),
+    height: normalize(45),
     borderRadius: 5,
     backgroundColor: "#ffb43a",
     shadowColor: "rgba(0, 0, 0, 0.25)",
@@ -153,20 +153,20 @@ marginTop:normalize(4),
   },
   minus:{
     backgroundColor:'#ffb43a',
-    width: normalize(55),
-    height: normalize(50),
+    width: normalize(45),
+    height: normalize(45),
     borderRadius: 5,
   },
   plus:{
     backgroundColor:'#ffb43a',
-    width: normalize(55),
-    height: normalize(50),
+    width: normalize(45),
+    height: normalize(45),
     borderRadius: 5,
     marginLeft: normalize(15)
   },
   remove:{
     width: normalize(103),
-    height: normalize(50),
+    height: normalize(45),
     borderRadius: 5,
     backgroundColor: "#f8e4c4",
     shadowColor: "rgba(0, 0, 0, 0.25)",
@@ -181,12 +181,12 @@ marginTop:normalize(4),
 ,    marginLeft:normalize(20)
   },
   rmtext:{
-    marginLeft:normalize(27),
+    marginLeft:normalize(30),
   marginTop:normalize(14)  },
   DO:{
     color:'#000',
-    marginLeft:normalize(20),
-    marginTop:normalize(10)
+    marginLeft:normalize(15),
+    marginTop:normalize(12)
   },
   layer:{
     width: normalize(60),

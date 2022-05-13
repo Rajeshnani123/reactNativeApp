@@ -68,12 +68,11 @@ const SignUp = ({navigation}) => {
         </View>
 
         <View style={styles.container}>
-          <TextInput
-            style={styles.input}
-            placeholder="User name"
-            value={name}
-            onChangeText={(text) => setName(text)}
-            placeholderTextColor={'#C4C4C4'} />
+        <TextInput
+        style={styles.input}
+        placeholder="Email/Mobile No"
+        placeholderTextColor={'#c4c4c4'}
+        onChangeText={value => setName(value)}></TextInput>
           <TextInput
             style={styles.input}
             value={email}

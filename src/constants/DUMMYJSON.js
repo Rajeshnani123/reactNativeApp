@@ -55,20 +55,5 @@ export const DATA = [
     date: '12th feb 2022',
     uri: 'https://wallpaperaccess.com/full/317501.jpg',
   },
-  {
-    id: 9,
-    title: 'Title here 9',
-    classification: 'Men',
-    cat: 'Footwear',
-    date: '12th feb 2022',
-    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-  },
-  {
-    id: 10,
-    title: 'Title here 10',
-    classification: 'Men',
-    cat: 'Footwear',
-    date: '12th feb 2022',
-    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-  },
+  
 ];

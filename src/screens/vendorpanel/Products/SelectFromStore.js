@@ -1,4 +1,13 @@
-import {View, HStack, Text, Image, Center, Box, FlatList} from 'native-base';
+import {
+  View,
+  HStack,
+  Text,
+  Image,
+  Center,
+  Box,
+  FlatList,
+  Button,
+} from 'native-base';
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {ICON, ICONS, FONTS, IMAGES, WP, HP, COLORS} from '../../../constants';
@@ -16,6 +25,8 @@ import {
 import style from '../../style';
 import {DATA} from '../../../constants/DUMMYJSON';
 import { useSelector } from 'react-redux';
+import CheckBox from '@react-native-community/checkbox';
+import {normalize} from '../../../utils/Platform';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -36,19 +47,24 @@ const HeaderContent = ({navigation}) => {
   );
 };
 
-const leftComponent = (title, subTitle, qty) => {
+const LeftComponent = ({title, subTitle, qty}) => {
+  const [isSelected,setSelection] = useState(false);
   return (
     <>
       <Box alignItems="flex-start" flexDirection={'row'}>
+      <CheckBox  value={isSelected}
+          onValueChange={(v)=>setSelection(v=>!v)} style={{marginTop:normalize(50)}}/>
         <Image
           alt="productImg"
           resizeMode={'stretch'}
           borderRadius={10}
-          width={100}
+          width={130}
           height={120}
+          mx={5}
+          my={2}
           source={{uri: IMAGES.dummy}}
         />
-        <Box mx={5}>
+        <Box mx={2} my={5}>
           <Text style={FONTS.h3}>{title}</Text>
           <Text style={{color: COLORS.gray, ...FONTS.h4}}>{subTitle}</Text>
           <Text style={{color: COLORS.gray, ...FONTS.h4}}>Qty {qty}</Text>
@@ -80,6 +96,16 @@ const rightComponent = ({isDelete = false, isAdd = true}) => {
   );
 };
 
+const checkBox = () => {
+  
+  return (
+    <View>
+      <CheckBox
+      />
+    </View>
+  );
+};
+
 const SelectFromStore = ({navigation}) => {
   const [search, setSearch] = useState();
   const {storeData} = useSelector((state) => state.getMdmReducers);
@@ -93,7 +119,7 @@ const SelectFromStore = ({navigation}) => {
   };
 
   return (
-    <View>
+    <View style={{flex: 1,backgroundColor: "#FFF7EA",}}>
       <HeaderContent navigation={navigation} />
       <View style={style.container}>
         <SearchBox
@@ -108,6 +134,7 @@ const SelectFromStore = ({navigation}) => {
           numColumns={1}
           keyExtractor={item => `${item.id}`}
           data={storeData.content}
+          zIndex={-9}
           renderItem={({item}) => (
             <HorizontalCard
               containerStyle={{borderRadius: 10, marginBottom: 10}}
@@ -115,8 +142,10 @@ const SelectFromStore = ({navigation}) => {
               leftCardWidth={'80%'}
               rightCardWidth={'20%'}
               cardColor={'white'}
-              leftComponent={leftComponent(item.title, item.title, 3)}
-              rightComponent={rightComponent({isDelete: false, isAdd: true})}
+            
+              leftComponent={<LeftComponent title={item.title} subTitle={item.title} qty={3}/>}
+              // rightComponent={rightComponent({isDelete: true, isAdd: false})}
+              ActionBtn={<ActionBtn />}
               rightWidth={100}
               leftWidth={100}
             />
@@ -126,6 +155,19 @@ const SelectFromStore = ({navigation}) => {
             <View style={{marginBottom: HP('50%')}}></View>
           )}
         />
+      </View>
+
+      <View
+        style={{
+          width: '100%',
+          height: 50,
+          backgroundColor: '#FF9800',
+          justifyContent: 'center',
+          alignItems: 'center',
+          position: 'absolute',
+          bottom: 0,
+        }}>
+        <Text style={{color: '#fff', fontSize: 22}}>SUBMIT</Text>
       </View>
     </View>
   );
