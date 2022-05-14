@@ -5,12 +5,12 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: '#ffffff',
     marginLeft: normalize(30),
-    height: normalize(55),
+    height: normalize(50),
     marginTop:normalize(40),
     marginLeft: normalize(36),
     marginRight: normalize(36),
-    padding: normalize(20),
-    marginTop: normalize(40),
+    padding: normalize(15),
+    marginTop: normalize(35),
     borderWidth:normalize(3),
     borderColor:'#ffb43a',
     borderRadius:normalize(5),
@@ -26,9 +26,11 @@ const styles = StyleSheet.create({
     marginLeft: normalize(36),
     marginRight: normalize(36),
     marginTop: normalize(31),
+    alignItems:'center',
+    elevation:5
   },
   reset:{
-    marginLeft:normalize(85),
+    
     fontFamily: "Poppins",
     fontSize: normalize(16),
     fontWeight: "normal",

@@ -68,11 +68,11 @@ const leftComponent = (
           resizeMode={'stretch'}
           my={2}
           width={120}
-          height={140}
+          height={150}
           source={{uri: IMAGES.dummy1}}
         />
 
-        <Box mx={3} my={2}>
+        <Box mx={3} my={3}>
           <Text style={styles.productName}>{title}</Text>
           <Text style={styles.subName}>{subtitle}</Text>
           <Box
@@ -89,34 +89,38 @@ const leftComponent = (
             <TouchableOpacity
               style={{
                 backgroundColor: COLORS.primary,
-                width: normalize(85),
-                height: normalize(50),
+                width: normalize(70),
+                height: normalize(45),
                 borderRadius: normalize(5),
                 alignItems: 'center',
               }}
               onPress={() => alert('btn')}>
-              <Text style={{fontSize:normalize(18),color:'#000', marginTop: 12}}>
+              <Text
+                style={{
+                  fontSize: normalize(18),
+                  color: '#000',
+                  marginTop: normalize(10),
+                }}>
                 Buy
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={{
                 backgroundColor: COLORS.primary,
-                width: normalize(85),
-                height: normalize(50),
+                width: normalize(70),
+                height: normalize(45),
                 borderRadius: normalize(5),
                 alignItems: 'center',
-                marginLeft:normalize(15)
+                marginLeft: normalize(15),
               }}
               onPress={() => alert('btn')}>
-              <View style={{marginTop:normalize(13)}}>
-              <ICON
-                type={ICONS.cartType}
-                name={ICONS.cart}
-                size={24}
-                color={COLORS.black}
-                
-              />
+              <View style={{marginTop: normalize(10)}}>
+                <ICON
+                  type={ICONS.cartType}
+                  name={ICONS.cart}
+                  size={24}
+                  color={COLORS.black}
+                />
               </View>
             </TouchableOpacity>
           </View>
@@ -152,7 +156,7 @@ const ProductList = ({navigation}) => {
         />
       </View> */}
         <View style={styles.container}>
-          <View flexDirection={'row'}>
+          <View style={{flexDirection: 'row', marginVertical: 5,justifyContent:'space-between'}}>
             <SearchBox
               value={search}
               onChangeText={val => setSearch(val)}
@@ -161,7 +165,7 @@ const ProductList = ({navigation}) => {
             />
 
             <ActionBtn
-              ml={5}
+            style={{marginTop:normalize(13)}}
               iconType={ICONS.filterType}
               iconName={ICONS.filter}
               onPress={() => alert('Filter')}
@@ -178,12 +182,12 @@ const ProductList = ({navigation}) => {
               <HorizontalCard
                 containerStyle={{
                   borderRadius: 10,
-                  marginBottom: normalize(21),
+                  marginBottom: normalize(12),
 
                   // marginHorizontal: normalize(1),
                 }}
                 customWidth={'100%'}
-                customHeight={214}
+                customHeight={200}
                 leftCardWidth={'75%'}
                 rightCardWidth={'25%'}
                 cardColor={'white'}
@@ -265,21 +269,22 @@ const styles = StyleSheet.create({
     color: '#000000',
   },
   price: {
-    fontSize: normalize(18),
+    fontSize: normalize(20),
     color: '#000',
   },
   prevprice: {
     fontSize: normalize(14),
-    marginTop: normalize(5),
-    marginLeft: normalize(15),
+    marginTop: normalize(8),
+    marginLeft: normalize(10),
   },
   discount: {
-    marginTop: normalize(5),
+    marginTop: normalize(8),
     color: '#ffb43a',
-    marginLeft: normalize(15),
+    marginLeft: normalize(10),
     fontSize: normalize(14),
   },
-  subName:{
-    marginTop:normalize(5)
-  }
+  subName: {
+    marginTop: normalize(8),
+    fontSize: normalize(14),
+  },
 });
