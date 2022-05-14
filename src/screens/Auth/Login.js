@@ -15,6 +15,7 @@ import {login} from './../../redux/reducers/authReducer';
 import ICON from 'react-native-vector-icons/AntDesign';
 import {IMAGES, FONTS, COLORS, ICONS, WP, HP, SIZES} from '../../constants';
 import {loginUser} from '../../redux/UserProfile/ActionCreators/postUserAction';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
@@ -45,12 +46,28 @@ const Login = ({navigation}) => {
   return (
     <ScrollView style={styles.root}>
       <View style={styles.img}>
-        <Image source={require('../../assets/Images/welcome.png')} />
+        <Image
+          source={require('../../assets/Images/log.png')}
+          style={{
+            marginLeft: normalize(30)
+          }}
+        />
+        <Text
+          style={{
+            width: normalize(90),
+            height: normalize(40),
+            fontSize: normalize(24),
+            fontWeight: 'bold',
+            color: '#000',
+            marginVertical: normalize(30),
+            marginHorizontal: normalize(110),
+          }}>
+          LOGIN
+        </Text>
       </View>
-
       <TextInput
         style={styles.input}
-        placeholder="Email/Mobile No"
+        placeholder="Email / Mobile No"
         placeholderTextColor={'#c4c4c4'}
         onChangeText={value => setUsername(value)}></TextInput>
 
@@ -63,9 +80,10 @@ const Login = ({navigation}) => {
       <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
         <Text style={styles.fp}>Forgot Password?</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => making_api_call()}>
+      <TouchableOpacity colors={['#FFB43A','#FFB43A','#FFB43A']} style={styles.button} onPress={() => making_api_call()}>
         <Text style={styles.lgn}>LOGIN</Text>
       </TouchableOpacity>
+      
       <View style={styles.lgnbtn}>
         <Text style={styles.loginwith}>or signin with</Text>
       </View>
@@ -98,14 +116,15 @@ const Login = ({navigation}) => {
       <View
         style={{
           flexDirection: 'row',
-          marginLeft: normalize(71),
+          alignItems:'center',
           marginBottom: normalize(50),
-          marginTop: normalize(70),
+          marginTop: normalize(60),
+          
         }}>
         <Text
           style={{
-            fontSize: 16,
-
+            fontSize: 14,
+marginLeft:normalize(75),
             color: '#000',
             fontFamily: 'Poppins',
             fontWeight: 'normal',
@@ -114,9 +133,8 @@ const Login = ({navigation}) => {
         </Text>
         <Text
           style={{
-            fontSize: 18,
-            marginLeft: normalize(10),
-
+            fontSize: 16,
+            marginLeft:normalize(10),
             color: '#000',
             fontFamily: 'Poppins',
             fontWeight: '900',
