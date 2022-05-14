@@ -51,7 +51,7 @@ const SignUp = ({navigation}) => {
       Alert.alert("Please login with your registered Details")
       navigation.navigate('Login');
     }else if(!createLoading && statusCode === 400){
-      Alert.alert("User Already Exists");
+      Alert.alert("User Creation Failed");
     }
   },[createLoading]);
 
@@ -70,7 +70,7 @@ const SignUp = ({navigation}) => {
         <View style={styles.container}>
         <TextInput
         style={styles.input}
-        placeholder="Email/Mobile No"
+        placeholder="Username"
         placeholderTextColor={'#c4c4c4'}
         onChangeText={value => setName(value)}></TextInput>
           <TextInput

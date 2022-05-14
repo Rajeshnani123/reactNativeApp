@@ -47,13 +47,19 @@ const HeaderContent = ({navigation}) => {
   );
 };
 
-const LeftComponent = ({title, subTitle, qty}) => {
+const LeftComponent = ({title, subTitle, qty,item,setSelectedProduct,selectedProduct}) => {
   const [isSelected,setSelection] = useState(false);
+ 
+  const productSelect = () => {
+    if(!isSelected){
+      setSelectedProduct(selectedProduct => [item, ...selectedProduct]);
+    }
+  }
   return (
     <>
       <Box alignItems="flex-start" flexDirection={'row'}>
       <CheckBox  value={isSelected}
-          onValueChange={(v)=>setSelection(v=>!v)} style={{marginTop:normalize(50)}}/>
+          onValueChange={(v)=>{setSelection(v=>!v),productSelect()}} style={{marginTop:normalize(50)}}/>
         <Image
           alt="productImg"
           resizeMode={'stretch'}
@@ -109,7 +115,10 @@ const checkBox = () => {
 const SelectFromStore = ({navigation}) => {
   const [search, setSearch] = useState();
   const {storeData} = useSelector((state) => state.getMdmReducers);
-
+  const [selectedProduct,setSelectedProduct] = useState([]);
+  const submitHandler = () => {
+    console.log(selectedProduct,"selectedProduct");
+  }
   const HeaderComponent = () => {
     return (
       <>
@@ -143,7 +152,7 @@ const SelectFromStore = ({navigation}) => {
               rightCardWidth={'20%'}
               cardColor={'white'}
             
-              leftComponent={<LeftComponent title={item.title} subTitle={item.title} qty={3}/>}
+              leftComponent={<LeftComponent title={item.title} subTitle={item.title} qty={3} item={item} setSelectedProduct={setSelectedProduct} selectedProduct={selectedProduct}/>}
               // rightComponent={rightComponent({isDelete: true, isAdd: false})}
               ActionBtn={<ActionBtn />}
               rightWidth={100}
@@ -157,7 +166,8 @@ const SelectFromStore = ({navigation}) => {
         />
       </View>
 
-      <View
+      <TouchableOpacity
+        onPress={submitHandler}
         style={{
           width: '100%',
           height: 50,
@@ -168,7 +178,7 @@ const SelectFromStore = ({navigation}) => {
           bottom: 0,
         }}>
         <Text style={{color: '#fff', fontSize: 22}}>SUBMIT</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

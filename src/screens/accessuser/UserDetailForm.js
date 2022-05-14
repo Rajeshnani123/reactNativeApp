@@ -11,7 +11,6 @@ import {ScrollView} from 'react-native-gesture-handler';
 import { useDispatch,useSelector } from 'react-redux';
 import { updateAccount } from '../../redux/UserProfile/ActionCreators/postUserAction';
 import { USER_ACCOUNT_RESET } from '../../redux/UserProfile/Action/ActionType';
-import jwt_decode from "jwt-decode";
 
 const UserDetailForm = () => {
   const dispatch = useDispatch();
@@ -27,8 +26,6 @@ const UserDetailForm = () => {
  // const {token} = useSelector(state => state.userProfileReducers);
 
   const updateData = () => {
-    var decoded = jwt_decode(token);
-    var user_id = decoded.User.password;
     const Body={
       address: address,
       email: data.email,
