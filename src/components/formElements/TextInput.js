@@ -48,7 +48,7 @@ export const SearchBox = ({onSearch, value, onChangeText,width='100%', ...rest})
       size="lg"
       placeHolder="Search products"
       width={width}
-      height="50"
+      height="45"
       leftElement={
         <TouchableOpacity>
           <View ml={4}>
@@ -57,6 +57,7 @@ export const SearchBox = ({onSearch, value, onChangeText,width='100%', ...rest})
               type={ICONS.searchType}
               name={ICONS.search}
               color={COLORS.primary}
+              
             />
           </View>
         </TouchableOpacity>

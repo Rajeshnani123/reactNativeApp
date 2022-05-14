@@ -37,10 +37,10 @@ export const Btn = ({
   );
 };
 
-export const ActionBtn = ({iconType, iconName, size = 27, ...rest}) => {
+export const ActionBtn = ({iconType,height, iconName, size = 20, ...rest}) => {
   return (
     <Button
-      height={50}
+      height={45}
       width={50}
       colorScheme="primary"
       style={styles.buttonContainer}

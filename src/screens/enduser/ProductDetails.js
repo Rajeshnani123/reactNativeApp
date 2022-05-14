@@ -1,8 +1,15 @@
-import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
 import React, {useState} from 'react';
 import style from '../style';
 import Icon from 'react-native-vector-icons';
-import plateform from '../../../src/utils/Platform';
+import plateform, {normalize} from '../../../src/utils/Platform';
 import {Review} from '../enduser/Review';
 import {
   Header,
@@ -17,7 +24,7 @@ import {
   CustomModal,
   constants,
 } from '../../components';
-import {COLORS, FONTS, SIZES} from '../../constants';
+import {COLORS, FONTS, SIZES,ICON,ICONS} from '../../constants';
 import styles from '../../components/basics/styles';
 
 const HeaderContent = ({navigation}) => {
@@ -94,6 +101,7 @@ const ReviewsComponent = () => {
             fontWeight: '600',
             fontSize: 18,
             marginVertical: 8,
+            color: '#000',
           }}>
           Reviews
         </Text>
@@ -113,6 +121,7 @@ const CompareComponent = () => {
             fontWeight: '600',
             fontSize: 18,
             marginVertical: 8,
+            color: '#000',
           }}>
           Compare
         </Text>
@@ -165,35 +174,65 @@ const ProductDetails = ({navigation}) => {
           />
         </View>
         <View style={{marginHorizontal: 50}}>
-          <Text style={{marginVertical: 10}}>{Data.name}</Text>
-          <Text style={{marginVertical: 10}}>{Data.qty}</Text>
-          <Text style={{marginVertical: 10}}>{Data.retail}</Text>
-          <Text style={{marginVertical: 10}}>{Data.item}</Text>
-          <Text style={{marginVertical: 10}}>{Data.price}</Text>
+          <Text style={styless.defaultNames}>{Data.name}</Text>
+          <Text style={styless.defaultNames}>{Data.qty}</Text>
+          <Text style={styless.defaultNames}>{Data.retail}</Text>
+          <Text style={styless.defaultNames}>{Data.item}</Text>
+          <Text style={styless.defaultNames}>{Data.price}</Text>
         </View>
 
-        <View style={{marginLeft: 20, marginVertical: 20}}>
-          <Text style={FONTS.h2}>Reviews</Text>
+        <View style={{marginLeft: 20, marginVertical: 24}}>
+          <Text
+            style={{
+              color: '#000',
+              fontSize: normalize(20),
+              marginLeft: normalize(10),
+              fontWeight: 'bold',
+            }}>
+            Reviews
+          </Text>
           {Review.map(item => (
             <View
               style={{
-                marginTop: 20,
+                marginTop: 30,
                 flexDirection: 'row',
                 marginVertical: 10,
                 marginRight: 20,
               }}>
               <Image source={item.image} />
               <View style={{marginRight: 60}}>
-                <Text style={{marginLeft: 20, fontWeight: 'bold'}}>
-                  {item.name}
-                </Text>
-                <Text style={{marginLeft: 20, fontSize: 14, marginTop: 5}}>
-                  {item.desc}
-                </Text>
-                <Text style={{marginLeft: 20, marginTop: 5}}>
-                  {item.rating}
-                </Text>
-                <Text style={{marginLeft: 180, fontSize: 12}}>{item.time}</Text>
+                <Text style={styless.name}>{item.name}</Text>
+                <Text style={styless.desc}>{item.desc}</Text>
+                <View style={{flexDirection:'row',justifyContent:'space-between'}} >
+                <View style={{marginLeft:normalize(18),marginTop:normalize(10),flexDirection:'row'}}>
+                <ICON
+                type={ICONS.filledstarType}
+                name={ICONS.filledstar}
+                size={18}
+                color={COLORS.green}/>
+                <ICON
+                type={ICONS.filledstarType}
+                name={ICONS.filledstar}
+                size={18}
+                color={COLORS.green}/>
+                <ICON
+                type={ICONS.filledstarType}
+                name={ICONS.filledstar}
+                size={18}
+                color={COLORS.green}/>
+                <ICON
+                type={ICONS.filledstarType}
+                name={ICONS.filledstar}
+                size={18}
+                color={COLORS.green}/>
+                <ICON
+                type={ICONS.outlinedstarType}
+                name={ICONS.outlinedstar}
+                size={18}
+                color={COLORS.green}/>
+                </View>
+                  <Text style={styless.time}>{item.time}</Text>
+                </View>
               </View>
             </View>
           ))}
@@ -204,3 +243,31 @@ const ProductDetails = ({navigation}) => {
 };
 
 export default ProductDetails;
+
+const styless = StyleSheet.create({
+  defaultNames: {
+    marginVertical: 10,
+    color: '#000',
+  },
+  name: {
+    marginLeft: 20,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  desc: {
+    marginLeft: 20,
+    fontSize: 13,
+    marginTop: 5,
+    color: '#000',
+  },
+  rating: {
+    marginLeft:20,
+    marginTop: 10,
+    color: 'green',
+  },
+  time: {
+    marginLeft:20,
+    marginTop: 10,
+    fontSize: 12,
+  },
+});

@@ -91,6 +91,10 @@ export const ICONS = {
   users:'users',
   eidtType:ICONTYPE.Feather,
   edit:'edit',
+  filledstarType:ICONTYPE.Entypo,
+  filledstar:'star',
+  outlinedstarType:ICONTYPE.Entypo,
+  outlinedstar:'star-outlined'
 };
 
 export default ICON;
