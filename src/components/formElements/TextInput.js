@@ -13,6 +13,7 @@ export const TextInput = ({
   mb = '3',
   rightElement,
   leftElement,
+  onChangeText,
   type = 'default',
   containerStyle,
   ...rest
@@ -24,6 +25,7 @@ export const TextInput = ({
       mt={mt}
       mb={mb}
       size={size}
+      onChangeText = {(text) => onChangeText(text)}
       placeholder={placeHolder}
       w={width}
       {...rest}

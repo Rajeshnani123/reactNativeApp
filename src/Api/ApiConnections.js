@@ -11,6 +11,8 @@ export const ApiConnections = {
     Deactivate: userProfileBaseUrl + version1 + "/deactivate",
     ForgotPassword: userProfileBaseUrl + version1 + "/update-password",
     Products: productDetails + productCommon,
+    getProduct: productDetails + productCommon + "/get",
     store: productDetails + store,
     storeProduct: productDetails + mdm,
+    multiProduct: productDetails + productCommon + "/create/multiple"
 }

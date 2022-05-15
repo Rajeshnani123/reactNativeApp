@@ -24,6 +24,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteProductById, getProductbyId, getProducts } from '../../../redux/ProductResource/ActionCreators/getProductAction';
 import { useIsFocused } from '@react-navigation/native';
 import { getStoreProducts } from '../../../redux/mdmProduct/ActionCreators/getMdmAction';
+import { GET_PRODUCT_RESET } from '../../../redux/ProductResource/ActionType';
 
 // const HeaderContent = ({navigation}) => {
 //   return (
@@ -92,7 +93,6 @@ const leftComponent = (title, subTitle, qty) => {
 };
 
 const rightComponent = (id,dispatch) => {
-  
   return (
     <View mt={-2}>
       <ActionBtn
@@ -114,12 +114,19 @@ const ManageProducts = ({navigation}) => {
   const [search, setSearch] = useState();
   const [isModelOpen, setIsModelOpen] = useState(false);
   const dispatch = useDispatch();
-  const {allProducts} = useSelector((state) => state.getProductReducers);
+  const {productLoading,allProducts,product,statusCode} = useSelector((state) => state.getProductReducers);
   const isFocused = useIsFocused();
   
   React.useLayoutEffect(()=>{
-    dispatch(getProducts())
-  },[isFocused])
+    dispatch(getProducts());
+    dispatch({type: GET_PRODUCT_RESET});
+  },[isFocused]);
+
+  React.useEffect(() => {
+    if(!productLoading && statusCode === 200){
+      navigation.navigate("ProductDetails")
+    }
+  },[productLoading]);
 
   const StoreSelect = () => {
     dispatch(getStoreProducts());
@@ -182,7 +189,7 @@ const ManageProducts = ({navigation}) => {
               rightCardWidth={'25%'}
               cardColor={'white'}
               leftComponent={leftComponent(item.product.productName, item.product.productName, 3)}
-              rightComponent={rightComponent(item.product.id,dispatch)}
+              rightComponent={rightComponent(item.product.id,dispatch,navigation)}
               rightWidth={100}
               leftWidth={100}
             />

@@ -6,6 +6,7 @@ import {getProductReducers} from "./ProductResource/Reducers/getProductReducers"
 import { persistReducer } from "redux-persist";
 import {getStoreReducers} from "./StoreData/Reducers/getStoreReducers";
 import {getMdmReducers} from "./mdmProduct/Reducers/getMdmReducers";
+import {postProductReducers}  from "./ProductResource/Reducers/postProductReducers";
 
 const initialConfig = {
     key: "auth",
@@ -19,5 +20,6 @@ export const rootReducer = combineReducers({
     getProductReducers,
     getUserReducers,
     getStoreReducers,
+    postProductReducers,
     getMdmReducers,
 })

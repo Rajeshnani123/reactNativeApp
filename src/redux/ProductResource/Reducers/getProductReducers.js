@@ -1,8 +1,10 @@
-import { DELETE_PRODUCT_FAILURE, DELETE_PRODUCT_LOADING, DELETE_PRODUCT_SUCCESS, GET_ALL_PRODUCTS_FAILURE, GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_SUCCESS, GET_PRODUCT_FAILURE, GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS } from "../ActionType"
+import { DELETE_PRODUCT_FAILURE, DELETE_PRODUCT_LOADING, DELETE_PRODUCT_SUCCESS, GET_ALL_PRODUCTS_FAILURE, GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_SUCCESS, GET_PRODUCT_FAILURE, GET_PRODUCT_LOADING, GET_PRODUCT_RESET, GET_PRODUCT_SUCCESS } from "../ActionType"
 
 
 const initialState = {
     loading: false,
+    productLoading: false,
+    statusCode: 0,
     allProducts: [],
     product:[],
 }
@@ -35,14 +37,16 @@ export const getProductReducers = (state= initialState, action) => {
             case GET_PRODUCT_LOADING: {
                 return {
                     ...state,
-                    loading: true,
+                    productLoading: true,
+                    statusCode: 0,
                 }
             }
 
             case GET_PRODUCT_SUCCESS: {
                 return{
                     ...state,
-                    loading: false,
+                    productLoading: false,
+                    statusCode: 200,
                     product: action.data,
                 }
             }
@@ -50,12 +54,20 @@ export const getProductReducers = (state= initialState, action) => {
             case GET_PRODUCT_FAILURE: {
                 return{
                     ...state,
-                    loading: false,
+                    productLoading: false,
                     product: [],
+                    statusCode:400, 
                     error: action.error,
                 }
             }
 
+            case GET_PRODUCT_RESET: {
+                return {
+                    ...state,
+                    productLoading: false,
+                    statusCode : 0,
+                }
+            }
             case DELETE_PRODUCT_LOADING: {
                 return {
                     ...state,
