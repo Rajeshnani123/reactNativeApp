@@ -9,7 +9,6 @@ export const getUserDetails = (user_id) => {
             dispatch({type: USER_DETAILS_LOADING});
             const url = ApiConnections.Account+`/${user_id}`;
            const response = await get(url);
-           console.log(url,response);
            if(response && response.data){
                dispatch({type: USER_DETAILS_SUCCESS, data: response.data})
            }else{

@@ -22,12 +22,13 @@ export const getProducts = () => {
     }
 }
 
-export const getProductbyId = (id) => {
+export const getProductbyId = (ids) => {
     return async(dispatch) => {
         try{
             dispatch({type: GET_PRODUCT_LOADING});
-            const response = await get(ApiConnections.Products+`/${id}`);
-            if(response){
+            const url = ApiConnections.getProduct+`?ids=${ids}`;
+            const response = await get(url);
+            if(response && response.data){
                 dispatch({type: GET_PRODUCT_SUCCESS,data: response.data});
             }else{
                 Alert.alert("Please try after some time");
@@ -45,7 +46,6 @@ export const deleteProductById = (id) => {
         try{
             dispatch({type: DELETE_PRODUCT_LOADING});
             const response = await deleteAxios(ApiConnections.Products+`/${id}`);
-            console.log(response);
             if(response){
                 dispatch({type: DELETE_PRODUCT_SUCCESS});
             }else{

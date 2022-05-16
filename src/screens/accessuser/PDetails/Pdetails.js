@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Feather';
 import {Center} from 'native-base';
@@ -30,33 +30,54 @@ import {
   TextInput,
 } from '../../../components';
 import {normalize} from '../../../utils/Platform';
+import { useSelector } from 'react-redux';
 
 const PDetails = ({navigation}) => {
+  const {product} = useSelector(state => state.getProductReducers);
+  
   const catagories = [
     {title: 'Breakfast', value: 'Breakfast'},
     {title: 'Cereal', value: 'Cereal'},
     {title: 'Noodles', value: 'Noodles'},
     {title: 'Pasta', value: 'Pasta'},
+    {title: 'String', value: 'string'}
   ];
   const subCatagories = [
     {title: 'Chocolates', value: 'Chocolates'},
     {title: 'Cookies', value: 'Cookies'},
     {title: 'Biscuits', value: 'Biscuits'},
     {title: 'Waffle', value: 'Waffle'},
+    {title: 'String', value: 'string'}
   ];
   const Quantity = [
-    {title: '1', value: 'one'},
-    {title: '2', value: 'two'},
-    {title: '3', value: 'three'},
-    {title: '4', value: 'four'},
-    {title: '5', value: 'five'},
+    {title: '1', value: '1'},
+    {title: '2', value: '2'},
+    {title: '3', value: '3'},
+    {title: '4', value: '4'},
+    {title: '5', value: '5'},
+    {title: '0', value: '0'},
+    {title: '27', value:"27"}
   ];
   const Brands = [
     {title: 'Britannia', value: 'Britannia'},
     {title: 'Karachi', value: 'Karachi'},
     {title: 'Oreo', value: 'Oreo'},
     {title: 'Bauli moonFils', value: 'Bauli moonFils'},
+    {title: 'String', value: 'string'}
   ];
+
+  const [Category,setCategory] = useState(product && product[0] ? product[0].product.productCategories: "");
+  const [subCategory,setSubCategory] = useState(product && product[0] ? product[0].product.store.sellerCategories: "");
+  const [productName,setProductName] = useState(product && product[0] ? product[0].product.productName: "");
+  const [productAttribute,setProductAttribute] = useState(product && product[0] ? product[0].product.productAttribute : "");
+  const [productVariant,setProductVariant] = useState(product && product[0] ? product[0].variant: "");
+  const [productDetails,setProductDetails] = useState(product && product[0] ? product[0].product.details : "");
+  const [price,setPrice] = useState(product && product[0] ? product[0].price : 0);
+  const [brand,setBrand] = useState(product && product[0] ? product[0].product.brand : "");
+  const [availQty,setAvailQty] = useState(product && product[0] ? product[0].availableQty : "");
+
+  console.log(availQty);
+  
   return (
     <>
       <ScrollView style={styles.root}>
@@ -89,13 +110,17 @@ const PDetails = ({navigation}) => {
           </TouchableOpacity>
           <View style={{marginLeft: normalize(36)}} mt={2} mb={3}>
             <FormSelect
-              placeHolder="Category"
+              placeHolder={Category ? Category : "Category"}
               width="92%"
+              setValue={setCategory}
+              selectedValue={Category}
               options={catagories}
             />
             <FormSelect
               placeHolder=" Sub Category"
               width="92%"
+              setValue={setSubCategory}
+              selectedValue = {subCategory}
               options={subCatagories}
               mt={3}
             />
@@ -104,6 +129,8 @@ const PDetails = ({navigation}) => {
         <TextInput
           bg={'white'}
           placeHolder={'Product name'}
+          value={productName}
+          onChangeText={setProductName}
           width={'82%'}
           mx={10}
           mt={25}
@@ -111,6 +138,8 @@ const PDetails = ({navigation}) => {
         <TextInput
           bg={'white'}
           placeHolder={'Product attributes'}
+          value={productAttribute}
+          onChangeText={setProductAttribute}
           width={'82%'}
           mx={10}
           mt={17}
@@ -118,6 +147,8 @@ const PDetails = ({navigation}) => {
         <TextInput
           bg={'white'}
           placeHolder={'Product variants'}
+          value={productVariant}
+          onChangeText={setProductVariant}
           width={'82%'}
           mx={10}
           mt={17}
@@ -126,6 +157,8 @@ const PDetails = ({navigation}) => {
           multiline
           height={70}
           bg={'white'}
+          value={productDetails}
+          onChangeText={setProductDetails}
           placeHolder={'Description'}
           width={'82%'}
           mx={10}
@@ -134,15 +167,19 @@ const PDetails = ({navigation}) => {
         <TextInput
           bg={'white'}
           placeHolder={'price'}
+          value={String(price)}
+          onChangeText={setPrice}
           width={'82%'}
           mx={10}
           mt={17}
         />
         <View style={{marginLeft: normalize(36), marginTop: normalize(16)}}>
-          <FormSelect placeHolder="Qty" width="92%" options={Quantity} />
+          <FormSelect placeHolder="Qty" width="92%" options={Quantity} selectedValue={String(availQty)} setValue={setAvailQty}/>
           <FormSelect
             placeHolder=" Brand"
             width="92%"
+            selectedValue={brand}
+            setValue={setBrand}
             options={Brands}
             mt={3}
           />

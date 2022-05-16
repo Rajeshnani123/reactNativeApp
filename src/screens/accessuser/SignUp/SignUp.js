@@ -51,7 +51,7 @@ const SignUp = ({navigation}) => {
       Alert.alert("Please login with your registered Details")
       navigation.navigate('Login');
     }else if(!createLoading && statusCode === 400){
-      Alert.alert("User Already Exists");
+      Alert.alert("User Creation Failed");
     }
   },[createLoading]);
 
