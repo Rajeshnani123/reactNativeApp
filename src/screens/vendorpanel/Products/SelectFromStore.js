@@ -24,8 +24,10 @@ import {
 } from '../../../components';
 import style from '../../style';
 import {DATA} from '../../../constants/DUMMYJSON';
+import { useDispatch, useSelector } from 'react-redux';
 import CheckBox from '@react-native-community/checkbox';
 import {normalize} from '../../../utils/Platform';
+import { multiStoreProduct } from '../../../redux/ProductResource/ActionCreators/postProductAction';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -46,13 +48,21 @@ const HeaderContent = ({navigation}) => {
   );
 };
 
-const LeftComponent = ({title, subTitle, qty}) => {
+const LeftComponent = ({title, subTitle, qty,item,setSelectedProduct,selectedProduct}) => {
   const [isSelected,setSelection] = useState(false);
+  const {allStores} = useSelector((state) => state.getStoreReducers);
+  const productSelect = (v) => {
+    if(v){
+      setSelectedProduct(selectedProduct => [{...item,seller: allStores[0].id}, ...selectedProduct]);
+    }else{
+      console.log("it can be used to remove the object from selected product")
+    }
+  }
   return (
     <>
       <Box alignItems="flex-start" flexDirection={'row'}>
       <CheckBox  value={isSelected}
-          onValueChange={(v)=>setSelection(v=>!v)} style={{marginTop:normalize(50)}}/>
+          onValueChange={(v)=>{setSelection(v=>!v),productSelect(v)}} style={{marginTop:normalize(50)}}/>
         <Image
           alt="productImg"
           resizeMode={'stretch'}
@@ -76,7 +86,7 @@ const LeftComponent = ({title, subTitle, qty}) => {
 const rightComponent = ({isDelete = false, isAdd = true}) => {
   return (
     <View mt="30%">
-      {isDelete == true && (
+      {isDelete === true && (
         <ActionBtn
           iconType={ICONS.minusType}
           iconName={ICONS.minus}
@@ -84,7 +94,7 @@ const rightComponent = ({isDelete = false, isAdd = true}) => {
         />
       )}
 
-      {isAdd == true && (
+      {isAdd === true && (
         <ActionBtn
           iconType={ICONS.plusType}
           iconName={ICONS.plus}
@@ -106,8 +116,15 @@ const checkBox = () => {
 };
 
 const SelectFromStore = ({navigation}) => {
+  const dispatch = useDispatch();
   const [search, setSearch] = useState();
-
+  const {storeData} = useSelector((state) => state.getMdmReducers);
+  const {allStores} = useSelector((state) => state.getStoreReducers);
+  const [selectedProduct,setSelectedProduct] = useState([]);
+  const submitHandler = () => {
+    const Body = [...selectedProduct];
+    dispatch(multiStoreProduct(Body))
+  }
   const HeaderComponent = () => {
     return (
       <>
@@ -131,7 +148,7 @@ const SelectFromStore = ({navigation}) => {
           showsVerticalScrollIndicator={false}
           numColumns={1}
           keyExtractor={item => `${item.id}`}
-          data={DATA}
+          data={storeData.content}
           zIndex={-9}
           renderItem={({item}) => (
             <HorizontalCard
@@ -141,7 +158,7 @@ const SelectFromStore = ({navigation}) => {
               rightCardWidth={'20%'}
               cardColor={'white'}
             
-              leftComponent={<LeftComponent title={item.title} subTitle={item.title} qty={3}/>}
+              leftComponent={<LeftComponent title={item.brand} subTitle={item.brand} qty={3} item={item} setSelectedProduct={setSelectedProduct} selectedProduct={selectedProduct}/>}
               // rightComponent={rightComponent({isDelete: true, isAdd: false})}
               ActionBtn={<ActionBtn />}
               rightWidth={100}
@@ -155,7 +172,8 @@ const SelectFromStore = ({navigation}) => {
         />
       </View>
 
-      <View
+      <TouchableOpacity
+        onPress={submitHandler}
         style={{
           width: '100%',
           height: 50,
@@ -166,7 +184,7 @@ const SelectFromStore = ({navigation}) => {
           bottom: 0,
         }}>
         <Text style={{color: '#fff', fontSize: 22}}>SUBMIT</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

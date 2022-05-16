@@ -1,6 +1,7 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {VendorHome, ManageProducts, SelectFromStore} from './../screens';
+import PDetails from '../screens/accessuser/PDetails/Pdetails';
 
 const VendorStk = createNativeStackNavigator();
 
@@ -20,6 +21,13 @@ export default function VendorStack({route, navigation}) {
         options={{
           headerShown: false,
         }}
+      />
+      <VendorStk.Screen 
+      name="ProductDetails"
+      component={PDetails}
+      options={{
+        headerShown: false,
+      }}
       />
       <VendorStk.Screen
         name="SelectFromStore"
