@@ -101,6 +101,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent:'space-around'
   },
+  ratingContainer:{
+    marginTop:20,
+    paddingRight:20,
+
+  },
   num: {
     color: '#000',
     marginLeft: normalize(10),
@@ -124,22 +129,22 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     letterSpacing: 0,
     textAlign: 'left',
-    marginLeft: normalize(15),
+    //FmarginLeft: normalize(15),
     marginTop: normalize(3),
     color: '#000000',
   },
   qtybox: {
-    width: normalize(103),
+    width: normalize(82),
     height: normalize(35),
     borderRadius: 5,
     marginLeft: normalize(15),
     borderColor: '#ffb43a',
     borderWidth: 1,
     flexDirection: 'row',
+    justifyContent:'center',
   },
   qtytext: {
-    marginLeft: normalize(20),
-    marginTop: normalize(7),
+    textAlignVertical:'center',
     color: '#000',
   },
   arrowdown: {
@@ -153,7 +158,7 @@ const styles = StyleSheet.create({
   },
   delivery: {
     fontSize: normalize(12),
-    marginTop: normalize(50),
+    marginTop: normalize(20),
     marginLeft: normalize(15),
     color: '#000',
   },
@@ -175,7 +180,7 @@ const styles = StyleSheet.create({
   names: {
     marginVertical: normalize(5),
 flexDirection:'row',
-    
+
     marginHorizontal:normalize(15)
   },
   txtcolor:{
