@@ -70,7 +70,7 @@ const SignUp = ({navigation}) => {
         <View style={styles.container}>
         <TextInput
         style={styles.input}
-        placeholder="Username"
+        placeholder="User name"
         placeholderTextColor={'#c4c4c4'}
         onChangeText={value => setName(value)}></TextInput>
           <TextInput
@@ -105,20 +105,20 @@ const SignUp = ({navigation}) => {
           <TouchableOpacity
             style={styles.button}
             onPress={createUserFunc}>
-            <Text style={styles.lgn}> Register</Text>
+            <Text style={styles.lgn}> REGISTER</Text>
           </TouchableOpacity>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              marginHorizontal: normalize(70),
+              marginHorizontal: normalize(60),
               marginTop:normalize(20),
               
             }}>
-            <Text onPress={() => navigation.navigate('SignIn')}>
+            <Text >
               Have an account ?
             </Text>
-            <Text style={styles.acc}> SignIn</Text>
+            <Text style={styles.acc} onPress={() => navigation.navigate('Login')}> SignIn</Text>
           </View>
         </View>
       </View>

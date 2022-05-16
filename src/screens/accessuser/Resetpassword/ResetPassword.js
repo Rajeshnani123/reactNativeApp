@@ -78,7 +78,7 @@ const ResetPassword = ({navigation}) => {
             height={50}
             width={WP('43%')}
             colorScheme={'primary'}
-            value={'Add'}
+            value={'SUBMIT'}
             
           />
         </View>
