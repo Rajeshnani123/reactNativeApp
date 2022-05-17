@@ -27,6 +27,9 @@ import {
 import {normalize} from '../../../utils/Platform';
 import {background} from 'native-base/lib/typescript/theme/styled-system';
 import {Circle} from 'react-native-svg';
+import { useIsFocused } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCartDetails } from '../../../redux/cartManagement/ActionCreators/getCartAction';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -112,6 +115,15 @@ const HeaderContent = ({navigation}) => {
 const MyCart = ({navigation}) => {
   const [search, setSearch] = useState();
   const [isSelected, setSelection] = useState(false);
+  const dispatch = useDispatch();
+  const {data} = useSelector(state => state.getUserReducers);
+  const {cartDetails} = useSelector(state => state.getCardReducers);
+  const isFocused = useIsFocused();
+
+  React.useLayoutEffect(() => {
+    data && data.id && dispatch(getCartDetails(data.id));
+  },[isFocused]);
+
   const leftComponent = (
     title,
     packs,
@@ -237,7 +249,7 @@ const MyCart = ({navigation}) => {
             overScrollMode="never"
             showsVerticalScrollIndicator={false}
             numColumns={1}
-            data={MyCartJSON}
+            data={cartDetails}
             keyExtractor={item => `${item.id}`}
             renderItem={({item}) => (
               <HorizontalCard
