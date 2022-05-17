@@ -48,6 +48,10 @@ const HeaderContent = ({navigation}) => {
     />
   );
 };
+const Wrapper = ({children}) => {
+  const [isSelected, setSelection] = useState(false);
+  return <View>{children({isSelected, setSelection})}</View>;
+};
 
 // const leftComponent = (title, subtitle, price, discount, barganing) => {
 //   const [isSelected, setSelection] = useState(false);
@@ -133,76 +137,74 @@ const MyCart = ({navigation}) => {
     discount,
   ) => {
     return (
-      <>
-        <Box alignItems="flex-start" flexDirection={'row'}>
-        <CheckBox  value={isSelected}
-          onValueChange={(v)=>setSelection(v=>!v)}/>
+      <Wrapper>
+        {({isSelected, setSelection}) => (
+          <View>
+          
+            <Box alignItems="flex-start" flexDirection={'row'}>
+              <CheckBox
+                value={isSelected}
+                onValueChange={v => setSelection(v => !v)}
+                marginTop={50}
+              />
 
-          <Image
-            alt="productImg"
-            resizeMode={'stretch'}
-            borderRadius={10}
-            width={62}
-            height={84}
-            source={{uri: IMAGES.dummy1}}
-          />
-          <Box mx={5}>
-            <Box flexDirection={'row'}>
-              <Text style={styles.title}>{title}</Text>
-              <Text style={styles.packs}>{packs}</Text>
-            </Box>
+              <Image
+                alt="productImg"
+                resizeMode={'stretch'}
+                borderRadius={10}
+                width={62}
+                height={84}
+                mx={3}
+                source={{uri: IMAGES.dummy1}}
+              />
+              <Box mx={3}>
+                <Box flexDirection={'row'}>
+                  <Text style={styles.title}>{title}</Text>
+                  <Text style={styles.packs}>{packs}</Text>
+                </Box>
 
-            <Text style={styles.company}>{company}</Text>
-            <Box flexDirection={'row'}>
-              <Text style={styles.prevprice}>{prevprice}</Text>
-              <Text style={styles.currentprice}>{currentprice}</Text>
-              <View style={styles.discountview}>
-                <Text style={styles.discount}>{discount}</Text>
-              </View>
+                <Text style={styles.company}>{company}</Text>
+                <Box flexDirection={'row'}>
+                  <Text style={styles.prevprice}>{prevprice}</Text>
+                  <Text style={styles.currentprice}>{currentprice}</Text>
+                  <View style={styles.discountview}>
+                    <Text style={styles.discount}>{discount}</Text>
+                  </View>
+                </Box>
+              </Box>
             </Box>
-          </Box>
-        </Box>
-        <Box flexDirection={'row'} mx={10} my={5}>
-          <TouchableOpacity style={styles.minus}>
-            <Image
-              source={require('../../../assets/Images/minus.png')}
-              mx={4}
-              my={3}
-              
-            />
-          </TouchableOpacity>
-          <Text
-            style={{
-              marginLeft: normalize(15),
-              marginTop: normalize(15),
-              color: '#000',
-            }}>
-            2
-          </Text>
-          <TouchableOpacity mx={3} style={styles.plus}>
-            <Image
-              source={require('../../../assets/Images/plus.png')}
-              mx={4}
-              my={3}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity mx={3} style={styles.remove}>
-            <Text style={styles.rmtext}>Remove</Text>
-          </TouchableOpacity>
-        </Box>
-        <View flexDirection={'row'}>
-          <TouchableOpacity style={styles.Btn}>
-            <Text style={styles.DO}>Discount & Offers</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.layer}>
-            <Image
-              source={require('../../../assets/Images/layer.png')}
-              mx={4}
-              my={2}
-            />
-          </TouchableOpacity>
-        </View>
-      </>
+            <Box flexDirection={'row'} mx={12} my={5}>
+              <TouchableOpacity style={styles.minus}>
+                <Image
+                  source={require('../../../assets/Images/minus.png')}
+                  my={3}
+                  height={4}
+                  width={4}
+                />
+              </TouchableOpacity>
+              <Text
+                style={{
+                  marginLeft: normalize(15),
+                  marginTop: normalize(15),
+                  color: '#000',
+                }}>
+                2
+              </Text>
+              <TouchableOpacity mx={3} style={styles.plus}>
+                <Image
+                  source={require('../../../assets/Images/plus.png')}
+                  my={3}
+                  height={4}
+                  width={4}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity mx={3} style={styles.remove}>
+                <Text style={styles.rmtext}>Remove</Text>
+              </TouchableOpacity>
+            </Box>
+            
+          </View>
+        )}</Wrapper>
     );
   };
 
@@ -229,20 +231,17 @@ const MyCart = ({navigation}) => {
         />
       </View> */}
         <View style={styles.container}>
-          
-            <SearchBox
-              value={search}
-              onChangeText={val => setSearch(val)}
-              onSearch={() => alert('Searchnow')}
-              marginTop={normalize(8)}
-              ml={0}
-              
-            />
-        
+          <SearchBox
+            value={search}
+            onChangeText={val => setSearch(val)}
+            onSearch={() => alert('Searchnow')}
+            marginTop={normalize(8)}
+            ml={0}
+          />
+
           <View style={styles.cartitemview}>
             <Text style={styles.cartitems}>Cart items</Text>
             <Text style={styles.pincode}>Pincode - 560010</Text>
-           
           </View>
 
           <FlatList
@@ -256,7 +255,7 @@ const MyCart = ({navigation}) => {
                 containerStyle={{
                   borderRadius: normalize(10),
                   marginTop: normalize(15),
-                  height: normalize(230),
+                  height: normalize(190),
                   // marginHorizontal: normalize(1),
                 }}
                 customWidth={'100%'}
@@ -284,6 +283,18 @@ const MyCart = ({navigation}) => {
           />
         </View>
       </ScrollView>
+      <TouchableOpacity
+        style={{
+          width: '100%',
+          height: 50,
+          backgroundColor: '#FF9800',
+          justifyContent: 'center',
+          alignItems: 'center',
+          position: 'absolute',
+          bottom: 0,
+        }}>
+        <Text style={{color: '#fff', fontSize: 22}}>Place Order</Text>
+      </TouchableOpacity>
     </>
   );
 };

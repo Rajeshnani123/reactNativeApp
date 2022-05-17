@@ -180,14 +180,7 @@ const Checkout = ({navigation}) => {
               />
               <Box style={styles.qtybox}>
                 <Text style={styles.qtytext}>Qty 5</Text>
-                <TouchableOpacity style={styles.arrowdown}>
-                  <ICON
-                    type={ICONS.downFilledType}
-                    name={ICONS.down}
-                    size={26}
-                    color={COLORS.black}
-                  />
-                </TouchableOpacity>
+                
               </Box>
             </View>
           </View>

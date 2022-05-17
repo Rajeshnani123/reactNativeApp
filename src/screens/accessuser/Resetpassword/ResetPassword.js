@@ -32,55 +32,44 @@ import {
 import {normalize} from '../../../utils/Platform';
 
 const HeaderContent = ({navigation}) => {
-  return (
-    <Header
-      leftComponent={<BackHeader navigation={navigation} />}
-      
-    />
-  );
+  return <Header leftComponent={<BackHeader navigation={navigation} />} />;
 };
 
 const ResetPassword = ({navigation}) => {
- 
   return (
     <>
       <ScrollView style={styles.root}>
-      <HeaderContent navigation={navigation} />
-       
-          
-            <View style={{alignItems:'center'}}>
-            <Text style={styles.title}>Reset Password</Text>
-            </View>
-          
-          
-         
-      
-        
-        
-        <View style={{marginTop:normalize(50)}}>
-        <TextInput
-          bg={'white'}
-          placeHolder={'new password'}
-          width={'82%'}
-          mx={10}
-          mt={17}
-          />
-        <TextInput
-          bg={'white'}
-          placeHolder={'confirm password'}
-          width={'82%'}
-          mx={10}
-          mt={17}
-        />
+        <HeaderContent navigation={navigation} />
+
+        <View style={{alignItems: 'center'}}>
+          <Text style={styles.title}>Reset Password</Text>
         </View>
-        <View style={{marginTop:normalize(40),alignItems:'center'}}>
-          <Btn
-            height={50}
-            width={WP('43%')}
-            colorScheme={'primary'}
-            value={'SUBMIT'}
-            
+
+        <View style={{marginTop: normalize(50), alignItems: 'center'}}>
+          <TextInput
+            bg={'white'}
+            placeHolder={'Enter OTP'}
+            width={'82%'}
+            mx={10}
+            mt={17}
           />
+          <TextInput
+            bg={'white'}
+            placeHolder={'New password'}
+            width={'82%'}
+            mx={10}
+            mt={17}
+          />
+          <TextInput
+            bg={'white'}
+            placeHolder={'Confirm password'}
+            width={'82%'}
+            mx={10}
+            mt={17}
+          />
+        </View>
+        <View style={{marginTop: normalize(40), alignItems: 'center'}}>
+          <Btn width={WP('80%')} colorScheme={'primary'} value={'SUBMIT'} />
         </View>
       </ScrollView>
     </>
@@ -102,7 +91,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: normalize(20),
     color: '#000',
-    marginTop:normalize(50)
+    marginTop: normalize(50),
   },
 
   button: {
