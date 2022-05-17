@@ -6,7 +6,7 @@ export const MyCartJSON = [
         company:'Oreo pvt ltd',
         prevprice:'1200',
         currentprice:'Rs 999',
-        discount:'16% OFF'
+        discount:'16%OFF'
     },
     {
         id:2,
@@ -15,7 +15,7 @@ export const MyCartJSON = [
         company:'Oreo pvt ltd',
         prevprice:'1200',
         currentprice:'Rs 999',
-        discount:'16% OFF'
+        discount:'16%OFF'
     },
     {
         id:3,
@@ -24,7 +24,7 @@ export const MyCartJSON = [
         company:'Oreo pvt ltd',
         prevprice:'1200',
         currentprice:'Rs 999',
-        discount:'16% OFF'
+        discount:'16%OFF'
     },
     {
         id:4,
@@ -33,7 +33,7 @@ export const MyCartJSON = [
         company:'Oreo pvt ltd',
         prevprice:'1200',
         currentprice:'Rs 999',
-        discount:'16% OFF'
+        discount:'16%OFF'
     },
     
     ];

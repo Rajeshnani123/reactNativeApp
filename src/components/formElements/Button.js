@@ -13,6 +13,7 @@ export const Btn = ({
   isLoading = false,
   leftIcon,
   rightIcon,
+
   ...rest
 }) => {
   return (
