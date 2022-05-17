@@ -108,20 +108,9 @@ export default function HomeStack() {
         }}
         component={MyCart}
       />
-      <Drawer.Screen
-        name="CartStk "
-        options={{
-          headerShown: false,
-        }}
-        component={CartStk}
-      />
-      <Drawer.Screen
-        name="PDetails "
-        options={{
-          headerShown: false,
-        }}
-        component={PDetails}
-      />
+      
+      
+      
       <Drawer.Screen
         name="Logout"
         component={MyCart}

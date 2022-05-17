@@ -32,6 +32,16 @@ import {
 import {normalize} from '../../../utils/Platform';
 import { useSelector } from 'react-redux';
 
+const HeaderContent = ({navigation}) => {
+  return (
+    <Header
+      leftComponent={<BackHeader navigation={navigation} />}
+     title='Product Details'
+    />
+  );
+};
+
+
 const PDetails = ({navigation}) => {
   const {product} = useSelector(state => state.getProductReducers);
   
@@ -81,22 +91,17 @@ const PDetails = ({navigation}) => {
   return (
     <>
       <ScrollView style={styles.root}>
+      <HeaderContent navigation={navigation}  />
         <View style={{flex: 1}}>
           <View
             style={{
               alignItems: 'center',
-              marginTop: normalize(40),
+              marginTop: normalize(10),
               flexDirection: 'row',
               marginLeft: normalize(20),
             }}>
-            <TouchableOpacity>
-              <ICON
-                type={ICONS.arrowLeftType}
-                name={ICONS.arrowLeft}
-                size={28}
-              />
-            </TouchableOpacity>
-            <Text style={styles.title}>Product Details</Text>
+            
+            
           </View>
           <TouchableOpacity style={styles.edit}>
             <View style={{marginTop: normalize(10)}}>
