@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   
   },
   button: {
-    height: normalize(55),
+    height: normalize(50),
     borderRadius: 5,
     backgroundColor: '#ffb43a',
     borderStyle: 'solid',
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     fontSize: normalize(16),
     fontWeight: "normal",
     fontStyle: "normal",
-    marginTop:normalize(16),
+    marginTop:normalize(14),
     textAlign: "left",
     color: "#000000"
   }

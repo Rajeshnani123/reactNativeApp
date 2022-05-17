@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
     fontSize: normalize(18),
     fontWeight: 'normal',
     fontStyle: 'normal',
-    
-    fontWeight:'500',
+
+    fontWeight: '500',
     letterSpacing: 0,
     textAlign: 'left',
     color: '#000000',
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     width: normalize(82),
     height: normalize(18),
     fontFamily: 'Poppins',
-marginTop:normalize(4),
+    marginTop: normalize(4),
     fontSize: normalize(16),
     fontWeight: 'normal',
     fontStyle: 'normal',
@@ -96,112 +96,105 @@ marginTop:normalize(4),
     textAlign: 'left',
     color: 'rgba(0, 0, 0, 0.5)',
   },
-  prevprice:{
+  prevprice: {
     width: normalize(31),
-  height: normalize(21),
-  marginTop:normalize(16),
-  fontFamily: "Poppins",
-  fontSize: normalize(14),
-  fontWeight: "normal",
-  fontStyle: "normal",
-  letterSpacing: 0,
-  textAlign: "left",
-  color: "rgba(0, 0, 0, 0.6)"
+    height: normalize(21),
+    marginTop: normalize(16),
+    fontFamily: 'Poppins',
+    fontSize: normalize(14),
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+    letterSpacing: 0,
+    textAlign: 'left',
+    color: 'rgba(0, 0, 0, 0.6)',
   },
-  currentprice:{
+  currentprice: {
     width: normalize(65),
-  height: normalize(30),
-  marginLeft:normalize(11),
-  marginTop:normalize(10),
-  fontFamily: "Poppins",
-  fontSize: normalize(20),
-  fontWeight: "500",
-  fontStyle: "normal",
-  letterSpacing: 0,
-  textAlign: "left",
-  color: "#000000"
+    height: normalize(30),
+    marginLeft: normalize(11),
+    marginTop: normalize(10),
+    fontFamily: 'Poppins',
+    fontSize: normalize(20),
+    fontWeight: '500',
+    fontStyle: 'normal',
+    letterSpacing: 0,
+    textAlign: 'left',
+    color: '#000000',
   },
-  
-  discount:{
+
+  discount: {
     width: normalize(70),
-  height: normalize(22),
-  backgroundColor: "#4dc860",width: 53,
-  marginTop:normalize(13),
-  marginLeft:normalize(9),
-  fontFamily: "Poppins",
-  fontSize: normalize(14),
-  fontWeight: "normal",
-  fontStyle: "normal",
-  letterSpacing: 0,
-  textAlign: "left",
-  color: "#ffffff"
+    height: normalize(22),
+    backgroundColor: '#4dc860',
+    width: 53,
+    marginTop: normalize(13),
+    marginLeft: normalize(9),
+    fontFamily: 'Poppins',
+    fontSize: normalize(14),
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+    letterSpacing: 0,
+    textAlign: 'left',
+    color: '#ffffff',
   },
-  Btn:{
-    width:normalize(125),
-    backgroundColor:'#ffb43a',
+  Btn: {
+    width: normalize(162),
+    backgroundColor: '#ffb43a',
     height: normalize(45),
     borderRadius: 5,
-    backgroundColor: "#ffb43a",
-    shadowColor: "rgba(0, 0, 0, 0.25)",
-    shadowOffset: {
-      width: 10,
-      height: 10
-    },
-    shadowRadius: 20,
-    shadowOpacity: 1,
-    marginLeft:normalize(37)
+    backgroundColor: '#ffb43a',
+    elevation: 5,
+    marginLeft: normalize(40),
+  
+    alignItems: 'center',
   },
-  minus:{
-    backgroundColor:'#ffb43a',
+  minus: {
+    backgroundColor: '#ffb43a',
     width: normalize(45),
     height: normalize(45),
     borderRadius: 5,
+    alignItems: 'center',
+    elevation: 5,
   },
-  plus:{
-    backgroundColor:'#ffb43a',
+  plus: {
+    backgroundColor: '#ffb43a',
     width: normalize(45),
     height: normalize(45),
-    borderRadius: 5,
-    marginLeft: normalize(15)
+    borderRadius: normalize(5),
+    marginLeft: normalize(15),
+    alignItems: 'center',
   },
-  remove:{
+  remove: {
     width: normalize(103),
     height: normalize(45),
+    borderRadius: normalize(5),
+    alignItems: 'center',
+    backgroundColor: '#f8e4c4',
+    elevation: 5,
+
+    textAlignVertical: 10,
+    marginLeft: normalize(20),
+  },
+  rmtext: {
+    marginTop: normalize(12),
+  },
+  DO: {
+    color: '#000',
+
+    marginTop: normalize(14),
+    fontSize: normalize(15),
+  },
+  layer: {
+    width: normalize(60),
+    height: normalize(45),
+    marginLeft: normalize(20),
     borderRadius: 5,
-    backgroundColor: "#f8e4c4",
-    shadowColor: "rgba(0, 0, 0, 0.25)",
-    shadowOffset: {
-      width: 10,
-      height: 10
-    },
+    alignItems: 'center',
+    backgroundColor: '#ffb43a',
+    elevation:5,
     shadowRadius: 20,
     shadowOpacity: 1,
-  
-  textAlignVertical:10
-,    marginLeft:normalize(20)
   },
-  rmtext:{
-    marginLeft:normalize(30),
-  marginTop:normalize(14)  },
-  DO:{
-    color:'#000',
-    marginLeft:normalize(15),
-    marginTop:normalize(12)
-  },
-  layer:{
-    width: normalize(60),
-    height: normalize(40),
-    marginLeft:normalize(20),
-    borderRadius: 5,
-    backgroundColor: "#ffb43a",
-    shadowColor: "rgba(0, 0, 0, 0.25)",
-    shadowOffset: {
-      width: 10,
-      height: 10
-    },
-    shadowRadius: 20,
-    shadowOpacity: 1
-  }
 });
 
 export default styles;

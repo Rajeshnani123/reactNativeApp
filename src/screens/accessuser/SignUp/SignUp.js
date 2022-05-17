@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  useState
 } from 'react-native';
 import React from 'react';
 import styles from '../SignUp/style.js';
@@ -14,6 +15,7 @@ import { createUser } from '../../../redux/UserProfile/ActionCreators/postUserAc
 import { useDispatch, useSelector } from 'react-redux';
 import { USER_ACCOUNT_RESET } from '../../../redux/UserProfile/Action/ActionType.js';
 import { normalize } from '../../../utils/Platform.js';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 const SignUp = ({navigation}) => {
   const dispatch = useDispatch();
@@ -55,6 +57,8 @@ const SignUp = ({navigation}) => {
     }
   },[createLoading]);
 
+  
+
 
   return (
     <ScrollView>
@@ -73,6 +77,13 @@ const SignUp = ({navigation}) => {
         placeholder="User name"
         placeholderTextColor={'#c4c4c4'}
         onChangeText={value => setName(value)}></TextInput>
+        <TextInput
+        style={styles.input}
+        placeholder="Date of birth"
+        placeholderTextColor={'#c4c4c4'}
+        onChangeText={value => setName(value)}></TextInput>
+         
+      
           <TextInput
             style={styles.input}
             value={email}

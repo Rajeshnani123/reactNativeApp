@@ -143,7 +143,7 @@ const ProductDetails = ({navigation}) => {
 
   return (
     <View>
-      <ScrollView>
+      <ScrollView style={{backgroundColor: '#FFF7EA'}}>
         <HeaderContent navigation={navigation} />
 
         <View style={{flexDirection: 'row'}}>

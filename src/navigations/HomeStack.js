@@ -93,13 +93,6 @@ export default function HomeStack() {
         component={MyCart}
       />
       <Drawer.Screen
-        name="Checkout "
-        options={{
-          headerShown: false,
-        }}
-        component={Checkout}
-      />
-      <Drawer.Screen
         name="CartStk "
         options={{
           headerShown: false,
