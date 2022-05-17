@@ -2,7 +2,7 @@ import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {CustomDrawer, CustomDrawerContent} from './CustomDrawer';
 import CommonStack from './CommonStack';
-import {Button} from 'react-native';
+import {Button,Alert} from 'react-native';
 import VendorStack from './VendorStack';
 // import UserStack from './UserStack';
 import {UserDetail} from './../screens';
@@ -11,7 +11,7 @@ import GlobalStore from '../screens/enduser/GlobalStore/GlobalStore';
 import ProfileStk from './authStack/ProfileStk';
 import ProductStk from './endUserStack/ProductStk';
 import MyCart from '../screens/enduser/MyCart/MyCart';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 // import { logout } from './../../../redux/reducers/authReducer';
 import {logout} from '../redux/reducers/authReducer';
 import Checkout from '../screens/enduser/Checkout/Checkout';
@@ -21,6 +21,10 @@ import Error from '../screens/enduser/Error/Error';
 import AsyncStrorage from "@react-native-async-storage/async-storage";
 import { USER_ACCOUNT_LOGOUT } from '../redux/UserProfile/Action/ActionType';
 import PDetails from '../screens/accessuser/PDetails/Pdetails';
+import {CreateStore} from "../screens/accessuser/createStore"
+import jwt_decode from "jwt-decode";
+
+
 const Drawer = createDrawerNavigator();
 
 // export function CustomDrawerContent({navigation}) {
@@ -37,7 +41,8 @@ const Drawer = createDrawerNavigator();
 
 export default function HomeStack() {
   const dispatch = useDispatch();
-  
+  const {userType} = useSelector(state => state.getUserReducers.data);
+ 
   return (
     <Drawer.Navigator
       // drawerContent={props => <CustomDrawer {...props} />}
@@ -49,13 +54,24 @@ export default function HomeStack() {
         }}
         component={CommonStack}
       /> */}
-      <Drawer.Screen
+     
+
+     {userType && userType.includes("VENDOR") && <Drawer.Screen
         name="Manage Store"
         options={{
           headerShown: false,
         }}
         component={VendorStack}
-      />
+      />}
+       {userType && userType.includes("VENDOR") && <Drawer.Screen
+        name="Create Store"
+        options={{
+          headerShown: false,
+        }}
+        component={CreateStore}
+      />}
+
+     
       {/* <Drawer.Screen
         name="Profile"
         options={{

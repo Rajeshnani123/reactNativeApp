@@ -10,6 +10,7 @@ import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 import { useDispatch,useSelector } from 'react-redux';
 import { updateAccount } from '../../redux/UserProfile/ActionCreators/postUserAction';
+import { USER_ACCOUNT_RESET } from '../../redux/UserProfile/Action/ActionType';
 
 const UserDetailForm = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,9 @@ const UserDetailForm = () => {
   const [type,setType] = React.useState(data.userType ?  data.userType : "");
   const [gstin,setGstin] = React.useState(data.gstin ? data.gstin : "");
   const [address,setAddress] = React.useState(data.address ? data.address : "");
-  const {loading,statusCode} = useSelector((state) => state.userProfileReducers)
+  const {loading,statusCode,token} = useSelector((state) => state.userProfileReducers);
+ // const {token} = useSelector(state => state.userProfileReducers);
+
   const updateData = () => {
     const Body={
       address: address,
@@ -29,7 +32,7 @@ const UserDetailForm = () => {
       gstin: gstin,
       newEmail: email,
       newPhoneNumber: mobile,
-      password: "string",
+      password: "",
       phoneNumber: data.phoneNumber,
       userName: name,
     }
@@ -39,6 +42,7 @@ const UserDetailForm = () => {
   React.useEffect(() => {
     if(!loading && statusCode === 200){
       Alert.alert("data saved");
+      dispatch({type: USER_ACCOUNT_RESET})
     }
   },[loading])
 
