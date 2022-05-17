@@ -175,10 +175,10 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     letterSpacing: 0,
     textAlign: 'left',
-    color: '#000000',marginLeft:normalize(10)
+    color: '#000000',marginLeft:normalize(12)
   },
   names: {
-    marginVertical: normalize(5),
+    marginVertical: normalize(18),
 flexDirection:'row',
 
     marginHorizontal:normalize(15)

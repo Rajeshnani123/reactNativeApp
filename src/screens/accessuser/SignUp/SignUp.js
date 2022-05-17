@@ -51,7 +51,7 @@ const SignUp = ({navigation}) => {
       Alert.alert("Please login with your registered Details")
       navigation.navigate('Login');
     }else if(!createLoading && statusCode === 400){
-      Alert.alert("User Already Exists");
+      Alert.alert("User Creation Failed");
     }
   },[createLoading]);
 
@@ -68,12 +68,11 @@ const SignUp = ({navigation}) => {
         </View>
 
         <View style={styles.container}>
-          <TextInput
-            style={styles.input}
-            placeholder="User name"
-            value={name}
-            onChangeText={(text) => setName(text)}
-            placeholderTextColor={'#C4C4C4'} />
+        <TextInput
+        style={styles.input}
+        placeholder="User name"
+        placeholderTextColor={'#c4c4c4'}
+        onChangeText={value => setName(value)}></TextInput>
           <TextInput
             style={styles.input}
             value={email}
@@ -106,20 +105,20 @@ const SignUp = ({navigation}) => {
           <TouchableOpacity
             style={styles.button}
             onPress={createUserFunc}>
-            <Text style={styles.lgn}> Register</Text>
+            <Text style={styles.lgn}> REGISTER</Text>
           </TouchableOpacity>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              marginHorizontal: normalize(70),
+              marginHorizontal: normalize(60),
               marginTop:normalize(20),
               
             }}>
-            <Text onPress={() => navigation.navigate('SignIn')}>
+            <Text >
               Have an account ?
             </Text>
-            <Text style={styles.acc}> SignIn</Text>
+            <Text style={styles.acc} onPress={() => navigation.navigate('Login')}> SignIn</Text>
           </View>
         </View>
       </View>

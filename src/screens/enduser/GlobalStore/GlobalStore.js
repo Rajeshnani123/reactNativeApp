@@ -95,7 +95,7 @@ const GlobalStore = ({navigation}) => {
           value={search}
           onChangeText={val => setSearch(val)}
           onSearch={() => alert('Searchnow')}
-          width={'361'}
+          width={'330'}
         />
       </View>
 

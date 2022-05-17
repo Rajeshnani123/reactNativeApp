@@ -16,10 +16,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     paddingHorizontal: normalize(25),
     borderRadius: normalize(5),
-    color: '#c4c4c4c4',
     marginVertical: normalize(6),
     marginTop:normalize(20),
-    height:normalize(45)
+    height:normalize(50),
+    borderWidth:normalize(3),
+    borderColor:'#ffb43a',
+    borderRadius:5
+   
   },
   button: {
     backgroundColor: '#FFB43A',
@@ -33,7 +36,7 @@ const styles = StyleSheet.create({
   lgn: {
     fontFamily: 'Poppins',
     fontWeight: 'bold',
-    fontSize: normalize(16),
+    fontSize: normalize(18),
     color:'#FFF'
   },
   img: {
@@ -54,11 +57,11 @@ const styles = StyleSheet.create({
   },
   acc: {
     fontFamily: 'Poppins',
-    fontWeight: '900',
+    fontWeight: 'normal',
     color: '#000',
    fontSize:normalize(18),
     marginVertical: normalize(30),
-    marginLeft:normalize(10)
+    marginLeft:normalize(8)
   },
 });
 

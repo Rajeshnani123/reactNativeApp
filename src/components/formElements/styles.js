@@ -21,7 +21,7 @@ export default StyleSheet.create({
     shadowOpacity: 0.6,
     marginTop: normalize(10),
     backgroundColor: COLORS.primary,
-    height: 50,
+    height: 45,
     elevation: normalize(8),
     position: 'relative',
   },
