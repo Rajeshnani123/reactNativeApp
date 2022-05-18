@@ -32,6 +32,12 @@ import {
 import {normalize} from '../../../utils/Platform';
 import {background} from 'native-base/lib/typescript/theme/styled-system';
 import {Circle} from 'react-native-svg';
+import { useIsFocused } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductbyId, getProducts } from '../../../redux/ProductResource/ActionCreators/getProductAction';
+import { addProduct } from '../../../redux/ProductResource/ActionCreators/postProductAction';
+import { addCartDetails } from '../../../redux/cartManagement/ActionCreators/postCartAction';
+import UserStack from '../../../navigations/UserStack';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -58,8 +64,20 @@ const leftComponent = (
   price,
   prevprice,
   discount,
-  barganing,
+  id,
+  data,
+  dispatch,
 ) => {
+  
+  const addCartHandler = () => {
+    const Body = {
+      id: data.id,
+      itemId: id,
+      qty: 0,
+      userId: String(data.id)
+    };
+    dispatch(addCartDetails(Body))
+  }
   return (
     <>
       <Box alignItems="flex-start" flexDirection={'row'}>
@@ -113,7 +131,7 @@ const leftComponent = (
                 alignItems: 'center',
                 marginLeft: normalize(15),
               }}
-              onPress={() => alert('btn')}>
+              onPress={addCartHandler}>
               <View style={{marginTop: normalize(10)}}>
                 <ICON
                   type={ICONS.cartType}
@@ -132,6 +150,14 @@ const leftComponent = (
 
 const ProductList = ({navigation}) => {
   const [search, setSearch] = useState();
+  const isFocused = useIsFocused();
+  const dispatch = useDispatch();
+  const {productLoading,allProducts,product,statusCode} = useSelector((state) => state.getProductReducers);
+  const {data} = useSelector(state => state.getUserReducers);
+
+  React.useLayoutEffect(()=>{
+    dispatch(getProducts());
+  },[isFocused]);
 
   return (
     <>
@@ -176,7 +202,7 @@ const ProductList = ({navigation}) => {
             overScrollMode="never"
             showsVerticalScrollIndicator={false}
             numColumns={1}
-            data={PLDATA}
+            data={allProducts}
             keyExtractor={item => `${item.id}`}
             renderItem={({item}) => (
               <HorizontalCard
@@ -194,14 +220,20 @@ const ProductList = ({navigation}) => {
                 rightWidth={100}
                 leftWidth={100}
                 leftComponent={leftComponent(
-                  item.title,
-                  item.subtitle,
+                  item.product.productName,
+                  item.product.details,
                   item.price,
                   item.prevprice,
                   item.discount,
+                  item.id,
+                  data,
+                  dispatch,
                 )}
-                onPress={() =>
-                  navigation.navigate('ProductDetails')
+                onPress={() =>{
+                  dispatch(getProductbyId(item.id));
+                  navigation.navigate('ProductDetails');
+                }
+                 
                 }></HorizontalCard>
             )}
             ListFooterComponent={() => (
