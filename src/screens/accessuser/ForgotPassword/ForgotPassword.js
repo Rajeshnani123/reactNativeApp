@@ -18,6 +18,7 @@ import styles from './styles';
 import ResetPassword from '../Resetpassword/ResetPassword';
 import { useDispatch, useSelector } from 'react-redux';
 import { forgotPassword } from '../../../redux/UserProfile/ActionCreators/postUserAction';
+import { USER_PASSWORD_DETAILS } from '../../../redux/UserProfile/Action/ActionType';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -37,7 +38,12 @@ const ForgotPassword = ({navigation}) => {
       console.log(message);
       navigation.navigate('ResetPassword');
     }
-  },[loading])
+  },[loading]);
+
+  const submitHandler = () => {
+    dispatch({type: USER_PASSWORD_DETAILS, forgotEmail: emailPhone})
+    dispatch(forgotPassword(emailPhone));
+  }
   return (
     <>
       <View>
@@ -75,7 +81,7 @@ const ForgotPassword = ({navigation}) => {
           onChangeText={(text) => setEmailPhone(text)}
           placeholder="Email / Mobile No"
           ></TextInput>
-          <TouchableOpacity style={styles.button} onPress={() =>dispatch(forgotPassword(emailPhone))}>
+          <TouchableOpacity style={styles.button} onPress={submitHandler}>
         <Text style={styles.reset}>Reset Password</Text>
       </TouchableOpacity>
       </View>

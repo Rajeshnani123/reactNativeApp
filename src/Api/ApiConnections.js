@@ -21,6 +21,7 @@ export const ApiConnections = {
     addCart: cardManagement + cardCommon +"/add",
     removeCart: cardManagement + cardCommon + "/remove",
     updateCart: cardManagement + cardCommon + "/update",
+    resetPassword: userProfileBaseUrl + version1 + "/reset-password",
     forgotPassword: userProfileBaseUrl + version1 + "/forgot-password",
     verifyOtp: userProfileBaseUrl + version1 + "/verify-otp", 
 }

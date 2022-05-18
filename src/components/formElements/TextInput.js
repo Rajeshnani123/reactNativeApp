@@ -13,6 +13,7 @@ export const TextInput = ({
   mb = '3',
   rightElement,
   leftElement,
+  disabled = true,
   onChangeText,
   type = 'default',
   containerStyle,
@@ -24,6 +25,7 @@ export const TextInput = ({
       style={{...FONTS.h3, ...containerStyle}}
       mt={mt}
       mb={mb}
+      editable={disabled}
       size={size}
       onChangeText = {(text) => onChangeText(text)}
       placeholder={placeHolder}
