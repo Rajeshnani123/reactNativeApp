@@ -3,6 +3,9 @@ import {normalize, FONTS} from '../../../utils/Platform';
 import {COLORS, SIZES, HP} from '../../../constants';
 
 const style = StyleSheet.create({
+    root: {
+        backgroundColor: '#FFF7EA',
+      },
     container: {
         marginHorizontal: SIZES.padding,
         backgroundColor: '#FFF7EA',
@@ -13,6 +16,9 @@ const style = StyleSheet.create({
         fontSize:normalize(18),
         marginTop:normalize(30)
     },
+    
+        
+ 
         
 
 })
