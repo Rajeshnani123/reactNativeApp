@@ -27,6 +27,10 @@ import {
 import {normalize} from '../../../utils/Platform';
 import {background} from 'native-base/lib/typescript/theme/styled-system';
 import {Circle} from 'react-native-svg';
+import { useIsFocused } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteCart, getCartDetails } from '../../../redux/cartManagement/ActionCreators/getCartAction';
+import { addCartDetails, removeCartDetails } from '../../../redux/cartManagement/ActionCreators/postCartAction';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -115,6 +119,22 @@ const Wrapper = ({children}) => {
 
 const MyCart = ({navigation}) => {
   const [search, setSearch] = useState();
+  const [isSelected, setSelection] = useState(false);
+  const dispatch = useDispatch();
+  const {data} = useSelector(state => state.getUserReducers);
+  const {cartDetails} = useSelector(state => state.getCardReducers);
+  const {loading} = useSelector(state => state.postCartReducers);
+  const isFocused = useIsFocused();
+
+  React.useLayoutEffect(() => {
+    data && data.id && dispatch(getCartDetails(data.id));
+  },[isFocused]);
+
+  React.useEffect(() => {
+    if(!loading){
+      data && data.id && dispatch(getCartDetails(data.id));
+    }
+  },[loading])
 
   const leftComponent = (
     title,
@@ -123,7 +143,39 @@ const MyCart = ({navigation}) => {
     prevprice,
     currentprice,
     discount,
+    Qty,
+    id,
   ) => {
+    const addCartHandler = () => {
+      const Body = {
+          id: data.id,
+          itemId: id,
+          qty: 0,
+          userId: String(data.id)
+        };
+      dispatch(addCartDetails(Body));
+    }
+
+    const removeCartHandler = () => {
+      const Body = {
+        id: data.id,
+        itemId: id,
+        qty: 1,
+        userId: String(data.id)
+      };
+      dispatch(removeCartDetails(Body));
+    }
+
+    const deleteHandler = () => {
+      const Body = [{
+        id: data.id,
+        itemId: id,
+        qty: Qty,
+        userId: String(data.id)
+      }];
+      console.log(Body);
+      //dispatch(deleteCart(Body));
+    }
     return (
       <Wrapper>
         {({isSelected, setSelection}) => (
@@ -162,7 +214,7 @@ const MyCart = ({navigation}) => {
               </Box>
             </Box>
             <Box flexDirection={'row'} mx={12} my={5}>
-              <TouchableOpacity style={styles.minus}>
+              <TouchableOpacity style={styles.minus} onPress={removeCartHandler}>
                 <Image
                   source={require('../../../assets/Images/minus.png')}
                   my={3}
@@ -176,9 +228,9 @@ const MyCart = ({navigation}) => {
                   marginTop: normalize(15),
                   color: '#000',
                 }}>
-                2
+               {Qty}
               </Text>
-              <TouchableOpacity mx={3} style={styles.plus}>
+              <TouchableOpacity mx={3} style={styles.plus} onPress={addCartHandler}>
                 <Image
                   source={require('../../../assets/Images/plus.png')}
                   my={3}
@@ -186,7 +238,7 @@ const MyCart = ({navigation}) => {
                   width={4}
                 />
               </TouchableOpacity>
-              <TouchableOpacity mx={3} style={styles.remove}>
+              <TouchableOpacity mx={3} style={styles.remove} onPress={deleteHandler}>
                 <Text style={styles.rmtext}>Remove</Text>
               </TouchableOpacity>
             </Box>
@@ -236,7 +288,7 @@ const MyCart = ({navigation}) => {
             overScrollMode="never"
             showsVerticalScrollIndicator={false}
             numColumns={1}
-            data={MyCartJSON}
+            data={cartDetails}
             keyExtractor={item => `${item.id}`}
             renderItem={({item}) => (
               <HorizontalCard
@@ -259,6 +311,8 @@ const MyCart = ({navigation}) => {
                   item.prevprice,
                   item.currentprice,
                   item.discount,
+                  item.qty,
+                  item.itemId 
                 )}
                 onPress={
                   () => console.log('check')

@@ -26,6 +26,7 @@ import {
 } from '../../components';
 import {COLORS, FONTS, SIZES,ICON,ICONS} from '../../constants';
 import styles from '../../components/basics/styles';
+import { useSelector } from 'react-redux';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -131,7 +132,7 @@ const CompareComponent = () => {
 };
 
 const ProductDetails = ({navigation}) => {
-  const [search, setSearch] = useState();
+  const {product} = useSelector(state => state.getProductReducers);
 
   const Data = {
     name: 'Product name',
@@ -174,11 +175,11 @@ const ProductDetails = ({navigation}) => {
           />
         </View>
         <View style={{marginHorizontal: 50}}>
-          <Text style={styless.defaultNames}>{Data.name}</Text>
-          <Text style={styless.defaultNames}>{Data.qty}</Text>
-          <Text style={styless.defaultNames}>{Data.retail}</Text>
-          <Text style={styless.defaultNames}>{Data.item}</Text>
-          <Text style={styless.defaultNames}>{Data.price}</Text>
+          <Text style={styless.defaultNames}>{Data.name} : {product[0] && product[0].product && product[0].product.productName}</Text>
+          <Text style={styless.defaultNames}>{Data.qty} : {product[0] && product[0].availableQty && product[0].availableQty}</Text>
+          <Text style={styless.defaultNames}>{Data.retail} : {product[0] && product[0].product && product[0].product.store && product[0].product.store.storeName}</Text>
+          <Text style={styless.defaultNames}>{Data.item} : {product[0] && product[0].variant && product[0].variant}</Text>
+          <Text style={styless.defaultNames}>{Data.price} : {product[0] && product[0].price && product[0].price}</Text>
         </View>
 
         <View style={{marginLeft: 20, marginVertical: 24}}>
