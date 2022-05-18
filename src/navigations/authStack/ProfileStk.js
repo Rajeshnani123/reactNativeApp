@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {UserDetail} from '../../screens';
 import userDetailForm from '../../screens/accessuser/UserDetailForm';
 import ResetPassword from '../../screens/accessuser/Resetpassword/ResetPassword';
+import Checkout from '../../screens/enduser/Checkout/Checkout';
 
 const UserStk = createNativeStackNavigator();
 
@@ -26,6 +27,13 @@ const ProfileStk = ({navigation}) => {
        <UserStk.Screen
         name="ResetPassword"
         component={ResetPassword}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <UserStk.Screen
+        name="Checkout"
+        component={Checkout}
         options={{
           headerShown: false,
         }}

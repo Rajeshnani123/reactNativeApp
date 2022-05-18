@@ -26,7 +26,7 @@ import { useIsFocused } from '@react-navigation/native';
 const HeaderContent = ({navigation}) => {
   return (
     <Header
-      leftComponent={<MenuHeader navigation={navigation} />}
+      leftComponent={<BackHeader navigation={navigation} />}
       title="Profile"
       rightComponent={
         <View flexDirection={'row'}>

@@ -88,7 +88,7 @@ const UserDetailForm = () => {
           placeholderTextColor={'#c4c4c4'}></TextInput>
         <TextInput
           style={Styles.input}
-          value={gstin}
+          
           placeholder="Add GSTN"
           placeholderTextColor={'#c4c4c4'}></TextInput>
 
