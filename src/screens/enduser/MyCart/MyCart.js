@@ -334,7 +334,7 @@ const MyCart = ({navigation}) => {
           alignItems: 'center',
           position: 'absolute',
           bottom: 0,
-        }}>
+        }} onPress={()=>navigation.navigate('Checkout')}>
         <Text style={{color: '#fff', fontSize: 22}}>Place Order</Text>
       </TouchableOpacity>
     </>

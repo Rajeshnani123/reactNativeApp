@@ -32,7 +32,7 @@ const HeaderContent = ({navigation}) => {
 
 const EditAddress = ({navigation}) => {
   return (
-    <View >
+    <View  >
       <HeaderContent navigation={navigation} />
       <View style={style.container}>
         <Text style={style.txt}>Select Address</Text>
