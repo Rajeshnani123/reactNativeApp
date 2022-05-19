@@ -1,8 +1,8 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import MyCart from '../../screens/enduser/MyCart/MyCart';
-import EditAddress from '../../screens/enduser/EditAddress/EditAddress'
 import Success from '../../screens/enduser/Success/Success';
+
 
 const UserStk = createNativeStackNavigator();
 
@@ -16,13 +16,7 @@ const CartStk = ({navigation}) => {
           headerShown: false,
         }}
       />
-      <UserStk.Screen
-        name="EditAddress"
-        component={EditAddress}
-        options={{
-          headerShown: false,
-        }}
-      />
+      
       <UserStk.Screen
         name="Success"
         component={Success}
@@ -37,9 +31,8 @@ const CartStk = ({navigation}) => {
           headerShown: false,
         }}
       />
-      
-      
-      
+     
+        
       
     </UserStk.Navigator>
   );

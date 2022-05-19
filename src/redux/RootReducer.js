@@ -8,8 +8,8 @@ import {getStoreReducers} from "./StoreData/Reducers/getStoreReducers";
 import {getMdmReducers} from "./mdmProduct/Reducers/getMdmReducers";
 import {postProductReducers}  from "./ProductResource/Reducers/postProductReducers";
 import {postCartReducers} from "./cartManagement/Reducers/postCartReducers";
-import {getCardReducers} from "./cartManagement/Reducers/getCartReducers";
-
+//import {getCardReducers} from "./cartManagement/Reducers/getCartReducers";
+import {getCardReducers} from "./cartManagement/Reducers/getCartReducers"
 const initialConfig = {
     key: "auth",
     storage: AsyncStorage,
