@@ -16,6 +16,9 @@ import {Header} from '../../../components';
 import {normalize} from '../../../utils/Platform';
 import styles from './styles';
 import ResetPassword from '../Resetpassword/ResetPassword';
+import { useDispatch, useSelector } from 'react-redux';
+import { forgotPassword } from '../../../redux/UserProfile/ActionCreators/postUserAction';
+import { USER_PASSWORD_DETAILS } from '../../../redux/UserProfile/Action/ActionType';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -27,6 +30,20 @@ const HeaderContent = ({navigation}) => {
 };
 
 const ForgotPassword = ({navigation}) => {
+  const {loading,message} = useSelector((state) => state.userProfileReducers);
+  const [emailPhone,setEmailPhone] = React.useState("");
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    if(!loading &&message ){
+      console.log(message);
+      navigation.navigate('ResetPassword');
+    }
+  },[loading]);
+
+  const submitHandler = () => {
+    dispatch({type: USER_PASSWORD_DETAILS, forgotEmail: emailPhone})
+    dispatch(forgotPassword(emailPhone));
+  }
   return (
     <>
       <View>
@@ -61,12 +78,12 @@ const ForgotPassword = ({navigation}) => {
         </View>
         <TextInput
           style={styles.input}
-          placeholder="Email / Mobile No"></TextInput>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('ResetPassword')}>
-          <Text style={styles.reset}>Reset Password</Text>
-        </TouchableOpacity>
+          onChangeText={(text) => setEmailPhone(text)}
+          placeholder="Email / Mobile No"
+          ></TextInput>
+          <TouchableOpacity style={styles.button} onPress={submitHandler}>
+        <Text style={styles.reset}>Reset Password</Text>
+      </TouchableOpacity>
       </View>
     </>
   );

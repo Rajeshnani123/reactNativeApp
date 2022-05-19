@@ -16,6 +16,7 @@ import ICON from 'react-native-vector-icons/AntDesign';
 import {IMAGES, FONTS, COLORS, ICONS, WP, HP, SIZES} from '../../constants';
 import {loginUser} from '../../redux/UserProfile/ActionCreators/postUserAction';
 import LinearGradient from 'react-native-linear-gradient';
+import { FORGOT_REDUX_RESET } from '../../redux/UserProfile/Action/ActionType';
 
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
@@ -34,6 +35,11 @@ const Login = ({navigation}) => {
     }
     return true;
   };
+
+  const forgotHandler = () => {
+    dispatch({type: FORGOT_REDUX_RESET})
+    navigation.navigate('ForgotPassword')
+  }
   const making_api_call = () => {
     // if (validate()) {
 
@@ -77,7 +83,7 @@ const Login = ({navigation}) => {
         placeholder="Password"
         placeholderTextColor={'#c4c4c4'}
         onChangeText={value => setPassword(value)}></TextInput>
-      <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
+      <TouchableOpacity onPress={forgotHandler}>
         <Text style={styles.fp}>Forgot Password?</Text>
       </TouchableOpacity>
       <TouchableOpacity colors={['#FFB43A','#FFB43A','#FFB43A']} style={styles.button} onPress={() => making_api_call()}>

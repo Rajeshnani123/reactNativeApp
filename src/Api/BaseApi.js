@@ -1,7 +1,7 @@
 import axios from "axios";
 import axiosRetry from "axios-retry";
 
-const post = async (url,Body,header) => {
+const post = async (url,Body) => {
     try{
         const response = await axios.post(url,Body);
         if(response ){
@@ -12,7 +12,7 @@ const post = async (url,Body,header) => {
     }
 }
 
-const put = async (url,Body,header) => {
+const put = async (url,Body) => {
     try{
         const response = await axios.put(url,Body);
         if(response){
@@ -24,7 +24,7 @@ const put = async (url,Body,header) => {
 }
 
 
-const patch = async (url,Body,header) => {
+const patch = async (url,Body) => {
     try{
         const response = await axios.patch(url,Body);
         if(response){
@@ -46,9 +46,9 @@ const get = async (url,header) => {
     }
 }
 
-const deleteAxios = async (url,header) => {
+const deleteAxios = async (url,Body) => {
     try{
-        const response = await axios.delete(url);
+        const response = await axios.delete(url,Body);
         if(response){
             return response.data
         }
