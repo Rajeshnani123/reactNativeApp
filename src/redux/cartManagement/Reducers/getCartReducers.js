@@ -11,7 +11,7 @@ const initialState = {
   error: '',
 };
 
-export  const getCardReducers = (state = initialState, action) => {
+export const getCardReducers = (state = initialState, action) => {
   switch (action.type) {
     case GET_CART_MANAGEMENT_LOADING: {
       return {
