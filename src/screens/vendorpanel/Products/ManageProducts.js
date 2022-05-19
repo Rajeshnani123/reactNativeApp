@@ -1,4 +1,13 @@
-import {View, HStack, Text, Image, Center, Box, FlatList, Alert} from 'native-base';
+import {
+  View,
+  HStack,
+  Text,
+  Image,
+  Center,
+  Box,
+  FlatList,
+  Alert,
+} from 'native-base';
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {ICON, ICONS, FONTS, IMAGES, WP, HP, COLORS} from '../../../constants';
@@ -19,12 +28,16 @@ import {
 import style from '../../style';
 import {DATA} from '../../../constants/DUMMYJSON';
 import {AddProduct} from './AddProduct';
-import {normalize,font} from '../../../utils/Platform';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteProductById, getProductbyId, getProducts } from '../../../redux/ProductResource/ActionCreators/getProductAction';
-import { useIsFocused } from '@react-navigation/native';
-import { getStoreProducts } from '../../../redux/mdmProduct/ActionCreators/getMdmAction';
-import { GET_PRODUCT_RESET } from '../../../redux/ProductResource/ActionType';
+import {normalize, font} from '../../../utils/Platform';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  deleteProductById,
+  getProductbyId,
+  getProducts,
+} from '../../../redux/ProductResource/ActionCreators/getProductAction';
+import {useIsFocused} from '@react-navigation/native';
+import {getStoreProducts} from '../../../redux/mdmProduct/ActionCreators/getMdmAction';
+import {GET_PRODUCT_RESET} from '../../../redux/ProductResource/ActionType';
 
 // const HeaderContent = ({navigation}) => {
 //   return (
@@ -50,8 +63,6 @@ import { GET_PRODUCT_RESET } from '../../../redux/ProductResource/ActionType';
 // };
 
 const HeaderContent = ({navigation}) => {
-  
-
   return (
     <Header
       leftComponent={<MenuHeader navigation={navigation} />}
@@ -63,7 +74,7 @@ const HeaderContent = ({navigation}) => {
             active={true}
             onPress={() => alert('Notification')}
           />
-          <CartHeader navigation={navigation} onPress={() => alert('Cart')} />
+          {/* <CartHeader navigation={navigation} onPress={() => alert('Cart')} /> */}
         </View>
       }
     />
@@ -92,7 +103,7 @@ const leftComponent = (title, subTitle, qty) => {
   );
 };
 
-const rightComponent = (id,dispatch) => {
+const rightComponent = (id, dispatch) => {
   return (
     <View mt={-2}>
       <ActionBtn
@@ -114,24 +125,26 @@ const ManageProducts = ({navigation}) => {
   const [search, setSearch] = useState();
   const [isModelOpen, setIsModelOpen] = useState(false);
   const dispatch = useDispatch();
-  const {productLoading,allProducts,product,statusCode} = useSelector((state) => state.getProductReducers);
+  const {productLoading, allProducts, product, statusCode} = useSelector(
+    state => state.getProductReducers,
+  );
   const isFocused = useIsFocused();
-  
-  React.useLayoutEffect(()=>{
+
+  React.useLayoutEffect(() => {
     dispatch(getProducts());
     dispatch({type: GET_PRODUCT_RESET});
-  },[isFocused]);
+  }, [isFocused]);
 
   React.useEffect(() => {
-    if(!productLoading && statusCode === 200){
-      navigation.navigate("ProductDetails")
+    if (!productLoading && statusCode === 200) {
+      navigation.navigate('ProductDetails');
     }
-  },[productLoading]);
+  }, [productLoading]);
 
   const StoreSelect = () => {
     dispatch(getStoreProducts());
-    navigation.navigate('SelectFromStore')
-  }
+    navigation.navigate('SelectFromStore');
+  };
 
   const HeaderComponent = () => {
     return (
@@ -188,8 +201,16 @@ const ManageProducts = ({navigation}) => {
               leftCardWidth={'75%'}
               rightCardWidth={'25%'}
               cardColor={'white'}
-              leftComponent={leftComponent(item.product.productName, item.product.productName, 3)}
-              rightComponent={rightComponent(item.product.id,dispatch,navigation)}
+              leftComponent={leftComponent(
+                item.product.productName,
+                item.product.productName,
+                3,
+              )}
+              rightComponent={rightComponent(
+                item.product.id,
+                dispatch,
+                navigation,
+              )}
               rightWidth={100}
               leftWidth={100}
             />

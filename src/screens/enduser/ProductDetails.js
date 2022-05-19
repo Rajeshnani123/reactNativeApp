@@ -24,9 +24,9 @@ import {
   CustomModal,
   constants,
 } from '../../components';
-import {COLORS, FONTS, SIZES,ICON,ICONS} from '../../constants';
+import {COLORS, FONTS, SIZES, ICON, ICONS} from '../../constants';
 import styles from '../../components/basics/styles';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -39,7 +39,7 @@ const HeaderContent = ({navigation}) => {
             active={true}
             onPress={() => alert('Notification')}
           />
-          <CartHeader navigation={navigation} onPress={() => alert('Cart')} />
+          {/* <CartHeader navigation={navigation} onPress={() => alert('Cart')} /> */}
         </View>
       }
     />
@@ -175,11 +175,28 @@ const ProductDetails = ({navigation}) => {
           />
         </View>
         <View style={{marginHorizontal: 50}}>
-          <Text style={styless.defaultNames}>{Data.name} : {product[0] && product[0].product && product[0].product.productName}</Text>
-          <Text style={styless.defaultNames}>{Data.qty} : {product[0] && product[0].availableQty && product[0].availableQty}</Text>
-          <Text style={styless.defaultNames}>{Data.retail} : {product[0] && product[0].product && product[0].product.store && product[0].product.store.storeName}</Text>
-          <Text style={styless.defaultNames}>{Data.item} : {product[0] && product[0].variant && product[0].variant}</Text>
-          <Text style={styless.defaultNames}>{Data.price} : {product[0] && product[0].price && product[0].price}</Text>
+          <Text style={styless.defaultNames}>
+            {Data.name} :{' '}
+            {product[0] && product[0].product && product[0].product.productName}
+          </Text>
+          <Text style={styless.defaultNames}>
+            {Data.qty} :{' '}
+            {product[0] && product[0].availableQty && product[0].availableQty}
+          </Text>
+          <Text style={styless.defaultNames}>
+            {Data.retail} :{' '}
+            {product[0] &&
+              product[0].product &&
+              product[0].product.store &&
+              product[0].product.store.storeName}
+          </Text>
+          <Text style={styless.defaultNames}>
+            {Data.item} :{' '}
+            {product[0] && product[0].variant && product[0].variant}
+          </Text>
+          <Text style={styless.defaultNames}>
+            {Data.price} : {product[0] && product[0].price && product[0].price}
+          </Text>
         </View>
 
         <View style={{marginLeft: 20, marginVertical: 24}}>
@@ -204,34 +221,48 @@ const ProductDetails = ({navigation}) => {
               <View style={{marginRight: 60}}>
                 <Text style={styless.name}>{item.name}</Text>
                 <Text style={styless.desc}>{item.desc}</Text>
-                <View style={{flexDirection:'row',justifyContent:'space-between'}} >
-                <View style={{marginLeft:normalize(18),marginTop:normalize(10),flexDirection:'row'}}>
-                <ICON
-                type={ICONS.filledstarType}
-                name={ICONS.filledstar}
-                size={18}
-                color={COLORS.green}/>
-                <ICON
-                type={ICONS.filledstarType}
-                name={ICONS.filledstar}
-                size={18}
-                color={COLORS.green}/>
-                <ICON
-                type={ICONS.filledstarType}
-                name={ICONS.filledstar}
-                size={18}
-                color={COLORS.green}/>
-                <ICON
-                type={ICONS.filledstarType}
-                name={ICONS.filledstar}
-                size={18}
-                color={COLORS.green}/>
-                <ICON
-                type={ICONS.outlinedstarType}
-                name={ICONS.outlinedstar}
-                size={18}
-                color={COLORS.green}/>
-                </View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <View
+                    style={{
+                      marginLeft: normalize(18),
+                      marginTop: normalize(10),
+                      flexDirection: 'row',
+                    }}>
+                    <ICON
+                      type={ICONS.filledstarType}
+                      name={ICONS.filledstar}
+                      size={18}
+                      color={COLORS.green}
+                    />
+                    <ICON
+                      type={ICONS.filledstarType}
+                      name={ICONS.filledstar}
+                      size={18}
+                      color={COLORS.green}
+                    />
+                    <ICON
+                      type={ICONS.filledstarType}
+                      name={ICONS.filledstar}
+                      size={18}
+                      color={COLORS.green}
+                    />
+                    <ICON
+                      type={ICONS.filledstarType}
+                      name={ICONS.filledstar}
+                      size={18}
+                      color={COLORS.green}
+                    />
+                    <ICON
+                      type={ICONS.outlinedstarType}
+                      name={ICONS.outlinedstar}
+                      size={18}
+                      color={COLORS.green}
+                    />
+                  </View>
                   <Text style={styless.time}>{item.time}</Text>
                 </View>
               </View>
@@ -262,12 +293,12 @@ const styless = StyleSheet.create({
     color: '#000',
   },
   rating: {
-    marginLeft:20,
+    marginLeft: 20,
     marginTop: 10,
     color: 'green',
   },
   time: {
-    marginLeft:20,
+    marginLeft: 20,
     marginTop: 10,
     fontSize: 12,
   },

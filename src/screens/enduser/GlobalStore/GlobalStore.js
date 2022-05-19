@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Feather';
 import {GLOBALDATA} from '../../../constants/GLOBALJSON';
-import {IMAGES, FONTS, COLORS, ICONS, HP,ICON} from '../../../constants';
+import {IMAGES, FONTS, COLORS, ICONS, HP, ICON} from '../../../constants';
 import {Box, Button, Image} from 'native-base';
 import styles from './Style';
 
@@ -38,7 +38,7 @@ const HeaderContent = ({navigation}) => {
             active={true}
             onPress={() => alert('Notification')}
           />
-          <CartHeader navigation={navigation} onPress={() => alert('Cart')} />
+          {/* <CartHeader navigation={navigation} onPress={() => alert('Cart')} /> */}
         </View>
       }
     />
@@ -63,16 +63,14 @@ const leftComponent = (title, address, noOfOrders, noOfPeople) => {
           <Text style={styles.subtitle}>{address}</Text>
           <Text style={styles.orders}>{noOfOrders}</Text>
           <View style={styles.icon}>
-          <ICON
-                type={ICONS.usersType}
-                name={ICONS.users}
-                size={18}
-                color={COLORS.black}
-              
-                
-              />
-              <Text>{noOfPeople}</Text>
-              </View>
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={18}
+              color={COLORS.black}
+            />
+            <Text>{noOfPeople}</Text>
+          </View>
         </Box>
         <RightArrowBtn
           my={12}
@@ -90,7 +88,7 @@ const GlobalStore = ({navigation}) => {
   return (
     <ScrollView style={styles.root}>
       <HeaderContent navigation={navigation} />
-      <View style={{alignItems:'center'}}>
+      <View style={{alignItems: 'center'}}>
         <SearchBox
           value={search}
           onChangeText={val => setSearch(val)}
@@ -108,14 +106,17 @@ const GlobalStore = ({navigation}) => {
         keyExtractor={item => `${item.id}`}
         renderItem={({item}) => (
           <HorizontalCard
-            containerStyle={{borderRadius: 10, marginBottom: normalize(10),height:normalize(140)}}
+            containerStyle={{
+              borderRadius: 10,
+              marginBottom: normalize(10),
+              height: normalize(140),
+            }}
             customWidth={'100%'}
             leftCardWidth={'75%'}
             rightCardWidth={'25%'}
             cardColor={'white'}
             rightWidth={100}
             leftWidth={100}
-          
             leftComponent={leftComponent(
               item.title,
               item.address,
@@ -135,4 +136,3 @@ const GlobalStore = ({navigation}) => {
 };
 
 export default GlobalStore;
-

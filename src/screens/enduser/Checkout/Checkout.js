@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import ICON from 'react-native-vector-icons/Feather';
-import {IMAGES, FONTS, COLORS, ICONS, WP,HP, SIZES} from '../../../constants';
+import {IMAGES, FONTS, COLORS, ICONS, WP, HP, SIZES} from '../../../constants';
 import {Box, Button, Image} from 'native-base';
 import styles from './styles';
 import CheckBox from '@react-native-community/checkbox';
@@ -12,7 +12,8 @@ import {
   NotificationHeader,
   CartHeader,
   SearchBox,
-  MenuHeader,Btn
+  MenuHeader,
+  Btn,
 } from '../../../components';
 import {normalize} from '../../../utils/Platform';
 const HeaderContent = ({navigation}) => {
@@ -27,7 +28,7 @@ const HeaderContent = ({navigation}) => {
             active={true}
             onPress={() => alert('Notification')}
           />
-          <CartHeader navigation={navigation} onPress={() => alert('Cart')} />
+          {/* <CartHeader navigation={navigation} onPress={() => alert('Cart')} /> */}
         </View>
       }
     />
@@ -146,13 +147,13 @@ const Checkout = ({navigation}) => {
             />
           </View>
           <View style={styles.Btnview}>
-          <Btn
-            height={normalize(50)}
-            width={WP('93%')}
-            colorScheme={'primary'}
-            value={'Edit Address'}
-            onPress={() => navigation.navigate('EditAddress')}
-          />
+            <Btn
+              height={normalize(50)}
+              width={WP('93%')}
+              colorScheme={'primary'}
+              value={'Edit Address'}
+              onPress={() => navigation.navigate('EditAddress')}
+            />
           </View>
 
           <View style={styles.card1}>
@@ -180,14 +181,13 @@ const Checkout = ({navigation}) => {
               />
               <Box style={styles.qtybox}>
                 <Text style={styles.qtytext}>Qty 5</Text>
-                
               </Box>
             </View>
           </View>
           <View style={styles.card2}>
             <Box mx={7} my={6}>
               <Text style={styles.pricedetails}>Price Details</Text>
-              
+
               <View style={styles.names}>
                 <Box>
                   <Text style={styles.txtcolor}>Price (1 item)</Text>
@@ -200,7 +200,7 @@ const Checkout = ({navigation}) => {
                   <Text style={styles.txtcolor}>Rs. 40</Text>
                 </Box>
               </View>
-             
+
               <Box flexDirection={'row'} mx={3}>
                 <Text style={{fontSize: 16, color: '#000', marginTop: 5}}>
                   Total Amount
@@ -215,7 +215,6 @@ const Checkout = ({navigation}) => {
                   Rs.499
                 </Text>
               </Box>
-              
             </Box>
           </View>
 
@@ -326,13 +325,24 @@ const Checkout = ({navigation}) => {
             </Box>
           </View>
           <Box style={styles.ftr}>
-          <View style={styles.pricebox}>
-          <Text style={{color:'#000',fontSize:18}}>Rs.499</Text>
-          <Text style={{color:'#000',fontSize:12}}>View all products</Text>
-          </View>
-          <TouchableOpacity style={styles.btn}>
-          <Text style={{color:'#000',fontSize:18,marginLeft:normalize(23),marginTop:normalize(12)}} onPress={()=>navigation.navigate('Success')}>Continue</Text>
-          </TouchableOpacity>
+            <View style={styles.pricebox}>
+              <Text style={{color: '#000', fontSize: 18}}>Rs.499</Text>
+              <Text style={{color: '#000', fontSize: 12}}>
+                View all products
+              </Text>
+            </View>
+            <TouchableOpacity style={styles.btn}>
+              <Text
+                style={{
+                  color: '#000',
+                  fontSize: 18,
+                  marginLeft: normalize(23),
+                  marginTop: normalize(12),
+                }}
+                onPress={() => navigation.navigate('Success')}>
+                Continue
+              </Text>
+            </TouchableOpacity>
           </Box>
         </View>
       </ScrollView>

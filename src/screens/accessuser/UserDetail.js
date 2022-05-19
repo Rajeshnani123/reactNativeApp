@@ -18,16 +18,16 @@ import {
   MenuHeader,
 } from '../../components';
 import {normalize} from '../../utils/Platform';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUserDetails } from '../../redux/UserProfile/ActionCreators/getUserAction';
-import jwt_decode from "jwt-decode";
-import { useIsFocused } from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import {getUserDetails} from '../../redux/UserProfile/ActionCreators/getUserAction';
+import jwt_decode from 'jwt-decode';
+import {useIsFocused} from '@react-navigation/native';
 
 const HeaderContent = ({navigation}) => {
   return (
     <Header
-      leftComponent={<BackHeader navigation={navigation} />}
-      title="Profile"
+      leftComponent={<MenuHeader navigation={navigation} />}
+      title="User Deatils"
       rightComponent={
         <View flexDirection={'row'}>
           <NotificationHeader
@@ -35,7 +35,7 @@ const HeaderContent = ({navigation}) => {
             active={true}
             onPress={() => alert('Notification')}
           />
-          <CartHeader navigation={navigation} onPress={() => alert('Cart')} />
+          {/* <CartHeader navigation={navigation} onPress={() => alert('Cart')} /> */}
         </View>
       }
     />
@@ -46,12 +46,12 @@ const UserDetail = ({navigation}) => {
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
   const {token} = useSelector(state => state.userProfileReducers);
-  const {loading,data} = useSelector(state => state.getUserReducers)
+  const {loading, data} = useSelector(state => state.getUserReducers);
   var decoded = jwt_decode(token);
- var user_id = decoded.User.id;
+  var user_id = decoded.User.id;
   React.useLayoutEffect(() => {
-    dispatch(getUserDetails(user_id))
-  },[isFocused])
+    dispatch(getUserDetails(user_id));
+  }, [isFocused]);
 
   return (
     <>
@@ -72,13 +72,27 @@ const UserDetail = ({navigation}) => {
             <Text style={styles.leftDescription}>Address</Text>
           </View>
           <View style={{flex: 3}}>
-            <Text style={styles.rightDescription}>{loading ? "Name": data.userName}</Text>
-            <Text style={styles.rightDescription}>{loading ? "Email": data.email}</Text>
-            <Text style={styles.rightDescription}>{loading ? "Mobile No": data.phoneNumber}</Text>
-            <Text style={styles.rightDescription}>{loading ? "DOB": data.userId}</Text>
-            <Text style={styles.rightDescription}>{loading ? "Business type": data.userType}</Text>
-            <Text style={styles.rightDescription}>{loading ? "GSTN": data.gstin}</Text>
-            <Text style={styles.rightDescription}>{loading ? "Address": data.address}</Text>
+            <Text style={styles.rightDescription}>
+              {loading ? 'Name' : data.userName}
+            </Text>
+            <Text style={styles.rightDescription}>
+              {loading ? 'Email' : data.email}
+            </Text>
+            <Text style={styles.rightDescription}>
+              {loading ? 'Mobile No' : data.phoneNumber}
+            </Text>
+            <Text style={styles.rightDescription}>
+              {loading ? 'DOB' : data.userId}
+            </Text>
+            <Text style={styles.rightDescription}>
+              {loading ? 'Business type' : data.userType}
+            </Text>
+            <Text style={styles.rightDescription}>
+              {loading ? 'GSTN' : data.gstin}
+            </Text>
+            <Text style={styles.rightDescription}>
+              {loading ? 'Address' : data.address}
+            </Text>
           </View>
         </View>
 

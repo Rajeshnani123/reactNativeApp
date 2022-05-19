@@ -8,108 +8,149 @@ import {
 } from 'react-native';
 import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
-import { useDispatch,useSelector } from 'react-redux';
-import { updateAccount } from '../../redux/UserProfile/ActionCreators/postUserAction';
-import { USER_ACCOUNT_RESET } from '../../redux/UserProfile/Action/ActionType';
+import {useDispatch, useSelector} from 'react-redux';
+import {updateAccount} from '../../redux/UserProfile/ActionCreators/postUserAction';
+import {USER_ACCOUNT_RESET} from '../../redux/UserProfile/Action/ActionType';
+import {
+  Header,
+  BackHeader,
+  StoreHeader,
+  NotificationHeader,
+  CartHeader,
+  SearchBox,
+  Title,
+  Btn,
+  HorizontalCard,
+  ActionBtn,
+  CustomModal,
+  MenuHeader,
+} from '../../components';
 
-const UserDetailForm = () => {
+const UserDetailForm = ({navigation}) => {
   const dispatch = useDispatch();
-  const {data} = useSelector(state => state.getUserReducers)
-  const [name,setName] = React.useState(data.userName ? data.userName : "");
-  const [email,setEmail] = React.useState(data.email ? data.email :  "");
-  const [mobile,setMobile] = React.useState(data.phoneNumber ? data.phoneNumber: "");
-  const [dob,setDob] = React.useState(data.userId ? data.userId : "");
-  const [type,setType] = React.useState(data.userType ?  data.userType : "");
-  const [gstin,setGstin] = React.useState(data.gstin ? data.gstin : "");
-  const [address,setAddress] = React.useState(data.address ? data.address : "");
-  const {loading,statusCode,token} = useSelector((state) => state.userProfileReducers);
- // const {token} = useSelector(state => state.userProfileReducers);
+  const {data} = useSelector(state => state.getUserReducers);
+  const [name, setName] = React.useState(data.userName ? data.userName : '');
+  const [email, setEmail] = React.useState(data.email ? data.email : '');
+  const [mobile, setMobile] = React.useState(
+    data.phoneNumber ? data.phoneNumber : '',
+  );
+  const [dob, setDob] = React.useState(data.userId ? data.userId : '');
+  const [type, setType] = React.useState(data.userType ? data.userType : '');
+  const [gstin, setGstin] = React.useState(data.gstin ? data.gstin : '');
+  const [address, setAddress] = React.useState(
+    data.address ? data.address : '',
+  );
+  const {loading, statusCode, token} = useSelector(
+    state => state.userProfileReducers,
+  );
+  // const {token} = useSelector(state => state.userProfileReducers);
 
   const updateData = () => {
-    const Body={
+    const Body = {
       address: address,
       email: data.email,
       gstin: gstin,
       newEmail: email,
       newPhoneNumber: mobile,
-      password: "",
+      password: '',
       phoneNumber: data.phoneNumber,
       userName: name,
-    }
-    dispatch(updateAccount(Body))
-  }
+    };
+    dispatch(updateAccount(Body));
+  };
 
   React.useEffect(() => {
-    if(!loading && statusCode === 200){
-      Alert.alert("data saved");
-      dispatch({type: USER_ACCOUNT_RESET})
+    if (!loading && statusCode === 200) {
+      Alert.alert('data saved');
+      dispatch({type: USER_ACCOUNT_RESET});
     }
-  },[loading])
+  }, [loading]);
+
+  const HeaderContent = ({navigation}) => {
+    return (
+      <Header
+        leftComponent={<BackHeader navigation={navigation} />}
+        title="User Details"
+        rightComponent={
+          <View flexDirection={'row'}>
+            <NotificationHeader
+              navigation={navigation}
+              active={true}
+              onPress={() => alert('Notification')}
+            />
+          </View>
+        }
+      />
+    );
+  };
 
   return (
-    <ScrollView style={Styles.root}>
-      <View style={Styles.view}>
-        <Text style={Styles.textstyle}>USER DETAILS</Text>
+    <>
+      <HeaderContent navigation={navigation} />
 
-        <TextInput
-          style={Styles.input}
-          value={name}
-          placeholder="Name"
-          placeholderTextColor={'#c4c4c4'}></TextInput>
-        <TextInput
-          style={Styles.input}
-          placeholder="Email"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          placeholderTextColor={'#c4c4c4'}></TextInput>
-        <TextInput
-          style={Styles.input}
-          value={mobile}
-          onChangeText={(text) => setMobile(text)}
-          placeholder="Mobile No"
-          placeholderTextColor={'#c4c4c4'}></TextInput>
-        <TextInput
-          style={Styles.input}
-          placeholder="DOB"
-          value={dob}
-          placeholderTextColor={'#c4c4c4'}></TextInput>
-        <TextInput
-          style={Styles.input}
-          placeholder="Change profile image"
-          placeholderTextColor={'#c4c4c4'}></TextInput>
-        <TextInput
-          style={Styles.input}
-          placeholder="Change shop image"
-          placeholderTextColor={'#c4c4c4'}></TextInput>
-        <TextInput
-          style={Styles.input}
-          value={type}
-          placeholder="Business type"
-          placeholderTextColor={'#c4c4c4'}></TextInput>
-        <TextInput
-          style={Styles.input}
-          
-          placeholder="Add GSTN"
-          placeholderTextColor={'#c4c4c4'}></TextInput>
+      <ScrollView style={Styles.root}>
+        <View style={Styles.view}>
+          <Text style={Styles.textstyle}>USER DETAILS</Text>
 
-        <TextInput
-          style={{
-            height: 120,
-            backgroundColor: '#fff',
-            marginVertical: 10,
-            borderRadius: 5,
-            paddingHorizontal: 20,
-            width: 290,
-          }}
-          value={address}
-          placeholder="Address"
-          placeholderTextColor={'#c4c4c4'}></TextInput>
+          <TextInput
+            style={Styles.input}
+            value={name}
+            placeholder="Name"
+            placeholderTextColor={'#c4c4c4'}></TextInput>
+          <TextInput
+            style={Styles.input}
+            placeholder="Email"
+            value={email}
+            onChangeText={text => setEmail(text)}
+            placeholderTextColor={'#c4c4c4'}></TextInput>
+          <TextInput
+            style={Styles.input}
+            value={mobile}
+            onChangeText={text => setMobile(text)}
+            placeholder="Mobile No"
+            placeholderTextColor={'#c4c4c4'}></TextInput>
+          <TextInput
+            style={Styles.input}
+            placeholder="DOB"
+            value={dob}
+            placeholderTextColor={'#c4c4c4'}></TextInput>
+          <TextInput
+            style={Styles.input}
+            placeholder="Change profile image"
+            placeholderTextColor={'#c4c4c4'}></TextInput>
+          <TextInput
+            style={Styles.input}
+            placeholder="Change shop image"
+            placeholderTextColor={'#c4c4c4'}></TextInput>
+          <TextInput
+            style={Styles.input}
+            value={type}
+            placeholder="Business type"
+            placeholderTextColor={'#c4c4c4'}></TextInput>
+          <TextInput
+            style={Styles.input}
+            placeholder="Add GSTN"
+            placeholderTextColor={'#c4c4c4'}></TextInput>
 
-        <TouchableOpacity style={Styles.button} onPress={updateData}>
-          <Text style={Styles.buttonText}>SAVE</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+          <TextInput
+            style={{
+              height: 120,
+              backgroundColor: '#fff',
+              marginVertical: 10,
+              borderRadius: 5,
+              paddingHorizontal: 20,
+              width: 290,
+            }}
+            value={address}
+            placeholder="Address"
+            placeholderTextColor={'#c4c4c4'}></TextInput>
+
+          <TouchableOpacity style={Styles.button} onPress={updateData}>
+            <Text style={Styles.buttonText}>SAVE</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </>
   );
 };
 
