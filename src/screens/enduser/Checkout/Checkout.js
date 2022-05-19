@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import ICON from 'react-native-vector-icons/Feather';
-import {IMAGES, FONTS, COLORS, ICONS, WP, HP, SIZES} from '../../../constants';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {IMAGES, FONTS, COLORS, ICONS, WP,HP, SIZES} from '../../../constants';
 import {Box, Button, Image} from 'native-base';
 import styles from './styles';
 import CheckBox from '@react-native-community/checkbox';
@@ -36,13 +37,37 @@ const HeaderContent = ({navigation}) => {
 };
 const Rating = () => {
   return (
-    <Box style={styles.rating} flexDirection={'row'}>
-      <Text style={styles.num}>4</Text>
-      <ICON
-        type={ICONS.starType}
+    <Box style={styles.ratingContainer} flexDirection={'row'} mx={7}>
+      <Icon
+        type={ICONS.AwesomeStar}
         name={ICONS.star}
-        size={16}
-        color={COLORS.black}
+        size={22}
+        color={COLORS.primary}
+
+      />
+      <Icon
+        type={ICONS.AwesomeStar}
+        name={ICONS.star}
+        size={22}
+        color={COLORS.primary}
+      />
+      <Icon
+        type={ICONS.AwesomeStar}
+        name={ICONS.star}
+        size={22}
+        color={COLORS.primary}
+      />
+      <Icon
+        type={ICONS.AwesomeStar}
+        name={ICONS.star}
+        size={22}
+        color={COLORS.primary}
+      />
+      <Icon
+        type={ICONS.AwesomeStar}
+        name={ICONS.emptyStar}
+        size={22}
+        color={COLORS.primary}
       />
     </Box>
   );
@@ -164,10 +189,12 @@ const Checkout = ({navigation}) => {
               </Box>
 
               <Box flexDirection={'row'} mx={7}>
-                <Rating />
-                <Text style={styles.prevprice}>999</Text>
                 <Text style={styles.currentprice}>Rs.999</Text>
+                <Text style={styles.prevprice}>999</Text>
               </Box>
+
+              <Rating/>
+
               <Text style={styles.delivery}>
                 Delivery in 6-10 days| shipping fee Rs 40
               </Text>
