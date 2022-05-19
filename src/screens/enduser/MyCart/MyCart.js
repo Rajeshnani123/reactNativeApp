@@ -27,10 +27,16 @@ import {
 import {normalize} from '../../../utils/Platform';
 import {background} from 'native-base/lib/typescript/theme/styled-system';
 import {Circle} from 'react-native-svg';
-import { useIsFocused } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteCart, getCartDetails } from '../../../redux/cartManagement/ActionCreators/getCartAction';
-import { addCartDetails, removeCartDetails } from '../../../redux/cartManagement/ActionCreators/postCartAction';
+import {useIsFocused} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  deleteCart,
+  getCartDetails,
+} from '../../../redux/cartManagement/ActionCreators/getCartAction';
+import {
+  addCartDetails,
+  removeCartDetails,
+} from '../../../redux/cartManagement/ActionCreators/postCartAction';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -43,7 +49,7 @@ const HeaderContent = ({navigation}) => {
             active={true}
             onPress={() => alert('Notification')}
           />
-          <CartHeader navigation={navigation} onPress={() => alert('Cart')} />
+          {/* <CartHeader navigation={navigation} onPress={() => alert('Cart')} /> */}
         </View>
       }
     />
@@ -128,13 +134,13 @@ const MyCart = ({navigation}) => {
 
   React.useLayoutEffect(() => {
     data && data.id && dispatch(getCartDetails(data.id));
-  },[isFocused]);
+  }, [isFocused]);
 
   React.useEffect(() => {
-    if(!loading){
+    if (!loading) {
       data && data.id && dispatch(getCartDetails(data.id));
     }
-  },[loading])
+  }, [loading]);
 
   const leftComponent = (
     title,
@@ -148,39 +154,40 @@ const MyCart = ({navigation}) => {
   ) => {
     const addCartHandler = () => {
       const Body = {
-          id: data.id,
-          itemId: id,
-          qty: 0,
-          userId: String(data.id)
-        };
+        id: data.id,
+        itemId: id,
+        qty: 0,
+        userId: String(data.id),
+      };
       dispatch(addCartDetails(Body));
-    }
+    };
 
     const removeCartHandler = () => {
       const Body = {
         id: data.id,
         itemId: id,
         qty: 1,
-        userId: String(data.id)
+        userId: String(data.id),
       };
       dispatch(removeCartDetails(Body));
-    }
+    };
 
     const deleteHandler = () => {
-      const Body = [{
-        id: data.id,
-        itemId: id,
-        qty: Qty,
-        userId: String(data.id)
-      }];
+      const Body = [
+        {
+          id: data.id,
+          itemId: id,
+          qty: Qty,
+          userId: String(data.id),
+        },
+      ];
       console.log(Body);
       //dispatch(deleteCart(Body));
-    }
+    };
     return (
       <Wrapper>
         {({isSelected, setSelection}) => (
           <View>
-          
             <Box alignItems="flex-start" flexDirection={'row'}>
               <CheckBox
                 value={isSelected}
@@ -214,7 +221,9 @@ const MyCart = ({navigation}) => {
               </Box>
             </Box>
             <Box flexDirection={'row'} mx={12} my={5}>
-              <TouchableOpacity style={styles.minus} onPress={removeCartHandler}>
+              <TouchableOpacity
+                style={styles.minus}
+                onPress={removeCartHandler}>
                 <Image
                   source={require('../../../assets/Images/minus.png')}
                   my={3}
@@ -228,9 +237,12 @@ const MyCart = ({navigation}) => {
                   marginTop: normalize(15),
                   color: '#000',
                 }}>
-               {Qty}
+                {Qty}
               </Text>
-              <TouchableOpacity mx={3} style={styles.plus} onPress={addCartHandler}>
+              <TouchableOpacity
+                mx={3}
+                style={styles.plus}
+                onPress={addCartHandler}>
                 <Image
                   source={require('../../../assets/Images/plus.png')}
                   my={3}
@@ -238,13 +250,16 @@ const MyCart = ({navigation}) => {
                   width={4}
                 />
               </TouchableOpacity>
-              <TouchableOpacity mx={3} style={styles.remove} onPress={deleteHandler}>
+              <TouchableOpacity
+                mx={3}
+                style={styles.remove}
+                onPress={deleteHandler}>
                 <Text style={styles.rmtext}>Remove</Text>
               </TouchableOpacity>
             </Box>
-            
           </View>
-        )}</Wrapper>
+        )}
+      </Wrapper>
     );
   };
 
@@ -312,7 +327,7 @@ const MyCart = ({navigation}) => {
                   item.currentprice,
                   item.discount,
                   item.qty,
-                  item.itemId 
+                  item.itemId,
                 )}
                 onPress={
                   () => console.log('check')

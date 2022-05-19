@@ -24,10 +24,10 @@ import {
 } from '../../../components';
 import style from '../../style';
 import {DATA} from '../../../constants/DUMMYJSON';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import CheckBox from '@react-native-community/checkbox';
 import {normalize} from '../../../utils/Platform';
-import { multiStoreProduct } from '../../../redux/ProductResource/ActionCreators/postProductAction';
+import {multiStoreProduct} from '../../../redux/ProductResource/ActionCreators/postProductAction';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -41,28 +41,43 @@ const HeaderContent = ({navigation}) => {
             active={true}
             onPress={() => alert('Notification')}
           />
-          <CartHeader navigation={navigation} onPress={() => alert('Cart')} />
+          {/* <CartHeader navigation={navigation} onPress={() => alert('Cart')} /> */}
         </View>
       }
     />
   );
 };
 
-const LeftComponent = ({title, subTitle, qty,item,setSelectedProduct,selectedProduct}) => {
-  const [isSelected,setSelection] = useState(false);
-  const {allStores} = useSelector((state) => state.getStoreReducers);
-  const productSelect = (v) => {
-    if(v){
-      setSelectedProduct(selectedProduct => [{...item,seller: allStores[0].id}, ...selectedProduct]);
-    }else{
-      console.log("it can be used to remove the object from selected product")
+const LeftComponent = ({
+  title,
+  subTitle,
+  qty,
+  item,
+  setSelectedProduct,
+  selectedProduct,
+}) => {
+  const [isSelected, setSelection] = useState(false);
+  const {allStores} = useSelector(state => state.getStoreReducers);
+  const productSelect = v => {
+    if (v) {
+      setSelectedProduct(selectedProduct => [
+        {...item, seller: allStores[0].id},
+        ...selectedProduct,
+      ]);
+    } else {
+      console.log('it can be used to remove the object from selected product');
     }
-  }
+  };
   return (
     <>
       <Box alignItems="flex-start" flexDirection={'row'}>
-      <CheckBox  value={isSelected}
-          onValueChange={(v)=>{setSelection(v=>!v),productSelect(v)}} style={{marginTop:normalize(50)}}/>
+        <CheckBox
+          value={isSelected}
+          onValueChange={v => {
+            setSelection(v => !v), productSelect(v);
+          }}
+          style={{marginTop: normalize(50)}}
+        />
         <Image
           alt="productImg"
           resizeMode={'stretch'}
@@ -106,11 +121,9 @@ const rightComponent = ({isDelete = false, isAdd = true}) => {
 };
 
 const checkBox = () => {
-  
   return (
     <View>
-      <CheckBox
-      />
+      <CheckBox />
     </View>
   );
 };
@@ -118,13 +131,13 @@ const checkBox = () => {
 const SelectFromStore = ({navigation}) => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState();
-  const {storeData} = useSelector((state) => state.getMdmReducers);
-  const {allStores} = useSelector((state) => state.getStoreReducers);
-  const [selectedProduct,setSelectedProduct] = useState([]);
+  const {storeData} = useSelector(state => state.getMdmReducers);
+  const {allStores} = useSelector(state => state.getStoreReducers);
+  const [selectedProduct, setSelectedProduct] = useState([]);
   const submitHandler = () => {
     const Body = [...selectedProduct];
-    dispatch(multiStoreProduct(Body))
-  }
+    dispatch(multiStoreProduct(Body));
+  };
   const HeaderComponent = () => {
     return (
       <>
@@ -134,7 +147,7 @@ const SelectFromStore = ({navigation}) => {
   };
 
   return (
-    <View style={{flex: 1,backgroundColor: "#FFF7EA",}}>
+    <View style={{flex: 1, backgroundColor: '#FFF7EA'}}>
       <HeaderContent navigation={navigation} />
       <View style={style.container}>
         <SearchBox
@@ -157,8 +170,16 @@ const SelectFromStore = ({navigation}) => {
               leftCardWidth={'80%'}
               rightCardWidth={'20%'}
               cardColor={'white'}
-            
-              leftComponent={<LeftComponent title={item.brand} subTitle={item.brand} qty={3} item={item} setSelectedProduct={setSelectedProduct} selectedProduct={selectedProduct}/>}
+              leftComponent={
+                <LeftComponent
+                  title={item.brand}
+                  subTitle={item.brand}
+                  qty={3}
+                  item={item}
+                  setSelectedProduct={setSelectedProduct}
+                  selectedProduct={selectedProduct}
+                />
+              }
               // rightComponent={rightComponent({isDelete: true, isAdd: false})}
               ActionBtn={<ActionBtn />}
               rightWidth={100}

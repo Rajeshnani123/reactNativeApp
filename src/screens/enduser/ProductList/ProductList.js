@@ -32,11 +32,14 @@ import {
 import {normalize} from '../../../utils/Platform';
 import {background} from 'native-base/lib/typescript/theme/styled-system';
 import {Circle} from 'react-native-svg';
-import { useIsFocused } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
-import { getProductbyId, getProducts } from '../../../redux/ProductResource/ActionCreators/getProductAction';
-import { addProduct } from '../../../redux/ProductResource/ActionCreators/postProductAction';
-import { addCartDetails } from '../../../redux/cartManagement/ActionCreators/postCartAction';
+import {useIsFocused} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  getProductbyId,
+  getProducts,
+} from '../../../redux/ProductResource/ActionCreators/getProductAction';
+import {addProduct} from '../../../redux/ProductResource/ActionCreators/postProductAction';
+import {addCartDetails} from '../../../redux/cartManagement/ActionCreators/postCartAction';
 import UserStack from '../../../navigations/UserStack';
 
 const HeaderContent = ({navigation}) => {
@@ -51,7 +54,7 @@ const HeaderContent = ({navigation}) => {
             active={true}
             onPress={() => alert('Notification')}
           />
-          <CartHeader navigation={navigation} onPress={() => alert('Cart')} />
+          {/* <CartHeader navigation={navigation} onPress={() => alert('Cart')} /> */}
         </View>
       }
     />
@@ -68,16 +71,15 @@ const leftComponent = (
   data,
   dispatch,
 ) => {
-  
   const addCartHandler = () => {
     const Body = {
       id: data.id,
       itemId: id,
       qty: 0,
-      userId: String(data.id)
+      userId: String(data.id),
     };
-    dispatch(addCartDetails(Body))
-  }
+    dispatch(addCartDetails(Body));
+  };
   return (
     <>
       <Box alignItems="flex-start" flexDirection={'row'}>
@@ -152,12 +154,14 @@ const ProductList = ({navigation}) => {
   const [search, setSearch] = useState();
   const isFocused = useIsFocused();
   const dispatch = useDispatch();
-  const {productLoading,allProducts,product,statusCode} = useSelector((state) => state.getProductReducers);
+  const {productLoading, allProducts, product, statusCode} = useSelector(
+    state => state.getProductReducers,
+  );
   const {data} = useSelector(state => state.getUserReducers);
 
-  React.useLayoutEffect(()=>{
+  React.useLayoutEffect(() => {
     dispatch(getProducts());
-  },[isFocused]);
+  }, [isFocused]);
 
   return (
     <>
@@ -182,7 +186,12 @@ const ProductList = ({navigation}) => {
         />
       </View> */}
         <View style={styles.container}>
-          <View style={{flexDirection: 'row', marginVertical: 5,justifyContent:'space-between'}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              marginVertical: 5,
+              justifyContent: 'space-between',
+            }}>
             <SearchBox
               value={search}
               onChangeText={val => setSearch(val)}
@@ -191,7 +200,7 @@ const ProductList = ({navigation}) => {
             />
 
             <ActionBtn
-            style={{marginTop:normalize(13)}}
+              style={{marginTop: normalize(13)}}
               iconType={ICONS.filterType}
               iconName={ICONS.filter}
               onPress={() => alert('Filter')}
@@ -229,12 +238,10 @@ const ProductList = ({navigation}) => {
                   data,
                   dispatch,
                 )}
-                onPress={() =>{
+                onPress={() => {
                   dispatch(getProductbyId(item.id));
                   navigation.navigate('ProductDetails');
-                }
-                 
-                }></HorizontalCard>
+                }}></HorizontalCard>
             )}
             ListFooterComponent={() => (
               <View style={{marginBottom: HP('50%')}}></View>
