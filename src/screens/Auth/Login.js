@@ -86,10 +86,10 @@ const Login = ({navigation}) => {
       <TouchableOpacity onPress={forgotHandler}>
         <Text style={styles.fp}>Forgot Password?</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        colors={['#FFB43A', '#FFB43A', '#FFB43A']}
-        style={styles.button}
-        onPress={() => making_api_call()}>
+      <TouchableOpacity 
+      colors={['#FFB43A', '#FFB43A', '#FFB43A']} 
+      style={styles.button} 
+      onPress={() => making_api_call()}>
         <Text style={styles.lgn}>LOGIN</Text>
       </TouchableOpacity>
 
@@ -128,6 +128,7 @@ const Login = ({navigation}) => {
           alignItems: 'center',
           marginBottom: normalize(50),
           marginTop: normalize(60),
+          
         }}>
         <Text
           style={{
