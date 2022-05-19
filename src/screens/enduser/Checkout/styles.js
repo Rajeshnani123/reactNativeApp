@@ -134,17 +134,18 @@ const styles = StyleSheet.create({
     color: '#000000',
   },
   qtybox: {
-    width: normalize(82),
+    width: normalize(90),
     height: normalize(35),
     borderRadius: 5,
-    marginLeft: normalize(15),
+    marginLeft: normalize(18),
     borderColor: '#ffb43a',
     borderWidth: 1,
     flexDirection: 'row',
-    justifyContent:'center',
+    alignItems:'center'
   },
   qtytext: {
-    textAlignVertical:'center',
+    fontSize:normalize(16),
+    marginLeft:normalize(30),
     color: '#000',
   },
   arrowdown: {
