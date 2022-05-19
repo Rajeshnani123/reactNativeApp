@@ -37,9 +37,9 @@ const Login = ({navigation}) => {
   };
 
   const forgotHandler = () => {
-    dispatch({type: FORGOT_REDUX_RESET})
-    navigation.navigate('ForgotPassword')
-  }
+    dispatch({type: FORGOT_REDUX_RESET});
+    navigation.navigate('ForgotPassword');
+  };
   const making_api_call = () => {
     // if (validate()) {
 
@@ -55,7 +55,7 @@ const Login = ({navigation}) => {
         <Image
           source={require('../../assets/Images/log.png')}
           style={{
-            marginLeft: normalize(30)
+            marginLeft: normalize(30),
           }}
         />
         <Text
@@ -86,10 +86,13 @@ const Login = ({navigation}) => {
       <TouchableOpacity onPress={forgotHandler}>
         <Text style={styles.fp}>Forgot Password?</Text>
       </TouchableOpacity>
-      <TouchableOpacity colors={['#FFB43A','#FFB43A','#FFB43A']} style={styles.button} onPress={() => making_api_call()}>
+      <TouchableOpacity
+        colors={['#FFB43A', '#FFB43A', '#FFB43A']}
+        style={styles.button}
+        onPress={() => making_api_call()}>
         <Text style={styles.lgn}>LOGIN</Text>
       </TouchableOpacity>
-      
+
       <View style={styles.lgnbtn}>
         <Text style={styles.loginwith}>or signin with</Text>
       </View>
@@ -122,15 +125,14 @@ const Login = ({navigation}) => {
       <View
         style={{
           flexDirection: 'row',
-          alignItems:'center',
+          alignItems: 'center',
           marginBottom: normalize(50),
           marginTop: normalize(60),
-          
         }}>
         <Text
           style={{
             fontSize: 14,
-marginLeft:normalize(75),
+            marginLeft: normalize(75),
             color: '#000',
             fontFamily: 'Poppins',
             fontWeight: 'normal',
@@ -140,7 +142,7 @@ marginLeft:normalize(75),
         <Text
           style={{
             fontSize: 16,
-            marginLeft:normalize(10),
+            marginLeft: normalize(10),
             color: '#000',
             fontFamily: 'Poppins',
             fontWeight: '900',
