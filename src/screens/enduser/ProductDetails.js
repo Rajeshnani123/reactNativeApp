@@ -143,8 +143,9 @@ const ProductDetails = ({navigation}) => {
     price: 'Price',
   };
 const [ref, setRef] = useState(null);
+const [cord, setCord] = useState(null);
 const handlePress = () => {
- console.log(ref)
+  ref.scrollTo({x:0,y:cord})
 }
   return (
     <View>
@@ -289,7 +290,7 @@ const handlePress = () => {
           ))}
         </View>
         <View onLayout={(event)=>{const layout = event.nativeEvent.layout
-          setRef(layout.y)
+          setCord(layout.y)
         }} style={styless.compareContainer}>
           <Text
             style={styless.similarText}>
