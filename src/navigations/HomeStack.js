@@ -23,6 +23,7 @@ import { USER_ACCOUNT_LOGOUT } from '../redux/UserProfile/Action/ActionType';
 import PDetails from '../screens/accessuser/PDetails/Pdetails';
 import {CreateStore} from "../screens/accessuser/createStore"
 import jwt_decode from "jwt-decode";
+import { COLORS } from '../constants';
 
 
 const Drawer = createDrawerNavigator();
@@ -42,11 +43,19 @@ const Drawer = createDrawerNavigator();
 export default function HomeStack() {
   const dispatch = useDispatch();
   const {userType} = useSelector(state => state.getUserReducers.data);
- 
+
   return (
     <Drawer.Navigator
       // drawerContent={props => <CustomDrawer {...props} />}
-      initialRouteName="Product List">
+      initialRouteName="Product List"
+      screenOptions={{
+          drawerActiveBackgroundColor:COLORS.primary,
+          drawerActiveTintColor:"#fff",
+          drawerStyle: {
+            backgroundColor: '#FFEED2'
+          },
+      }}
+      >
       {/* <Drawer.Screen
         name="Common"
         options={{
@@ -54,7 +63,7 @@ export default function HomeStack() {
         }}
         component={CommonStack}
       /> */}
-     
+
 
      {userType && userType.includes("VENDOR") && <Drawer.Screen
         name="Manage Store"
@@ -71,7 +80,7 @@ export default function HomeStack() {
         component={CreateStore}
       />}
 
-     
+
       {/* <Drawer.Screen
         name="Profile"
         options={{
@@ -108,9 +117,9 @@ export default function HomeStack() {
         }}
         component={MyCart}
       />
-      
-      
-      
+
+
+
       <Drawer.Screen
         name="Logout"
         component={MyCart}
@@ -121,7 +130,7 @@ export default function HomeStack() {
 
             // navigation.replace('Login');
             dispatch({type: USER_ACCOUNT_LOGOUT});
-          
+
             // }
           },
         })}
