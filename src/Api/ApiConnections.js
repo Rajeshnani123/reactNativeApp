@@ -24,4 +24,5 @@ export const ApiConnections = {
     resetPassword: userProfileBaseUrl + version1 + "/reset-password",
     forgotPassword: userProfileBaseUrl + version1 + "/forgot-password",
     verifyOtp: userProfileBaseUrl + version1 + "/verify-otp", 
+    storeSeller: productDetails + productCommon + "/store", 
 }
