@@ -27,6 +27,7 @@ import {
 import {COLORS, FONTS, SIZES, ICON, ICONS} from '../../constants';
 import styles from '../../components/basics/styles';
 import {useSelector} from 'react-redux';
+import CompareProduct from './CompareProduct/CompareProduct'
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -229,8 +230,9 @@ const handlePress = () => {
             }}>
             Reviews
           </Text>
-          {Review.map(item => (
+          {Review.map((item, index) => (
             <View
+              key={index}
               style={{
                 marginTop: 30,
                 flexDirection: 'row',
@@ -289,57 +291,7 @@ const handlePress = () => {
             </View>
           ))}
         </View>
-        <View onLayout={(event)=>{const layout = event.nativeEvent.layout
-          setCord(layout.y)
-        }} style={styless.compareContainer}>
-          <Text
-            style={styless.similarText}>
-            Similar products to compare
-          </Text>
-          <View style={{flexDirection:'row'}}>
-            <View style={styless.first}>
-              <View style={styless.compareParameter}>
-                  <Text style={styless.productNameText}>Product name</Text>
-                  <Text style={styless.productQtyText}>Qty</Text>
-                  <Text style={styless.productPriceText}>Price</Text>
-              </View>
-            </View>
-            <View style={styless.second}>
-                <View style={styless.imgContainer}>
-                <Image
-                  source={require('../../assets/Images/fotune.jpg')}
-                  style={{
-                    height: 189,
-                    width: 166,
-                    resizeMode: 'contain',
-                  }}
-                />
-                </View>
-                <View style={styless.productDetails}>
-                  <Text style={styless.fortune}>Fortune Oil</Text>
-                  <Text style={styless.qty}>10</Text>
-                  <Text style={styless.price}>999/-</Text>
-                </View>
-            </View>
-            <View style={styless.third}>
-                <View style={styless.imgContainer}>
-                  <Image
-                    source={require('../../assets/Images/fotune.jpg')}
-                    style={{
-                      height: 189,
-                      width: 166,
-                      resizeMode: 'contain',
-                    }}
-                  />
-                </View>
-                <View style={styless.productDetails}>
-                  <Text style={styless.fortune}>Fortune Oil</Text>
-                  <Text style={styless.qty}>10</Text>
-                  <Text style={styless.price}>999/-</Text>
-                </View>
-            </View>
-          </View>
-        </View>
+        <CompareProduct setCord={setCord}/>
       </ScrollView>
     </View>
   );
@@ -373,10 +325,7 @@ const styless = StyleSheet.create({
     marginTop: 10,
     fontSize: 12,
   },
-  compareContainer:{
-    width: 428,
-    marginVertical: 24,
-  },
+
   similarText:{
     marginLeft:20,
     marginBottom:22,
@@ -407,11 +356,7 @@ const styless = StyleSheet.create({
   second:{
     width:166,
     height:290,
-  },
-  third:{
-    marginLeft:6,
-    width:166,
-    height:290,
+    marginRight:6,
   },
   productDetails:{
     width:166,
