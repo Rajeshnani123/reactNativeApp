@@ -92,6 +92,14 @@ export default function HomeStack() {
         name="Profile"
         options={{
           headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
         }}
         component={ProfileStk}
       />
