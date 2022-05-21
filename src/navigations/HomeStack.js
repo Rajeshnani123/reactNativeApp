@@ -23,8 +23,8 @@ import { USER_ACCOUNT_LOGOUT } from '../redux/UserProfile/Action/ActionType';
 import PDetails from '../screens/accessuser/PDetails/Pdetails';
 import {CreateStore} from "../screens/accessuser/createStore"
 import jwt_decode from "jwt-decode";
-import { COLORS } from '../constants';
-
+import { COLORS, ICON, ICONS} from '../constants';
+import { normalize } from '../utils/Platform';
 
 const Drawer = createDrawerNavigator();
 
@@ -46,13 +46,13 @@ export default function HomeStack() {
 
   return (
     <Drawer.Navigator
-      // drawerContent={props => <CustomDrawer {...props} />}
+      drawerContent={props => <CustomDrawer {...props} />}
       initialRouteName="Product List"
       screenOptions={{
           drawerActiveBackgroundColor:COLORS.primary,
-          drawerActiveTintColor:"#fff",
+          drawerActiveTintColor: COLORS.white,
           drawerStyle: {
-            backgroundColor: '#FFEED2'
+            backgroundColor: COLORS.primary
           },
       }}
       >
@@ -99,6 +99,14 @@ export default function HomeStack() {
         name="Product List"
         options={{
           headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.listBoxType}
+              name={ICONS.listBox}
+              size={normalize(18)}
+              color={color}
+            />
+          )
         }}
         component={ProductStk}
       />
@@ -107,6 +115,14 @@ export default function HomeStack() {
         name="Global store "
         options={{
           headerShown: false,
+          drawerIcon: ({color}) => (
+            <ICON
+              type={ICONS.storeType}
+              name={ICONS.store}
+              size={normalize(18)}
+              color={color}
+            />
+          )
         }}
         component={GlobalStore}
       />
@@ -114,6 +130,14 @@ export default function HomeStack() {
         name="My Cart "
         options={{
           headerShown: false,
+          drawerIcon: ({color}) => (
+            <ICON
+              type={ICONS.cartType}
+              name={ICONS.cart}
+              size={normalize(18)}
+              color={color}
+            />
+          )
         }}
         component={MyCart}
       />
@@ -134,6 +158,18 @@ export default function HomeStack() {
             // }
           },
         })}
+        options={{
+          headerShown: false,
+          drawerIcon: ({color}) => (
+            <ICON
+              type={ICONS.logoutType}
+              name={ICONS.logout}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+
       />
     </Drawer.Navigator>
   );

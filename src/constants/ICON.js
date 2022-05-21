@@ -50,12 +50,16 @@ export const ICONS = {
   notification: 'bell',
   cartType: ICONTYPE.Feather,
   cart: 'shopping-cart',
+  storeType: ICONTYPE.MaterialCommunityIcons,
+  store: 'store-outline',
   briefcaseType: ICONTYPE.Feather,
   briefcase: 'briefcase',
   searchType: ICONTYPE.Feather,
   search: 'search',
   noteType: ICONTYPE.MaterialIcons,
   note: 'notes',
+  listBoxType: ICONTYPE.FontAwesome5,
+  listBox: 'list-alt',
   deleteType: ICONTYPE.MaterialIcons,
   delete: 'delete',
   deleteO: 'delete-outline',
@@ -97,7 +101,9 @@ export const ICONS = {
   filledstarType:ICONTYPE.Entypo,
   filledstar:'star',
   outlinedstarType:ICONTYPE.Entypo,
-  outlinedstar:'star-outlined'
+  outlinedstar:'star-outlined',
+  logoutType: ICONTYPE.MaterialCommunityIcons,
+  logout: 'logout'
 };
 
 export default ICON;
