@@ -46,22 +46,33 @@ const UserDetailForm = ({navigation}) => {
   // const {token} = useSelector(state => state.userProfileReducers);
 
   const updateData = () => {
-    const Body = {
+    let Body = {
       address: address,
       email: data.email,
       gstin: gstin,
-      newEmail: email,
-      newPhoneNumber: mobile,
       password: '',
       phoneNumber: data.phoneNumber,
       userName: name,
     };
-    dispatch(updateAccount(Body));
+    if(mobile !== data.phoneNumber){
+      Body={
+        ...Body,
+        newPhoneNumber: mobile,
+      }
+    }
+    if(email !== data.email){
+      Body={
+        ...Body,
+        newEmail: email,
+      }
+    }
+   dispatch(updateAccount(Body));
   };
 
   React.useEffect(() => {
     if (!loading && statusCode === 200) {
       Alert.alert('data saved');
+      navigation.navigate("UserDetail");
       dispatch({type: USER_ACCOUNT_RESET});
     }
   }, [loading]);
@@ -96,41 +107,46 @@ const UserDetailForm = ({navigation}) => {
             style={Styles.input}
             value={name}
             placeholder="Name"
-            placeholderTextColor={'#c4c4c4'}></TextInput>
+            onChangeText={(text) => setName(text)}
+            placeholderTextColor={'#c4c4c4'} />
           <TextInput
             style={Styles.input}
             placeholder="Email"
             value={email}
             onChangeText={text => setEmail(text)}
-            placeholderTextColor={'#c4c4c4'}></TextInput>
+            placeholderTextColor={'#c4c4c4'} />
           <TextInput
             style={Styles.input}
             value={mobile}
             onChangeText={text => setMobile(text)}
             placeholder="Mobile No"
-            placeholderTextColor={'#c4c4c4'}></TextInput>
+            placeholderTextColor={'#c4c4c4'} />
           <TextInput
             style={Styles.input}
             placeholder="DOB"
             value={dob}
-            placeholderTextColor={'#c4c4c4'}></TextInput>
+            onChangeText={(text) => setDob(text)}
+            placeholderTextColor={'#c4c4c4'} />
           <TextInput
             style={Styles.input}
             placeholder="Change profile image"
-            placeholderTextColor={'#c4c4c4'}></TextInput>
+            placeholderTextColor={'#c4c4c4'} />
           <TextInput
             style={Styles.input}
             placeholder="Change shop image"
-            placeholderTextColor={'#c4c4c4'}></TextInput>
+            placeholderTextColor={'#c4c4c4'} />
           <TextInput
             style={Styles.input}
             value={type}
+            onChangeText={(text) => setType(text)}
             placeholder="Business type"
-            placeholderTextColor={'#c4c4c4'}></TextInput>
+            placeholderTextColor={'#c4c4c4'} />
           <TextInput
             style={Styles.input}
             placeholder="Add GSTN"
-            placeholderTextColor={'#c4c4c4'}></TextInput>
+            value={gstin}
+            onChangeText={(text) => setGstin(text)}
+            placeholderTextColor={'#c4c4c4'} />
 
           <TextInput
             style={{
@@ -142,8 +158,9 @@ const UserDetailForm = ({navigation}) => {
               width: 290,
             }}
             value={address}
+            onChangeText={(text) => setAddress(text)}
             placeholder="Address"
-            placeholderTextColor={'#c4c4c4'}></TextInput>
+            placeholderTextColor={'#c4c4c4'} />
 
           <TouchableOpacity style={Styles.button} onPress={updateData}>
             <Text style={Styles.buttonText}>SAVE</Text>

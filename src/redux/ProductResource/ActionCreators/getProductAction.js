@@ -1,6 +1,6 @@
 import { ApiConnections } from "../../../Api/ApiConnections";
 import { deleteAxios, get } from "../../../Api/BaseApi";
-import { DELETE_PRODUCT_FAILURE, DELETE_PRODUCT_LOADING, DELETE_PRODUCT_SUCCESS, GET_ALL_PRODUCTS_FAILURE, GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_SUCCESS, GET_PRODUCT_FAILURE, GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS } from "../ActionType"
+import { DELETE_PRODUCT_FAILURE, DELETE_PRODUCT_LOADING, DELETE_PRODUCT_SUCCESS, GET_ALL_PRODUCTS_FAILURE, GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_SUCCESS, GET_PRODUCT_FAILURE, GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS, STORE_PRODUCT_GET_FAILURE, STORE_PRODUCT_GET_LOADING, STORE_PRODUCT_GET_SUCCESS } from "../ActionType"
 
 
 
@@ -56,5 +56,22 @@ export const deleteProductById = (id) => {
                 Alert.alert("Please try after some time");
                 dispatch({type: DELETE_PRODUCT_FAILURE});
             }
+    }
+}
+
+export const getStoreProducts = (seller) => {
+    return async(dispatch) => {
+        dispatch({type: STORE_PRODUCT_GET_LOADING});
+        try{
+            const url = ApiConnections.storeSeller+`/${seller}`;
+            const response = await get(url);
+            if(response && response.data){
+                dispatch({type: STORE_PRODUCT_GET_SUCCESS,storeProduct: response.data});
+            }else{
+                dispatch({type: STORE_PRODUCT_GET_FAILURE, error: "Data not found"});
+            }
+        }catch(error){
+            dispatch({type: STORE_PRODUCT_GET_FAILURE,error: error});
+        }
     }
 }
