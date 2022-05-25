@@ -1,11 +1,14 @@
 const userProfileBaseUrl = "http://gmausermanagement-env-1.eba-kjs6rw3r.ap-south-1.elasticbeanstalk.com";
-const productDetails = "http://gma-env.eba-hscm2pi3.ap-south-1.elasticbeanstalk.com";
+const productDetails = "http://catalog.ap-south-1.elasticbeanstalk.com/";
 const cardManagement = "http://cart-env.eba-vwx5vupq.ap-south-1.elasticbeanstalk.com";
+const orderManagement = "http://gma-order.ap-south-1.elasticbeanstalk.com";
+
 const version1 = "/api/v1/account";
 const productCommon = "/api/products";
 const store = "/api/Stores";
 const mdm = "/api/mdm/products";
 const cardCommon = "/api/v1/cart";
+const cartCommon = "/api/orders";
 
 export const ApiConnections = {
     Account : userProfileBaseUrl+  version1,
@@ -24,5 +27,6 @@ export const ApiConnections = {
     resetPassword: userProfileBaseUrl + version1 + "/reset-password",
     forgotPassword: userProfileBaseUrl + version1 + "/forgot-password",
     verifyOtp: userProfileBaseUrl + version1 + "/verify-otp", 
-    storeSeller: productDetails + productCommon + "/store", 
+    storeSeller: productDetails + productCommon + "/store",
+    storeOrder: cardManagement + cardCommon,
 }

@@ -48,7 +48,7 @@ const get = async (url,header) => {
 
 const deleteAxios = async (url,Body) => {
     try{
-        const response = await axios.delete(url,Body);
+        const response = await axios.delete(url,{data:Body});
         if(response){
             return response.data
         }
