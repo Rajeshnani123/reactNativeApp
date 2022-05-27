@@ -40,6 +40,14 @@ const ICON = ({type, name, color, size = 24, style}) => {
 export const ICONS = {
   testType: ICONTYPE.AntDesign,
   test: 'isv',
+  helpType: ICONTYPE.AntDesign,
+  help: 'questioncircleo',
+  clipboardType: ICONTYPE.MaterialCommunityIcons,
+  clipboard: 'clipboard-account-outline',
+  lockType: ICONTYPE.MaterialCommunityIcons,
+  lock: 'lock-outline',
+  crownType: ICONTYPE.MaterialCommunityIcons,
+  crown: 'crown',
   rightType: ICONTYPE.AntDesign,
   right:'right',
   filterType: ICONTYPE.Feather,
@@ -60,6 +68,8 @@ export const ICONS = {
   note: 'notes',
   listBoxType: ICONTYPE.FontAwesome5,
   listBox: 'list-alt',
+  userType: ICONTYPE.FontAwesome5,
+  user: 'user',
   deleteType: ICONTYPE.MaterialIcons,
   delete: 'delete',
   deleteO: 'delete-outline',
@@ -103,7 +113,14 @@ export const ICONS = {
   outlinedstarType:ICONTYPE.Entypo,
   outlinedstar:'star-outlined',
   logoutType: ICONTYPE.MaterialCommunityIcons,
-  logout: 'logout'
+  logout: 'logout',
+  logoutAntType: ICONTYPE.AntDesign,
+  logout: 'logout',
+  heartType: ICONTYPE.Ionicons,
+  heart: 'heart',
+  heartO: 'heart-outline',
+  gearType: ICONTYPE.Octicons,
+  gear: 'gear'
 };
 
 export default ICON;

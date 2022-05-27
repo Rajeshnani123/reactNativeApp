@@ -1,6 +1,6 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {CustomDrawer, CustomDrawerContent} from './CustomDrawer';
+// import {CustomDrawer, CustomDrawerContent} from './CustomDrawer';
 import CommonStack from './CommonStack';
 import {Button,Alert} from 'react-native';
 import VendorStack from './VendorStack';
@@ -25,20 +25,9 @@ import {CreateStore} from "../screens/accessuser/createStore"
 import jwt_decode from "jwt-decode";
 import { COLORS, ICON, ICONS} from '../constants';
 import { normalize } from '../utils/Platform';
+import CustomDrawer from './drawer/CustomDrawer';
 
 const Drawer = createDrawerNavigator();
-
-// export function CustomDrawerContent({navigation}) {
-//   return (
-//     <Button
-//       title="Go somewhere"
-//       onPress={() => {
-//         // Navigate using the `navigation` prop that you received
-//         navigation.navigate('SignUp');
-//       }}
-//     />
-//   );
-// }
 
 export default function HomeStack() {
   const dispatch = useDispatch();
@@ -46,15 +35,10 @@ export default function HomeStack() {
 
   return (
     <Drawer.Navigator
+
       drawerContent={props => <CustomDrawer {...props} />}
       initialRouteName="Product List"
-      screenOptions={{
-          drawerActiveBackgroundColor:COLORS.primary,
-          drawerActiveTintColor: COLORS.white,
-          drawerStyle: {
-            backgroundColor: COLORS.primary
-          },
-      }}
+
       >
       {/* <Drawer.Screen
         name="Common"
@@ -120,7 +104,7 @@ export default function HomeStack() {
       />
       {/* ProductStk */}
       <Drawer.Screen
-        name="Global store "
+        name="Global Store"
         options={{
           headerShown: false,
           drawerIcon: ({color}) => (
@@ -135,7 +119,7 @@ export default function HomeStack() {
         component={GlobalStore}
       />
       <Drawer.Screen
-        name="My Cart "
+        name="My Cart"
         options={{
           headerShown: false,
           drawerIcon: ({color}) => (
@@ -179,6 +163,150 @@ export default function HomeStack() {
         }}
 
       />
+      <Drawer.Screen
+        name="Manage users"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+
+      <Drawer.Screen
+        name="Manage Orders"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+
+      <Drawer.Screen
+        name="Manage store"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={VendorStack}
+      />
+
+      <Drawer.Screen
+        name="Invoice"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+
+      <Drawer.Screen
+        name="Report"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+
+      <Drawer.Screen
+        name="My Orders"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+
+      <Drawer.Screen
+        name="My wishlist"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+
+      <Drawer.Screen
+        name="Private policy"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+      <Drawer.Screen
+        name="Help center"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+
+
     </Drawer.Navigator>
   );
 }
