@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, FlatList,Alert} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Feather';
 import {PLDATA} from '../../../constants/PLJASON';
@@ -12,7 +12,7 @@ import {
   SIZES,
   ICON,
 } from '../../../constants';
-import {Box, Button, Image} from 'native-base';
+import { Box, Button, Image} from 'native-base';
 // import ProductDetails from '../ProductDetails';
 import {
   Header,
@@ -79,6 +79,7 @@ const leftComponent = (
       userId: String(data.id),
     };
     dispatch(addCartDetails(Body));
+    Alert.alert(`Product ${title} is added`,`Please check my cart`)
   };
   return (
     <>

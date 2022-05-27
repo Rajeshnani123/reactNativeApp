@@ -81,7 +81,7 @@ const HeaderContent = ({navigation}) => {
   );
 };
 
-const leftComponent = (title, subTitle, qty) => {
+const leftComponent = (title, subTitle, qty,price) => {
   return (
     <>
       <Box alignItems="flex-start" flexDirection={'row'}>
@@ -96,7 +96,8 @@ const leftComponent = (title, subTitle, qty) => {
         <Box mx={5}>
           <Text style={FONTS.h3}>{title}</Text>
           <Text style={{color: COLORS.gray, ...FONTS.h4}}>{subTitle}</Text>
-          <Text style={{color: COLORS.gray, ...FONTS.h4}}>Qty {qty}</Text>
+          <Text style={{color: COLORS.gray, ...FONTS.h4}}>Qty : {qty}</Text>
+          <Text style={FONTS.h3}>{price}</Text>
         </Box>
       </Box>
     </>
@@ -204,7 +205,8 @@ const ManageProducts = ({navigation}) => {
               leftComponent={leftComponent(
                 item.product.productName,
                 item.product.productName,
-                3,
+                item.availableQty,
+                item.price,
               )}
               rightComponent={rightComponent(
                 item.product.id,

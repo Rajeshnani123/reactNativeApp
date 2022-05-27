@@ -131,7 +131,9 @@ const MyCart = ({navigation}) => {
   const {cartDetails} = useSelector(state => state.getCardReducers);
   const {loading} = useSelector(state => state.postCartReducers);
   const isFocused = useIsFocused();
-
+  const {productLoading, allProducts, product, statusCode} = useSelector(
+    state => state.getProductReducers,
+  );
   React.useLayoutEffect(() => {
     data && data.id && dispatch(getCartDetails(data.id));
   }, [isFocused]);
@@ -143,7 +145,6 @@ const MyCart = ({navigation}) => {
   }, [loading]);
 
   const leftComponent = (
-    title,
     packs,
     company,
     prevprice,
@@ -152,6 +153,14 @@ const MyCart = ({navigation}) => {
     Qty,
     id,
   ) => {
+    let title = "";
+    let price = "";
+    allProducts.map((data1,index) => {
+      if(Number(id) === Number(data1.id)){
+        title = data1.product.productName;
+        price = data1.price;
+      }
+    })
     const addCartHandler = () => {
       const Body = {
         id: data.id,
@@ -212,8 +221,8 @@ const MyCart = ({navigation}) => {
 
                 <Text style={styles.company}>{company}</Text>
                 <Box flexDirection={'row'}>
-                  <Text style={styles.prevprice}>{prevprice}</Text>
-                  <Text style={styles.currentprice}>{currentprice}</Text>
+                  <Text style={styles.prevprice}>{price}</Text>
+                  <Text style={styles.currentprice}>{price}</Text>
                   <View style={styles.discountview}>
                     <Text style={styles.discount}>{discount}</Text>
                   </View>
@@ -320,7 +329,6 @@ const MyCart = ({navigation}) => {
                 rightWidth={100}
                 leftWidth={100}
                 leftComponent={leftComponent(
-                  item.title,
                   item.packs,
                   item.company,
                   item.prevprice,

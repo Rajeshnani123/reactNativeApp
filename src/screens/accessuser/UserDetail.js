@@ -67,7 +67,7 @@ const UserDetail = ({navigation}) => {
             <Text style={styles.leftDescription}>Email</Text>
             <Text style={styles.leftDescription}>Mobile No</Text>
             <Text style={styles.leftDescription}>DOB</Text>
-            <Text style={styles.leftDescription}>Business type</Text>
+            {/* <Text style={styles.leftDescription}>Business type</Text> */}
             <Text style={styles.leftDescription}>GSTN</Text>
             <Text style={styles.leftDescription}>Address</Text>
           </View>
@@ -84,9 +84,9 @@ const UserDetail = ({navigation}) => {
             <Text style={styles.rightDescription}>
               {loading ? 'DOB' : data.userId}
             </Text>
-            <Text style={styles.rightDescription}>
+            {/* <Text style={styles.rightDescription}>
               {loading ? 'Business type' : data.userType}
-            </Text>
+            </Text> */}
             <Text style={styles.rightDescription}>
               {loading ? 'GSTN' : data.gstin}
             </Text>
