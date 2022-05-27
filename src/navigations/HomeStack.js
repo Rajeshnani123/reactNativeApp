@@ -1,6 +1,6 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {CustomDrawer, CustomDrawerContent} from './CustomDrawer';
+// import {CustomDrawer, CustomDrawerContent} from './CustomDrawer';
 import CommonStack from './CommonStack';
 import {Button,Alert} from 'react-native';
 import VendorStack from './VendorStack';
@@ -23,30 +23,23 @@ import { USER_ACCOUNT_LOGOUT } from '../redux/UserProfile/Action/ActionType';
 import PDetails from '../screens/accessuser/PDetails/Pdetails';
 import {CreateStore} from "../screens/accessuser/createStore"
 import jwt_decode from "jwt-decode";
-
+import { COLORS, ICON, ICONS} from '../constants';
+import { normalize } from '../utils/Platform';
+import CustomDrawer from './drawer/CustomDrawer';
 
 const Drawer = createDrawerNavigator();
-
-// export function CustomDrawerContent({navigation}) {
-//   return (
-//     <Button
-//       title="Go somewhere"
-//       onPress={() => {
-//         // Navigate using the `navigation` prop that you received
-//         navigation.navigate('SignUp');
-//       }}
-//     />
-//   );
-// }
 
 export default function HomeStack() {
   const dispatch = useDispatch();
   const {userType} = useSelector(state => state.getUserReducers.data);
- 
+
   return (
     <Drawer.Navigator
-      // drawerContent={props => <CustomDrawer {...props} />}
-      initialRouteName="Product List">
+
+      drawerContent={props => <CustomDrawer {...props} />}
+      initialRouteName="Product List"
+
+      >
       {/* <Drawer.Screen
         name="Common"
         options={{
@@ -54,7 +47,7 @@ export default function HomeStack() {
         }}
         component={CommonStack}
       /> */}
-     
+
 
      {userType && userType.includes("VENDOR") && <Drawer.Screen
         name="Manage Store"
@@ -71,7 +64,7 @@ export default function HomeStack() {
         component={CreateStore}
       />}
 
-     
+
       {/* <Drawer.Screen
         name="Profile"
         options={{
@@ -83,6 +76,14 @@ export default function HomeStack() {
         name="Profile"
         options={{
           headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
         }}
         component={ProfileStk}
       />
@@ -90,27 +91,51 @@ export default function HomeStack() {
         name="Product List"
         options={{
           headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.listBoxType}
+              name={ICONS.listBox}
+              size={normalize(18)}
+              color={color}
+            />
+          )
         }}
         component={ProductStk}
       />
       {/* ProductStk */}
       <Drawer.Screen
-        name="Global store "
+        name="Global Store"
         options={{
           headerShown: false,
+          drawerIcon: ({color}) => (
+            <ICON
+              type={ICONS.storeType}
+              name={ICONS.store}
+              size={normalize(18)}
+              color={color}
+            />
+          )
         }}
         component={GlobalStore}
       />
       <Drawer.Screen
-        name="My Cart "
+        name="My Cart"
         options={{
           headerShown: false,
+          drawerIcon: ({color}) => (
+            <ICON
+              type={ICONS.cartType}
+              name={ICONS.cart}
+              size={normalize(18)}
+              color={color}
+            />
+          )
         }}
         component={MyCart}
       />
-      
-      
-      
+
+
+
       <Drawer.Screen
         name="Logout"
         component={MyCart}
@@ -121,11 +146,167 @@ export default function HomeStack() {
 
             // navigation.replace('Login');
             dispatch({type: USER_ACCOUNT_LOGOUT});
-          
+
             // }
           },
         })}
+        options={{
+          headerShown: false,
+          drawerIcon: ({color}) => (
+            <ICON
+              type={ICONS.logoutType}
+              name={ICONS.logout}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+
       />
+      <Drawer.Screen
+        name="Manage users"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+
+      <Drawer.Screen
+        name="Manage Orders"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+
+      <Drawer.Screen
+        name="Manage store"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={VendorStack}
+      />
+
+      <Drawer.Screen
+        name="Invoice"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+
+      <Drawer.Screen
+        name="Report"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+
+      <Drawer.Screen
+        name="My Orders"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+
+      <Drawer.Screen
+        name="My wishlist"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+
+      <Drawer.Screen
+        name="Private policy"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+      <Drawer.Screen
+        name="Help center"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProfileStk}
+      />
+
+
     </Drawer.Navigator>
   );
 }

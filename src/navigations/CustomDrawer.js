@@ -13,7 +13,9 @@ import {
   DrawerItem,
   DrawerItemList,
 } from '@react-navigation/drawer';
-import {FONTS} from '../constants';
+import {COLORS, FONTS, ICON} from '../constants';
+import { normalize } from '../utils/Platform';
+import style from '../screens/style';
 
 const Drawer = createDrawerNavigator();
 
@@ -41,41 +43,46 @@ export function CustomDrawerContent({navigation}) {
 
 export function CustomDrawer(props, {navigation}) {
   return (
-    <View style={{flex: 1}}>
-      <DrawerContentScrollView {...props}>
-        <View
-          style={
-            (styles.drawerContent,
-            {flex: 1, alignItems: 'center', justifyContent: 'center'})
-          }>
-          <Text>Custom Drawer Here</Text>
-        </View>
+    <View style={styles.customDrawerContainer}>
+      <DrawerContentScrollView {...props}
+      //contentContainerStyle={{backgroundColor:"blue"}}
+      >
+        <View style={styles.drawerContent}/>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={
             (styles.drawerContent,
             {flex: 1, alignItems: 'center', justifyContent: 'center'})
           }
           onPress={() => navigation.navigate('Register')}>
           <Text>Manage Store</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <DrawerItemList {...props} />
-        <DrawerItem
+        {/* <DrawerItem
           label="Help"
           onPress={() => Linking.openURL('https://mywebsite.com/help')}
-        />
-        <DrawerItem
+        /> */}
+        {/* <DrawerItem
           label="Manage Store"
           onPress={() => navigation.navigate('VendorHome')}
-        />
+        /> */}
       </DrawerContentScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  customDrawerContainer:{
+    flex: 1,
+    marginTop:normalize(57),
+    backgroundColor:'#fff7ea',
+  },
   drawerContent: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    //height:normalize(57),
+    //backgroundColor:"#ffb43a"
   },
   userInfoSection: {
     paddingLeft: 20,

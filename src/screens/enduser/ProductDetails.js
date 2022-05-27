@@ -27,6 +27,7 @@ import {
 import {COLORS, FONTS, SIZES, ICON, ICONS} from '../../constants';
 import styles from '../../components/basics/styles';
 import {useSelector} from 'react-redux';
+import CompareProduct from './CompareProduct/CompareProduct'
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -143,8 +144,9 @@ const ProductDetails = ({navigation}) => {
     price: 'Price',
   };
 const [ref, setRef] = useState(null);
+const [cord, setCord] = useState(null);
 const handlePress = () => {
- console.log(ref)
+  ref.scrollTo({x:0,y:cord})
 }
   return (
     <View>
@@ -228,8 +230,9 @@ const handlePress = () => {
             }}>
             Reviews
           </Text>
-          {Review.map(item => (
+          {Review.map((item, index) => (
             <View
+              key={index}
               style={{
                 marginTop: 30,
                 flexDirection: 'row',
@@ -288,57 +291,7 @@ const handlePress = () => {
             </View>
           ))}
         </View>
-        <View onLayout={(event)=>{const layout = event.nativeEvent.layout
-          setRef(layout.y)
-        }} style={styless.compareContainer}>
-          <Text
-            style={styless.similarText}>
-            Similar products to compare
-          </Text>
-          <View style={{flexDirection:'row'}}>
-            <View style={styless.first}>
-              <View style={styless.compareParameter}>
-                  <Text style={styless.productNameText}>Product name</Text>
-                  <Text style={styless.productQtyText}>Qty</Text>
-                  <Text style={styless.productPriceText}>Price</Text>
-              </View>
-            </View>
-            <View style={styless.second}>
-                <View style={styless.imgContainer}>
-                <Image
-                  source={require('../../assets/Images/fotune.jpg')}
-                  style={{
-                    height: 189,
-                    width: 166,
-                    resizeMode: 'contain',
-                  }}
-                />
-                </View>
-                <View style={styless.productDetails}>
-                  <Text style={styless.fortune}>Fortune Oil</Text>
-                  <Text style={styless.qty}>10</Text>
-                  <Text style={styless.price}>999/-</Text>
-                </View>
-            </View>
-            <View style={styless.third}>
-                <View style={styless.imgContainer}>
-                  <Image
-                    source={require('../../assets/Images/fotune.jpg')}
-                    style={{
-                      height: 189,
-                      width: 166,
-                      resizeMode: 'contain',
-                    }}
-                  />
-                </View>
-                <View style={styless.productDetails}>
-                  <Text style={styless.fortune}>Fortune Oil</Text>
-                  <Text style={styless.qty}>10</Text>
-                  <Text style={styless.price}>999/-</Text>
-                </View>
-            </View>
-          </View>
-        </View>
+        <CompareProduct setCord={setCord}/>
       </ScrollView>
     </View>
   );
@@ -372,122 +325,5 @@ const styless = StyleSheet.create({
     marginTop: 10,
     fontSize: 12,
   },
-  compareContainer:{
-    width: 428,
-    marginVertical: 24,
-  },
-  similarText:{
-    marginLeft:20,
-    marginBottom:22,
-    width: 223,
-    height: 23,
-    fontFamily: "Poppins",
-    fontSize: 15,
-    fontWeight: "normal",
-    fontStyle: "normal",
-    letterSpacing: 0.3,
-    textAlign: "left",
-    color: "#000000"
-  },
 
-  compareParameter:{
-    height: 101,
-    marginTop:189,
-    paddingLeft:8,
-    backgroundColor: "rgba(255, 180, 58, 0.3)"
-  },
-  imgContainer:{
-    width: 166,
-    height: 189,
-  },
-  first:{
-    width:102,
-  },
-  second:{
-    width:166,
-    height:290,
-  },
-  third:{
-    marginLeft:6,
-    width:166,
-    height:290,
-  },
-  productDetails:{
-    width:166,
-    height:101,
-    alignItems:"center",
-    backgroundColor: "#ffb43a"
-  },
-  productNameText:{
-    marginTop:12,
-    width: 86,
-    height: 18,
-    fontFamily: "Poppins",
-    fontSize: 12,
-    fontWeight: "normal",
-    fontStyle: "normal",
-    letterSpacing: 0,
-    textAlign: "left",
-    color: "#000000"
-  },
-  productQtyText:{
-    marginTop:9,
-    width: 21,
-    height: 18,
-    fontFamily: "Poppins",
-    fontSize: 12,
-    fontWeight: "normal",
-    fontStyle: "normal",
-    letterSpacing: 0,
-    textAlign: "left",
-    color: "#000000"
-  },
-  productPriceText:{
-    marginTop:9,
-    width: 30,
-    height: 18,
-    fontFamily: "Poppins",
-    fontSize: 12,
-    fontWeight: "normal",
-    fontStyle: "normal",
-    letterSpacing: 0,
-    textAlign: "left",
-    color: "#000000"
-  },
-  fortune:{
-    marginTop:12,
-    width: 73,
-    height: 21,
-    fontFamily: "Poppins",
-    fontSize: 14,
-    fontWeight: "normal",
-    fontStyle: "normal",
-    letterSpacing: 0,
-    textAlign: "left",
-    color: "#000000"
-  },
-  qty:{
-    marginTop:5,
-    width: 14,
-    height: 21,
-    fontFamily: "Poppins",
-    fontSize: 14,
-    fontWeight: "normal",
-    fontStyle: "normal",
-    letterSpacing: 0,
-    textAlign: "left",
-    color: "#000000"
-  },
-  price:{
-    marginTop:7,
-    width: 41,
-    height: 21,
-    fontFamily: "Poppins",
-    fontSize: 14,
-    fontWeight: "normal",
-    fontStyle: "normal",
-    letterSpacing: 0,
-    textAlign: "left",
-    color: "#000000"
-  }
 });
