@@ -37,6 +37,7 @@ import {
   addCartDetails,
   removeCartDetails,
 } from '../../../redux/cartManagement/ActionCreators/postCartAction';
+import { LOCAL_CART_MANAGEMENT } from '../../../redux/cartManagement/ActionType';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -132,10 +133,10 @@ const MyCart = ({navigation}) => {
 
   const dispatch = useDispatch();
   const {data} = useSelector(state => state.getUserReducers);
-  const {cartDetails} = useSelector(state => state.getCardReducers);
+  const {loading:cartLoading ,cartDetails} = useSelector(state => state.getCardReducers);
   const {loading} = useSelector(state => state.postCartReducers);
   const isFocused = useIsFocused();
-  const [orderProducts,setOrderProducts] = useState([cartDetails]);
+  const [orderProducts,setOrderProducts] = useState([]);
   React.useLayoutEffect(() => {
     data && data.id && dispatch(getCartDetails(data.id));
   }, [isFocused]);
@@ -146,13 +147,19 @@ const MyCart = ({navigation}) => {
     }
   }, [loading]);
 
+  React.useEffect(() => {
+    if(cartDetails && cartDetails.length > 0){
+      cartDetails.map((data) => {
+        setOrderProducts(value => [...value,data.item])
+      })
+    }
+  },[cartLoading]);
+
   const placeOrderHandler = () => {
-    storeProducts.map((data) => {
-      setOrderProducts((cartDetails.filter(id => id.item.id !== data.id)))
-    })
+    dispatch({type: LOCAL_CART_MANAGEMENT, storeProducts: storeProducts,nonStoreProducts: orderProducts});
+    navigation.navigate('Checkout')
   }
 
-  console.log(orderProducts);
   const leftComponent = (
     packs,
     item,
@@ -163,7 +170,6 @@ const MyCart = ({navigation}) => {
     Qty,
     id,
   ) => {
-   console.log(id);
     const addCartHandler = () => {
       const Body = {
         id: data.id,
@@ -186,11 +192,12 @@ const MyCart = ({navigation}) => {
 
     const productAdd = () => {
       setStoreProducts([...storeProducts,item]);
-      //setOrderProducts(orderProducts.filter((id) => id !== item.id))
+      setOrderProducts(orderProducts.filter((id) => id.id !== item.id))
     }
 
     const productRemove = () => {
       setStoreProducts(storeProducts.filter((id) => id.id !== (item.id)));
+      setOrderProducts([...orderProducts,item]);
     }
     const deleteHandler = () => {
       const Body = [

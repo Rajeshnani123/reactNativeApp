@@ -25,6 +25,12 @@ export default StyleSheet.create({
     marginHorizontal: SIZES.padding,
   },
 
+  button: {
+    height: "8%",
+    alignContent: "center",
+    color: "white"
+  },
+
   // HEADER COMPONENTS
   headerContainer: {
     marginTop: HP('3%'),

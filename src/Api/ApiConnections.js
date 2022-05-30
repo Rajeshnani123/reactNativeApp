@@ -9,6 +9,7 @@ const store = "/api/Stores";
 const mdm = "/api/mdm/products";
 const cardCommon = "/api/v1/cart";
 const cartCommon = "/api/orders";
+const file = "/api/upload";
 
 export const ApiConnections = {
     Account : userProfileBaseUrl+  version1,
@@ -29,4 +30,6 @@ export const ApiConnections = {
     verifyOtp: userProfileBaseUrl + version1 + "/verify-otp", 
     storeSeller: productDetails + productCommon + "/store",
     storeOrder: cardManagement + cardCommon,
+    fileUpload: productDetails + file,
+    placeOrder: orderManagement + cartCommon,
 }
