@@ -37,6 +37,7 @@ import {
   addCartDetails,
   removeCartDetails,
 } from '../../../redux/cartManagement/ActionCreators/postCartAction';
+import { LOCAL_CART_MANAGEMENT } from '../../../redux/cartManagement/ActionType';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -123,17 +124,19 @@ const Wrapper = ({children}) => {
 //   );
 // };
 
+
+
 const MyCart = ({navigation}) => {
   const [search, setSearch] = useState();
   const [isSelected, setSelection] = useState(false);
+  const [storeProducts,setStoreProducts] = useState([]);
+
   const dispatch = useDispatch();
   const {data} = useSelector(state => state.getUserReducers);
-  const {cartDetails} = useSelector(state => state.getCardReducers);
+  const {loading:cartLoading ,cartDetails} = useSelector(state => state.getCardReducers);
   const {loading} = useSelector(state => state.postCartReducers);
   const isFocused = useIsFocused();
-  const {productLoading, allProducts, product, statusCode} = useSelector(
-    state => state.getProductReducers,
-  );
+  const [orderProducts,setOrderProducts] = useState([]);
   React.useLayoutEffect(() => {
     data && data.id && dispatch(getCartDetails(data.id));
   }, [isFocused]);
@@ -144,8 +147,22 @@ const MyCart = ({navigation}) => {
     }
   }, [loading]);
 
+  React.useEffect(() => {
+    if(cartDetails && cartDetails.length > 0){
+      cartDetails.map((data) => {
+        setOrderProducts(value => [...value,data.item])
+      })
+    }
+  },[cartLoading]);
+
+  const placeOrderHandler = () => {
+    dispatch({type: LOCAL_CART_MANAGEMENT, storeProducts: storeProducts,nonStoreProducts: orderProducts});
+    navigation.navigate('Checkout')
+  }
+
   const leftComponent = (
     packs,
+    item,
     company,
     prevprice,
     currentprice,
@@ -153,14 +170,6 @@ const MyCart = ({navigation}) => {
     Qty,
     id,
   ) => {
-    let title = "";
-    let price = "";
-    allProducts.map((data1,index) => {
-      if(Number(id) === Number(data1.id)){
-        title = data1.product.productName;
-        price = data1.price;
-      }
-    })
     const addCartHandler = () => {
       const Body = {
         id: data.id,
@@ -181,6 +190,15 @@ const MyCart = ({navigation}) => {
       dispatch(removeCartDetails(Body));
     };
 
+    const productAdd = () => {
+      setStoreProducts([...storeProducts,item]);
+      setOrderProducts(orderProducts.filter((id) => id.id !== item.id))
+    }
+
+    const productRemove = () => {
+      setStoreProducts(storeProducts.filter((id) => id.id !== (item.id)));
+      setOrderProducts([...orderProducts,item]);
+    }
     const deleteHandler = () => {
       const Body = [
         {
@@ -200,7 +218,14 @@ const MyCart = ({navigation}) => {
             <Box alignItems="flex-start" flexDirection={'row'}>
               <CheckBox
                 value={isSelected}
-                onValueChange={v => setSelection(v => !v)}
+                onValueChange={v => {
+                  if(v){
+                    productAdd();
+                  }else{
+                    productRemove();
+                  }
+                  setSelection(v => !v)
+                }}
                 marginTop={50}
               />
 
@@ -215,14 +240,14 @@ const MyCart = ({navigation}) => {
               />
               <Box mx={3}>
                 <Box flexDirection={'row'}>
-                  <Text style={styles.title}>{title}</Text>
+                  <Text style={styles.title}>{item.product && item.product.productName}</Text>
                   <Text style={styles.packs}>{packs}</Text>
                 </Box>
 
                 <Text style={styles.company}>{company}</Text>
                 <Box flexDirection={'row'}>
-                  <Text style={styles.prevprice}>{price}</Text>
-                  <Text style={styles.currentprice}>{price}</Text>
+                  <Text style={styles.prevprice}>{item.price}</Text>
+                  <Text style={styles.currentprice}>{item.price}</Text>
                   <View style={styles.discountview}>
                     <Text style={styles.discount}>{discount}</Text>
                   </View>
@@ -313,7 +338,7 @@ const MyCart = ({navigation}) => {
             showsVerticalScrollIndicator={false}
             numColumns={1}
             data={cartDetails}
-            keyExtractor={item => `${item.id}`}
+            keyExtractor={item => `${item.itemId}`}
             renderItem={({item}) => (
               <HorizontalCard
                 containerStyle={{
@@ -330,6 +355,7 @@ const MyCart = ({navigation}) => {
                 leftWidth={100}
                 leftComponent={leftComponent(
                   item.packs,
+                  item.item,
                   item.company,
                   item.prevprice,
                   item.currentprice,
@@ -357,7 +383,7 @@ const MyCart = ({navigation}) => {
           alignItems: 'center',
           position: 'absolute',
           bottom: 0,
-        }} onPress={()=>navigation.navigate('Checkout')}>
+        }} onPress={placeOrderHandler}>
         <Text style={{color: '#fff', fontSize: 22}}>Place Order</Text>
       </TouchableOpacity>
     </>

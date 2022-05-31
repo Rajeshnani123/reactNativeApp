@@ -81,7 +81,8 @@ const HeaderContent = ({navigation}) => {
   );
 };
 
-const leftComponent = (title, subTitle, qty,price) => {
+const leftComponent = (title, subTitle, qty,price,image) => {
+  
   return (
     <>
       <Box alignItems="flex-start" flexDirection={'row'}>
@@ -91,7 +92,7 @@ const leftComponent = (title, subTitle, qty,price) => {
           borderRadius={10}
           width={100}
           height={120}
-          source={{uri: IMAGES.dummy}}
+          source={{uri: image ? image: IMAGES.dummy}}
         />
         <Box mx={5}>
           <Text style={FONTS.h3}>{title}</Text>
@@ -130,7 +131,7 @@ const ManageProducts = ({navigation}) => {
     state => state.getProductReducers,
   );
   const isFocused = useIsFocused();
-
+  
   React.useLayoutEffect(() => {
     dispatch(getProducts());
     dispatch({type: GET_PRODUCT_RESET});
@@ -207,6 +208,7 @@ const ManageProducts = ({navigation}) => {
                 item.product.productName,
                 item.availableQty,
                 item.price,
+                item.productImage,
               )}
               rightComponent={rightComponent(
                 item.product.id,
