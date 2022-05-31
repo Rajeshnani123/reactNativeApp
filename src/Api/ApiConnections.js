@@ -1,5 +1,5 @@
 const userProfileBaseUrl = "http://gmausermanagement-env-1.eba-kjs6rw3r.ap-south-1.elasticbeanstalk.com";
-const productDetails = "http://catalog.ap-south-1.elasticbeanstalk.com/";
+const productDetails = "http://catalog.ap-south-1.elasticbeanstalk.com";
 const cardManagement = "http://cart-env.eba-vwx5vupq.ap-south-1.elasticbeanstalk.com";
 const orderManagement = "http://gma-order.ap-south-1.elasticbeanstalk.com";
 

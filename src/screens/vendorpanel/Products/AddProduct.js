@@ -4,8 +4,9 @@ import {Btn, TextInput, FormSelect} from './../../../components';
 import {WP, FONTS, COLORS, ICON, ICONS} from './../../../constants';
 import styles from './../../../components/basics/styles';
 import {TouchableOpacity} from 'react-native';
-import {useDispatch} from 'react-redux';
-import {addProduct} from '../../../redux/ProductResource/ActionCreators/postProductAction';
+import {useDispatch, useSelector} from 'react-redux';
+import {addProduct, fetchOne} from '../../../redux/ProductResource/ActionCreators/postProductAction';
+import { launchImageLibrary } from 'react-native-image-picker';
 export const AddProduct = ({setIsModelOpen}) => {
   const catagories = [
     {title: 'Breakfast', value: 'Breakfast'},
@@ -41,6 +42,7 @@ export const AddProduct = ({setIsModelOpen}) => {
   const [Qty, setQty] = React.useState('');
   const [brand, setBrand] = React.useState('');
   const dispatch = useDispatch();
+  const {imageURl} = useSelector((state) => state.postProductReducers);
   const AddToStore = () => {
     const Body = {
       brand: brand,
@@ -48,7 +50,7 @@ export const AddProduct = ({setIsModelOpen}) => {
       invoiceDetails: 'string',
       productCategories: cat,
       productName: productName,
-      productSlug: productImg,
+      productSlug: productName,
       productVariants:[{ 
         availableQty: 27,
         isBestSale: true,
@@ -57,7 +59,7 @@ export const AddProduct = ({setIsModelOpen}) => {
         maxQty: 0,
         minQty: 0,
         price: Number(price),
-        productImage: productImg,
+        productImage: imageURl,
         sku: description,
         variant: subCat,
       }],
@@ -66,6 +68,32 @@ export const AddProduct = ({setIsModelOpen}) => {
     dispatch(addProduct(Body));
     setIsModelOpen(false);
   };
+
+
+  const imageUpload = () => {
+    try{
+      launchImageLibrary({
+        mediaType:"photo",
+        includeBase64: true,
+        quality: 0.5,
+      },(response) => {
+        if(response && response.assets && response.assets.length >0 &&
+          response.assets[0] && response.assets[0].uri
+          ){
+            const form = new FormData();
+            const file = {
+              uri: response.assets[0].uri,
+              type: response.assets[0].type,
+              name: response.assets[0].fileName
+            }
+            form.append('files[0]',file);
+            fetchOne(form,dispatch)();
+          }
+      })
+    }catch(error){
+      console.log(error);
+    }
+  }
 
   return (
     <ScrollView>
@@ -101,12 +129,7 @@ export const AddProduct = ({setIsModelOpen}) => {
             width={'100%'}
             onChangeText={text => setProductName(text)}
           />
-          <TextInput
-            bg={'white'}
-            placeHolder={'Product image'}
-            width={'100%'}
-            onChangeText={text => setProductImg(text)}
-          />
+            <Button  style={styles.button} title="Upload Image" onPress={imageUpload} />
           <TextInput
             multiline
             bg={'white'}

@@ -36,19 +36,42 @@ export const multiStoreProduct = (Body) => {
 }
 
 export const fileUpload = (Body) => {
-    console.log("enter");
     return async (dispatch) => {
         dispatch({ type: FILE_UPLOAD_LOADING});
         try{
             const response = await post(ApiConnections.fileUpload,Body);
-            console.log(response,"response");
-            if(response && response.data){
-                dispatch({type: FILE_UPLOAD_SUCCESS, imageURl: response.data})
+            if(response){
+                dispatch({type: FILE_UPLOAD_SUCCESS, imageURl: response})
             }else{
                 dispatch({type: FILE_UPLOAD_FAILURE, error: "Data not found"})
             }
         }catch(error){
             dispatch({type: FILE_UPLOAD_FAILURE, error: error})
         }
+    }
+}
+
+export const fetchOne = (data,dispatch) => {
+    return async() => {
+        try{
+            let res = await fetch("http://catalog.ap-south-1.elasticbeanstalk.com/api/upload",
+                {
+                    method: 'post',
+                    body: data,
+                });
+            let response = await res.text();
+                console.log(response,"response");
+                if(response){
+                    dispatch({type: FILE_UPLOAD_SUCCESS,imageURl: response});
+                    return response;
+                }else{
+                   console.log("Failure");
+                   return ;
+                }
+        }catch(error){
+            console.log(error,"error");
+            return ;
+        }
+        
     }
 }
