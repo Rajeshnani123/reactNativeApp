@@ -20,7 +20,7 @@ const Profile = (props) => {
             <TouchableOpacity
                 style={[
                     styles.profileTextContainer,
-                     currentRouteName === "Profile" && {backgroundColor:COLORS.primary,color:'#fff',paddingLeft:7}
+                     currentRouteName === "Profile" && {backgroundColor:COLORS.primary,color:'#fff',paddingLeft:normalize(7),paddingRight:normalize(52),borderRadius:2}
                 ]}
                 // style={styles.profileTextContainer}
                 onPress={() => props.props.navigation.navigate('Profile')}>
@@ -157,9 +157,9 @@ const styles = StyleSheet.create({
       },
       profileText:{
         width: normalize(55),
-        height: 27,
+        height: normalize(27),
         fontFamily: "Poppins",
-        fontSize: 18,
+        fontSize: normalize(18),
         fontWeight: "normal",
         fontStyle: "normal",
         letterSpacing: 0,
