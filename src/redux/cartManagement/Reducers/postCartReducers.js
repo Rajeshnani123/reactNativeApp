@@ -2,6 +2,9 @@ import {
   ADD_CART_MANAGEMENT_FAILURE,
   ADD_CART_MANAGEMENT_LOADING,
   ADD_CART_MANAGEMENT_SUCCESS,
+  PLACE_ORDER_FAILURE,
+  PLACE_ORDER_LOADING,
+  PLACE_ORDER_SUCCESS,
   REMOVE_CART_MANAGEMENT_FAILURE,
   REMOVE_CART_MANAGEMENT_LOADING,
   REMOVE_CART_MANAGEMENT_SUCCESS,
@@ -87,6 +90,28 @@ export const postCartReducers = (state = initialState, action) => {
         loading: false,
         error: action.error,
       };
+    }
+
+    case PLACE_ORDER_LOADING: {
+      return{
+        ...state,
+        loading: true,
+      }
+    }
+
+    case PLACE_ORDER_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+      }
+    }
+
+    case PLACE_ORDER_FAILURE:{
+      return{
+        ...state,
+        loading: false,
+        error: action.error,
+      }
     }
 
     default: {

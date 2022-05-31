@@ -1,6 +1,6 @@
 import { ApiConnections } from "../../../Api/ApiConnections";
 import { post } from "../../../Api/BaseApi";
-import { ADD_CART_MANAGEMENT_FAILURE, ADD_CART_MANAGEMENT_LOADING, ADD_CART_MANAGEMENT_SUCCESS, REMOVE_CART_MANAGEMENT_FAILURE, REMOVE_CART_MANAGEMENT_LOADING, REMOVE_CART_MANAGEMENT_SUCCESS, UPDATE_CART_MANAGEMENT_FAILURE, UPDATE_CART_MANAGEMENT_LOADING, UPDATE_CART_MANAGEMENT_SUCCESS } from "../ActionType"
+import { ADD_CART_MANAGEMENT_FAILURE, ADD_CART_MANAGEMENT_LOADING, ADD_CART_MANAGEMENT_SUCCESS, PLACE_ORDER_FAILURE, PLACE_ORDER_LOADING, PLACE_ORDER_SUCCESS, REMOVE_CART_MANAGEMENT_FAILURE, REMOVE_CART_MANAGEMENT_LOADING, REMOVE_CART_MANAGEMENT_SUCCESS, UPDATE_CART_MANAGEMENT_FAILURE, UPDATE_CART_MANAGEMENT_LOADING, UPDATE_CART_MANAGEMENT_SUCCESS } from "../ActionType"
 
 
 
@@ -48,6 +48,22 @@ export const updateCartDetails = (Body) => {
             }
         }catch(error){
             dispatch({type: UPDATE_CART_MANAGEMENT_FAILURE, error: error});
+        }
+    }
+}
+
+export const placeOrder = (Body) => {
+    return async(dispatch) => {
+        dispatch({type: PLACE_ORDER_LOADING});
+        try{
+            const response = await post(ApiConnections.placeOrder,Body);
+            if(response && response.data){
+                dispatch({type: PLACE_ORDER_SUCCESS})
+            }else{
+                dispatch({type: PLACE_ORDER_FAILURE,error: "Data not found"})
+            }
+        }catch(error){
+            dispatch({type: PLACE_ORDER_FAILURE,error: error})
         }
     }
 }

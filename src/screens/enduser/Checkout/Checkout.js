@@ -17,6 +17,8 @@ import {
   Btn,
 } from '../../../components';
 import {normalize} from '../../../utils/Platform';
+import { useDispatch, useSelector } from 'react-redux';
+import { placeOrder } from '../../../redux/cartManagement/ActionCreators/postCartAction';
 const HeaderContent = ({navigation}) => {
   return (
     <Header
@@ -47,7 +49,7 @@ const Rating = () => {
       />
       <Icon
         type={ICONS.AwesomeStar}
-        name={ICONS.star}
+         name={ICONS.star}
         size={22}
         color={COLORS.primary}
       />
@@ -76,6 +78,9 @@ const Rating = () => {
 const Checkout = ({navigation}) => {
   const [search, setSearch] = useState();
   const [isSelected, setSelection] = useState(false);
+  const dispatch = useDispatch();
+  const {userId} = useSelector((state) => state.getUserReducers.data);
+  const {storeProducts,nonStoreProducts,primary,secondary} = useSelector(state => state.getCardReducers);
   const leftComponent = (
     title,
     packs,
@@ -155,6 +160,86 @@ const Checkout = ({navigation}) => {
       </>
     );
   };
+
+  
+  const finalPlaceOrder = () =>{
+    const Body = {
+      alternateNumber: secondary.secondaryMobileNumber,
+      billingAddress: primary.primaryAddress,
+      billingLocation: primary.primaryPincode,
+      contactNumber: primary.primaryMobileNumber,
+      contactPersonName: primary.primaryName,
+      delivaryAddress: secondary.secondaryAddress,
+      delivaryLocation: secondary.secondaryPincode,
+      details: primary.primaryAddress,
+      discount: 0,
+      dueAmount: 0,
+      invoiceDiscountL: 0,
+      invoiceIds: 0,
+      invoiceInfo: 0,
+      orderStatus: "CREATED",
+      paymentStatus: "PAID",
+      serviceCharge: 0,
+      userId,
+    }
+
+    if(storeProducts.length > 0){
+      let orderItems = [];
+      for(let i=0; i< storeProducts.length; i++){
+        console.log("entering");
+        let order = {
+          amount: 0,
+          discount: 0,
+          invoiceIds: "string",
+          invoiceInfo: "string",
+          itemId: "string",
+          itemInfo: "string",
+          order:JSON.stringify(storeProducts[i]),
+          orderStatus: "CREATED",
+          paymentStatus: "PAID",
+          qty: 0,
+          serviceCharge: 0,
+          storeId: userId
+        }
+        orderItems.push(order);
+      }
+      const Body1={
+        ...Body,
+        isFromGlobalStore: true,
+        orderItems,
+      }
+      dispatch(placeOrder(Body1));
+    }
+
+    if(nonStoreProducts.length > 0){
+      let orderItems = [];
+      for(let i=0; i< nonStoreProducts.length; i++){
+        console.log("entering");
+        let order = {
+          amount: 0,
+          discount: 0,
+          invoiceIds: "string",
+          invoiceInfo: "string",
+          itemId: "string",
+          itemInfo: "string",
+          order:JSON.stringify(nonStoreProducts[i]),
+          orderStatus: "CREATED",
+          paymentStatus: "PAID",
+          qty: 0,
+          serviceCharge: 0,
+          storeId: userId
+        }
+        orderItems.push(order);
+      }
+      const Body2={
+        ...Body,
+        isFromGlobalStore: false,
+        orderItems,
+      }
+      dispatch(placeOrder(Body2));
+    }
+    navigation.navigate('Success');
+  }
 
   return (
     <>
@@ -366,7 +451,7 @@ const Checkout = ({navigation}) => {
                   marginLeft: normalize(23),
                   marginTop: normalize(12),
                 }}
-                onPress={() => navigation.navigate('Success')}>
+                onPress={finalPlaceOrder}>
                 Continue
               </Text>
             </TouchableOpacity>
