@@ -25,6 +25,8 @@ import {
 import {normalize} from '../../../utils/Platform';
 import {background} from 'native-base/lib/typescript/theme/styled-system';
 import {Circle} from 'react-native-svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { getStoreDatabyLocation } from '../../../redux/StoreData/ActionCreator/getStoreAction';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -84,6 +86,11 @@ const leftComponent = (title, address, noOfOrders, noOfPeople) => {
 
 const GlobalStore = ({navigation}) => {
   const [search, setSearch] = useState();
+  const {storeDatebyLocation,loading} = useSelector((state) => state.getStoreReducers);
+  const dispatch = useDispatch();
+  React.useLayoutEffect(() => {
+    dispatch(getStoreDatabyLocation("500090"));
+  },[])
 
   return (
     <ScrollView style={styles.root}>
@@ -102,7 +109,7 @@ const GlobalStore = ({navigation}) => {
         overScrollMode="never"
         showsVerticalScrollIndicator={false}
         numColumns={1}
-        data={GLOBALDATA}
+        data={storeDatebyLocation && storeDatebyLocation.content && storeDatebyLocation.content[0].orderItems}
         keyExtractor={item => `${item.id}`}
         renderItem={({item}) => (
           <HorizontalCard
@@ -118,7 +125,7 @@ const GlobalStore = ({navigation}) => {
             rightWidth={100}
             leftWidth={100}
             leftComponent={leftComponent(
-              item.title,
+              item.itemInfo,
               item.address,
               item.noOfOrders,
               item.noOfPeople,

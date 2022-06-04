@@ -192,11 +192,11 @@ const MyCart = ({navigation}) => {
 
     const productAdd = () => {
       setStoreProducts([...storeProducts,item]);
-      setOrderProducts(orderProducts.filter((id) => id.id !== item.id))
+      setOrderProducts(orderProducts.filter((id) => id && id.id !== item.id))
     }
 
     const productRemove = () => {
-      setStoreProducts(storeProducts.filter((id) => id.id !== (item.id)));
+      setStoreProducts(storeProducts.filter((id) => id && id.id !== (item.id)));
       setOrderProducts([...orderProducts,item]);
     }
     const deleteHandler = () => {
@@ -240,14 +240,14 @@ const MyCart = ({navigation}) => {
               />
               <Box mx={3}>
                 <Box flexDirection={'row'}>
-                  <Text style={styles.title}>{item.product && item.product.productName}</Text>
+                  <Text style={styles.title}>{item && item.product && item.product.productName}</Text>
                   <Text style={styles.packs}>{packs}</Text>
                 </Box>
 
                 <Text style={styles.company}>{company}</Text>
                 <Box flexDirection={'row'}>
-                  <Text style={styles.prevprice}>{item.price}</Text>
-                  <Text style={styles.currentprice}>{item.price}</Text>
+                  <Text style={styles.prevprice}>{item && item.price}</Text>
+                  <Text style={styles.currentprice}>{item && item.price}</Text>
                   <View style={styles.discountview}>
                     <Text style={styles.discount}>{discount}</Text>
                   </View>
