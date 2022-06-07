@@ -32,4 +32,5 @@ export const ApiConnections = {
     storeOrder: cardManagement + cardCommon,
     fileUpload: productDetails + file,
     placeOrder: orderManagement + cartCommon,
+    storeDatebyLocation: orderManagement + cartCommon + "/delivary-location",
 }

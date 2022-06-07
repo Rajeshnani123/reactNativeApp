@@ -1,4 +1,5 @@
 import React from "react";
+import {Alert} from "react-native";
 import {View,Button,TouchableOpacity,Text,StyleSheet,ScrollView} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { TextInput, Header, MenuHeader, NotificationHeader } from "../../components";
@@ -31,11 +32,15 @@ export const CreateStore = ({navigation, route}) => {
 
     const dispatch = useDispatch();
     const saveStore = () => {
-      const Body = {
+     if(location){
+       const Body = {
         location,
         userId,
       }
       dispatch(postStore(Body));
+    }else{
+        Alert.alert("Enter the location");
+      }
     }
     return(
         <ScrollView style={Styles.root}>
