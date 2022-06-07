@@ -65,7 +65,7 @@ export const CreateStore = ({navigation, route}) => {
                 placeholderTextColor={'#c4c4c4'}
               />
             <TouchableOpacity style={Styles.button} onPress={saveStore}>
-              <Text style={Styles.buttonText}>Create Store</Text>
+              <Text style={Styles.buttonText}>CREATE STORE</Text>
             </TouchableOpacity>
             </View>
         </ScrollView>
