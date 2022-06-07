@@ -20,7 +20,7 @@ const Profile = (props) => {
             <TouchableOpacity
                 style={[
                     styles.profileTextContainer,
-                     currentRouteName === "Profile" && {backgroundColor:COLORS.primary,color:'#fff',paddingLeft:7}
+                     currentRouteName === "Profile" && {backgroundColor:COLORS.primary,color:'#fff',paddingLeft:normalize(7),paddingRight:normalize(52),borderRadius:2}
                 ]}
                 // style={styles.profileTextContainer}
                 onPress={() => props.props.navigation.navigate('Profile')}>
@@ -108,14 +108,10 @@ const Category = (props) => {
 
 const CustomDrawer = (props) => {
     const {state} = props
-    const {routes, index} = state; //Not sure about the name of index property. Do check it out by logging the 'state' variable.
+    const {routes, index} = state;
     const currentRoute = routes[index];
     // console.log(currentRoute.name)
-    const category = [
-        {name:'admin',title:'Admin Control',subCategory:['Manage users','Manage Orders','Manage store','Invoice','Report']},
-        {name:'ecom',title:'Ecommerce',subCategory:['Product List','My Cart','My Orders','My wishlist']},
-        {name:'setting',title:'Settings',subCategory:['Help center','Private policy','Logout']},
-    ]
+
 
   return (
     <DrawerContentScrollView {...props} >
@@ -157,9 +153,9 @@ const styles = StyleSheet.create({
       },
       profileText:{
         width: normalize(55),
-        height: 27,
+        height: normalize(27),
         fontFamily: "Poppins",
-        fontSize: 18,
+        fontSize: normalize(18),
         fontWeight: "normal",
         fontStyle: "normal",
         letterSpacing: 0,

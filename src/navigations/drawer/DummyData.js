@@ -6,6 +6,11 @@ export const DATA = [
       icon: {type:'userType',name:'user'},
       subCategory: [
           {
+            id:14,
+            name:'Create Store',
+            icon: {type:'userType',name:'user'},
+          },
+          {
             id:1,
             name:'Manage users',
             icon: {type:'userType',name:'user'},

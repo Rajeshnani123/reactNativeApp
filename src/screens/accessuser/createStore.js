@@ -2,28 +2,49 @@ import React from "react";
 import {Alert} from "react-native";
 import {View,Button,TouchableOpacity,Text,StyleSheet,ScrollView} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { TextInput } from "../../components";
+import { TextInput, Header, MenuHeader, NotificationHeader } from "../../components";
 import { postStore } from "../../redux/StoreData/ActionCreator/postStoreAction";
 
-export const CreateStore = () => {
+
+const HeaderContent = ({navigation}) => {
+  return (
+    <Header
+      leftComponent={<MenuHeader navigation={navigation} />}
+      title="Create store"
+      rightComponent={
+        <View flexDirection={'row'}>
+          <NotificationHeader
+            navigation={navigation}
+            active={true}
+            onPress={() => alert('Notification')}
+          />
+          {/* <CartHeader navigation={navigation} onPress={() => alert('Cart')} /> */}
+        </View>
+      }
+    />
+  );
+};
+
+export const CreateStore = ({navigation, route}) => {
 
     const [location,setLocation] = React.useState("");
     const {userId} = useSelector((state) => state.getUserReducers.data);
 
     const dispatch = useDispatch();
     const saveStore = () => {
-     if(location){ 
+     if(location){
        const Body = {
         location,
         userId,
       }
-      dispatch(postStore(Body)); 
+      dispatch(postStore(Body));
     }else{
         Alert.alert("Enter the location");
       }
     }
     return(
         <ScrollView style={Styles.root}>
+        <HeaderContent navigation={navigation} />
         <View style={Styles.view}>
         <Text style={Styles.textstyle}>CREATE STORE </Text>
            <TextInput
