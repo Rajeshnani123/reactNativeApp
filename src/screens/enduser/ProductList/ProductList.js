@@ -41,6 +41,7 @@ import {
 import {addProduct} from '../../../redux/ProductResource/ActionCreators/postProductAction';
 import {addCartDetails} from '../../../redux/cartManagement/ActionCreators/postCartAction';
 import UserStack from '../../../navigations/UserStack';
+import { LOCAL_CART_MANAGEMENT } from '../../../redux/cartManagement/ActionType';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -69,7 +70,9 @@ const leftComponent = (
   discount,
   id,
   data,
+  item,
   dispatch,
+  navigation,
 ) => {
   const addCartHandler = () => {
     const Body = {
@@ -81,6 +84,11 @@ const leftComponent = (
     dispatch(addCartDetails(Body));
     Alert.alert(`Product ${title} is added`,`Please check my cart`)
   };
+
+  const buyHandler = () => {
+    dispatch({type: LOCAL_CART_MANAGEMENT, storeProducts: [item],nonStoreProducts: {}});
+    navigation.navigate("Checkout")
+  }
   return (
     <>
       <Box alignItems="flex-start" flexDirection={'row'}>
@@ -115,7 +123,7 @@ const leftComponent = (
                 borderRadius: normalize(5),
                 alignItems: 'center',
               }}
-              onPress={() => alert('btn')}>
+              onPress={() => buyHandler()}>
               <Text
                 style={{
                   fontSize: normalize(18),
@@ -237,7 +245,9 @@ const ProductList = ({navigation}) => {
                   item.discount,
                   item.id,
                   data,
+                  item,
                   dispatch,
+                  navigation,
                 )}
                 onPress={() => {
                   dispatch(getProductbyId(item.id));
