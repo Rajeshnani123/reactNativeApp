@@ -57,13 +57,14 @@ export const CreateStore = ({navigation, route}) => {
                 onChangeText={(text) => setLocation(text)}
                 placeholderTextColor={'#c4c4c4'}
               />
-              <TextInput
+              {/* This Store Name is required in Swagger API */}
+              {/* <TextInput
                 style={Styles.input}
                 value={storeName}
                 placeholder="Store Name"
                 onChangeText={(text) => setStoreName(text)}
                 placeholderTextColor={'#c4c4c4'}
-              />
+              /> */}
             <TouchableOpacity style={Styles.button} onPress={saveStore}>
               <Text style={Styles.buttonText}>CREATE STORE</Text>
             </TouchableOpacity>
