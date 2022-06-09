@@ -4,6 +4,7 @@ import {  createDrawerNavigator,  DrawerContentScrollView,  DrawerItem,  DrawerI
 import {COLORS, FONTS, ICON, ICONS} from '../../constants';
 import { normalize } from '../../utils/Platform';
 import {DATA} from './DummyData';
+import { useSelector } from 'react-redux';
 
 
 const Profile = (props) => {
@@ -55,11 +56,16 @@ const Category = (props) => {
     const routes = nav.state.routeNames;
     const currentIndex = nav.state.index;
     const currentRouteName = routes[currentIndex]
-
+    const {userType} =useSelector(state => state.getUserReducers.data);
     return (
         <>
             {
-                data.map((currentItem, index, array)=>(
+                data.map((currentItem, index, array)=>{
+                    console.log(userType,currentItem);
+                   if( currentItem.name === "admin" &&  !userType.includes("VENDOR")){
+                    return null
+                   }else{
+                    return(
                     <View key={index}>
 
                         <View style={styles.categoryContainer}>
@@ -100,7 +106,9 @@ const Category = (props) => {
                             ))
                         }
                     </View>
-                ))
+                    )
+                   }
+})
             }
         </>
     )

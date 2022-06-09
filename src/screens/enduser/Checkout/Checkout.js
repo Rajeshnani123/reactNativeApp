@@ -78,6 +78,7 @@ const Rating = () => {
 const Checkout = ({navigation}) => {
   const [search, setSearch] = useState();
   const [isSelected, setSelection] = useState(false);
+  const [totalprice,setTotalPrice] = useState(0);
   const dispatch = useDispatch();
   const {userId} = useSelector((state) => state.getUserReducers.data);
   const {storeProducts,nonStoreProducts,primary,secondary} = useSelector(state => state.getCardReducers);
@@ -241,10 +242,54 @@ const Checkout = ({navigation}) => {
     navigation.navigate('Success');
   }
 
+  React.useEffect(() => {
+    if(storeProducts){
+      storeProducts.map((data) => {
+        if(data.price){
+          setTotalPrice(totalprice + parseFloat(data.price))
+        }
+      })
+    }
+  },[])
+
+  const renderItem = ({item}) => {
+    console.log(item);
+    return (
+      <View style={styles.card1}>
+      <View>
+        <Box mx={7} my={5}>
+          <Text style={styles.productname}>{item && item.product && item.product.productName}</Text>
+          <Text style={styles.sub}>{item && item.product && item.product.productCategories}</Text>
+        </Box>
+
+        <Box flexDirection={'row'} mx={7}>
+          <Text style={styles.currentprice}>Rs.{item && item.price}</Text>
+          <Text style={styles.prevprice}>{item && item.price}</Text>
+        </Box>
+
+        <Rating/>
+
+        <Text style={styles.delivery}>
+          Delivery in 6-10 days| shipping fee Rs 40
+        </Text>
+      </View>
+      <View>
+        <Image
+          source={item && item.productImage ? {uri: item.productImage} :require('../../../assets/Images/Product.jpg')}
+          height={100}
+          width={130}
+          my={5}
+        />
+        <Box style={styles.qtybox}>
+          <Text style={styles.qtytext}>Qty {item && item.qty}</Text>
+        </Box>
+      </View>
+    </View>
+    )
+  }
   return (
     <>
       <HeaderContent navigation={navigation} />
-
       <ScrollView style={styles.root}>
         <View style={styles.container}>
           <View flexDirection={'row'}>
@@ -266,36 +311,15 @@ const Checkout = ({navigation}) => {
             />
           </View>
 
-          <View style={styles.card1}>
-            <View>
-              <Box mx={7} my={5}>
-                <Text style={styles.productname}>Fortune Oil</Text>
-                <Text style={styles.sub}>Sunflower pvt ltd</Text>
-              </Box>
+          <FlatList 
+          data={storeProducts}
+          renderItem={renderItem}
+          />
 
-              <Box flexDirection={'row'} mx={7}>
-                <Text style={styles.currentprice}>Rs.999</Text>
-                <Text style={styles.prevprice}>999</Text>
-              </Box>
-
-              <Rating/>
-
-              <Text style={styles.delivery}>
-                Delivery in 6-10 days| shipping fee Rs 40
-              </Text>
-            </View>
-            <View>
-              <Image
-                source={require('../../../assets/Images/Product.jpg')}
-                height={100}
-                width={130}
-                my={5}
-              />
-              <Box style={styles.qtybox}>
-                <Text style={styles.qtytext}>Qty 5</Text>
-              </Box>
-            </View>
-          </View>
+         <FlatList 
+          data={nonStoreProducts}
+          renderItem={renderItem}
+          />
           <View style={styles.card2}>
             <Box mx={7} my={6}>
               <Text style={styles.pricedetails}>Price Details</Text>
@@ -307,7 +331,7 @@ const Checkout = ({navigation}) => {
                   <Text style={styles.txtcolor}>Delivery Charge</Text>
                 </Box>
                 <Box mx={90}>
-                  <Text style={styles.txtcolor}>Rs. 699</Text>
+                  <Text style={styles.txtcolor}>Rs. {totalprice}</Text>
                   <Text style={styles.txtcolor}>Rs. 199</Text>
                   <Text style={styles.txtcolor}>Rs. 40</Text>
                 </Box>
