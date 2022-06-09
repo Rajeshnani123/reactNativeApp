@@ -65,13 +65,13 @@ export default function HomeStack() {
         component={CreateStore}
       />}
 
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Create Store"
         options={{
           headerShown: false,
         }}
         component={CreateStore}
-      />
+      /> */}
       {/* <Drawer.Screen
         name="Profile"
         options={{
