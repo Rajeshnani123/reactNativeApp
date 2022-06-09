@@ -24,7 +24,7 @@ import {
   CustomModal,
   constants,
 } from '../../components';
-import {COLORS, FONTS, SIZES, ICON, ICONS} from '../../constants';
+import {COLORS, FONTS, SIZES, ICON, ICONS, IMAGES} from '../../constants';
 import styles from '../../components/basics/styles';
 import {useSelector} from 'react-redux';
 import CompareProduct from './CompareProduct/CompareProduct'
@@ -186,13 +186,14 @@ const handlePress = () => {
         </Text>
         <View>
           <Image
-            source={require('../../assets/Images/prodec.png')}
+            source={{uri: product[0].productImage ? product[0].productImage : IMAGES.dummy1}}
             style={{
-              height: 230,
-              width: 300,
-              marginHorizontal: 30,
-              marginVertical: 20,
+              height: normalize(230),
+              width: normalize(300),
+              marginHorizontal: normalize(30),
+              marginVertical: normalize(20),
             }}
+            resizeMode='contain'
           />
         </View>
         <View style={{marginHorizontal: 50}}>
