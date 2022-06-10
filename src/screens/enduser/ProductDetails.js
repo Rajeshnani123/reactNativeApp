@@ -186,7 +186,11 @@ const handlePress = () => {
         </Text>
         <View>
           <Image
-            source={{uri: product[0].productImage ? product[0].productImage : IMAGES.dummy1}}
+            source={{uri:
+              product[0] &&
+              product[0].productImage &&
+              product[0].productImage ? product[0].productImage : IMAGES.dummy1
+            }}
             style={{
               height: normalize(230),
               width: normalize(300),
