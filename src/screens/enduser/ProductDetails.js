@@ -186,11 +186,11 @@ const handlePress = () => {
         </Text>
         <View>
           <Image
-            source={{uri:
+            source={
               product[0] &&
               product[0].productImage &&
-              product[0].productImage ? product[0].productImage : IMAGES.dummy1
-            }}
+              product[0].productImage ? {uri: product[0].productImage} : require('../../assets/Images/Product.jpg')
+            }
             style={{
               height: normalize(230),
               width: normalize(300),
