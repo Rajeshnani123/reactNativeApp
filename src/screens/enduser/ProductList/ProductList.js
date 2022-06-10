@@ -218,6 +218,7 @@ const ProductList = ({navigation}) => {
             />
           </View>
           <FlatList
+            nestedScrollEnabled
             overScrollMode="never"
             showsVerticalScrollIndicator={false}
             numColumns={1}
