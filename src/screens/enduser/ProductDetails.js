@@ -197,7 +197,7 @@ const handlePress = () => {
               marginHorizontal: normalize(30),
               marginVertical: normalize(20),
             }}
-            resizeMode='contain'
+            resizeMode='stretch'
           />
         </View>
         <View style={{marginHorizontal: 50}}>
