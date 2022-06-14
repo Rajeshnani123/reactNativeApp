@@ -1,5 +1,18 @@
 export const DATA = [
     {
+      id: 4,
+      title: 'Super Admin',
+      name: 'superAdmin',
+      icon: {type:'gearType',name:'gear'},
+      subCategory: [
+        {
+          id:15,
+          name:'Product Categories',
+          icon: {type:'listBoxType',name:'listBox'},
+        },
+        ],
+    },
+    {
       id: 1,
       title: 'Admin Control',
       name: 'admin',

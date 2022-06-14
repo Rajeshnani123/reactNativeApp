@@ -11,6 +11,7 @@ import GlobalStore from '../screens/enduser/GlobalStore/GlobalStore';
 import ProfileStk from './authStack/ProfileStk';
 import ProductStk from './endUserStack/ProductStk';
 import MyCart from '../screens/enduser/MyCart/MyCart';
+import ProductCategories from '../screens/enduser/ProductCategories/ProductCategories';
 import {useDispatch,useSelector} from 'react-redux';
 // import { logout } from './../../../redux/reducers/authReducer';
 import {logout} from '../redux/reducers/authReducer';
@@ -92,6 +93,21 @@ export default function HomeStack() {
           )
         }}
         component={ProfileStk}
+      />
+      <Drawer.Screen
+        name="Product Categories"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.usersType}
+              name={ICONS.users}
+              size={normalize(18)}
+              color={color}
+            />
+          )
+        }}
+        component={ProductCategories}
       />
       <Drawer.Screen
         name="Product List"

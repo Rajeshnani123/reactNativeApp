@@ -2,9 +2,10 @@ import React from "react";
 import {Alert} from "react-native";
 import {View,Button,TouchableOpacity,Text,StyleSheet,ScrollView} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { TextInput, Header, MenuHeader, NotificationHeader } from "../../components";
+import { Header, MenuHeader, NotificationHeader } from "../../components";
+import { TextInput } from "react-native";
 import { postStore } from "../../redux/StoreData/ActionCreator/postStoreAction";
-
+import { normalize } from "../../utils/Platform";
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -28,35 +29,46 @@ const HeaderContent = ({navigation}) => {
 export const CreateStore = ({navigation, route}) => {
 
     const [location,setLocation] = React.useState("");
+    const [storeName, setStoreName] = React.useState("");
     const {userId} = useSelector((state) => state.getUserReducers.data);
 
     const dispatch = useDispatch();
     const saveStore = () => {
-     if(location){
+     if(location && storeName){
        const Body = {
         location,
+        storeName,
         userId,
       }
       dispatch(postStore(Body));
     }else{
-        Alert.alert("Enter the location");
+        Alert.alert("Enter the Location and Store Name");
       }
     }
     return(
         <ScrollView style={Styles.root}>
-        <HeaderContent navigation={navigation} />
-        <View style={Styles.view}>
-        <Text style={Styles.textstyle}>CREATE STORE </Text>
-           <TextInput
-          style={Styles.input}
-          value={location}
-          placeholder="Location"
-          onChangeText={(text) => setLocation(text)}
-          placeholderTextColor={'#c4c4c4'} />
-        <TouchableOpacity style={Styles.button} onPress={saveStore}>
-          <Text style={Styles.buttonText}>Create Store</Text>
-        </TouchableOpacity>
-        </View>
+          <HeaderContent navigation={navigation} />
+            <View style={Styles.view}>
+              <Text style={Styles.textStyle}>CREATE STORE </Text>
+              <TextInput
+                style={Styles.input}
+                value={location}
+                placeholder="Location"
+                onChangeText={(text) => setLocation(text)}
+                placeholderTextColor={'#c4c4c4'}
+              />
+              {/* This Store Name is required in Swagger API */}
+              {/* <TextInput
+                style={Styles.input}
+                value={storeName}
+                placeholder="Store Name"
+                onChangeText={(text) => setStoreName(text)}
+                placeholderTextColor={'#c4c4c4'}
+              /> */}
+            <TouchableOpacity style={Styles.button} onPress={saveStore}>
+              <Text style={Styles.buttonText}>CREATE STORE</Text>
+            </TouchableOpacity>
+            </View>
         </ScrollView>
     )
 }
@@ -68,18 +80,20 @@ const Styles = StyleSheet.create({
     backgroundColor: '#FFEED2',
   },
   input: {
-    backgroundColor: '#fff',
-    width: 290,
-    marginVertical: 10,
-    height: 45,
-    borderRadius: 5,
-    paddingHorizontal: 20,
+    height: normalize(50),
+    borderRadius: normalize(5),
+    backgroundColor: '#ffffff',
+    width: '80%',
+    marginTop: normalize(18),
+    padding: normalize(15),
+    borderWidth:normalize(3),
+    borderColor:'#ffb43a'
   },
 
   view: {
     alignItems: 'center',
   },
-  textstyle: {
+  textStyle: {
     fontSize: 22,
     fontFamily: 'Poppins',
     fontWeight: 'bold',
@@ -87,18 +101,29 @@ const Styles = StyleSheet.create({
     paddingVertical: 30,
   },
   button: {
-    backgroundColor: '#FFB43A',
-    width: 300,
-    height: 50,
-    borderRadius: 5,
+    borderRadius: normalize(5),
+    height: normalize(50),
+    backgroundColor: '#ffb43a',
+    elevation:2,
+    shadowColor: 'rgba(0, 0, 0, 0.25)',
+    shadowOffset: {
+      width: 10,
+      height: 10,
+    },
+    shadowRadius: 20,
+    shadowOpacity: 1,
+    borderRadius:5,
+    width: '80%',
     alignItems: 'center',
-    marginVertical: 20,
-    width: 320,
+    marginTop: normalize(20),
   },
   buttonText: {
+    height: normalize(30),
     fontFamily: 'Poppins',
+    marginTop: normalize(13),
+    fontSize: normalize(18),
     fontWeight: 'bold',
-    fontSize: 16,
-    marginVertical: 12,
+    fontStyle: 'normal',
+    color: '#ffffff',
   },
 });

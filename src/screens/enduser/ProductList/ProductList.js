@@ -68,6 +68,7 @@ const leftComponent = (
   price,
   prevprice,
   discount,
+  productImage,
   id,
   data,
   item,
@@ -98,7 +99,7 @@ const leftComponent = (
           my={2}
           width={120}
           height={150}
-          source={{uri: IMAGES.dummy1}}
+          source={{uri: productImage ? productImage : IMAGES.dummy1}}
         />
 
         <Box mx={3} my={3}>
@@ -217,6 +218,7 @@ const ProductList = ({navigation}) => {
             />
           </View>
           <FlatList
+            nestedScrollEnabled
             overScrollMode="never"
             showsVerticalScrollIndicator={false}
             numColumns={1}
@@ -243,6 +245,7 @@ const ProductList = ({navigation}) => {
                   item.price,
                   item.prevprice,
                   item.discount,
+                  item.productImage,
                   item.id,
                   data,
                   item,
