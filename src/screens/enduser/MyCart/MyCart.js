@@ -209,7 +209,7 @@ const MyCart = ({navigation}) => {
         },
       ];
       console.log(Body);
-      //dispatch(deleteCart(Body));
+      dispatch(deleteCart(Body));
     };
     return (
       <Wrapper>

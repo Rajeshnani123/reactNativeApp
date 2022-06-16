@@ -28,6 +28,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import CheckBox from '@react-native-community/checkbox';
 import {normalize} from '../../../utils/Platform';
 import {multiStoreProduct} from '../../../redux/ProductResource/ActionCreators/postProductAction';
+import { POST_PRODUCTS_RESET } from '../../../redux/ProductResource/ActionType';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -133,11 +134,20 @@ const SelectFromStore = ({navigation}) => {
   const [search, setSearch] = useState();
   const {storeData} = useSelector(state => state.getMdmReducers);
   const {allStores} = useSelector(state => state.getStoreReducers);
+  const {loading,addProduct} = useSelector(state => state.postProductReducers);
   const [selectedProduct, setSelectedProduct] = useState([]);
   const submitHandler = () => {
     const Body = [...selectedProduct];
     dispatch(multiStoreProduct(Body));
   };
+
+  React.useEffect(() => {
+    if(!loading && addProduct){
+      navigation.navigate("ManageProducts");
+      dispatch({type: POST_PRODUCTS_RESET});
+    }
+  },[loading])
+
   const HeaderComponent = () => {
     return (
       <>

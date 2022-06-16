@@ -1,4 +1,4 @@
-import { FILE_UPLOAD_FAILURE, FILE_UPLOAD_LOADING, FILE_UPLOAD_SUCCESS, MULTI_PRODUCT_ADD_FAILURE, MULTI_PRODUCT_ADD_LOADING, MULTI_PRODUCT_ADD_SUCCESS } from "../ActionType"
+import { FILE_UPLOAD_FAILURE, FILE_UPLOAD_LOADING, FILE_UPLOAD_SUCCESS, MULTI_PRODUCT_ADD_FAILURE, MULTI_PRODUCT_ADD_LOADING, MULTI_PRODUCT_ADD_SUCCESS, POST_PRODUCTS_FAILURE, POST_PRODUCTS_LOADING, POST_PRODUCTS_RESET, POST_PRODUCTS_SUCCESS } from "../ActionType"
 
 
 const initialState = {
@@ -53,6 +53,38 @@ export const postProductReducers = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 error: action.error,
+            }
+        }
+
+        case POST_PRODUCTS_LOADING: {
+            return {
+                ...state,
+                loading: true,
+            }
+        }
+
+        case POST_PRODUCTS_SUCCESS: {
+            return{
+                ...state,
+                loading: false,
+                statusCode: 200,
+            }
+        }
+
+        case POST_PRODUCTS_FAILURE: {
+            return{
+                ...state,
+                loading: false,
+                statusCode: 400,
+            }
+        }
+
+        case POST_PRODUCTS_RESET: {
+            return{
+                ...state,
+                loading: false,
+                statusCode: 0,
+                addProduct: false,
             }
         }
 

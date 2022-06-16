@@ -7,6 +7,8 @@ import {TouchableOpacity} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {addProduct, fetchOne} from '../../../redux/ProductResource/ActionCreators/postProductAction';
 import { launchImageLibrary } from 'react-native-image-picker';
+import { POST_PRODUCTS_RESET } from '../../../redux/ProductResource/ActionType';
+import { getProducts } from '../../../redux/ProductResource/ActionCreators/getProductAction';
 export const AddProduct = ({setIsModelOpen}) => {
   const catagories = [
     {title: 'Breakfast', value: 'Breakfast'},
@@ -42,7 +44,7 @@ export const AddProduct = ({setIsModelOpen}) => {
   const [Qty, setQty] = React.useState('');
   const [brand, setBrand] = React.useState('');
   const dispatch = useDispatch();
-  const {imageURl} = useSelector((state) => state.postProductReducers);
+  const {imageURl,loading,statusCode} = useSelector((state) => state.postProductReducers);
   const AddToStore = () => {
     const Body = {
       brand: brand,
@@ -66,8 +68,15 @@ export const AddProduct = ({setIsModelOpen}) => {
       seller: 1
     }
     dispatch(addProduct(Body));
-    setIsModelOpen(false);
   };
+
+  React.useEffect(() => {
+    if(!loading && statusCode === 200){
+      dispatch(getProducts());
+      setIsModelOpen(false);
+      dispatch({type: POST_PRODUCTS_RESET});
+    }
+  },[loading])
 
 
   const imageUpload = () => {
