@@ -25,6 +25,7 @@ export const ApiConnections = {
     createCategory: productDetails + categories,
     getAllSellerCategories: productDetails + categories,
     getSellerChildCategory: productDetails + categories + "/child",
+    removeCategory: productDetails + categories,
     getCart: cardManagement + cardCommon,
     addCart: cardManagement + cardCommon +"/add",
     removeCart: cardManagement + cardCommon + "/remove",

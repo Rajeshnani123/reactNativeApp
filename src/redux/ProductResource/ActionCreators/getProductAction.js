@@ -113,10 +113,11 @@ export const getProductCategoriesById = (parentId) => {
 }
 
 export const deleteProductCategoryById = (categoryId) => {
+
     return async(dispatch) => {
         try{
             dispatch({type: DELETE_PRODUCT_CATEGORIES_LOADING});
-            const response = await deleteAxios(ApiConnections.Products+`/${categoryId}`);
+            const response = await deleteAxios(ApiConnections.removeCategory+`/${categoryId}`);
             if(response){
                 dispatch({type: DELETE_PRODUCT_CATEGORIES_SUCCESS});
             }else{

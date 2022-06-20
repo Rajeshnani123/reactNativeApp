@@ -1,4 +1,4 @@
-import { DELETE_PRODUCT_CATEGORIES_LOADING, DELETE_PRODUCT_FAILURE, DELETE_PRODUCT_LOADING, DELETE_PRODUCT_SUCCESS, GET_ALL_PRODUCTS_FAILURE, GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_SUCCESS, GET_PRODUCT_CATEGORIES_FAILURE, GET_PRODUCT_CATEGORIES_LOADING, GET_PRODUCT_CATEGORIES_SUCCESS, GET_PRODUCT_FAILURE, GET_PRODUCT_LOADING, GET_PRODUCT_RESET, GET_PRODUCT_SUCCESS, STORE_PRODUCT_GET_FAILURE, STORE_PRODUCT_GET_LOADING, STORE_PRODUCT_GET_SUCCESS } from "../ActionType"
+import { DELETE_PRODUCT_CATEGORIES_FAILURE, DELETE_PRODUCT_CATEGORIES_LOADING, DELETE_PRODUCT_CATEGORIES_SUCCESS, DELETE_PRODUCT_FAILURE, DELETE_PRODUCT_LOADING, DELETE_PRODUCT_SUCCESS, GET_ALL_PRODUCTS_FAILURE, GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_SUCCESS, GET_PRODUCT_CATEGORIES_FAILURE, GET_PRODUCT_CATEGORIES_LOADING, GET_PRODUCT_CATEGORIES_SUCCESS, GET_PRODUCT_FAILURE, GET_PRODUCT_LOADING, GET_PRODUCT_RESET, GET_PRODUCT_SUCCESS, STORE_PRODUCT_GET_FAILURE, STORE_PRODUCT_GET_LOADING, STORE_PRODUCT_GET_SUCCESS } from "../ActionType"
 
 
 const initialState = {
@@ -133,11 +133,24 @@ export const getProductReducers = (state= initialState, action) => {
                     error: action.error
                 }
             }
-            // case DELETE_PRODUCT_CATEGORIES_LOADING: {
-            //     return {
-            //         ...state,
-            //     }
-            // }
+            case DELETE_PRODUCT_CATEGORIES_LOADING: {
+                return {
+                    ...state,
+                    loading: true,
+                }
+            }
+            case DELETE_PRODUCT_CATEGORIES_SUCCESS: {
+                return {
+                    ...state,
+                    loading: false,
+                }
+            }
+            case DELETE_PRODUCT_CATEGORIES_FAILURE: {
+                return{
+                    ...state,
+                    loading: false
+                }
+            }
             default: {
                 return{
                     ...state,
