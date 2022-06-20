@@ -27,6 +27,7 @@ import jwt_decode from "jwt-decode";
 import { COLORS, ICON, ICONS} from '../constants';
 import { normalize } from '../utils/Platform';
 import CustomDrawer from './drawer/CustomDrawer';
+import CreateCategories from '../screens/enduser/ProductCategories/CreateCategories';
 
 const Drawer = createDrawerNavigator();
 
@@ -79,6 +80,20 @@ export default function HomeStack() {
         }}
         component={UserDetail}
       /> */}
+      <Drawer.Screen
+        name="CreateCategories"
+        component={CreateCategories}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Drawer.Screen
+        name="Checkout"
+        component={Checkout}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Drawer.Screen
         name="Profile"
         options={{
