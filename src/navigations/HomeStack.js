@@ -2,7 +2,7 @@ import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 // import {CustomDrawer, CustomDrawerContent} from './CustomDrawer';
 import CommonStack from './CommonStack';
-import {Button,Alert} from 'react-native';
+import {Button, Alert} from 'react-native';
 import VendorStack from './VendorStack';
 // import UserStack from './UserStack';
 import {UserDetail} from './../screens';
@@ -12,20 +12,20 @@ import ProfileStk from './authStack/ProfileStk';
 import ProductStk from './endUserStack/ProductStk';
 import MyCart from '../screens/enduser/MyCart/MyCart';
 import ProductCategories from '../screens/enduser/ProductCategories/ProductCategories';
-import {useDispatch,useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 // import { logout } from './../../../redux/reducers/authReducer';
 import {logout} from '../redux/reducers/authReducer';
 import Checkout from '../screens/enduser/Checkout/Checkout';
 import CartStk from './endUserStack/CartStk';
 import Success from '../screens/enduser/Success/Success';
 import Error from '../screens/enduser/Error/Error';
-import AsyncStrorage from "@react-native-async-storage/async-storage";
-import { USER_ACCOUNT_LOGOUT } from '../redux/UserProfile/Action/ActionType';
+import AsyncStrorage from '@react-native-async-storage/async-storage';
+import {USER_ACCOUNT_LOGOUT} from '../redux/UserProfile/Action/ActionType';
 import PDetails from '../screens/accessuser/PDetails/Pdetails';
-import {CreateStore} from "../screens/accessuser/createStore"
-import jwt_decode from "jwt-decode";
-import { COLORS, ICON, ICONS} from '../constants';
-import { normalize } from '../utils/Platform';
+import {CreateStore} from '../screens/accessuser/createStore';
+import jwt_decode from 'jwt-decode';
+import {COLORS, ICON, ICONS} from '../constants';
+import {normalize} from '../utils/Platform';
 import CustomDrawer from './drawer/CustomDrawer';
 
 const Drawer = createDrawerNavigator();
@@ -36,11 +36,8 @@ export default function HomeStack() {
 
   return (
     <Drawer.Navigator
-
       drawerContent={props => <CustomDrawer {...props} />}
-      initialRouteName="Product List"
-
-      >
+      initialRouteName="Product List">
       {/* <Drawer.Screen
         name="Common"
         options={{
@@ -49,21 +46,24 @@ export default function HomeStack() {
         component={CommonStack}
       /> */}
 
-
-     {userType && userType.includes("VENDOR") && <Drawer.Screen
-        name="Manage Store"
-        options={{
-          headerShown: false,
-        }}
-        component={VendorStack}
-      />}
-       {userType && userType.includes("VENDOR") && <Drawer.Screen
-        name="Create Store"
-        options={{
-          headerShown: false,
-        }}
-        component={CreateStore}
-      />}
+      {userType && userType.includes('VENDOR') && (
+        <Drawer.Screen
+          name="Manage Store"
+          options={{
+            headerShown: false,
+          }}
+          component={VendorStack}
+        />
+      )}
+      {userType && userType.includes('VENDOR') && (
+        <Drawer.Screen
+          name="Create Store"
+          options={{
+            headerShown: false,
+          }}
+          component={CreateStore}
+        />
+      )}
 
       {/* <Drawer.Screen
         name="Create Store"
@@ -80,6 +80,21 @@ export default function HomeStack() {
         component={UserDetail}
       /> */}
       <Drawer.Screen
+        name="Product List"
+        options={{
+          headerShown: false,
+          drawerIcon: ({color, backgroundColor}) => (
+            <ICON
+              type={ICONS.listBoxType}
+              name={ICONS.listBox}
+              size={normalize(18)}
+              color={color}
+            />
+          ),
+        }}
+        component={ProductStk}
+      />
+      <Drawer.Screen
         name="Profile"
         options={{
           headerShown: false,
@@ -90,7 +105,7 @@ export default function HomeStack() {
               size={normalize(18)}
               color={color}
             />
-          )
+          ),
         }}
         component={ProfileStk}
       />
@@ -105,11 +120,11 @@ export default function HomeStack() {
               size={normalize(18)}
               color={color}
             />
-          )
+          ),
         }}
         component={ProductCategories}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Product List"
         options={{
           headerShown: false,
@@ -123,7 +138,7 @@ export default function HomeStack() {
           )
         }}
         component={ProductStk}
-      />
+      /> */}
       {/* ProductStk */}
       <Drawer.Screen
         name="Global Store"
@@ -136,7 +151,7 @@ export default function HomeStack() {
               size={normalize(18)}
               color={color}
             />
-          )
+          ),
         }}
         component={GlobalStore}
       />
@@ -151,12 +166,10 @@ export default function HomeStack() {
               size={normalize(18)}
               color={color}
             />
-          )
+          ),
         }}
         component={MyCart}
       />
-
-
 
       <Drawer.Screen
         name="Logout"
@@ -181,9 +194,8 @@ export default function HomeStack() {
               size={normalize(18)}
               color={color}
             />
-          )
+          ),
         }}
-
       />
       <Drawer.Screen
         name="Manage users"
@@ -196,7 +208,7 @@ export default function HomeStack() {
               size={normalize(18)}
               color={color}
             />
-          )
+          ),
         }}
         component={ProfileStk}
       />
@@ -212,7 +224,7 @@ export default function HomeStack() {
               size={normalize(18)}
               color={color}
             />
-          )
+          ),
         }}
         component={ProfileStk}
       />
@@ -228,7 +240,7 @@ export default function HomeStack() {
               size={normalize(18)}
               color={color}
             />
-          )
+          ),
         }}
         component={VendorStack}
       />
@@ -244,7 +256,7 @@ export default function HomeStack() {
               size={normalize(18)}
               color={color}
             />
-          )
+          ),
         }}
         component={ProfileStk}
       />
@@ -260,7 +272,7 @@ export default function HomeStack() {
               size={normalize(18)}
               color={color}
             />
-          )
+          ),
         }}
         component={ProfileStk}
       />
@@ -276,7 +288,7 @@ export default function HomeStack() {
               size={normalize(18)}
               color={color}
             />
-          )
+          ),
         }}
         component={ProfileStk}
       />
@@ -292,7 +304,7 @@ export default function HomeStack() {
               size={normalize(18)}
               color={color}
             />
-          )
+          ),
         }}
         component={ProfileStk}
       />
@@ -308,7 +320,7 @@ export default function HomeStack() {
               size={normalize(18)}
               color={color}
             />
-          )
+          ),
         }}
         component={ProfileStk}
       />
@@ -323,12 +335,10 @@ export default function HomeStack() {
               size={normalize(18)}
               color={color}
             />
-          )
+          ),
         }}
         component={ProfileStk}
       />
-
-
     </Drawer.Navigator>
   );
 }
