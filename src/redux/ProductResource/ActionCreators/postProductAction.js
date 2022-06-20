@@ -1,6 +1,6 @@
 import { ApiConnections } from "../../../Api/ApiConnections";
 import { post } from "../../../Api/BaseApi";
-import { FILE_UPLOAD_FAILURE, FILE_UPLOAD_LOADING, FILE_UPLOAD_SUCCESS, MULTI_PRODUCT_ADD_FAILURE, MULTI_PRODUCT_ADD_LOADING, MULTI_PRODUCT_ADD_SUCCESS, POST_PRODUCTS_FAILURE, POST_PRODUCTS_LOADING, POST_PRODUCTS_SUCCESS } from "../ActionType"
+import { CREATE_PRODUCT_CATEGORIES_FAILURE, CREATE_PRODUCT_CATEGORIES_LOADING, CREATE_PRODUCT_CATEGORIES_SUCCESS, FILE_UPLOAD_FAILURE, FILE_UPLOAD_LOADING, FILE_UPLOAD_SUCCESS, MULTI_PRODUCT_ADD_FAILURE, MULTI_PRODUCT_ADD_LOADING, MULTI_PRODUCT_ADD_SUCCESS, POST_PRODUCTS_FAILURE, POST_PRODUCTS_LOADING, POST_PRODUCTS_SUCCESS } from "../ActionType"
 
 
 export const addProduct = (Body) => {
@@ -72,6 +72,24 @@ export const fetchOne = (data,dispatch) => {
             console.log(error,"error");
             return ;
         }
-        
+
+    }
+}
+
+export const createCategory = (Body) => {
+    return async(dispatch) => {
+        try{
+            dispatch({type: CREATE_PRODUCT_CATEGORIES_LOADING})
+            const url = ApiConnections.createCategories;
+            const response = await post(url,Body)
+            if(response){
+                dispatch({type: CREATE_PRODUCT_CATEGORIES_SUCCESS, categories: response.data})
+            }else{
+                dispatch({type: CREATE_PRODUCT_CATEGORIES_FAILURE, error: "Data not found"})
+            }
+        }
+        catch{
+            dispatch({type: CREATE_PRODUCT_CATEGORIES_FAILURE, error: "Api Failure"})
+        }
     }
 }

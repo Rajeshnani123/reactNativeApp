@@ -1,6 +1,6 @@
 import { ApiConnections } from "../../../Api/ApiConnections";
 import { deleteAxios, get } from "../../../Api/BaseApi";
-import { DELETE_PRODUCT_FAILURE, DELETE_PRODUCT_LOADING, DELETE_PRODUCT_SUCCESS, GET_ALL_PRODUCTS_FAILURE, GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_SUCCESS, GET_PRODUCT_FAILURE, GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS, STORE_PRODUCT_GET_FAILURE, STORE_PRODUCT_GET_LOADING, STORE_PRODUCT_GET_SUCCESS } from "../ActionType"
+import { DELETE_PRODUCT_FAILURE, DELETE_PRODUCT_LOADING, DELETE_PRODUCT_SUCCESS, GET_ALL_PRODUCTS_FAILURE, GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_SUCCESS, GET_PRODUCT_CATEGORIES_FAILURE, GET_PRODUCT_CATEGORIES_LOADING, GET_PRODUCT_CATEGORIES_SUCCESS, GET_PRODUCT_FAILURE, GET_PRODUCT_LOADING, GET_PRODUCT_SUCCESS, STORE_PRODUCT_GET_FAILURE, STORE_PRODUCT_GET_LOADING, STORE_PRODUCT_GET_SUCCESS } from "../ActionType"
 
 
 
@@ -75,3 +75,24 @@ export const getStoreProducts = (seller) => {
         }
     }
 }
+
+export const getProductCategories = (type) => {
+    return async(dispatch) => {
+        try{
+            dispatch({type: GET_PRODUCT_CATEGORIES_LOADING})
+            const url = ApiConnections.categories+`/${type}`;
+            const response = await get(url)
+            if(response){
+                dispatch({type: GET_PRODUCT_CATEGORIES_SUCCESS, categories: response.data})
+            }else{
+                Alert.alert("Please try after some time");
+                dispatch({type: GET_PRODUCT_CATEGORIES_FAILURE, error: "Data not found"})
+            }
+        }
+        catch{
+            Alert.alert("Please try after some time");
+            dispatch({type: GET_PRODUCT_CATEGORIES_FAILURE, error: "Api Failure"})
+        }
+    }
+}
+
