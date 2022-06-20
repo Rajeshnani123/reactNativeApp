@@ -11,7 +11,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductCategories } from '../../../redux/ProductResource/ActionCreators/getProductAction';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
-import { COLORS, IMAGES } from '../../../constants';
+import { COLORS, ICON, ICONS, IMAGES } from '../../../constants';
 import { normalize } from '../../../utils/Platform';
 import CreateCategories from './CreateCategories';
 import { useIsFocused } from '@react-navigation/native';
@@ -34,14 +34,29 @@ const HeaderContent = ({navigation}) => {
     )
 }
 
-const Category = ({navigation, item, index}) => {
-  // console.log(IMAGES.dummy1)
+const Category = ({navigation, item, index, dispatch}) => {
+
+  const deleteCategory = (categoryId) => {
+    Alert.alert(categoryId)
+    // dispatch()
+  }
   return (
     <View key={index}>
-     <View  style={{height:60,margin:10,padding:10,backgroundColor:"#FFF7EA",borderRadius:5,alignItems:"center",justifyContent:"center",borderWidth:1,borderColor:COLORS.primary}}>
-       <Text>
-         {item.categoryName}
-       </Text>
+     <View  style={{marginHorizontal:20,height:60,margin:10,padding:20,backgroundColor:"#FFF7EA",borderRadius:5,alignItems:"center",justifyContent:"space-between",borderWidth:1,borderColor:COLORS.primary,flexDirection:"row"}}>
+       <View>
+        <Text>
+          {item.categoryName}
+        </Text>
+       </View>
+       <TouchableOpacity
+        onPress={() => deleteCategory(item.categoryId)}
+        style={{backgroundColor:COLORS.primaryLight,height:30,width:50,justifyContent:"center",alignItems:"center",borderRadius:2,}}>
+          <ICON
+            type={ICONS.deleteType}
+            name={ICONS.delete}
+            // style={{backgroundColor:"blue"}}
+          />
+       </TouchableOpacity>
      </View>
   {/* <View style={style.ItemContainer}>
     <View style={style.Item}>
@@ -56,10 +71,9 @@ const Category = ({navigation, item, index}) => {
 }
 
 const CategoryCreation = ({navigation}) => {
-//  console.log("|||||",navigation)
   return (
     <View style={style.headContainer}>
-      <View style={{alignItems:"center",marginVertical:15}}>
+      <View style={{alignItems:"flex-end",marginVertical:15,marginRight:15}}>
       <TouchableOpacity
       onPress={() => navigation.navigate('CreateCategories')}
       style={{backgroundColor:COLORS.primary,padding:15,borderRadius:3}}
@@ -82,8 +96,11 @@ const ProductCategories = ({navigation}) => {
   const {categories} = useSelector(
     state => state.getProductReducers,
   )
+  const getAllCategories = () => {
+    dispatch(getProductCategories())
+  }
   useEffect(()=>{
-    dispatch(getProductCategories("all"))
+    getAllCategories()
   },[isFocused])
 
   return (
@@ -101,7 +118,11 @@ const ProductCategories = ({navigation}) => {
               // numColumns={2}
               keyExtractor={(item, index) => index.toString()}
               renderItem={({item, index})=>(
-                <Category index={index} navigation={navigation} item={item}/>
+                <Category
+                  dispatch={dispatch}
+                  index={index}
+                  navigation={navigation}
+                  item={item}/>
               )}
             />
           </View>

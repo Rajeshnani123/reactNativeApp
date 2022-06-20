@@ -80,7 +80,7 @@ export const createCategory = (Body) => {
     return async(dispatch) => {
         try{
             dispatch({type: CREATE_PRODUCT_CATEGORIES_LOADING})
-            const url = ApiConnections.createCategories;
+            const url = ApiConnections.createCategory;
             const response = await post(url,Body)
             if(response){
                 dispatch({type: CREATE_PRODUCT_CATEGORIES_SUCCESS, categories: response.data})

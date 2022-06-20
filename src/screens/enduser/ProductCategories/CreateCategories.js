@@ -32,7 +32,6 @@ const CreateCategories = ({navigation}) => {
         }else{
             const Body = {
                 categoryName: categoryName,
-                parentCategory: 'all'
             }
             dispatch(createCategory(Body))
             navigation.navigate('Product Categories')
