@@ -61,7 +61,7 @@ const Category = (props) => {
         <>
             {
                 data.map((currentItem, index, array)=>{
-                    
+
                    if( currentItem.name === "admin" &&  userType && !userType.includes("VENDOR")){
                     return null
                    }else{

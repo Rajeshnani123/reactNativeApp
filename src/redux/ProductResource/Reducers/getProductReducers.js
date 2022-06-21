@@ -1,4 +1,4 @@
-import { DELETE_PRODUCT_FAILURE, DELETE_PRODUCT_LOADING, DELETE_PRODUCT_SUCCESS, GET_ALL_PRODUCTS_FAILURE, GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_SUCCESS, GET_PRODUCT_FAILURE, GET_PRODUCT_LOADING, GET_PRODUCT_RESET, GET_PRODUCT_SUCCESS, STORE_PRODUCT_GET_FAILURE, STORE_PRODUCT_GET_LOADING, STORE_PRODUCT_GET_SUCCESS } from "../ActionType"
+import { DELETE_PRODUCT_CATEGORIES_FAILURE, DELETE_PRODUCT_CATEGORIES_LOADING, DELETE_PRODUCT_CATEGORIES_SUCCESS, DELETE_PRODUCT_FAILURE, DELETE_PRODUCT_LOADING, DELETE_PRODUCT_SUCCESS, GET_ALL_PRODUCTS_FAILURE, GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_SUCCESS, GET_PRODUCT_CATEGORIES_FAILURE, GET_PRODUCT_CATEGORIES_LOADING, GET_PRODUCT_CATEGORIES_SUCCESS, GET_PRODUCT_FAILURE, GET_PRODUCT_LOADING, GET_PRODUCT_RESET, GET_PRODUCT_SUCCESS, STORE_PRODUCT_GET_FAILURE, STORE_PRODUCT_GET_LOADING, STORE_PRODUCT_GET_SUCCESS } from "../ActionType"
 
 
 const initialState = {
@@ -8,6 +8,7 @@ const initialState = {
     allProducts: [],
     product:[],
     storeProduct:[],
+    categories: [],
 }
 
 export const getProductReducers = (state= initialState, action) => {
@@ -57,7 +58,7 @@ export const getProductReducers = (state= initialState, action) => {
                     ...state,
                     productLoading: false,
                     product: [],
-                    statusCode:400, 
+                    statusCode:400,
                     error: action.error,
                 }
             }
@@ -110,6 +111,44 @@ export const getProductReducers = (state= initialState, action) => {
                     ...state,
                     loading: false,
                     error: action.error,
+                }
+            }
+            case GET_PRODUCT_CATEGORIES_LOADING: {
+                return {
+                    ...state,
+                    loading: true,
+                }
+            }
+            case GET_PRODUCT_CATEGORIES_SUCCESS: {
+                return {
+                    ...state,
+                    loading: false,
+                    categories: action.categories
+                }
+            }
+            case GET_PRODUCT_CATEGORIES_FAILURE: {
+                return {
+                    ...state,
+                    loading: false,
+                    error: action.error
+                }
+            }
+            case DELETE_PRODUCT_CATEGORIES_LOADING: {
+                return {
+                    ...state,
+                    loading: true,
+                }
+            }
+            case DELETE_PRODUCT_CATEGORIES_SUCCESS: {
+                return {
+                    ...state,
+                    loading: false,
+                }
+            }
+            case DELETE_PRODUCT_CATEGORIES_FAILURE: {
+                return{
+                    ...state,
+                    loading: false
                 }
             }
             default: {

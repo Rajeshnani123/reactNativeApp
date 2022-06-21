@@ -10,6 +10,7 @@ const mdm = "/api/mdm/products";
 const cardCommon = "/api/v1/cart";
 const cartCommon = "/api/orders";
 const file = "/api/upload";
+const categories = "/api/categories";
 
 export const ApiConnections = {
     Account : userProfileBaseUrl+  version1,
@@ -21,13 +22,17 @@ export const ApiConnections = {
     store: productDetails + store,
     storeProduct: productDetails + mdm,
     multiProduct: productDetails + productCommon + "/create/multiple",
+    createCategory: productDetails + categories,
+    getAllSellerCategories: productDetails + categories,
+    getSellerChildCategory: productDetails + categories + "/child",
+    removeCategory: productDetails + categories,
     getCart: cardManagement + cardCommon,
     addCart: cardManagement + cardCommon +"/add",
     removeCart: cardManagement + cardCommon + "/remove",
     updateCart: cardManagement + cardCommon + "/update",
     resetPassword: userProfileBaseUrl + version1 + "/reset-password",
     forgotPassword: userProfileBaseUrl + version1 + "/forgot-password",
-    verifyOtp: userProfileBaseUrl + version1 + "/verify-otp", 
+    verifyOtp: userProfileBaseUrl + version1 + "/verify-otp",
     storeSeller: productDetails + productCommon + "/store",
     storeOrder: cardManagement + cardCommon,
     fileUpload: productDetails + file,

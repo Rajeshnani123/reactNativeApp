@@ -238,7 +238,9 @@ const MyCart = ({navigation}) => {
                 width={62}
                 height={84}
                 mx={3}
-                source={{uri: IMAGES.dummy1}}
+                source={
+                  (item && item.productImage) ? {uri: item.productImage} : {uri: IMAGES.dummy1}
+                  }
               />
               <Box mx={3}>
                 <Box flexDirection={'row'}>
