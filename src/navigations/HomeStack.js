@@ -233,17 +233,6 @@ export default function HomeStack() {
         name="Manage Orders"
         options={{
           headerShown: false,
-<<<<<<< HEAD
-=======
-          drawerIcon: ({color, backgroundColor}) => (
-            <ICON
-              type={ICONS.usersType}
-              name={ICONS.users}
-              size={normalize(18)}
-              color={color}
-            />
-          ),
->>>>>>> 7ddf77208a1cf1f5e8de31131fab43c86355f623
         }}
         component={ManageOrders}
       />
