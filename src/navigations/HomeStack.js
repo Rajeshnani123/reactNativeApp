@@ -28,6 +28,7 @@ import {COLORS, ICON, ICONS} from '../constants';
 import {normalize} from '../utils/Platform';
 import CustomDrawer from './drawer/CustomDrawer';
 import CreateCategories from '../screens/enduser/ProductCategories/CreateCategories';
+import ManageOrders from '../screens/enduser/ManageOrders/ManageOrders';
 
 const Drawer = createDrawerNavigator();
 
@@ -232,16 +233,8 @@ export default function HomeStack() {
         name="Manage Orders"
         options={{
           headerShown: false,
-          drawerIcon: ({color, backgroundColor}) => (
-            <ICON
-              type={ICONS.usersType}
-              name={ICONS.users}
-              size={normalize(18)}
-              color={color}
-            />
-          ),
         }}
-        component={ProfileStk}
+        component={ManageOrders}
       />
 
       <Drawer.Screen
