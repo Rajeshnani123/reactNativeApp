@@ -210,8 +210,8 @@ const MyCart = ({navigation}) => {
         },
       ];
       console.log(Body);
-      deleteItem(Body,dispatch)();
-      //dispatch(deleteCart(Body));
+      //deleteItem(Body,dispatch)();
+      dispatch(deleteCart(Body));
     };
     return (
       <Wrapper>
