@@ -36,3 +36,30 @@ export const deleteCart = (Body) => {
         }
     }
 }
+
+export const deleteItem = (Body,dispatch) => {
+    console.log("data",Body);
+        return async() => {
+            try{
+                let res = await fetch("http://cart-env.eba-vwx5vupq.ap-south-1.elasticbeanstalk.com/api/v1/cart",
+                    {
+                        method: 'DELETE',
+                        body: JSON.stringify(Body),
+                    });
+               // let response = await res.json();
+                    console.log(res,"response");
+                    if(res){
+                        dispatch({type: DELETE_CART_MANAGEMENT_SUCCESS});
+                        return res;
+                    }else{
+                       console.log("Failure");
+                       dispatch({type: DELETE_CART_MANAGEMENT_FAILURE});
+                       return ;
+                    }
+            }catch(error){
+                console.log(error,"error");
+                dispatch({type: DELETE_CART_MANAGEMENT_FAILURE});
+                return ;
+            }
+    }
+}

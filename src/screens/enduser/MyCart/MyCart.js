@@ -31,6 +31,7 @@ import {useIsFocused} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   deleteCart,
+  deleteItem,
   getCartDetails,
 } from '../../../redux/cartManagement/ActionCreators/getCartAction';
 import {
@@ -209,6 +210,7 @@ const MyCart = ({navigation}) => {
         },
       ];
       console.log(Body);
+      deleteItem(Body,dispatch)();
       //dispatch(deleteCart(Body));
     };
     return (

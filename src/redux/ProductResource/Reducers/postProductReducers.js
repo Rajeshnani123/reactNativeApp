@@ -57,6 +57,37 @@ export const postProductReducers = (state = initialState, action) => {
             }
         }
 
+        case POST_PRODUCTS_LOADING: {
+            return {
+                ...state,
+                loading: true,
+            }
+        }
+
+        case POST_PRODUCTS_SUCCESS: {
+            return{
+                ...state,
+                loading: false,
+                statusCode: 200,
+            }
+        }
+
+        case POST_PRODUCTS_FAILURE: {
+            return{
+                ...state,
+                loading: false,
+                statusCode: 400,
+            }
+        }
+
+        case POST_PRODUCTS_RESET: {
+            return{
+                ...state,
+                loading: false,
+                statusCode: 0,
+                addProduct: false,
+            }
+        }
         case CREATE_PRODUCT_CATEGORIES_LOADING:{
             return{
                 ...state,
