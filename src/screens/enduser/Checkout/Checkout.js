@@ -82,6 +82,7 @@ const Checkout = ({navigation}) => {
   const dispatch = useDispatch();
   const {userId} = useSelector((state) => state.getUserReducers.data);
   const {storeProducts,nonStoreProducts,primary,secondary} = useSelector(state => state.getCardReducers);
+
   const leftComponent = (
     title,
     packs,
@@ -210,6 +211,7 @@ const Checkout = ({navigation}) => {
         orderItems,
       }
       dispatch(placeOrder(Body1));
+      
     }
 
     if(nonStoreProducts.length > 0){
@@ -239,7 +241,7 @@ const Checkout = ({navigation}) => {
       }
       dispatch(placeOrder(Body2));
     }
-    navigation.navigate('Success');
+    navigation.navigate("Success");
   }
 
   React.useEffect(() => {
@@ -252,8 +254,7 @@ const Checkout = ({navigation}) => {
     }
   },[])
 
-  const renderItem = ({item}) => {
-    console.log(item);
+  const StorerenderItem = ({item}) => {
     return (
       <View style={styles.card1}>
       <View>
@@ -311,15 +312,17 @@ const Checkout = ({navigation}) => {
             />
           </View>
 
-          <FlatList 
+         {storeProducts && storeProducts.length>0 && <FlatList 
           data={storeProducts}
-          renderItem={renderItem}
-          />
+          keyExtractor={item => `${item.id}`}
+          renderItem={StorerenderItem}
+          />}
 
-         <FlatList 
+         {nonStoreProducts && nonStoreProducts.length > 0 && <FlatList 
           data={nonStoreProducts}
-          renderItem={renderItem}
-          />
+          keyExtractor={item => `${item.id}`}
+          renderItem={StorerenderItem}
+          />}
           <View style={styles.card2}>
             <Box mx={7} my={6}>
               <Text style={styles.pricedetails}>Price Details</Text>

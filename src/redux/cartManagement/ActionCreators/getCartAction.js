@@ -1,6 +1,6 @@
 import { ApiConnections } from "../../../Api/ApiConnections";
 import { deleteAxios, get, put } from "../../../Api/BaseApi";
-import { DELETE_CART_MANAGEMENT_FAILURE, DELETE_CART_MANAGEMENT_LOADING, DELETE_CART_MANAGEMENT_SUCCESS, GET_CART_MANAGEMENT_FAILURE, GET_CART_MANAGEMENT_LOADING, GET_CART_MANAGEMENT_SUCCESS } from "../ActionType"
+import { DELETE_CART_MANAGEMENT_FAILURE, DELETE_CART_MANAGEMENT_LOADING, DELETE_CART_MANAGEMENT_SUCCESS, GET_CART_MANAGEMENT_FAILURE, GET_CART_MANAGEMENT_LOADING, GET_CART_MANAGEMENT_SUCCESS, LOCAL_CART_RESET } from "../ActionType"
 
 
 export const getCartDetails = (userId) => {
@@ -28,6 +28,8 @@ export const deleteCart = (Body) => {
             const response = await put(url,Body);
             if(response && response.includes("Successfully")){
                 dispatch({type: DELETE_CART_MANAGEMENT_SUCCESS});
+                dispatch(getCartDetails(Body[0].userId));
+                dispatch({type: LOCAL_CART_RESET});
             }else{
                 dispatch({type: DELETE_CART_MANAGEMENT_FAILURE});
         }

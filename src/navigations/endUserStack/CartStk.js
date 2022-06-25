@@ -8,7 +8,7 @@ const UserStk = createNativeStackNavigator();
 
 const CartStk = ({navigation}) => {
   return (
-    <UserStk.Navigator initialRouteName="ProductList">
+    <UserStk.Navigator initialRouteName="MyCart">
       <UserStk.Screen
         name="MyCart"
         component={MyCart}

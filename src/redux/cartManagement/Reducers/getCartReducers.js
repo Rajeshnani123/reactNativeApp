@@ -4,6 +4,7 @@ import {
   GET_CART_MANAGEMENT_SUCCESS,
   LOCAL_ADDRESS_MANAGEMENT,
   LOCAL_CART_MANAGEMENT,
+  LOCAL_CART_RESET,
 } from '../ActionType';
 
 const initialState = {
@@ -49,6 +50,14 @@ export const getCardReducers = (state = initialState, action) => {
         ...state,
         storeProducts: action.storeProducts,
         nonStoreProducts: action.nonStoreProducts,
+      }
+    }
+
+    case LOCAL_CART_RESET:{
+      return {
+        ...state,
+        storeProducts: {},
+        nonStoreProducts: {},
       }
     }
 

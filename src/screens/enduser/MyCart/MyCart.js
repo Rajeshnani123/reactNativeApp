@@ -38,7 +38,7 @@ import {
   addCartDetails,
   removeCartDetails,
 } from '../../../redux/cartManagement/ActionCreators/postCartAction';
-import { LOCAL_CART_MANAGEMENT } from '../../../redux/cartManagement/ActionType';
+import { LOCAL_CART_MANAGEMENT, LOCAL_CART_RESET } from '../../../redux/cartManagement/ActionType';
 
 const HeaderContent = ({navigation}) => {
   return (
@@ -138,18 +138,24 @@ const MyCart = ({navigation}) => {
   const {loading} = useSelector(state => state.postCartReducers);
   const isFocused = useIsFocused();
   const [orderProducts,setOrderProducts] = useState([]);
+
   React.useLayoutEffect(() => {
     data && data.id && dispatch(getCartDetails(data.id));
   }, [isFocused]);
 
   React.useEffect(() => {
+
     if (!loading) {
       data && data.id && dispatch(getCartDetails(data.id));
+    }else{
+      dispatch({type: LOCAL_CART_RESET})
     }
   }, [loading]);
 
   React.useEffect(() => {
     if(cartDetails && cartDetails.length > 0){
+      setOrderProducts([]);
+      setStoreProducts([]);
       cartDetails.map((data) => {
         setOrderProducts(value => [...value,data.item])
       })
@@ -169,12 +175,13 @@ const MyCart = ({navigation}) => {
     currentprice,
     discount,
     Qty,
+    itemId,
     id,
   ) => {
     const addCartHandler = () => {
       const Body = {
-        id: data.id,
-        itemId: id,
+        id: id,
+        itemId: itemId,
         qty: 0,
         userId: String(data.id),
       };
@@ -183,8 +190,8 @@ const MyCart = ({navigation}) => {
 
     const removeCartHandler = () => {
       const Body = {
-        id: data.id,
-        itemId: id,
+        id: id,
+        itemId: itemId,
         qty: 1,
         userId: String(data.id),
       };
@@ -200,18 +207,17 @@ const MyCart = ({navigation}) => {
       setStoreProducts(storeProducts.filter((id) => id && id.id !== (item.id)));
       setOrderProducts([...orderProducts,item]);
     }
-    const deleteHandler = () => {
+    const deleteHandler = async () => {
       const Body = [
         {
-          id: data.id,
-          itemId: id,
+          id: id,
+          itemId: itemId,
           qty: Qty,
           userId: String(data.id),
         },
       ];
-      console.log(Body);
-      //deleteItem(Body,dispatch)();
-      dispatch(deleteCart(Body));
+    dispatch(deleteCart(Body));
+
     };
     return (
       <Wrapper>
@@ -366,6 +372,7 @@ const MyCart = ({navigation}) => {
                   item.discount,
                   item.qty,
                   item.itemId,
+                  item.id,
                 )}
                 onPress={
                   () => console.log('check')

@@ -168,7 +168,7 @@ export default function HomeStack() {
             />
           )
         }}
-        component={MyCart}
+        component={CartStk}
       />
 
 
